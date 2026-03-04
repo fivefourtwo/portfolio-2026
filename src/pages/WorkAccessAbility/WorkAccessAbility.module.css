@@ -1,0 +1,253 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bg-white);
+}
+
+.section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 120px 0;
+}
+
+.sectionLimitations {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 120px;
+  padding-bottom: 60px;
+}
+
+.sectionRequirements {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 60px 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  row-gap: 40px;
+  width: var(--content-width);
+  max-width: 100%;
+  padding: 0 var(--page-padding);
+}
+
+/* Two-column text: heading col 1–5, body col 8–12 */
+.sectionHeading {
+  grid-column: 1 / 6;
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 400;
+  /* line-height: 1; */
+  color: var(--black);
+  margin: 0;
+}
+
+.sectionBody {
+  grid-column: 8 / 13;
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--dark-grey);
+  margin: 0;
+}
+
+/* HMW section */
+.sectionHmw {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 60px 0;
+}
+
+/* Problem intro section */
+.sectionProblemIntro {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 60px 0 120px;
+}
+
+.hmwImage {
+  grid-column: 1 / 13;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Problem statement intro - Satoshi 32px */
+.problemIntro {
+  grid-column: 1 / 13;
+  font-family: var(--font-ui);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 0.97;
+  letter-spacing: -0.96px;
+  color: var(--dark-grey);
+  margin: 0;
+}
+
+/* AccessAbility title section */
+.sectionTitle {
+  padding: 120px 0;
+}
+
+.sectionTitle .container {
+  row-gap: 24px;
+}
+
+.titleBlock {
+  grid-column: 1 / 12;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.titleMain {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  font-weight: 700;
+  /* line-height: 1; */
+  color: var(--accent-access);
+  margin: 0;
+}
+
+.subtitle {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  font-weight: 400;
+  /* line-height: 1; */
+  color: var(--black);
+  margin: 0;
+}
+
+.description {
+  grid-column: 1 / 7;
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--dark-grey);
+  margin: 0;
+}
+
+/* Sections with gradient style element */
+.sectionWithGradient {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120px 0;
+  position: relative;
+  overflow: clip;
+}
+
+/* Shared gradient style element base */
+.gradientStyleElementControlModule,
+.gradientStyleElementAdaptableBase,
+.gradientStyleElementApplication {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2668px;
+  background: var(--style-element-access);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.gradientStyleElementControlModule {
+  top: 244px;
+  height: 360px;
+}
+
+.gradientStyleElementAdaptableBase {
+  top: 93px;
+  height: 360px;
+}
+
+.gradientStyleElementApplication {
+  top: 88px;
+  height: 360px;
+}
+
+.sectionWithGradient .container {
+  row-gap: 24px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  position: relative;
+  z-index: 1;
+  position: relative;
+}
+
+/* Control Module: full-width image */
+.imageFull {
+  grid-column: 1 / 13;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sectionImage {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.controlModuleImage {
+  width: 110%;
+}
+
+/* Application: text col 1–5, image col 8–13 (Figma 339:5681) */
+.applicationHeading {
+  grid-column: 1 / 6;
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--black);
+  margin: 0;
+}
+
+.applicationBody {
+  grid-column: 1 / 6;
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--dark-grey);
+  margin: 0;
+}
+
+.applicationImage {
+  grid-column: 7 / 13;
+  grid-row: 1 / span 3;
+  width: 795px;
+  max-width: 100%;
+  height: 523px;
+  align-self: start;
+  justify-self: start;
+}
+
+.applicationImage .sectionImage {
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: left;
+}
+
+/* Screen reader only */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -1,0 +1,91 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-sizing: border-box;
+  backdrop-filter: blur(4px);
+  background: rgba(244, 244, 244, 0.69);
+  height: 64px;
+  padding: 16px var(--page-padding);
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--grid-gap, 24px);
+  max-width: 1780px;
+  width: 100%;
+  margin-inline: auto;
+  height: 100%;
+  align-items: center;
+}
+
+.logoLink {
+  grid-column: 1;
+  align-self: center;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.logoLink:focus {
+  outline: none;
+}
+
+.logoLink:focus-visible {
+  outline: 2px solid var(--black);
+  outline-offset: 2px;
+}
+
+.infoLink,
+.contactLink {
+  align-self: start;
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--black);
+  text-decoration: none;
+  transition: text-decoration 0.2s ease;
+}
+
+.infoLink {
+  grid-column: 2;
+}
+
+.contactLink {
+  grid-column: 3;
+}
+
+.infoLink:hover,
+.contactLink:hover {
+  text-decoration: underline;
+}
+
+.infoLink:focus,
+.contactLink:focus {
+  outline: none;
+}
+
+.infoLink:focus-visible,
+.contactLink:focus-visible {
+  outline: 2px solid var(--black);
+  outline-offset: 2px;
+}
+
+.projectTitle {
+  grid-column: 10 / 13;
+  justify-self: stretch;
+  align-self: center;
+  font-family: var(--font-ui);
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--black);
+}

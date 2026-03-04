@@ -1,0 +1,117 @@
+/* Base button styles */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  background: none;
+  text-decoration: none;
+  font-family: inherit;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+    text-decoration 0.2s ease;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--black);
+  outline-offset: 2px;
+}
+
+/* Disabled anchor - prevent interaction */
+.button[aria-disabled="true"] {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* Large variant - "View Project" */
+.large {
+  /* box-sizing: border-box; */
+  height: 56px;
+  grid-column: 1 / 3;
+  padding: 15px 24px;
+  gap: 8px;
+  border: 1px solid var(--dark-grey);
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--dark-grey);
+}
+
+.large:hover:not(:disabled) {
+  background-color: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+}
+
+.large .label {
+  color: inherit;
+}
+
+.large svg {
+  color: inherit;
+}
+
+/* Disabled state for large variant */
+.disabled.large,
+.large:disabled {
+  border-color: var(--light-grey);
+  color: var(--light-grey);
+  cursor: not-allowed;
+}
+
+.disabled.large:hover,
+.large:disabled:hover {
+  background-color: var(--white);
+  color: var(--light-grey);
+  border-color: var(--light-grey);
+}
+
+/* Ghost variant - "Back to top" */
+.ghost {
+  flex-direction: row;
+  gap: 4px;
+  padding-left: 4px;
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--black);
+}
+
+.ghost:hover {
+  border-bottom: 1px solid var(--black);
+}
+
+.ghost .label {
+  color: inherit;
+}
+
+.ghost .arrowIcon {
+  display: inline-flex;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.ghost:hover .arrowIcon {
+  transform: rotate(0deg);
+}
+
+/* Link variant - Nav links */
+.link {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--black);
+  text-align: center;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.link .label {
+  color: inherit;
+}

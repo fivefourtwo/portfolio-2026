@@ -1,0 +1,44 @@
+:root {
+  /* Colors */
+  --bg-white: #f4f4f4;
+  --black: #000000;
+  --white: #ffffff;
+  --dark-grey: #4f4f4f;
+  --light-grey: #c9c9c9;
+  --container-white: #e8e8e8;
+
+  /* Project accent colors */
+  --accent-catalogic: #ff5c1a;
+  --accent-teach: #f16b36;
+  --accent-teach-bg: #f36c37;
+  --accent-access: #69616a;
+  --note-handwriting: #fa4604;
+
+  /* Font families */
+  --font-heading: "Sora", sans-serif;
+  --font-body: "IBM Plex Sans", sans-serif;
+  --font-serif: "Zilla Slab", serif;
+  --font-ui: "Satoshi", sans-serif;
+
+  /* Layout */
+  --content-width: 1200px;
+  --full-width: 1440px;
+  --grid-columns: 12;
+  --grid-gap: 24px;
+  --page-padding: 32px;
+
+  /* Case study: dark style elements (full-bleed bars) */
+  --style-element-dark: #1e1e1e;
+
+  /* AccessAbility: gradient style element */
+  --style-element-access: linear-gradient(
+    6.24deg,
+    rgb(230, 224, 231) 26.077%,
+    rgb(200, 194, 201) 77.749%
+  );
+
+  /* Shadows (from Figma) */
+  --shadow-analysis: 0 177px 50px 0 rgba(0,0,0,0), 0 113px 45px 0 rgba(0,0,0,0.03), 0 64px 38px 0 rgba(0,0,0,0.09), 0 28px 28px 0 rgba(0,0,0,0.15), 0 7px 16px 0 rgba(0,0,0,0.18);
+  --shadow-descriptors: 0 16px 32px -8px rgba(12,12,13,0.4);
+  --shadow-manual-tagging: 0 8px 12px 6px rgba(0,0,0,0.15), 0 4px 4px 0 rgba(0,0,0,0.3);
+}

@@ -1,0 +1,12 @@
+---
+globs: src/**/*.jsx
+alwaysApply: false
+---
+
+# React Component & Styling Standards
+
+- **Styling:** ALWAYS use CSS Modules. Do not use Tailwind CSS, styled-components, or inline styles. 
+- **CSS Import:** Import styles as `import styles from './ComponentName.module.css';` and apply them using `className={styles.myClass}`.
+- **Animations:** Use `framer-motion` for all micro-interactions and scroll animations (`whileInView`, `whileHover`). Keep them subtle to support the interaction design vibe.
+- **3D Elements:** Use `@react-three/fiber` and `@react-three/drei` for 3D elements. Keep 3D models small and rudimentary so they do not impact performance.
+- **Component Structure:** Use functional React components with standard ES6 arrow functions. Keep files modular.

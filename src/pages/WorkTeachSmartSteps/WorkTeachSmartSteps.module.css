@@ -1,0 +1,169 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bg-white);
+}
+
+.section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 120px 0;
+}
+
+/* Teach Smart Steps title section (Figma 339:5809) */
+.sectionTitle {
+  padding-top: 120px;
+  padding-bottom: 60px;
+}
+
+.sectionTitle .container {
+  row-gap: 24px;
+}
+
+.titleBlock {
+  grid-column: 1 / 11;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Sections with orange style-element bars (Figma 339:5836, 339:5842, 339:5848) */
+.sectionAutofill,
+.sectionEditor,
+.sectionOutput {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120px 0;
+  position: relative;
+  overflow: clip;
+}
+
+.sectionEditor,
+.sectionOutput {
+  padding: 120px 0;
+}
+
+/* Orange bar: 2800px wide, centered, behind content */
+.autofillStyleElement {
+  position: absolute;
+  top: 187px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2800px;
+  height: 550px;
+  background-color: var(--accent-teach-bg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.editorStyleElement {
+  position: absolute;
+  top: 189px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2800px;
+  height: 420px;
+  background-color: var(--accent-teach-bg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.outputStyleElement {
+  position: absolute;
+  top: 308px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2800px;
+  height: 360px;
+  background-color: var(--accent-teach-bg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sectionAutofill .container,
+.sectionEditor .container,
+.sectionOutput .container {
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  /* column-gap: 24px; */
+  row-gap: 40px;
+  width: var(--content-width);
+  max-width: 100%;
+  padding: 0 var(--page-padding);
+}
+
+/* Two-column text: heading col 1–5, body col 8–12 */
+.sectionHeading {
+  grid-column: 1 / 6;
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 400;
+  /* line-height: 1; */
+  color: var(--black);
+  margin: 0;
+}
+
+.sectionBody {
+  grid-column: 8 / 13;
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--dark-grey);
+  margin: 0;
+}
+
+/* Title block – Teach Smart Steps (Figma 339:5809) */
+.titleMain {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--accent-teach);
+  margin: 0;
+}
+
+.subtitle {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--black);
+  margin: 0;
+}
+
+.description {
+  grid-column: 1 / 7;
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--dark-grey);
+  margin: 0;
+}
+
+/* Full-width image sections */
+.imageFull {
+  grid-column: 1 / 13;
+}
+
+.sectionImage {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+/* Output section: image + handwritten note overlay */
+.outputImageWrapper {
+  position: relative;
+}

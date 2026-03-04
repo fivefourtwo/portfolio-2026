@@ -1,0 +1,163 @@
+/* ===== CarouselComponentVar – Standalone Layout & Carousel ===== */
+
+/* Uses CSS variables with fallbacks for portability:
+   --font-heading, --font-body, --white, --container-white, --dark-grey, --black */
+
+/* ----- Section Layout ----- */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  overflow: clip;
+}
+
+.sectionOverflowVisible {
+  composes: section;
+  overflow: hidden;
+}
+
+.sectionGrid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  row-gap: 40px;
+  width: 1200px;
+  max-width: 100%;
+  position: relative;
+  padding: 0 var(--page-padding);
+}
+
+/* ----- Grid Column Placement ----- */
+
+.col2Span5 {
+  grid-column: 1 / span 5;
+}
+
+.col2Span6 {
+  grid-column: 1 / span 7;
+}
+
+.col2Span10 {
+  grid-column: 1 / span 10;
+}
+
+/* ----- Typography ----- */
+
+.headline {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 32px;
+  line-height: normal;
+  color: var(--black, #000);
+  margin: 0;
+}
+
+/* ----- Carousel (Figma node 4-586) ----- */
+
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 595px;
+  overflow: visible;
+}
+
+.carouselSlide {
+  position: absolute;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+  transition: left 0.4s ease, top 0.4s ease, width 0.4s ease, height 0.4s ease;
+}
+
+.carouselSlideActive {
+  width: 1000px;
+  height: 563px;
+  left: 0;
+  top: 0;
+}
+
+.carouselSlideInactive {
+  width: 773px;
+  height: 435px;
+  top: 64px;
+}
+
+.carouselButton {
+  z-index: 10;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  top: 523px;
+  background: var(--white, #fff);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+.carouselButton:hover:not(:disabled) {
+  background: var(--container-white, #e8e8e8);
+}
+
+.carouselButton:focus-visible {
+  outline: 2px solid var(--black, #000);
+  outline-offset: 2px;
+}
+
+.carouselButton:disabled {
+  cursor: default;
+}
+
+.carouselButtonPrev {
+  composes: carouselButton;
+  left: 40px;
+  box-shadow: -4px -2px 9px 0px rgba(0, 0, 0, 0.08),
+              -14px -9px 17px 0px rgba(0, 0, 0, 0.07);
+}
+
+.carouselButtonNext {
+  composes: carouselButton;
+  left: 896px;
+  box-shadow: 4px -2px 9px 0px rgba(0, 0, 0, 0.08),
+              14px -9px 17px 0px rgba(0, 0, 0, 0.07);
+}
+
+.carouselCaption {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 0.9995;
+  color: var(--dark-grey, #4f4f4f);
+  margin: 0;
+}
+
+/* ----- Responsive ----- */
+
+@media (max-width: 1300px) {
+  .sectionGrid {
+    width: 100%;
+    padding: 0 32px;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 768px) {
+  .sectionGrid {
+    grid-template-columns: 1fr;
+    padding: 0 16px;
+  }
+
+  .col2Span5,
+  .col2Span6,
+  .col2Span10 {
+    grid-column: 1;
+  }
+
+  .headline {
+    font-size: 24px;
+  }
+}

@@ -1,0 +1,646 @@
+/* Page */
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bg-white);
+  width: 100%;
+}
+
+/* Shared container: 12-col grid, 1200px */
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 0px;
+  width: var(--content-width);
+  max-width: 100%;
+  padding: 0 var(--page-padding);
+  overflow: visible;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ----- Section: The Shift from Curation to Administration ----- */
+.sectionShift {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: clip;
+  padding-top: 120px;
+  padding-bottom: 60px;
+}
+
+.sectionShift .container {
+  row-gap: 120px;
+}
+
+.problemHeadline {
+  grid-column: 1 / 6;
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 400;
+  /* line-height: 1; */
+  color: var(--black);
+  margin: 0;
+}
+
+.problemBody {
+  grid-column: 8 / 13;
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--dark-grey);
+  margin: 0;
+  max-width: 500px;
+}
+
+/* ----- Section: Reconciling File Systems with Human Memory ----- */
+.sectionReconciling {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: clip;
+  padding: 60px 0;
+}
+
+.sectionReconciling .container {
+  row-gap: 120px;
+}
+
+.reconcilingHeadline {
+  grid-column: 1 / 5;
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 400;
+  /* line-height: 1; */
+  color: var(--black);
+  margin: 0;
+  max-width: 400px;
+}
+
+.reconcilingBody {
+  grid-column: 8 / 13;
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--dark-grey);
+  margin: 0;
+}
+
+/* ----- Section: Citation ----- */
+.sectionCitation {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: clip;
+  padding-top: 60px;
+  padding-bottom: 120px;
+}
+
+.containerCitation {
+  width: var(--content-width);
+  max-width: 100%;
+  padding: 0 var(--page-padding);
+}
+
+.quoteBlock {
+  margin: 0;
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 112px;
+  background-color: var(--container-white);
+  border-left: 4px solid var(--accent-catalogic);
+  box-sizing: border-box;
+}
+
+.quoteText {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 400;
+  font-style: normal;
+  /* line-height: 1; */
+  color: var(--black);
+  margin: 0;
+}
+
+/* ----- Section: Catalogic title & description ----- */
+.sectionTitle {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: clip;
+  padding-top: 120px;
+  padding-bottom: 60px;
+}
+
+.sectionTitle .container {
+  row-gap: 24px;
+}
+
+.titleBlock {
+  grid-column: 1 / 12;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  /* max-width: 1000px; */
+}
+
+.titleMain {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  font-weight: 700;
+  /* line-height: 1; */
+  color: var(--accent-catalogic);
+  margin: 0;
+}
+
+.subtitle {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  font-weight: 400;
+  /* line-height: 1; */
+  color: var(--black);
+  margin: 0;
+}
+
+.description {
+  grid-column: 1 / 7;
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--black);
+  margin: 0;
+}
+
+/* ----- Section: Audio Analysis ----- */
+.sectionAnalysis {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: clip;
+  padding-top: 120px;
+  padding-bottom: 60px;
+  gap: 54px;
+}
+
+.sectionAnalysis .container {
+  row-gap: 40px;
+}
+
+.analysisImageWrap {
+  grid-column: 1 / 13;
+  aspect-ratio: 1886 / 496;
+  border-radius: 21px;
+  overflow: hidden;
+  box-shadow: var(--shadow-analysis);
+}
+
+.analysisImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 21px;
+}
+
+.sectionHeading {
+  grid-column: 1 / 5;
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 400;
+  /* line-height: 1; */
+  color: var(--black);
+  margin: 0;
+}
+
+.sectionTextAnalysis {
+  grid-column: 8 / 13;
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--dark-grey);
+  margin: 0;
+}
+
+/* ----- Section: Descriptors ----- */
+.sectionDescriptors {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: clip;
+  padding-top: 60px;
+  padding-bottom: 120px;
+  gap: 10px;
+}
+
+.sectionDescriptors .container {
+  row-gap: 40px;
+}
+
+.descriptorsImageWrap {
+  grid-column: 1 / 13;
+  aspect-ratio: 1767 / 743;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-descriptors);
+}
+
+.descriptorsImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 24px;
+}
+
+.descriptorsHeading {
+  grid-column: 1 / 8;
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 400;
+  /* line-height: 1; */
+  color: var(--black);
+  margin: 0;
+}
+
+/* ----- Section: Dark (A system that adapts + Tags + Personalized Tags) ----- */
+.sectionDark {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: clip;
+  padding-top: 120px;
+  padding-bottom: 60px;
+  position: relative;
+}
+
+.darkStyleElement {
+  position: absolute;
+  top: 434px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2400px;
+  height: 644px;
+  background-color: var(--style-element-dark);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sectionDark .container {
+  position: relative;
+  z-index: 1;
+  row-gap: 40px;
+}
+
+.darkStatement {
+  grid-column: 1 / 9;
+  font-family: var(--font-heading);
+  font-size: 48px;
+  font-weight: 400;
+  /* line-height: 1; */
+  color: var(--black);
+  margin: 0;
+  max-width: 800px;
+  padding-bottom: 16px;
+}
+
+.tagsMockupWrap {
+  grid-column: 1 / 13;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  margin-inline: auto;
+  position: relative;
+  /* justify-self: center; */
+  /* align-self: center; */
+  /* max-width: 1428px; */
+  /* height: 802px; */
+  /* align-items: center; */
+}
+
+.tagsMockupImage {
+  width: 1340px;
+  height: auto;
+  /* object-fit: cover; */
+  object-position: center;
+}
+
+/* Personalized Tags block: normal (light) theme on light background */
+.tagsBlockHeading {
+  grid-column: 1 / 5;
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: var(--line-height-headline);
+  color: var(--black);
+  margin: 0;
+}
+
+.tagsBlockText {
+  grid-column: 8 / 13;
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--dark-grey);
+  margin: 0;
+}
+
+.sectionHeadingLight {
+  grid-column: 1 / 5;
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 400;
+  /* line-height: 1; */
+  color: var(--white);
+  margin: 0;
+}
+
+.sectionTextLight {
+  grid-column: 8 / 13;
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--light-grey);
+  margin: 0;
+}
+
+/* Dark section: heading white, body light-grey on dark bar */
+.sectionDark .sectionHeadingLight {
+  color: var(--white);
+}
+
+.sectionDark .sectionTextLight {
+  color: var(--light-grey);
+}
+
+/* ----- Section: Manual Tagging ----- */
+.sectionManualTagging {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: clip;
+  padding-top: 60px;
+  padding-bottom: 120px;
+}
+
+.sectionManualTagging .container {
+  row-gap: 40px;
+}
+
+.manualTaggingImageWrap {
+  grid-column: 1 / 13;
+  aspect-ratio: 1000 / 464;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-manual-tagging);
+}
+
+.manualTaggingImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.manualTaggingHeading {
+  grid-column: 1 / 8;
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 400;
+  /* line-height: 1; */
+  color: var(--black);
+  margin: 0;
+}
+
+/* ----- Section: A new way to explore Music Libraries ----- */
+.sectionExplore {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: clip;
+  padding-top: 120px;
+}
+
+.containerExplore {
+  width: var(--content-width);
+  max-width: 100%;
+  padding: 0 var(--page-padding);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 0px;
+  min-height: 120px;
+  row-gap: 120px;
+}
+
+.titleFullWidth {
+  grid-column: 1 / 7;
+  font-family: var(--font-heading);
+  font-size: 48px;
+  font-weight: 400;
+  /* line-height: 1; */
+  color: var(--black);
+  margin: 0;
+}
+
+/* ----- Section: Similarity Map (Figma 382:6357) ----- */
+.sectionSimilarity {
+  padding-top: 0px;
+  padding-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  overflow: clip;
+  /* min-height: 569px; */
+}
+
+.similarityStyleElement {
+  position: absolute;
+  top: 95px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2400px;
+  height: 557px;
+  background-color: var(--style-element-dark);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sectionSimilarity .container {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  /* column-gap: 24px; */
+  width: var(--content-width);
+  position: relative;
+  /* z-index: 1; */
+  /* grid-template-rows: auto; */
+  /* row-gap: 0; */
+  /* max-width: 100%; */
+  /* padding: 0 var(--page-padding); */
+  /* min-height: 569px; */
+  /* align-items: end; */
+}
+
+.similarityTextBlock {
+  align-self: end;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  grid-column: 1 / span 4;
+  grid-row: 2;
+  /* grid-column: 1 / 5; */
+  /* justify-self: stretch; */
+}
+
+.sectionSimilarity .sectionHeadingLight {
+  grid-column: unset;
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: var(--line-height-headline);
+  color: #ffffff;
+  opacity: 1;
+}
+
+.sectionSimilarity .sectionTextLight {
+  grid-column: unset;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--light-grey);
+  opacity: 1;
+}
+
+/* Image: constrained to grid cell to prevent overlap; scales to fit */
+.similarityImageWrap {
+  grid-row: 1 / span 2;
+  grid-column: 6 / span 7;
+  height: 569px;
+  /* width: 100%; */
+  /* max-width: 931px; */
+  /* justify-self: end;
+  align-self: end; */
+}
+
+.similarityImage {
+  width: 931px;
+  height: auto;
+  display: block;
+
+  /* object-fit: cover;
+  object-position: center; */
+}
+
+/* ----- Section: XY Mode (Figma 371:6051) ----- */
+.sectionXY {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: clip;
+  padding: 60px 0;
+  position: relative;
+}
+
+.xyStyleElement {
+  position: absolute;
+  top: -83px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2400px;
+  height: 690px;
+  background-color: var(--style-element-dark);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.xyContent {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  /* column-gap: 24px; */
+  width: var(--content-width);
+  position: relative;
+}
+
+.xyImageWrap {
+  grid-row: 1 / span 2;
+  display: flex;
+  justify-content: flex-end;
+  grid-column: 2 / 8;
+  /* width: 931px;
+  height: 569px; */
+
+}
+
+.xyImage {
+  width: 931px;
+  height: auto;
+  display: block;
+  /* object-fit: cover;
+  object-position: center; */
+}
+
+.xyTextBlock {
+  grid-column: 9 / 13;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-self: stretch;
+  align-self: start;
+}
+
+.sectionXY .sectionHeadingLight {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: var(--line-height-headline);
+  color: var(--white);
+  margin: 0;
+}
+
+.sectionXY .sectionTextLight {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--light-grey);
+  margin: 0;
+}
+
+/* ----- Section: SwitchComponentVar ----- */
+.sectionSwitch {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120px 0;
+}

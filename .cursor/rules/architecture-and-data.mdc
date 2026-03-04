@@ -1,0 +1,9 @@
+---
+globs: src/**/*.jsx, src/**/*.js
+alwaysApply: false
+---
+
+# Portfolio Architecture & Figma MCP
+
+- **Pages Structure:** The portfolio consists of a Landing Page, Case Study Pages ("Catalogic", "Teach Smart Steps", "AccessAbility"), an "About" page, and eventually a "Legal notice" page. 
+- **Figma MCP Server:** The user is running a Figma MCP Server. When scaffolding new sections or Case Studies, proactively ask the user if you should query the MCP Server for specific design tokens, layouts, or copy from Figma before writing the UI code.

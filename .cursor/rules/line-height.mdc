@@ -1,0 +1,5 @@
+---
+alwaysApply: true
+---
+
+never use line-height: 1; (only if I really want it)

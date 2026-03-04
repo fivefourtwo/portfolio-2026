@@ -1,0 +1,13 @@
+---
+alwaysApply: true
+---
+
+# Accessibility (A11y) Requirements
+
+Accessibility is a high priority for this project. Never skip a11y features for the sake of speed.
+
+- **Semantic HTML:** Always use semantic tags (`<nav>`, `<main>`, `<section>`, `<article>`) instead of generic `<div>` elements wherever possible.
+- **Images:** Every `<img>` must have a meaningful `alt` attribute. If an image is purely decorative, use `alt=""` and `aria-hidden="true"`.
+- **Keyboard Navigation:** All interactive elements (buttons, links, form fields) must be focusable and triggerable via the `Enter` and `Space` keys. Include clear `:focus-visible` states in the CSS Modules.
+- **ARIA Roles:** Use correct ARIA roles and attributes for custom UI elements.
+- **ESLint:** Fix any warnings raised by `eslint-plugin-jsx-a11y` immediately.
