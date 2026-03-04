@@ -22,8 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-#ignore large design assets
-src/assets/accessability-assets/*
-src/assets/catalogic-assets/*
-src/assets/teachsmartsteps-assets/*
