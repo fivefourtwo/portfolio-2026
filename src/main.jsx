@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
-import favicon from './assets/FR-Logo-grey.svg'
+import favicon from './assets-new/FR-Logo-grey.svg'
 
 const faviconLink = document.querySelector('link[rel="icon"]')
 if (faviconLink) faviconLink.href = favicon

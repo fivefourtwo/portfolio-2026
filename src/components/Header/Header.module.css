@@ -4,8 +4,8 @@
   z-index: 100;
   box-sizing: border-box;
   backdrop-filter: blur(4px);
-  background: rgba(244, 244, 244, 0.69);
-  height: 64px;
+  background: var(--header-bg);
+  height: var(--header-height);
   padding: 16px var(--page-padding);
   display: flex;
   align-items: center;
@@ -14,8 +14,8 @@
 .nav {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: var(--grid-gap, 24px);
-  max-width: 1780px;
+  gap: var(--grid-gap);
+  max-width: var(--header-max-width);
   width: 100%;
   margin-inline: auto;
   height: 100%;
@@ -48,7 +48,7 @@
 .contactLink {
   align-self: start;
   font-family: var(--font-body);
-  font-size: 20px;
+  font-size: var(--text-body);
   font-weight: 400;
   color: var(--black);
   text-decoration: none;
@@ -84,7 +84,7 @@
   justify-self: stretch;
   align-self: center;
   font-family: var(--font-ui);
-  font-size: 20px;
+  font-size: var(--text-body);
   font-weight: 700;
   text-transform: uppercase;
   color: var(--black);

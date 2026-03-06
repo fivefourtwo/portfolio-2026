@@ -1,12 +1,12 @@
 .section {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: 24px 24px;
+  gap: var(--grid-gap);
   row-gap: 16px;
   max-width: 1840px;
   width: 100%;
   margin-inline: auto;
-  padding: 0px 32px 0;
+  padding: 0 var(--page-padding);
 }
 
 .keyVisual {
@@ -21,7 +21,7 @@
   grid-column: 10 / 13;
   grid-row: 1;
   font-family: var(--font-body);
-  font-size: 20px;
+  font-size: var(--text-body);
   font-weight: 400;
   color: var(--dark-grey);
   margin: 0;
@@ -42,9 +42,8 @@
   gap: 4px;
   align-items: flex-start;
   font-family: var(--font-heading);
-  font-size: 16px;
+  font-size: var(--text-small);
   font-weight: 400;
-  /* line-height: 1; */
   width: 100%;
 }
 

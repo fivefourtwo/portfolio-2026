@@ -23,8 +23,8 @@
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   row-gap: 40px;
-  width: 1200px;
-  max-width: 100%;
+  width: 100%;
+  max-width: var(--content-width);
   position: relative;
   padding: 0 var(--page-padding);
 }
@@ -48,9 +48,9 @@
 .headline {
   font-family: var(--font-heading);
   font-weight: 500;
-  font-size: 32px;
+  font-size: var(--text-h2);
   line-height: normal;
-  color: var(--black, #000);
+  color: var(--black);
   margin: 0;
 }
 
@@ -90,7 +90,7 @@
   width: 64px;
   height: 64px;
   top: 523px;
-  background: var(--white, #fff);
+  background: var(--white);
   border: none;
   cursor: pointer;
   display: flex;
@@ -100,11 +100,11 @@
 }
 
 .carouselButton:hover:not(:disabled) {
-  background: var(--container-white, #e8e8e8);
+  background: var(--container-white);
 }
 
 .carouselButton:focus-visible {
-  outline: 2px solid var(--black, #000);
+  outline: 2px solid var(--black);
   outline-offset: 2px;
 }
 
@@ -129,9 +129,9 @@
 .carouselCaption {
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: 20px;
+  font-size: var(--text-body);
   line-height: 0.9995;
-  color: var(--dark-grey, #4f4f4f);
+  color: var(--dark-grey);
   margin: 0;
 }
 
@@ -140,7 +140,7 @@
 @media (max-width: 1300px) {
   .sectionGrid {
     width: 100%;
-    padding: 0 32px;
+    padding: 0 var(--page-padding);
     box-sizing: border-box;
   }
 }

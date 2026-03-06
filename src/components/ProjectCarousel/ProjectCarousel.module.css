@@ -2,14 +2,15 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   row-gap: 40px;
-  width: var(--content-width);
-  max-width: 100%;
+  width: 100%;
+  max-width: var(--content-width);
   margin-inline: auto;
 }
 
 .imageStrip {
   grid-column: 1 / 12;
-  width: var(--content-width);
+  width: 100%;
+  max-width: var(--content-width);
   height: 400px;
   position: relative;
   user-select: none;
@@ -35,7 +36,7 @@
 .title {
   grid-column: 1 / 5;
   font-family: var(--font-heading);
-  font-size: 32px;
+  font-size: var(--text-h2);
   font-weight: 400;
   color: var(--black);
   margin: 0;
@@ -45,7 +46,7 @@
   grid-column: 8 / 13;
   grid-row: 2 / 4;
   font-family: var(--font-body);
-  font-size: 20px;
+  font-size: var(--text-body);
   font-weight: 400;
   color: var(--black);
   margin: 0;

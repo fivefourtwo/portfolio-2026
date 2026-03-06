@@ -1,6 +1,7 @@
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import styles from './About.module.css'
+import profileImage from '../../assets-new/IMG_6667 2 1.jpg'
 
 const About = () => {
   return (
@@ -21,9 +22,11 @@ const About = () => {
               pure aesthetics.
             </p>
             <div className={styles.imageWrapper}>
-              <div className={styles.imagePlaceholder} aria-hidden="true">
-                {/* Profile image — add IMG_6667.png to assets */}
-              </div>
+              <img
+                src={profileImage}
+                alt="Portrait of Fabrice Rio"
+                className={styles.profileImage}
+              />
             </div>
           </div>
         </section>

@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import styles from './SwitchComponentVar.module.css';
 
-import smartCratesImg from '../../assets/catalogic-assets/smart-crates.png';
-import artistViewImg from '../../assets/catalogic-assets/artist-view.png';
-import labelViewImg from '../../assets/catalogic-assets/label-view.png';
+import smartCratesImg from '../../assets-new/catalogic-assets/smart-crates.png';
+import artistViewImg from '../../assets-new/catalogic-assets/artist-view.png';
+import labelViewImg from '../../assets-new/catalogic-assets/label-view.png';
 
 const VIEW_DATA = {
   'smart-crates': {
     title: 'Smart Crates',
     description:
-      'Counteracts the isolation of digital files by restoring the original release context, preserving the narrative structure and energy flow intended by the artist.',
+      'Groups tracks by their original release—EP, album, or compilation—so you can browse and plan sets using the same release context and flow that artists and labels intended.',
     image: smartCratesImg,
     imageAlt: 'Smart Crates view of Catalogic',
   },

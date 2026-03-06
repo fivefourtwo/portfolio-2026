@@ -9,22 +9,22 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 120px 0;
+  padding: var(--section-padding-y-lg) 0;
 }
 
 .sectionLimitations {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-top: 120px;
-  padding-bottom: 60px;
+  padding-top: var(--section-padding-y-lg);
+  padding-bottom: var(--section-padding-y-md);
 }
 
 .sectionRequirements {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 60px 0;
+  padding: var(--section-padding-y-md) 0;
 }
 
 .container {
@@ -40,9 +40,8 @@
 .sectionHeading {
   grid-column: 1 / 6;
   font-family: var(--font-heading);
-  font-size: 32px;
+  font-size: var(--text-h2);
   font-weight: 400;
-  /* line-height: 1; */
   color: var(--black);
   margin: 0;
 }
@@ -50,7 +49,7 @@
 .sectionBody {
   grid-column: 8 / 13;
   font-family: var(--font-body);
-  font-size: 20px;
+  font-size: var(--text-body);
   font-weight: 400;
   line-height: 1.3;
   color: var(--dark-grey);
@@ -62,7 +61,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 60px 0;
+  padding: var(--section-padding-y-md) 0;
 }
 
 /* Problem intro section */
@@ -70,7 +69,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 60px 0 120px;
+  padding: var(--section-padding-y-md) 0 var(--section-padding-y-lg);
 }
 
 .hmwImage {
@@ -84,7 +83,7 @@
 .problemIntro {
   grid-column: 1 / 13;
   font-family: var(--font-ui);
-  font-size: 32px;
+  font-size: var(--text-h2);
   font-weight: 400;
   line-height: 0.97;
   letter-spacing: -0.96px;
@@ -94,11 +93,11 @@
 
 /* AccessAbility title section */
 .sectionTitle {
-  padding: 120px 0;
+  padding: var(--section-padding-y-lg) 0;
 }
 
 .sectionTitle .container {
-  row-gap: 24px;
+  row-gap: var(--grid-gap);
 }
 
 .titleBlock {
@@ -110,18 +109,16 @@
 
 .titleMain {
   font-family: var(--font-heading);
-  font-size: 48px;
+  font-size: var(--text-h1);
   font-weight: 700;
-  /* line-height: 1; */
   color: var(--accent-access);
   margin: 0;
 }
 
 .subtitle {
   font-family: var(--font-heading);
-  font-size: 48px;
+  font-size: var(--text-h1);
   font-weight: 400;
-  /* line-height: 1; */
   color: var(--black);
   margin: 0;
 }
@@ -129,7 +126,7 @@
 .description {
   grid-column: 1 / 7;
   font-family: var(--font-body);
-  font-size: 20px;
+  font-size: var(--text-body);
   font-weight: 400;
   line-height: 1.3;
   color: var(--dark-grey);
@@ -142,7 +139,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 120px 0;
+  padding: var(--section-padding-y-lg) 0;
   position: relative;
   overflow: clip;
 }
@@ -154,7 +151,8 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 2668px;
+  width: 100vw;
+  /* min-width: 2400px; */
   background: var(--style-element-access);
   pointer-events: none;
   z-index: 0;
@@ -176,11 +174,10 @@
 }
 
 .sectionWithGradient .container {
-  row-gap: 24px;
+  row-gap: var(--grid-gap);
   grid-template-columns: repeat(12, minmax(0, 1fr));
   position: relative;
   z-index: 1;
-  position: relative;
 }
 
 /* Control Module: full-width image */
@@ -206,7 +203,7 @@
 .applicationHeading {
   grid-column: 1 / 6;
   font-family: var(--font-heading);
-  font-size: 32px;
+  font-size: var(--text-h2);
   font-weight: 400;
   color: var(--black);
   margin: 0;
@@ -215,7 +212,7 @@
 .applicationBody {
   grid-column: 1 / 6;
   font-family: var(--font-body);
-  font-size: 20px;
+  font-size: var(--text-body);
   font-weight: 400;
   line-height: 1.3;
   color: var(--dark-grey);

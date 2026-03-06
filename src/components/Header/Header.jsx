@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
-import FRLogo from '../../assets/FR-Logo.svg';
+import FRLogo from '../../assets-new/FR-Logo.svg';
 
 const Header = ({ projectTitle }) => {
   return (

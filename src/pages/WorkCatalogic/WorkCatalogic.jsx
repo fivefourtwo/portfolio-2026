@@ -4,12 +4,12 @@ import SwitchComponentVar from '../../components/SwitchComponentVar/SwitchCompon
 import Footer from '../../components/Footer/Footer';
 import styles from './WorkCatalogic.module.css';
 
-import analysisImg from '../../assets/catalogic-assets/analysis.png';
-import descriptorsImg from '../../assets/catalogic-assets/descriptors.png';
-import tagsMockupImg from '../../assets/catalogic-assets/tags-mockup.png';
-import manualTaggingImg from '../../assets/catalogic-assets/manual-tagging.png';
-import similarityMapImg from '../../assets/catalogic-assets/similarity-map.png';
-import xyModeImg from '../../assets/catalogic-assets/xy-mode.png';
+import analysisImg from '../../assets-new/catalogic-assets/analysis.png';
+import descriptorsVideo from '../../assets-new/catalogic-assets/Descriptors-mockup.webm';
+import tagsMockupVideo from '../../assets-new/catalogic-assets/Recommendations-mockup.webm';
+import manualTaggingVideo from '../../assets-new/catalogic-assets/manual-tagging.webm';
+import similarityMapVideo from '../../assets-new/catalogic-assets/Similarity-mockup.webm';
+import xyModeVideo from '../../assets-new/catalogic-assets/XY-mockup.webm';
 
 const WorkCatalogic = () => {
   return (
@@ -119,10 +119,14 @@ const WorkCatalogic = () => {
         <section className={styles.sectionDescriptors} aria-labelledby="descriptors-heading">
           <div className={styles.container}>
             <div className={styles.descriptorsImageWrap}>
-              <img
-                src={descriptorsImg}
-                alt="Catalogic descriptors view showing energy, acousticness, danceability, instrumentalness"
+              <video
+                src={descriptorsVideo}
                 className={styles.descriptorsImage}
+                autoPlay
+                loop
+                muted
+                playsInline
+                aria-label="Catalogic descriptors view showing energy, acousticness, danceability, instrumentalness"
               />
             </div>
             <h2 id="descriptors-heading" className={styles.descriptorsHeading}>
@@ -142,10 +146,14 @@ const WorkCatalogic = () => {
               not the other way around.
             </p>
             <div className={styles.tagsMockupWrap}>
-              <img
-                src={tagsMockupImg}
-                alt="Catalogic My Tags interface showing personalized tag structure"
+              <video
+                src={tagsMockupVideo}
                 className={styles.tagsMockupImage}
+                autoPlay
+                loop
+                muted
+                playsInline
+                aria-label="Catalogic My Tags interface showing personalized tag structure"
               />
             </div>
             <h2 className={styles.tagsBlockHeading}>
@@ -166,10 +174,14 @@ const WorkCatalogic = () => {
         <section className={styles.sectionManualTagging} aria-labelledby="manual-tagging-heading">
           <div className={styles.container}>
             <div className={styles.manualTaggingImageWrap}>
-              <img
-                src={manualTaggingImg}
-                alt="Manual tagging with automatically suggested tags in Catalogic"
+              <video
+                src={manualTaggingVideo}
                 className={styles.manualTaggingImage}
+                autoPlay
+                loop
+                muted
+                playsInline
+                aria-label="Manual tagging with automatically suggested tags in Catalogic"
               />
             </div>
             <h2 id="manual-tagging-heading" className={styles.manualTaggingHeading}>
@@ -210,10 +222,14 @@ const WorkCatalogic = () => {
               </p>
             </div>
             <div className={styles.similarityImageWrap}>
-              <img
-                src={similarityMapImg}
-                alt="Catalogic Similarity Map showing spatial organization of tracks"
+              <video
+                src={similarityMapVideo}
                 className={styles.similarityImage}
+                autoPlay
+                loop
+                muted
+                playsInline
+                aria-label="Catalogic Similarity Map showing spatial organization of tracks"
               />
             </div>
           </div>
@@ -224,10 +240,14 @@ const WorkCatalogic = () => {
           <div className={styles.xyStyleElement} aria-hidden="true" />
           <div className={styles.xyContent}>
             <div className={styles.xyImageWrap}>
-              <img
-                src={xyModeImg}
-                alt="Catalogic XY Mode for mapping parameters to axes"
+              <video
+                src={xyModeVideo}
                 className={styles.xyImage}
+                autoPlay
+                loop
+                muted
+                playsInline
+                aria-label="Catalogic XY Mode for mapping parameters to axes"
               />
             </div>
             <div className={styles.xyTextBlock}>

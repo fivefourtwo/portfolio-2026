@@ -13,17 +13,38 @@
   --accent-teach-bg: #f36c37;
   --accent-access: #69616a;
   --note-handwriting: #fa4604;
+  --accent-active: #ff4400;
 
   /* Font families */
   --font-heading: "Sora", sans-serif;
   --font-body: "IBM Plex Sans", sans-serif;
+  --font-ui: "Sora", sans-serif;
+  --font-serif: "IBM Plex Sans", sans-serif;
+
+  /* Typography */
+  --text-display: 96px;
+  --text-h1: 48px;
+  --text-h2: 32px;
+  --text-body: 20px;
+  --text-small: 16px;
+  --line-height-headline: 1.15;
 
   /* Layout */
   --content-width: 1200px;
   --full-width: 1440px;
+  --header-max-width: 1780px;
   --grid-columns: 12;
   --grid-gap: 24px;
   --page-padding: 32px;
+  --section-padding-y-lg: 120px;
+  --section-padding-y-md: 60px;
+  --section-gap: 120px;
+
+  /* Component sizing */
+  --header-height: 64px;
+  --footer-height: 64px;
+  --button-height-large: 56px;
+  --header-bg: rgba(244, 244, 244, 0.69);
 
   /* Case study: dark style elements (full-bleed bars) */
   --style-element-dark: #1e1e1e;

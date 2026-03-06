@@ -1,9 +1,9 @@
 import { Fragment } from 'react';
 import styles from './SectionHero.module.css';
 
-import keyVisualCatalogic from '../../assets/catalogic-assets/key-visual.png';
-import keyVisualTeachSmartSteps from '../../assets/teachsmartsteps-assets/key-visual.png';
-import keyVisualAccessAbility from '../../assets/accessability-assets/key-visual.png';
+import keyVisualCatalogic from '../../assets-new/catalogic-assets/key-visual.jpg';
+import keyVisualTeachSmartSteps from '../../assets-new/teachsmartsteps-assets/key-visual.jpg';
+import keyVisualAccessAbility from '../../assets-new/accessability-assets/key-visual.jpg';
 
 const PROJECTS = {
   Catalogic: {

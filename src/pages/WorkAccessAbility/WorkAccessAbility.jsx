@@ -4,16 +4,16 @@ import CarouselComponentVar from '../../components/CarouselComponentVar/Carousel
 import Footer from '../../components/Footer/Footer';
 import styles from './WorkAccessAbility.module.css';
 
-import hmwImg from '../../assets/accessability-assets/HMW.png';
-import controlModuleImg from '../../assets/accessability-assets/control-module.png';
-import baseImg from '../../assets/accessability-assets/base.png';
-import systemMockupImg from '../../assets/accessability-assets/system-mockup.png';
+import hmwImg from '../../assets-new/accessability-assets/HMW.png';
+import controlModuleImg from '../../assets-new/accessability-assets/controle-module.png';
+import baseImg from '../../assets-new/accessability-assets/base.png';
+import systemMockupImg from '../../assets-new/accessability-assets/system-mockup.png';
 
-import access1 from '../../assets/accessability-assets/accessability-carousel/key-visual.png';
-import access2 from '../../assets/accessability-assets/accessability-carousel/first-prototypes.png';
-import access3 from '../../assets/accessability-assets/accessability-carousel/3d-prototype-testing.png';
-import access4 from '../../assets/accessability-assets/accessability-carousel/3d-prototype.png';
-import access5 from '../../assets/accessability-assets/accessability-carousel/rendering.png';
+import access1 from '../../assets-new/accessability-assets/accessability-carousel/key-visual.jpg';
+import access2 from '../../assets-new/accessability-assets/accessability-carousel/first-prototypes.jpg';
+import access3 from '../../assets-new/accessability-assets/accessability-carousel/3d-prototype-testing.jpg';
+import access4 from '../../assets-new/accessability-assets/accessability-carousel/3d-prototype.jpg';
+import access5 from '../../assets-new/accessability-assets/accessability-carousel/rendering.jpg';
 
 const CAROUSEL_ITEMS = [
   { src: access1, alt: 'AccessAbility modular wheelchair controller key visual', caption: 'Modular design concept for individualized wheelchair control.' },

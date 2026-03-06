@@ -4,10 +4,10 @@ import UseCasesComponentVar from '../../components/UseCasesComponentVar/UseCases
 import Footer from '../../components/Footer/Footer';
 import styles from './WorkTeachSmartSteps.module.css';
 
-import systemFunctionalityImg from '../../assets/teachsmartsteps-assets/system-functionality.png';
-import autoFillImg from '../../assets/teachsmartsteps-assets/auto-fill.png';
-import editorImg from '../../assets/teachsmartsteps-assets/editor.png';
-import outputPdfImg from '../../assets/teachsmartsteps-assets/output-pdf.png';
+import systemFunctionalityImg from '../../assets-new/teachsmartsteps-assets/system-functionality.png.jpg';
+import autoFillVideo from '../../assets-new/teachsmartsteps-assets/auto-fill-mockup.webm';
+import editorVideo from '../../assets-new/teachsmartsteps-assets/editor-mockup.webm';
+import outputPdfImg from '../../assets-new/teachsmartsteps-assets/output-pdf.png';
 
 const WorkTeachSmartSteps = () => {
   return (
@@ -97,10 +97,14 @@ const WorkTeachSmartSteps = () => {
           <div className={styles.autofillStyleElement} aria-hidden="true" />
           <div className={styles.container}>
             <div className={styles.imageFull}>
-              <img
-                src={autoFillImg}
-                alt="Automated fill interface pre-filling configuration parameters based on semantic context"
+              <video
+                src={autoFillVideo}
                 className={styles.sectionImage}
+                autoPlay
+                loop
+                muted
+                playsInline
+                aria-label="Automated fill interface pre-filling configuration parameters based on semantic context"
               />
             </div>
             <h2 id="autofill-heading" className={styles.sectionHeading}>
@@ -123,10 +127,14 @@ const WorkTeachSmartSteps = () => {
           <div className={styles.editorStyleElement} aria-hidden="true" />
           <div className={styles.container}>
             <div className={styles.imageFull}>
-              <img
-                src={editorImg}
-                alt="Task editing interface for granular refinement of didactic and student materials"
+              <video
+                src={editorVideo}
                 className={styles.sectionImage}
+                autoPlay
+                loop
+                muted
+                playsInline
+                aria-label="Task editing interface for granular refinement of didactic and student materials"
               />
             </div>
             <h2 id="editor-heading" className={styles.sectionHeading}>

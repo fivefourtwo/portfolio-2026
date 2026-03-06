@@ -4,26 +4,26 @@ import { ArrowRight } from '@carbon/icons-react';
 import buttonStyles from '../Button/Button.module.css';
 import styles from './ProjectCarousel.module.css';
 
-/* catalogic */
-import catalogic1 from '../../assets/catalogic-assets/catalogic-carousel/key-visual.png';
-import catalogic2 from '../../assets/catalogic-assets/catalogic-carousel/similarity-map-pro-display.png';
-import catalogic3 from '../../assets/catalogic-assets/catalogic-carousel/my-tags-macbook.png';
-import catalogic4 from '../../assets/catalogic-assets/catalogic-carousel/my-tags-screen.png';
-import catalogic5 from '../../assets/catalogic-assets/catalogic-carousel/components.png';
+/* catalogic (project-carousel) */
+import catalogic1 from '../../assets-new/catalogic-assets/project-carousel/key-visual.jpg';
+import catalogic2 from '../../assets-new/catalogic-assets/project-carousel/similarity-map-mockup.jpg';
+import catalogic3 from '../../assets-new/catalogic-assets/project-carousel/labels-mockup.jpg';
+import catalogic4 from '../../assets-new/catalogic-assets/project-carousel/tracks-mockup.jpg';
+import catalogic5 from '../../assets-new/catalogic-assets/project-carousel/analysis-mockup.jpg';
 
 /* teachsmartsteps */
-import tss1 from '../../assets/teachsmartsteps-assets/tss-carousel/key-visual.png';
-import tss2 from '../../assets/teachsmartsteps-assets/tss-carousel/components.png';
-import tss3 from '../../assets/teachsmartsteps-assets/tss-carousel/editor-macbook.png';
-import tss4 from '../../assets/teachsmartsteps-assets/tss-carousel/output.png';
-import tss5 from '../../assets/teachsmartsteps-assets/tss-carousel/output-mockup.png';
+import tss1 from '../../assets-new/teachsmartsteps-assets/tss-carousel/key-visual.jpg';
+import tss2 from '../../assets-new/teachsmartsteps-assets/tss-carousel/components.jpg';
+import tss3 from '../../assets-new/teachsmartsteps-assets/tss-carousel/editor-macbook.jpg';
+import tss4 from '../../assets-new/teachsmartsteps-assets/tss-carousel/output.jpg';
+import tss5 from '../../assets-new/teachsmartsteps-assets/tss-carousel/output-mockup.jpg';
 
 /* accessability */
-import access1 from '../../assets/accessability-assets/accessability-carousel/key-visual.png';
-import access2 from '../../assets/accessability-assets/accessability-carousel/first-prototypes.png';
-import access3 from '../../assets/accessability-assets/accessability-carousel/3d-prototype-testing.png';
-import access4 from '../../assets/accessability-assets/accessability-carousel/3d-prototype.png';
-import access5 from '../../assets/accessability-assets/accessability-carousel/rendering.png';
+import access1 from '../../assets-new/accessability-assets/accessability-carousel/key-visual.jpg';
+import access2 from '../../assets-new/accessability-assets/accessability-carousel/first-prototypes.jpg';
+import access3 from '../../assets-new/accessability-assets/accessability-carousel/3d-prototype-testing.jpg';
+import access4 from '../../assets-new/accessability-assets/accessability-carousel/3d-prototype.jpg';
+import access5 from '../../assets-new/accessability-assets/accessability-carousel/rendering.jpg';
 
 const IMAGES = {
   catalogic: [catalogic1, catalogic2, catalogic3, catalogic4, catalogic5],

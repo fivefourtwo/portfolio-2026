@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import styles from './UseCasesComponentVar.module.css';
 
-import setupDetailed from '../../assets/teachsmartsteps-assets/setup-detailed.png';
-import overviewDetailed from '../../assets/teachsmartsteps-assets/overview-detailed.png';
-import startDetailed from '../../assets/teachsmartsteps-assets/start-detailed.png';
-import setupPreview from '../../assets/teachsmartsteps-assets/setup-preview.png';
-import overviewPreview from '../../assets/teachsmartsteps-assets/overview-preview.png';
-import startPreview from '../../assets/teachsmartsteps-assets/start-preview.png';
+import setupDetailed from '../../assets-new/teachsmartsteps-assets/setup-detailed.jpg';
+import overviewDetailed from '../../assets-new/teachsmartsteps-assets/overview-detailed.jpg';
+import startDetailed from '../../assets-new/teachsmartsteps-assets/start-detailed.jpg';
+import setupPreview from '../../assets-new/teachsmartsteps-assets/setup-preview.jpg';
+import overviewPreview from '../../assets-new/teachsmartsteps-assets/overview-preview.jpg';
+import startPreview from '../../assets-new/teachsmartsteps-assets/start-preview.jpg';
 
 const VARIANTS = {
   guided: {
