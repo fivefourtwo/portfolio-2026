@@ -9,20 +9,17 @@ const Landing = () => {
       <Header />
       <main className={styles.page}>
         <section className={styles.hero}>
-          <div className={styles.heroContent}>
-            <h1 className={styles.headline}>
-              Hi there, I&apos;m Fabrice Rio{' '}
-            </h1>
-            <p className={styles.subline}>
-              I&apos;m a Designer from Germany with a passion for{' '}
-              <strong>understanding complex problems</strong> and{' '}
-              <strong>solving them through design and technology</strong>
-            </p>
-          </div>
-        </section>
-
-        <section className={styles.introSection}>
-          <div className={styles.introContent}>
+          <div className={styles.heroInner}>
+            <div className={styles.heroContent}>
+              <h1 className={styles.headline}>
+                Hi there, I&apos;m Fabrice{' '}
+              </h1>
+              <p className={styles.subline}>
+                I&apos;m a Designer from Germany with a passion for{' '}
+                <strong>understanding complex problems</strong> and<br /> {' '}
+                <strong>creating simple solutions </strong> through design and technology
+              </p>
+            </div>
             <p className={styles.introText}>
               This is what it can look like.
             </p>

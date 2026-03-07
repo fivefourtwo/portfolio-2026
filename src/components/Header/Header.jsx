@@ -16,9 +16,9 @@ const Header = ({ projectTitle }) => {
           />
         </Link>
         <Link to="/about" className={styles.infoLink}>
-          Info
+          About
         </Link>
-        <a href="mailto:hello@fabrice-rio.com" className={styles.contactLink}>
+        <a href="mailto:fabricerio.design@gmail.com" className={styles.contactLink}>
           Contact
         </a>
         {projectTitle && (

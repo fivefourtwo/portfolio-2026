@@ -18,7 +18,7 @@ const Footer = () => {
         LinkedIn
       </a>
       <a
-        href="mailto:hello@fabrice-rio.com"
+        href="mailto:fabricerio.design@gmail.com"
         className={`${styles.link} ${styles.email}`}
       >
         E-Mail

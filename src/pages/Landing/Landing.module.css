@@ -7,10 +7,22 @@
 
 .hero {
   width: 100%;
+  min-height: 90vh;
   display: flex;
-  justify-content: center;
-  padding: var(--section-padding-y-lg) 0;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--section-padding-y-lg) 0 40px;
   overflow: clip;
+}
+
+.heroInner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 0;
+  padding: 0 var(--page-padding);
 }
 
 .heroContent {
@@ -18,7 +30,7 @@
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: auto auto;
   row-gap: 40px;
-  width: var(--content-width);
+  width: 100%;
 }
 
 .headline {
@@ -37,32 +49,17 @@
   font-family: var(--font-heading);
   font-size: var(--text-h2);
   font-weight: 400;
-  line-height: normal;
-  color: var(--black);
+  line-height: 1.5;
+  color: var(--dark-grey);
   margin: 0;
 }
 
 .subline strong {
   font-weight: 700;
-}
-
-.introSection {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding-top: calc(2 * var(--section-padding-y-lg));
-  overflow: clip;
-}
-
-.introContent {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  row-gap: var(--grid-gap);
-  width: var(--content-width);
+  color: var(--black);
 }
 
 .introText {
-  grid-column: 1 / 8;
   font-family: var(--font-heading);
   font-size: var(--text-h2);
   font-weight: 400;

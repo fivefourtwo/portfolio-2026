@@ -56,8 +56,7 @@ const IMAGE_WIDTH = 711;
 const IMAGE_GAP = 24;
 const IMAGE_STEP = IMAGE_WIDTH + IMAGE_GAP;
 const LOOP_OFFSET = 5 * IMAGE_STEP; /* 5 images + 4 gaps + gap before repeat */
-const BASE_SPEED = 2; /* px per frame at 60fps */
-const HOVER_SPEED_FACTOR = 0.25; /* slow down to 25% on hover */
+const BASE_SPEED = 1.0; /* px per frame at 60fps – reduced for slower loop */
 
 const ProjectCarousel = ({ variant }) => {
   const images = IMAGES[variant];
@@ -65,6 +64,7 @@ const ProjectCarousel = ({ variant }) => {
   const isAccessability = variant === 'accessability';
 
   const stripRef = useRef(null);
+  const containerRef = useRef(null);
   const scrollOffsetRef = useRef(0);
   const [isHovered, setIsHovered] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
@@ -80,10 +80,9 @@ const ProjectCarousel = ({ variant }) => {
 
     let rafId;
     const tick = () => {
-      if (!isDraggingRef.current) {
-        const speed = isHovered ? BASE_SPEED * HOVER_SPEED_FACTOR : BASE_SPEED;
+      if (!isDraggingRef.current && !isHovered) {
         scrollOffsetRef.current =
-          (scrollOffsetRef.current + speed) % LOOP_OFFSET;
+          (scrollOffsetRef.current + BASE_SPEED) % LOOP_OFFSET;
         if (stripRef.current) {
           stripRef.current.style.transform = `translateX(-${scrollOffsetRef.current}px)`;
         }
@@ -93,6 +92,24 @@ const ProjectCarousel = ({ variant }) => {
     rafId = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafId);
   }, [isHovered]);
+
+  /* Horizontal trackpad/mouse wheel scroll */
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const handleWheel = (e) => {
+      if (e.deltaX === 0) return;
+      e.preventDefault();
+      let newOffset = scrollOffsetRef.current + e.deltaX;
+      newOffset = ((newOffset % LOOP_OFFSET) + LOOP_OFFSET) % LOOP_OFFSET;
+      scrollOffsetRef.current = newOffset;
+      if (stripRef.current) {
+        stripRef.current.style.transform = `translateX(-${newOffset}px)`;
+      }
+    };
+    el.addEventListener('wheel', handleWheel, { passive: false });
+    return () => el.removeEventListener('wheel', handleWheel);
+  }, []);
 
   const handlePointerDown = (e) => {
     if (e.button !== 0) return;
@@ -137,6 +154,7 @@ const ProjectCarousel = ({ variant }) => {
   return (
     <article className={styles.carousel}>
       <div
+        ref={containerRef}
         className={styles.imageStrip}
         aria-hidden="true"
         onPointerEnter={() => setIsHovered(true)}

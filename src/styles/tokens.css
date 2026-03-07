@@ -10,10 +10,9 @@
   /* Project accent colors */
   --accent-catalogic: #ff5c1a;
   --accent-teach: #f16b36;
-  --accent-teach-bg: #f36c37;
-  --accent-access: #69616a;
+  --accent-teach-bg: #E99A7A;
+  --accent-access: #6e6e6e;
   --note-handwriting: #fa4604;
-  --accent-active: #ff4400;
 
   /* Font families */
   --font-heading: "Sora", sans-serif;
@@ -22,7 +21,7 @@
   --font-serif: "IBM Plex Sans", sans-serif;
 
   /* Typography */
-  --text-display: 96px;
+  --text-display: 48px;
   --text-h1: 48px;
   --text-h2: 32px;
   --text-body: 20px;
@@ -41,7 +40,7 @@
   --section-gap: 120px;
 
   /* Component sizing */
-  --header-height: 64px;
+  --header-height: 56px;
   --footer-height: 64px;
   --button-height-large: 56px;
   --header-bg: rgba(244, 244, 244, 0.69);
@@ -50,14 +49,14 @@
   --style-element-dark: #1e1e1e;
 
   /* AccessAbility: gradient style element */
-  --style-element-access: linear-gradient(
-    6.24deg,
-    rgb(230, 224, 231) 26.077%,
-    rgb(200, 194, 201) 77.749%
-  );
+  --style-element-access: #DAE1E7;
+
+  /* Media (images, videos) */
+  --radius-media: 16px;
 
   /* Shadows (from Figma) */
-  --shadow-analysis: 0 177px 50px 0 rgba(0,0,0,0), 0 113px 45px 0 rgba(0,0,0,0.03), 0 64px 38px 0 rgba(0,0,0,0.09), 0 28px 28px 0 rgba(0,0,0,0.15), 0 7px 16px 0 rgba(0,0,0,0.18);
-  --shadow-descriptors: 0 16px 32px -8px rgba(12,12,13,0.4);
-  --shadow-manual-tagging: 0 8px 12px 6px rgba(0,0,0,0.15), 0 4px 4px 0 rgba(0,0,0,0.3);
+  --shadow: 0 16px 32px -8px rgba(12,12,13,0.4);
+  --shadow-analysis: var(--shadow);
+  --shadow-descriptors: var(--shadow);
+  --shadow-manual-tagging: var(--shadow);
 }

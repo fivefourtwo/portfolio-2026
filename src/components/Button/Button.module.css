@@ -74,8 +74,8 @@
   flex-direction: row;
   gap: 4px;
   padding-left: 4px;
-  font-family: var(--font-body);
-  font-size: var(--text-body);
+  font-family: var(--font-heading);
+  font-size: var(--text-small);
   font-weight: 400;
   color: var(--black);
 }

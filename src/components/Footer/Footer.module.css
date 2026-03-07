@@ -13,15 +13,15 @@
 .copyright {
   grid-column: 1 / 3;
   margin: 0;
-  font-family: var(--font-body);
-  font-size: var(--text-body);
+  font-family: var(--font-heading);
+  font-size: var(--text-small);
   font-weight: 400;
   color: var(--black);
 }
 
 .link {
-  font-family: var(--font-body);
-  font-size: var(--text-body);
+  font-family: var(--font-heading);
+  font-size: var(--text-small);
   font-weight: 400;
   color: var(--black);
   text-align: center;

@@ -5,6 +5,7 @@
   width: 100%;
   max-width: var(--content-width);
   margin-inline: auto;
+  padding: 0 var(--page-padding);
 }
 
 .imageStrip {
