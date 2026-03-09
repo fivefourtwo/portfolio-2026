@@ -52,11 +52,17 @@ const DATA = {
   },
 };
 
-const IMAGE_WIDTH = 711;
-const IMAGE_GAP = 24;
-const IMAGE_STEP = IMAGE_WIDTH + IMAGE_GAP;
-const LOOP_OFFSET = 5 * IMAGE_STEP; /* 5 images + 4 gaps + gap before repeat */
+const IMAGE_GAP = 24; /* always 24px at all breakpoints */
+const IMAGE_WIDTH_DESKTOP = 711;
+const IMAGE_WIDTH_TABLET_MOBILE = 569;
+const BP_TABLET = 992;
 const BASE_SPEED = 1.0; /* px per frame at 60fps – reduced for slower loop */
+
+function getImageWidth() {
+  return typeof window !== 'undefined' && window.innerWidth <= BP_TABLET
+    ? IMAGE_WIDTH_TABLET_MOBILE
+    : IMAGE_WIDTH_DESKTOP;
+}
 
 const ProjectCarousel = ({ variant }) => {
   const images = IMAGES[variant];
@@ -72,6 +78,30 @@ const ProjectCarousel = ({ variant }) => {
   const dragStartXRef = useRef(0);
   const dragStartOffsetRef = useRef(0);
 
+  const [imageWidth, setImageWidth] = useState(IMAGE_WIDTH_DESKTOP);
+  const step = imageWidth + IMAGE_GAP;
+  const loopOffset = 5 * step;
+  const loopOffsetRef = useRef(loopOffset);
+
+  useEffect(() => {
+    loopOffsetRef.current = loopOffset;
+  }, [loopOffset]);
+
+  /* Sync layout with CSS breakpoints and clamp scroll on resize */
+  useEffect(() => {
+    const update = () => {
+      const w = getImageWidth();
+      setImageWidth((prev) => {
+        if (prev === w) return prev;
+        scrollOffsetRef.current = scrollOffsetRef.current % (5 * (w + IMAGE_GAP));
+        return w;
+      });
+    };
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
   /* Auto-scroll animation loop */
   useEffect(() => {
     const prefersReducedMotion =
@@ -80,9 +110,10 @@ const ProjectCarousel = ({ variant }) => {
 
     let rafId;
     const tick = () => {
+      const offset = loopOffsetRef.current;
       if (!isDraggingRef.current && !isHovered) {
         scrollOffsetRef.current =
-          (scrollOffsetRef.current + BASE_SPEED) % LOOP_OFFSET;
+          (scrollOffsetRef.current + BASE_SPEED) % offset;
         if (stripRef.current) {
           stripRef.current.style.transform = `translateX(-${scrollOffsetRef.current}px)`;
         }
@@ -100,8 +131,9 @@ const ProjectCarousel = ({ variant }) => {
     const handleWheel = (e) => {
       if (e.deltaX === 0) return;
       e.preventDefault();
+      const offset = loopOffsetRef.current;
       let newOffset = scrollOffsetRef.current + e.deltaX;
-      newOffset = ((newOffset % LOOP_OFFSET) + LOOP_OFFSET) % LOOP_OFFSET;
+      newOffset = ((newOffset % offset) + offset) % offset;
       scrollOffsetRef.current = newOffset;
       if (stripRef.current) {
         stripRef.current.style.transform = `translateX(-${newOffset}px)`;
@@ -123,10 +155,11 @@ const ProjectCarousel = ({ variant }) => {
 
   const handlePointerMove = (e) => {
     if (!isDraggingRef.current) return;
+    const offset = loopOffsetRef.current;
     const delta = e.clientX - dragStartXRef.current;
     /* Drag right = reveal content from left = decrease offset */
     let newOffset = dragStartOffsetRef.current - delta;
-    newOffset = ((newOffset % LOOP_OFFSET) + LOOP_OFFSET) % LOOP_OFFSET;
+    newOffset = ((newOffset % offset) + offset) % offset;
     scrollOffsetRef.current = newOffset;
     dragStartXRef.current = e.clientX;
     dragStartOffsetRef.current = newOffset;
@@ -165,7 +198,11 @@ const ProjectCarousel = ({ variant }) => {
         onPointerCancel={handlePointerUp}
         style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
       >
-        <div ref={stripRef} className={styles.imageStripInner}>
+        <div
+          ref={stripRef}
+          className={styles.imageStripInner}
+          style={{ width: `${2 * loopOffset}px` }}
+        >
           {loopedImages.map((src, i) => (
             <img
               key={i}
@@ -174,7 +211,7 @@ const ProjectCarousel = ({ variant }) => {
               aria-hidden="true"
               className={styles.image}
               style={{
-                left: `${(i % 5) * IMAGE_STEP + Math.floor(i / 5) * LOOP_OFFSET}px`,
+                left: `${(i % 5) * step + Math.floor(i / 5) * loopOffset}px`,
               }}
             />
           ))}

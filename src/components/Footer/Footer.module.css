@@ -56,61 +56,59 @@
   justify-content: flex-end;
 }
 
-/* ---- Tablet ---- */
+/* ---- Tablet & Mobile: 2-row layout per Figma ---- */
 @media (max-width: 992px) {
   .footer {
     grid-template-columns: repeat(8, 1fr);
-    padding: 16px var(--page-padding-tablet);
-  }
-
-  .copyright {
-    grid-column: 1 / 4;
-  }
-
-  .linkedin {
-    grid-column: 4;
-  }
-
-  .email {
-    grid-column: 5;
-  }
-
-  .backToTop {
-    grid-column: 8;
-  }
-}
-
-/* ---- Mobile ---- */
-@media (max-width: 480px) {
-  .footer {
-    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto auto;
+    column-gap: var(--grid-gap-tablet);
     row-gap: var(--footer-row-gap-mobile);
-    padding: 16px var(--page-padding-mobile);
+    padding: 16px var(--page-padding-tablet);
     height: auto;
   }
 
-  .email {
-    grid-column: 1;
-    grid-row: 1;
-    text-align: left;
+  .copyright {
+    grid-column: 4 / -1;
+    grid-row: 2;
+    justify-self: end;
+    text-align: right;
+    font-size: var(--text-body);
   }
 
   .linkedin {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 1;
+    justify-self: start;
     text-align: left;
   }
 
-  .backToTop {
-    grid-column: 4;
-    grid-row: 1;
-    justify-content: flex-start;
+  .email {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+    text-align: left;
   }
 
-  .copyright {
-    grid-column: 3 / 5;
-    grid-row: 2;
-    text-align: right;
+  .link {
+    font-size: var(--text-body);
+  }
+
+  .backToTop {
+    grid-column: 4 / -1;
+    grid-row: 1;
+    justify-content: flex-end;
+    align-self: start;
+  }
+
+  .backToTop a,
+  .backToTop button {
+    font-size: var(--text-body);
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    column-gap: var(--grid-gap-mobile);
+    padding: 16px var(--page-padding-mobile);
   }
 }
