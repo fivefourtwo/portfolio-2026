@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { ArrowRight } from '@carbon/icons-react'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
@@ -15,6 +15,29 @@ const Contact = () => {
   const [message, setMessage] = useState('')
   const [status, setStatus] = useState('idle') // 'idle' | 'submitting' | 'success' | 'error'
   const [errorMessage, setErrorMessage] = useState('')
+
+  const mouseUsedRef = useRef(false)
+  const [focusByMouseId, setFocusByMouseId] = useState(null)
+
+  const handleFormMouseDown = () => {
+    mouseUsedRef.current = true
+  }
+
+  const handleFormKeyDown = (e) => {
+    if (e.key === 'Tab') {
+      mouseUsedRef.current = false
+    }
+  }
+
+  const handleFieldFocus = (e) => {
+    if (mouseUsedRef.current) {
+      setFocusByMouseId(e.target.id)
+    }
+  }
+
+  const handleFieldBlur = () => {
+    setFocusByMouseId(null)
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -114,6 +137,8 @@ const Contact = () => {
                 <form
                   className={styles.form}
                   onSubmit={handleSubmit}
+                  onMouseDown={handleFormMouseDown}
+                  onKeyDown={handleFormKeyDown}
                   noValidate
                   aria-describedby={
                     status === 'error' ? 'form-error' : undefined
@@ -127,9 +152,11 @@ const Contact = () => {
                       id="contact-name"
                       type="text"
                       name="name"
-                      className={styles.input}
+                      className={`${styles.input} ${focusByMouseId === 'contact-name' ? styles.focusByMouse : ''}`}
                       value={name}
                       onChange={(e) => setName(e.target.value)}
+                      onFocus={handleFieldFocus}
+                      onBlur={handleFieldBlur}
                       required
                       disabled={status === 'submitting'}
                       autoComplete="name"
@@ -145,9 +172,11 @@ const Contact = () => {
                       id="contact-email"
                       type="email"
                       name="email"
-                      className={styles.input}
+                      className={`${styles.input} ${focusByMouseId === 'contact-email' ? styles.focusByMouse : ''}`}
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
+                      onFocus={handleFieldFocus}
+                      onBlur={handleFieldBlur}
                       required
                       disabled={status === 'submitting'}
                       autoComplete="email"
@@ -162,9 +191,11 @@ const Contact = () => {
                     <textarea
                       id="contact-message"
                       name="message"
-                      className={styles.textarea}
+                      className={`${styles.textarea} ${focusByMouseId === 'contact-message' ? styles.focusByMouse : ''}`}
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
+                      onFocus={handleFieldFocus}
+                      onBlur={handleFieldBlur}
                       required
                       disabled={status === 'submitting'}
                       rows={5}

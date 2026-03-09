@@ -167,7 +167,8 @@
 
 .input:focus,
 .textarea:focus {
-  outline: none;
+  border-bottom-color: var(--black);
+  color: var(--black);
 }
 
 .input:focus-visible,
@@ -175,6 +176,14 @@
   outline: 2px solid var(--black);
   outline-offset: 2px;
   border-bottom-color: var(--black);
+}
+
+/* Hide outline when field was focused by mouse (keyboard/Tab still gets outline) */
+.input.focusByMouse:focus,
+.textarea.focusByMouse:focus,
+.input.focusByMouse:focus-visible,
+.textarea.focusByMouse:focus-visible {
+  outline: none;
 }
 
 .input:disabled,
