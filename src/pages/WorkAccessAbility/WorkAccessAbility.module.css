@@ -56,12 +56,42 @@
   margin: 0;
 }
 
-/* HMW section */
-.sectionHmw {
+/* Citation (How Might We question) */
+.sectionCitation {
   width: 100%;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: clip;
+  padding-top: var(--section-padding-y-md);
+  padding-bottom: var(--section-padding-y-lg);
+}
+
+.containerCitation {
+  width: var(--content-width);
+  max-width: 100%;
+  padding: 0 var(--page-padding);
+}
+
+.quoteBlock {
+  margin: 0;
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  padding: var(--section-padding-y-md) 0;
+  min-height: 112px;
+  background-color: var(--container-white);
+  border-left: 4px solid var(--accent-access);
+  box-sizing: border-box;
+}
+
+.quoteText {
+  font-family: var(--font-serif);
+  font-size: var(--text-h2);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--black);
+  margin: 0;
 }
 
 /* Problem intro section */
@@ -70,13 +100,6 @@
   display: flex;
   justify-content: center;
   padding: var(--section-padding-y-md) 0 var(--section-padding-y-lg);
-}
-
-.hmwImage {
-  grid-column: 1 / 13;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
 }
 
 /* Problem statement intro - Satoshi 32px */
@@ -295,8 +318,17 @@
     padding: var(--section-padding-y-md-tablet) 0;
   }
 
-  .sectionHmw {
-    padding: var(--section-padding-y-md-tablet) 0;
+  .sectionCitation {
+    padding-top: var(--section-padding-y-md-tablet);
+    padding-bottom: var(--section-padding-y-lg-tablet);
+  }
+
+  .containerCitation {
+    padding: 0 var(--page-padding-tablet);
+  }
+
+  .quoteBlock {
+    width: 100%;
   }
 
   .sectionProblemIntro {
@@ -312,10 +344,6 @@
   }
 
   .sectionBody {
-    grid-column: 1 / 9;
-  }
-
-  .hmwImage {
     grid-column: 1 / 9;
   }
 
@@ -396,8 +424,13 @@
     padding: var(--section-padding-y-md-mobile) 0;
   }
 
-  .sectionHmw {
-    padding: var(--section-padding-y-md-mobile) 0;
+  .sectionCitation {
+    padding-top: var(--section-padding-y-md-mobile);
+    padding-bottom: var(--section-padding-y-lg-mobile);
+  }
+
+  .containerCitation {
+    padding: 0 var(--page-padding-mobile);
   }
 
   .sectionProblemIntro {
@@ -417,10 +450,6 @@
   }
 
   .sectionBody {
-    grid-column: 1 / 5;
-  }
-
-  .hmwImage {
     grid-column: 1 / 5;
   }
 

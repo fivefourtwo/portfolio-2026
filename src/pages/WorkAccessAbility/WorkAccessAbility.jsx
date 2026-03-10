@@ -4,7 +4,6 @@ import CarouselComponentVar from '../../components/CarouselComponentVar/Carousel
 import Footer from '../../components/Footer/Footer';
 import styles from './WorkAccessAbility.module.css';
 
-import hmwImg from '../../assets-new/accessability-assets/HMW.png';
 import controlModuleImg from '../../assets-new/accessability-assets/controle-module.png';
 import baseImg from '../../assets-new/accessability-assets/base.png';
 import systemMockupImg from '../../assets-new/accessability-assets/system-mockup.png';
@@ -65,16 +64,17 @@ const WorkAccessAbility = () => {
           </div>
         </section>
 
-        <section className={styles.sectionHmw} aria-labelledby="hmw-heading">
-          <div className={styles.container}>
-            <h2 id="hmw-heading" className={styles.srOnly}>
+        {/* Citation */}
+        <section className={styles.sectionCitation} aria-labelledby="citation-heading">
+          <div className={styles.containerCitation}>
+            <h2 id="citation-heading" className={styles.srOnly}>
               How Might We question
             </h2>
-            <img
-              src={hmwImg}
-              alt="How might we make the control system individualizable to meet the needs in different situations?"
-              className={styles.hmwImage}
-            />
+            <blockquote className={styles.quoteBlock}>
+              <p className={styles.quoteText}>
+                How might we make the control system individualizable to meet the needs in different situations?
+              </p>
+            </blockquote>
           </div>
         </section>
 

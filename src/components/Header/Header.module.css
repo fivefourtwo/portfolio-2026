@@ -129,7 +129,7 @@
 
   .nav {
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto auto;
+    /* grid-template-rows: auto auto; */
     gap: var(--grid-gap-mobile);
     row-gap: var(--grid-gap-mobile);
   }

@@ -9,21 +9,21 @@ const VIEW_DATA = {
   'smart-crates': {
     title: 'Smart Crates',
     description:
-      'Groups tracks by their original release—EP, album, or compilation—so you can browse and plan sets using the same release context and flow that artists and labels intended.',
+      'Smart Crates use semantic metadata and custom rules to auto-populate containers upon import, eliminating manual assignment.',
     image: smartCratesImg,
     imageAlt: 'Smart Crates view of Catalogic',
   },
   'artist-view': {
     title: 'Artist view',
     description:
-      'Counteracts the isolation of digital files by restoring the original release context, preserving the narrative structure and energy flow intended by the artist.',
+      "Maps a producer's sonic range via semantic metadata to isolate specific acoustic profiles.",
     image: artistViewImg,
     imageAlt: 'Artist view of Catalogic',
   },
   'label-view': {
     title: 'Label view',
     description:
-      'Transforms the label from a static text field into a primary navigation element, allowing DJs to browse by the distinct curatorial identity and sonic signature of a publishing house.',
+      'Evaluates imprint aesthetics via semantic metadata to filter tonally aligned tracks.',
     image: labelViewImg,
     imageAlt: 'Label view of Catalogic',
   },

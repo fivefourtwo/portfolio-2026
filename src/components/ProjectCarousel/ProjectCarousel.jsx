@@ -35,19 +35,19 @@ const DATA = {
   catalogic: {
     title: 'Catalogic',
     description:
-      'Catalogic is an AI-powered music library management tool that helps based on audio analysis and personalized tags. This enables DJs to navigate their collections using their mental models and spatial memory, allowing them to rediscover hidden connections.',
+      'A visual management tool that helps DJs organize expanding music libraries according to their own mental models, enabling them to navigate and rediscover their collections spatially.',
     href: '/work/catalogic',
   },
   teachsmartsteps: {
     title: 'Teach Smart Steps',
     description:
-      'Teach Smart Steps generates educationally meaningful tasks that integrate media literacy into lessons without displacing the primary subject matter. This enables educators to incorporate digital education into their daily schedule without requiring additional lesson time.',
+      'A task generation tool that helps educators integrate media literacy into existing curricula, enabling them to deliver digital education without extra preparation or subject displacement.',
     href: '/work/teach-smart-steps',
   },
   accessability: {
     title: 'AccessAbility',
     description:
-      'A concept for a modular controller for electric wheelchairs. By separating the technical basis from the ergonomic interface, the hardware can be adapted to the specific motor skills of the individual.',
+      'A modular controller system that enables electric wheelchair users to adapt the hardware to their specific motor requirements, separating the ergonomic interface from the technical core.',
     href: '/work/accessability',
   },
 };
