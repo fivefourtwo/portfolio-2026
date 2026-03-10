@@ -143,69 +143,89 @@ const ProjectCarousel = ({ variant }) => {
     return () => el.removeEventListener('wheel', handleWheel);
   }, []);
 
-  const startDrag = (clientX) => {
+  /* Touch handlers for reliable horizontal swipe on physical iOS/Android devices */
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const handleTouchStart = (e) => {
+      if (e.touches.length !== 1) return;
+      isDraggingRef.current = true;
+      setIsDragging(true);
+      dragStartXRef.current = e.touches[0].clientX;
+      dragStartOffsetRef.current = scrollOffsetRef.current;
+    };
+
+    const handleTouchMove = (e) => {
+      if (!isDraggingRef.current || e.touches.length !== 1) return;
+      e.preventDefault();
+      const offset = loopOffsetRef.current;
+      const delta = e.touches[0].clientX - dragStartXRef.current;
+      let newOffset = dragStartOffsetRef.current - delta;
+      newOffset = ((newOffset % offset) + offset) % offset;
+      scrollOffsetRef.current = newOffset;
+      dragStartXRef.current = e.touches[0].clientX;
+      dragStartOffsetRef.current = newOffset;
+      if (stripRef.current) {
+        stripRef.current.style.transform = `translateX(-${newOffset}px)`;
+      }
+    };
+
+    const handleTouchEnd = () => {
+      isDraggingRef.current = false;
+      setIsDragging(false);
+    };
+
+    el.addEventListener('touchstart', handleTouchStart, { passive: true });
+    el.addEventListener('touchmove', handleTouchMove, { passive: false });
+    el.addEventListener('touchend', handleTouchEnd, { passive: true });
+    el.addEventListener('touchcancel', handleTouchEnd, { passive: true });
+
+    return () => {
+      el.removeEventListener('touchstart', handleTouchStart);
+      el.removeEventListener('touchmove', handleTouchMove);
+      el.removeEventListener('touchend', handleTouchEnd);
+      el.removeEventListener('touchcancel', handleTouchEnd);
+    };
+  }, []);
+
+  const handlePointerDown = (e) => {
+    if (e.button !== 0) return;
+    /* Let touch gestures be handled by touch handlers for reliable mobile behavior */
+    if (e.pointerType === 'touch') return;
+    e.preventDefault();
+    e.currentTarget.setPointerCapture(e.pointerId);
     isDraggingRef.current = true;
     setIsDragging(true);
-    dragStartXRef.current = clientX;
+    dragStartXRef.current = e.clientX;
     dragStartOffsetRef.current = scrollOffsetRef.current;
   };
 
-  const updateDrag = (clientX) => {
+  const handlePointerMove = (e) => {
     if (!isDraggingRef.current) return;
     const offset = loopOffsetRef.current;
-    const delta = clientX - dragStartXRef.current;
+    const delta = e.clientX - dragStartXRef.current;
     /* Drag right = reveal content from left = decrease offset */
     let newOffset = dragStartOffsetRef.current - delta;
     newOffset = ((newOffset % offset) + offset) % offset;
     scrollOffsetRef.current = newOffset;
-    dragStartXRef.current = clientX;
+    dragStartXRef.current = e.clientX;
     dragStartOffsetRef.current = newOffset;
     if (stripRef.current) {
       stripRef.current.style.transform = `translateX(-${newOffset}px)`;
     }
   };
 
-  const endDrag = () => {
+  const handlePointerUp = () => {
     isDraggingRef.current = false;
     setIsDragging(false);
-  };
-
-  const handlePointerDown = (e) => {
-    if (e.button !== 0) return;
-    e.preventDefault();
-    e.currentTarget.setPointerCapture(e.pointerId);
-    startDrag(e.clientX);
-  };
-
-  const handlePointerMove = (e) => {
-    updateDrag(e.clientX);
-  };
-
-  const handlePointerUp = () => {
-    endDrag();
-  };
-
-  /* Touch fallback for browsers without Pointer Events support */
-  const handleTouchStart = (e) => {
-    if (e.touches.length === 0) return;
-    const touch = e.touches[0];
-    startDrag(touch.clientX);
-  };
-
-  const handleTouchMove = (e) => {
-    if (e.touches.length === 0) return;
-    const touch = e.touches[0];
-    updateDrag(touch.clientX);
-  };
-
-  const handleTouchEnd = () => {
-    endDrag();
   };
 
   const handlePointerLeave = () => {
     setIsHovered(false);
     if (isDraggingRef.current) {
-      endDrag();
+      isDraggingRef.current = false;
+      setIsDragging(false);
     }
   };
 
@@ -224,10 +244,6 @@ const ProjectCarousel = ({ variant }) => {
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerUp}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-        onTouchCancel={handleTouchEnd}
         style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
       >
         <div

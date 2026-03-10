@@ -728,6 +728,10 @@
     grid-column: unset;
   }
 
+  .tagsMockupImage {
+    width: 120%;
+  }
+
   .tagsBlockHeading {
     grid-column: 1 / 9;
   }
@@ -784,10 +788,15 @@
     grid-column: unset;
     grid-row: unset;
     min-height: auto;
+    justify-content: center;
   }
 
   .similarityImage {
-    width: 100%;
+    width: 120%;
+    justify-self: center;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .xyContent {
@@ -823,7 +832,8 @@
   }
 
   .xyImage {
-    width: 100%;
+    width: 120%;
+    justify-self: center;
   }
 
   .sectionSwitch {
@@ -930,7 +940,7 @@
   }
 
   .tagsMockupImage {
-    width: 100%;
+    width: 120%;
   }
 
   .tagsBlockHeading {
@@ -981,10 +991,15 @@
     grid-column: unset;
     grid-row: unset;
     min-height: auto;
+    justify-content: center;
   }
 
   .similarityImage {
-    width: 100%;
+    width: 120%;
+    justify-self: center;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .xyContent {
@@ -1006,10 +1021,12 @@
   .xyImageWrap {
     grid-column: unset;
     grid-row: unset;
+    justify-content: center;
   }
 
   .xyImage {
-    width: 100%;
+    width: 120%;
+    justify-self: center;
   }
 
   .sectionSwitch {

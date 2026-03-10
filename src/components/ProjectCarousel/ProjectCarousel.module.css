@@ -15,7 +15,7 @@
   height: 400px;
   position: relative;
   user-select: none;
-  touch-action: pan-y;
+  touch-action: none; /* allow horizontal swipe to be handled by JS on real touch devices */
 }
 
 .imageStripInner {

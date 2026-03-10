@@ -7,9 +7,12 @@ import styles from './WorkCatalogic.module.css';
 import analysisImg from '../../assets-new/catalogic-assets/analysis.png';
 import descriptorsVideo from '../../assets-new/catalogic-assets/Descriptors-mockup.webm';
 import tagsMockupVideo from '../../assets-new/catalogic-assets/Recommendations-mockup.webm';
+import tagsMockupVideoAlt from '../../assets-new/alternative-videos/Recommendations-mockup-alt.mov';
 import manualTaggingVideo from '../../assets-new/catalogic-assets/manual-tagging.webm';
 import similarityMapVideo from '../../assets-new/catalogic-assets/Similarity-mockup.webm';
+import similarityMapVideoAlt from '../../assets-new/alternative-videos/Similarity-mockup-alt.mov';
 import xyModeVideo from '../../assets-new/catalogic-assets/XY-mockup.webm';
+import xyModeVideoAlt from '../../assets-new/alternative-videos/XY-mockup-alt.mov';
 
 const WorkCatalogic = () => {
   return (
@@ -147,14 +150,16 @@ const WorkCatalogic = () => {
               <div className={styles.darkStyleElement} aria-hidden="true" />
               <div className={styles.tagsMockupWrap}>
                 <video
-                  src={tagsMockupVideo}
                   className={styles.tagsMockupImage}
                   autoPlay
                   loop
                   muted
                   playsInline
                   aria-label="Catalogic My Tags interface showing personalized tag structure"
-                />
+                >
+                  <source src={tagsMockupVideoAlt} type="video/quicktime" />
+                  <source src={tagsMockupVideo} type="video/webm" />
+                </video>
               </div>
             </div>
             <h2 className={styles.tagsBlockHeading}>
@@ -211,14 +216,16 @@ const WorkCatalogic = () => {
               <div className={styles.similarityStyleElement} aria-hidden="true" />
               <div className={styles.similarityImageWrap}>
                 <video
-                  src={similarityMapVideo}
                   className={styles.similarityImage}
                   autoPlay
                   loop
                   muted
                   playsInline
                   aria-label="Catalogic Similarity Map showing spatial organization of tracks"
-                />
+                >
+                  <source src={similarityMapVideoAlt} type="video/quicktime" />
+                  <source src={similarityMapVideo} type="video/webm" />
+                </video>
               </div>
               <div className={styles.similarityTextBlock}>
                 <h2 id="similarity-map-heading" className={styles.sectionHeadingLight}>
@@ -244,14 +251,16 @@ const WorkCatalogic = () => {
               <div className={styles.xyStyleElement} aria-hidden="true" />
               <div className={styles.xyImageWrap}>
                 <video
-                  src={xyModeVideo}
                   className={styles.xyImage}
                   autoPlay
                   loop
                   muted
                   playsInline
                   aria-label="Catalogic XY Mode for mapping parameters to axes"
-                />
+                >
+                  <source src={xyModeVideoAlt} type="video/quicktime" />
+                  <source src={xyModeVideo} type="video/webm" />
+                </video>
               </div>
               <div className={styles.xyTextBlock}>
                 <h2 id="xy-mode-heading" className={styles.sectionHeadingLight}>

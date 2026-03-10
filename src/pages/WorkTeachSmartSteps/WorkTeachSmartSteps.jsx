@@ -6,7 +6,9 @@ import styles from './WorkTeachSmartSteps.module.css';
 
 import systemFunctionalityImg from '../../assets-new/teachsmartsteps-assets/system-functionality.png.jpg';
 import autoFillVideo from '../../assets-new/teachsmartsteps-assets/auto-fill-mockup.webm';
+import autoFillVideoAlt from '../../assets-new/alternative-videos/auto-fill-mockup-alt.mov';
 import editorVideo from '../../assets-new/teachsmartsteps-assets/editor-mockup.webm';
+import editorVideoAlt from '../../assets-new/alternative-videos/editor-mockup-alt.mov';
 import outputPdfImg from '../../assets-new/teachsmartsteps-assets/output-pdf.png';
 
 const WorkTeachSmartSteps = () => {
@@ -99,14 +101,16 @@ const WorkTeachSmartSteps = () => {
               <div className={styles.autofillStyleElement} aria-hidden="true" />
               <div className={styles.imageFull}>
                 <video
-                src={autoFillVideo}
-                className={styles.sectionImage}
-                autoPlay
-                loop
-                muted
-                playsInline
-                aria-label="Automated fill interface pre-filling configuration parameters based on semantic context"
-              />
+                  className={styles.sectionImage}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  aria-label="Automated fill interface pre-filling configuration parameters based on semantic context"
+                >
+                  <source src={autoFillVideoAlt} type="video/quicktime" />
+                  <source src={autoFillVideo} type="video/webm" />
+                </video>
               </div>
             </div>
             <h2 id="autofill-heading" className={styles.sectionHeading}>
@@ -131,14 +135,16 @@ const WorkTeachSmartSteps = () => {
               <div className={styles.editorStyleElement} aria-hidden="true" />
               <div className={styles.imageFull}>
                 <video
-                src={editorVideo}
-                className={styles.sectionImage}
-                autoPlay
-                loop
-                muted
-                playsInline
-                aria-label="Task editing interface for granular refinement of didactic and student materials"
-              />
+                  className={styles.sectionImage}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  aria-label="Task editing interface for granular refinement of didactic and student materials"
+                >
+                  <source src={editorVideoAlt} type="video/quicktime" />
+                  <source src={editorVideo} type="video/webm" />
+                </video>
               </div>
             </div>
             <h2 id="editor-heading" className={styles.sectionHeading}>
