@@ -6,6 +6,7 @@ import WorkCatalogic from './pages/WorkCatalogic/WorkCatalogic'
 import WorkTeachSmartSteps from './pages/WorkTeachSmartSteps/WorkTeachSmartSteps'
 import WorkAccessAbility from './pages/WorkAccessAbility/WorkAccessAbility'
 import Contact from './pages/Contact/Contact'
+import Imprint from './pages/Imprint/Imprint'
 
 const ScrollToTop = () => {
   const { pathname } = useLocation()
@@ -20,12 +21,13 @@ const App = () => {
     <>
       <ScrollToTop />
       <Routes>
-      <Route path="/" element={<Landing />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/work/catalogic" element={<WorkCatalogic />} />
-      <Route path="/work/teach-smart-steps" element={<WorkTeachSmartSteps />} />
-      <Route path="/work/accessability" element={<WorkAccessAbility />} />
-      <Route path="/contact" element={<Contact />} />
+        <Route path="/" element={<Landing />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/work/catalogic" element={<WorkCatalogic />} />
+        <Route path="/work/teach-smart-steps" element={<WorkTeachSmartSteps />} />
+        <Route path="/work/accessability" element={<WorkAccessAbility />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/imprint" element={<Imprint />} />
       </Routes>
     </>
   )

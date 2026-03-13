@@ -19,6 +19,32 @@
   color: var(--black);
 }
 
+.separator {
+  margin-inline: 4px;
+}
+
+.imprintLink {
+  font-family: var(--font-heading);
+  font-size: var(--text-small);
+  font-weight: 400;
+  color: var(--black);
+  text-decoration: none;
+  transition: text-decoration 0.2s ease;
+}
+
+.imprintLink:hover {
+  text-decoration: underline;
+}
+
+.imprintLink:focus {
+  outline: none;
+}
+
+.imprintLink:focus-visible {
+  outline: 2px solid var(--black);
+  outline-offset: 2px;
+}
+
 .link {
   font-family: var(--font-heading);
   font-size: var(--text-small);

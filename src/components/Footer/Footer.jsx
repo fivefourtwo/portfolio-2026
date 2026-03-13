@@ -1,14 +1,20 @@
-import Button from '../Button/Button';
-import styles from './Footer.module.css';
+import { Link } from 'react-router-dom'
+import Button from '../Button/Button'
+import styles from './Footer.module.css'
 
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  }
 
   return (
     <footer className={styles.footer}>
-      <p className={styles.copyright}>© Fabrice Rio 2026</p>
+      <p className={styles.copyright}>
+        © Fabrice Rio 2026 <span className={styles.separator}>•</span>{' '}
+        <Link to="/imprint" className={styles.imprintLink}>
+          Imprint
+        </Link>
+      </p>
       <a
         href="https://www.linkedin.com/in/fabrice-rio"
         target="_blank"
@@ -29,7 +35,7 @@ const Footer = () => {
         </Button>
       </div>
     </footer>
-  );
-};
+  )
+}
 
 export default Footer;
