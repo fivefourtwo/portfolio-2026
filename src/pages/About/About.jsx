@@ -7,17 +7,17 @@ const EDUCATION = [
   {
     institution: 'Hochschule für Gestaltung Schwäbisch Gmünd',
     degree: 'Interaction Design B.A.',
-    period: '2021-2025',
+    period: '10/2021-08/2025',
   },
   {
     institution: 'Technical High School',
     degree: 'Design and Media Technology',
-    period: '2018 – 2021',
+    period: '09/2018 – 07/2021',
   },
   {
     institution: 'Heidtech Heidenheim',
     degree: 'Vocational school for metal technology',
-    period: '2016 – 2018',
+    period: '09/2016 – 07/2018',
   },
 ]
 
@@ -25,12 +25,12 @@ const PROFESSIONAL_EXPERIENCE = [
   {
     company: 'Teleclinic GmbH | Remote',
     role: 'Working student as a UX/UI Designer',
-    period: '2025',
+    period: '04/2025 - 08/2025',
   },
   {
     company: 'zweigrad | Hamburg',
     role: 'Internship as UX/UI Designer',
-    period: '2024',
+    period: '03/2024 - 08/2024',
   },
 ]
 
@@ -45,14 +45,12 @@ const About = () => {
               About me
             </h1>
             <p className={styles.bio}>
-              I work at the intersection of interaction design and engineering,
-              drawn to how emerging technology can be used to solve complex
-              problems. I am driven by the need to know if a digital concept
-              actually holds up in reality, which is why my practice is deeply
-              rooted in hands-on prototyping. Whether I am writing code, wiring
-              hardware, or building physical models, my focus is always on
-              creating accessible solutions that prioritize genuine utility over
-              pure aesthetics.
+            I’m a designer focused on creating clear, intuitive digital products with 
+            real value for users. I’m drawn to complex problems, structured thinking, 
+            and design processes shaped by prototyping, testing, and iteration. 
+            I enjoy working with new technologies and tools as part of that process, 
+            always with the goal of creating thoughtful, accessible experiences where 
+            usability and visual quality go hand in hand.
             </p>
             <div className={styles.imageWrapper}>
               <img
