@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react'
+import * as FM from 'framer-motion'
 import { ArrowRight } from '@carbon/icons-react'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
@@ -6,7 +7,24 @@ import styles from './Contact.module.css'
 
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit'
 
+const easeOut = [0.22, 1, 0.36, 1]
+const sectionViewport = { once: true, amount: 0.15, margin: '0px 0px -48px 0px' }
+
+const sectionRevealProps = (prefersReducedMotion, duration) =>
+  prefersReducedMotion
+    ? { initial: false }
+    : {
+        initial: { opacity: 0, y: 32 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: sectionViewport,
+        transition: { duration, ease: easeOut },
+      }
+
 const Contact = () => {
+  const prefersReducedMotion = FM.useReducedMotion()
+  const duration = prefersReducedMotion ? 0 : 0.55
+  const reveal = sectionRevealProps(prefersReducedMotion, duration)
+
   const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY
   const isConfigured = Boolean(accessKey?.trim())
 
@@ -78,10 +96,11 @@ const Contact = () => {
     <>
       <Header />
       <main className={styles.page}>
-        <section
+        <FM.motion.section
           className={styles.section}
           aria-labelledby="contact-heading"
           aria-describedby={status === 'error' ? 'form-error' : status === 'success' ? 'form-success' : undefined}
+          {...reveal}
         >
           <div className={styles.content}>
             <div className={styles.introBlock}>
@@ -219,7 +238,7 @@ const Contact = () => {
               )}
             </div>
           </div>
-        </section>
+        </FM.motion.section>
       </main>
       <Footer />
     </>

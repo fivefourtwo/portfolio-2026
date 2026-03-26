@@ -1,15 +1,34 @@
+import * as FM from 'framer-motion'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import styles from './Imprint.module.css'
 
+const easeOut = [0.22, 1, 0.36, 1]
+const sectionViewport = { once: true, amount: 0.15, margin: '0px 0px -48px 0px' }
+
+const sectionRevealProps = (prefersReducedMotion, duration) =>
+  prefersReducedMotion
+    ? { initial: false }
+    : {
+        initial: { opacity: 0, y: 32 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: sectionViewport,
+        transition: { duration, ease: easeOut },
+      }
+
 const Imprint = () => {
+  const prefersReducedMotion = FM.useReducedMotion()
+  const duration = prefersReducedMotion ? 0 : 0.55
+  const reveal = sectionRevealProps(prefersReducedMotion, duration)
+
   return (
     <>
       <Header />
       <main className={styles.page}>
-        <section
+        <FM.motion.section
           className={styles.section}
           aria-labelledby="imprint-heading"
+          {...reveal}
         >
           <div className={styles.content}>
             <h1 id="imprint-heading" className={styles.headline}>
@@ -68,7 +87,7 @@ const Imprint = () => {
               </p>
             </div>
           </div>
-        </section>
+        </FM.motion.section>
       </main>
       <Footer />
     </>

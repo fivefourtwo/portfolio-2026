@@ -1,8 +1,22 @@
+import * as FM from 'framer-motion';
 import Header from '../../components/Header/Header';
 import SectionHero from '../../components/SectionHero/SectionHero';
 import CarouselComponentVar from '../../components/CarouselComponentVar/CarouselComponentVar';
 import Footer from '../../components/Footer/Footer';
 import styles from './WorkAccessAbility.module.css';
+
+const easeOut = [0.22, 1, 0.36, 1];
+const sectionViewport = { once: true, amount: 0.15, margin: '0px 0px -48px 0px' };
+
+const sectionRevealProps = (prefersReducedMotion, duration) =>
+  prefersReducedMotion
+    ? { initial: false }
+    : {
+        initial: { opacity: 0, y: 32 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: sectionViewport,
+        transition: { duration, ease: easeOut },
+      };
 
 import controlModuleImg from '../../assets-new/accessability-assets/controle-module.png';
 import baseImg from '../../assets-new/accessability-assets/base.png';
@@ -23,15 +37,22 @@ const CAROUSEL_ITEMS = [
 ];
 
 const WorkAccessAbility = () => {
+  const prefersReducedMotion = FM.useReducedMotion();
+  const duration = prefersReducedMotion ? 0 : 0.55;
+  const reveal = sectionRevealProps(prefersReducedMotion, duration);
+
   return (
     <>
       <Header projectTitle="AccessAbility" />
       <main className={styles.page}>
-        <SectionHero project="AccessAbility" />
+        <FM.motion.div className={styles.heroRevealWrap} {...reveal}>
+          <SectionHero project="AccessAbility" />
+        </FM.motion.div>
 
-        <section
+        <FM.motion.section
           className={styles.sectionLimitations}
           aria-labelledby="limitations-heading"
+          {...reveal}
         >
           <div className={styles.container}>
             <h2 id="limitations-heading" className={styles.sectionHeading}>
@@ -45,11 +66,12 @@ const WorkAccessAbility = () => {
               scenarios and needs for use.
             </p>
           </div>
-        </section>
+        </FM.motion.section>
 
-        <section
+        <FM.motion.section
           className={styles.sectionRequirements}
           aria-labelledby="requirements-heading"
+          {...reveal}
         >
           <div className={styles.container}>
             <h2 id="requirements-heading" className={styles.sectionHeading}>
@@ -62,10 +84,10 @@ const WorkAccessAbility = () => {
               led to specific requirements for the solution.
             </p>
           </div>
-        </section>
+        </FM.motion.section>
 
         {/* Citation */}
-        <section className={styles.sectionCitation} aria-labelledby="citation-heading">
+        <FM.motion.section className={styles.sectionCitation} aria-labelledby="citation-heading" {...reveal}>
           <div className={styles.containerCitation}>
             <h2 id="citation-heading" className={styles.srOnly}>
               How Might We question
@@ -76,11 +98,12 @@ const WorkAccessAbility = () => {
               </p>
             </blockquote>
           </div>
-        </section>
+        </FM.motion.section>
 
-        <section
+        <FM.motion.section
           className={styles.sectionProblemIntro}
           aria-labelledby="problem-intro-heading"
+          {...reveal}
         >
           <div className={styles.container}>
             <h2 id="problem-intro-heading" className={styles.srOnly}>
@@ -93,11 +116,12 @@ const WorkAccessAbility = () => {
               separation of components.
             </p>
           </div>
-        </section>
+        </FM.motion.section>
 
-        <section
+        <FM.motion.section
           className={styles.sectionTitle}
           aria-labelledby="accessability-title"
+          {...reveal}
         >
           <div className={styles.container}>
             <div className={styles.titleBlock}>
@@ -117,11 +141,12 @@ const WorkAccessAbility = () => {
               condition.
             </p>
           </div>
-        </section>
+        </FM.motion.section>
 
-        <section
+        <FM.motion.section
           className={styles.sectionWithGradient}
           aria-labelledby="control-module-heading"
+          {...reveal}
         >
           <div className={styles.container}>
             <div className={styles.controlModuleImageStyleWrapper}>
@@ -145,11 +170,12 @@ const WorkAccessAbility = () => {
               postures.
             </p>
           </div>
-        </section>
+        </FM.motion.section>
 
-        <section
+        <FM.motion.section
           className={styles.sectionWithGradient}
           aria-labelledby="adaptable-base-heading"
+          {...reveal}
         >
           <div className={styles.container}>
             <div className={styles.adaptableBaseImageStyleWrapper}>
@@ -173,11 +199,12 @@ const WorkAccessAbility = () => {
               symmetrical design allows left or right-side installation.
             </p>
           </div>
-        </section>
+        </FM.motion.section>
 
-        <section
+        <FM.motion.section
           className={styles.sectionWithGradient}
           aria-labelledby="application-heading"
+          {...reveal}
         >
           <div className={styles.container}>
             <h2 id="application-heading" className={styles.applicationHeading}>
@@ -200,12 +227,14 @@ const WorkAccessAbility = () => {
               </div>
             </div>
           </div>
-        </section>
+        </FM.motion.section>
 
-        <CarouselComponentVar
-          items={CAROUSEL_ITEMS}
-          headline="Theoretical models required constant validation through physical prototypes."
-        />
+        <FM.motion.div className={styles.heroRevealWrap} {...reveal}>
+          <CarouselComponentVar
+            items={CAROUSEL_ITEMS}
+            headline="Theoretical models required constant validation through physical prototypes."
+          />
+        </FM.motion.div>
       </main>
       <Footer />
     </>

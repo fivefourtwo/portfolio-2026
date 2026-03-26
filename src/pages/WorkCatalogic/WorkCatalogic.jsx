@@ -1,8 +1,22 @@
+import * as FM from 'framer-motion';
 import Header from '../../components/Header/Header';
 import SectionHero from '../../components/SectionHero/SectionHero';
 import SwitchComponentVar from '../../components/SwitchComponentVar/SwitchComponentVar';
 import Footer from '../../components/Footer/Footer';
 import styles from './WorkCatalogic.module.css';
+
+const easeOut = [0.22, 1, 0.36, 1];
+const sectionViewport = { once: true, amount: 0.15, margin: '0px 0px -48px 0px' };
+
+const sectionRevealProps = (prefersReducedMotion, duration) =>
+  prefersReducedMotion
+    ? { initial: false }
+    : {
+        initial: { opacity: 0, y: 32 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: sectionViewport,
+        transition: { duration, ease: easeOut },
+      };
 
 import analysisImg from '../../assets-new/catalogic-assets/analysis.png';
 import descriptorsVideo from '../../assets-new/catalogic-assets/Descriptors-mockup.webm';
@@ -15,14 +29,20 @@ import xyModeVideo from '../../assets-new/catalogic-assets/XY-mockup.webm';
 import xyModeVideoAlt from '../../assets-new/alternative-videos/XY-mockup-alt.mov';
 
 const WorkCatalogic = () => {
+  const prefersReducedMotion = FM.useReducedMotion();
+  const duration = prefersReducedMotion ? 0 : 0.55;
+  const reveal = sectionRevealProps(prefersReducedMotion, duration);
+
   return (
     <>
       <Header projectTitle="Catalogic" />
       <main className={styles.page}>
-        <SectionHero project="Catalogic" />
+        <FM.motion.div className={styles.heroRevealWrap} {...reveal}>
+          <SectionHero project="Catalogic" />
+        </FM.motion.div>
 
         {/* The Shift from Curation to Administration */}
-        <section className={styles.sectionShift} aria-labelledby="problem-heading">
+        <FM.motion.section className={styles.sectionShift} aria-labelledby="problem-heading" {...reveal}>
           <div className={styles.container}>
             <h2 id="problem-heading" className={styles.srOnly}>
               The Shift from Curation to Administration
@@ -40,10 +60,14 @@ const WorkCatalogic = () => {
               mental models used to recall sound.
             </p>
           </div>
-        </section>
+        </FM.motion.section>
 
         {/* Reconciling File Systems with Human Memory */}
-        <section className={styles.sectionReconciling} aria-labelledby="reconciling-heading">
+        <FM.motion.section
+          className={styles.sectionReconciling}
+          aria-labelledby="reconciling-heading"
+          {...reveal}
+        >
           <div className={styles.container}>
             <h2 id="reconciling-heading" className={styles.srOnly}>
               Reconciling File Systems with Human Memory
@@ -58,10 +82,10 @@ const WorkCatalogic = () => {
               strategic question:
             </p>
           </div>
-        </section>
+        </FM.motion.section>
 
         {/* Citation */}
-        <section className={styles.sectionCitation} aria-labelledby="citation-heading">
+        <FM.motion.section className={styles.sectionCitation} aria-labelledby="citation-heading" {...reveal}>
           <div className={styles.containerCitation}>
             <h2 id="citation-heading" className={styles.srOnly}>
               Strategic question
@@ -73,10 +97,10 @@ const WorkCatalogic = () => {
               </p>
             </blockquote>
           </div>
-        </section>
+        </FM.motion.section>
 
         {/* Catalogic title & description */}
-        <section className={styles.sectionTitle} aria-labelledby="catalogic-title">
+        <FM.motion.section className={styles.sectionTitle} aria-labelledby="catalogic-title" {...reveal}>
           <div className={styles.container}>
             <div className={styles.titleBlock}>
               <h2 id="catalogic-title" className={styles.titleMain}>
@@ -93,10 +117,10 @@ const WorkCatalogic = () => {
               memory, allowing them to rediscover hidden connections.
             </p>
           </div>
-        </section>
+        </FM.motion.section>
 
         {/* Audio Analysis */}
-        <section className={styles.sectionAnalysis} aria-labelledby="analysis-heading">
+        <FM.motion.section className={styles.sectionAnalysis} aria-labelledby="analysis-heading" {...reveal}>
           <div className={styles.container}>
             <div className={styles.analysisImageWrap}>
               <img
@@ -116,10 +140,14 @@ const WorkCatalogic = () => {
               Catalogic.
             </p>
           </div>
-        </section>
+        </FM.motion.section>
 
         {/* Descriptors */}
-        <section className={styles.sectionDescriptors} aria-labelledby="descriptors-heading">
+        <FM.motion.section
+          className={styles.sectionDescriptors}
+          aria-labelledby="descriptors-heading"
+          {...reveal}
+        >
           <div className={styles.container}>
             <div className={styles.descriptorsImageWrap}>
               <video
@@ -137,10 +165,10 @@ const WorkCatalogic = () => {
               for every track.
             </h2>
           </div>
-        </section>
+        </FM.motion.section>
 
         {/* Dark block: A system that adapts to you + Tags mockup + Personalized Tags */}
-        <section className={styles.sectionDark} aria-labelledby="adapts-heading">
+        <FM.motion.section className={styles.sectionDark} aria-labelledby="adapts-heading" {...reveal}>
           <div className={styles.container}>
             <p className={styles.darkStatement} id="adapts-heading">
               A system that adapts to you,{' '}
@@ -174,10 +202,14 @@ const WorkCatalogic = () => {
               organization without imposing external structure.
             </p>
           </div>
-        </section>
+        </FM.motion.section>
 
         {/* Manual Tagging */}
-        <section className={styles.sectionManualTagging} aria-labelledby="manual-tagging-heading">
+        <FM.motion.section
+          className={styles.sectionManualTagging}
+          aria-labelledby="manual-tagging-heading"
+          {...reveal}
+        >
           <div className={styles.container}>
             <div className={styles.manualTaggingImageWrap}>
               <video
@@ -195,21 +227,22 @@ const WorkCatalogic = () => {
               automatically suggested.
             </h2>
           </div>
-        </section>
+        </FM.motion.section>
 
         {/* A new way to explore Music Libraries */}
-        <section className={styles.sectionExplore} aria-labelledby="explore-title">
+        <FM.motion.section className={styles.sectionExplore} aria-labelledby="explore-title" {...reveal}>
           <div className={styles.containerExplore}>
             <h2 id="explore-title" className={styles.titleFullWidth}>
               A new way to explore Music Libraries
             </h2>
           </div>
-        </section>
+        </FM.motion.section>
 
         {/* Similarity Map */}
-        <section
+        <FM.motion.section
           className={styles.sectionSimilarity}
           aria-labelledby="similarity-map-heading"
+          {...reveal}
         >
           <div className={styles.container}>
             <div className={styles.similarityImageStyleWrapper}>
@@ -242,10 +275,10 @@ const WorkCatalogic = () => {
               </div>
             </div>
           </div>
-        </section>
+        </FM.motion.section>
 
         {/* XY Mode */}
-        <section className={styles.sectionXY} aria-labelledby="xy-mode-heading">
+        <FM.motion.section className={styles.sectionXY} aria-labelledby="xy-mode-heading" {...reveal}>
           <div className={styles.xyContent}>
             <div className={styles.xyImageStyleWrapper}>
               <div className={styles.xyStyleElement} aria-hidden="true" />
@@ -275,12 +308,12 @@ const WorkCatalogic = () => {
               </div>
             </div>
           </div>
-        </section>
+        </FM.motion.section>
 
         {/* Smart Crates (SwitchComponentVar) */}
-        <section className={styles.sectionSwitch} aria-label="Smart Crates and views">
+        <FM.motion.section className={styles.sectionSwitch} aria-label="Smart Crates and views" {...reveal}>
           <SwitchComponentVar />
-        </section>
+        </FM.motion.section>
       </main>
       <Footer />
     </>

@@ -5,6 +5,10 @@
   background-color: var(--bg-white);
 }
 
+.heroRevealWrap {
+  width: 100%;
+}
+
 .section {
   width: 100%;
   display: flex;

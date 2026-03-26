@@ -7,6 +7,10 @@
   width: 100%;
 }
 
+.heroRevealWrap {
+  width: 100%;
+}
+
 /* Shared container: 12-col grid, 1200px */
 .container {
   display: grid;

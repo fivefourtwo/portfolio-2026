@@ -1,0 +1,45 @@
+/* Fixed frosted strip at the viewport bottom; pointer-events none so clicks pass through. */
+.root {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  height: min(60px, 16vh);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  box-sizing: border-box;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--bg-white) 88%, transparent) 0%,
+    color-mix(in srgb, var(--bg-white) 45%, transparent) 45%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(to top, black 0%, black 35%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, black 0%, black 35%, transparent 100%);
+}
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .root {
+    background: linear-gradient(
+      to top,
+      color-mix(in srgb, var(--bg-white) 55%, transparent) 0%,
+        color-mix(in srgb, var(--bg-white) 22%, transparent) 50%,
+      transparent 100%
+    );
+    -webkit-backdrop-filter: blur(14px) saturate(1.05);
+    backdrop-filter: blur(14px) saturate(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: linear-gradient(
+      to top,
+        color-mix(in srgb, var(--bg-white) 72%, transparent) 0%,
+      transparent 100%
+    );
+  }
+}

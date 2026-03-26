@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
+import ViewportBottomBlur from './components/ViewportBottomBlur/ViewportBottomBlur'
 import Landing from './pages/Landing/Landing'
 import About from './pages/About/About'
 import WorkCatalogic from './pages/WorkCatalogic/WorkCatalogic'
@@ -20,6 +21,7 @@ const App = () => {
   return (
     <>
       <ScrollToTop />
+      <ViewportBottomBlur />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/about" element={<About />} />

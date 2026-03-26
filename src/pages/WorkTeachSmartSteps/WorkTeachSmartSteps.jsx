@@ -1,8 +1,22 @@
+import * as FM from 'framer-motion';
 import Header from '../../components/Header/Header';
 import SectionHero from '../../components/SectionHero/SectionHero';
 import UseCasesComponentVar from '../../components/UseCasesComponentVar/UseCasesComponentVar';
 import Footer from '../../components/Footer/Footer';
 import styles from './WorkTeachSmartSteps.module.css';
+
+const easeOut = [0.22, 1, 0.36, 1];
+const sectionViewport = { once: true, amount: 0.15, margin: '0px 0px -48px 0px' };
+
+const sectionRevealProps = (prefersReducedMotion, duration) =>
+  prefersReducedMotion
+    ? { initial: false }
+    : {
+        initial: { opacity: 0, y: 32 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: sectionViewport,
+        transition: { duration, ease: easeOut },
+      };
 
 import systemFunctionalityImg from '../../assets-new/teachsmartsteps-assets/system-functionality.png.jpg';
 import autoFillVideo from '../../assets-new/teachsmartsteps-assets/auto-fill-mockup.webm';
@@ -12,13 +26,19 @@ import editorVideoAlt from '../../assets-new/alternative-videos/editor-mockup-al
 import outputPdfImg from '../../assets-new/teachsmartsteps-assets/output-pdf.png';
 
 const WorkTeachSmartSteps = () => {
+  const prefersReducedMotion = FM.useReducedMotion();
+  const duration = prefersReducedMotion ? 0 : 0.55;
+  const reveal = sectionRevealProps(prefersReducedMotion, duration);
+
   return (
     <>
       <Header projectTitle="Teach Smart Steps" />
       <main className={styles.page}>
-        <SectionHero project="TeachSmartSteps" />
+        <FM.motion.div className={styles.heroRevealWrap} {...reveal}>
+          <SectionHero project="TeachSmartSteps" />
+        </FM.motion.div>
 
-        <section className={styles.section} aria-labelledby="disparity-heading">
+        <FM.motion.section className={styles.section} aria-labelledby="disparity-heading" {...reveal}>
           <div className={styles.container}>
             <h2 id="disparity-heading" className={styles.sectionHeading}>
               The Disparity Between Digital Access and Critical Literacy
@@ -32,9 +52,9 @@ const WorkTeachSmartSteps = () => {
               preventively, right from the start.
             </p>
           </div>
-        </section>
+        </FM.motion.section>
 
-        <section className={styles.section} aria-labelledby="barriers-heading">
+        <FM.motion.section className={styles.section} aria-labelledby="barriers-heading" {...reveal}>
           <div className={styles.container}>
             <h2 id="barriers-heading" className={styles.sectionHeading}>
               Systemic Barriers to Media Literacy Integration
@@ -45,9 +65,9 @@ const WorkTeachSmartSteps = () => {
               media literacy integration.
             </p>
           </div>
-        </section>
+        </FM.motion.section>
 
-        <section className={styles.sectionTitle} aria-labelledby="title-heading">
+        <FM.motion.section className={styles.sectionTitle} aria-labelledby="title-heading" {...reveal}>
           <div className={styles.container}>
             <div className={styles.titleBlock}>
               <h2 id="title-heading" className={styles.titleMain}>
@@ -63,13 +83,16 @@ const WorkTeachSmartSteps = () => {
               additional lesson time.
             </p>
           </div>
-        </section>
+        </FM.motion.section>
 
-        <UseCasesComponentVar />
+        <FM.motion.div className={styles.heroRevealWrap} {...reveal}>
+          <UseCasesComponentVar />
+        </FM.motion.div>
 
-        <section
+        <FM.motion.section
           className={styles.section}
           aria-labelledby="structuring-heading"
+          {...reveal}
         >
           <div className={styles.container}>
             <div className={styles.imageFull}>
@@ -90,11 +113,12 @@ const WorkTeachSmartSteps = () => {
               pedagogical relevance.
             </p>
           </div>
-        </section>
+        </FM.motion.section>
 
-        <section
+        <FM.motion.section
           className={styles.sectionAutofill}
           aria-labelledby="autofill-heading"
+          {...reveal}
         >
           <div className={styles.container}>
             <div className={styles.autofillImageStyleWrapper}>
@@ -124,11 +148,12 @@ const WorkTeachSmartSteps = () => {
               greater generative variance.
             </p>
           </div>
-        </section>
+        </FM.motion.section>
 
-        <section
+        <FM.motion.section
           className={styles.sectionEditor}
           aria-labelledby="editor-heading"
+          {...reveal}
         >
           <div className={styles.container}>
             <div className={styles.editorImageStyleWrapper}>
@@ -160,11 +185,12 @@ const WorkTeachSmartSteps = () => {
               correct, but contextually appropriate for the specific class.
             </p>
           </div>
-        </section>
+        </FM.motion.section>
 
-        <section
+        <FM.motion.section
           className={styles.sectionOutput}
           aria-labelledby="output-heading"
+          {...reveal}
         >
           <div className={styles.container}>
             <div className={styles.outputImageStyleWrapper}>
@@ -189,7 +215,7 @@ const WorkTeachSmartSteps = () => {
               preparation and execution.
             </p>
           </div>
-        </section>
+        </FM.motion.section>
       </main>
       <Footer />
     </>

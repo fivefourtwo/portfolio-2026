@@ -1,7 +1,21 @@
+import * as FM from 'framer-motion'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import styles from './About.module.css'
 import profileImage from '../../assets-new/aboutme.jpg?w=800;1200;1600&format=webp&as=img'
+
+const easeOut = [0.22, 1, 0.36, 1]
+const sectionViewport = { once: true, amount: 0.15, margin: '0px 0px -48px 0px' }
+
+const sectionRevealProps = (prefersReducedMotion, duration) =>
+  prefersReducedMotion
+    ? { initial: false }
+    : {
+        initial: { opacity: 0, y: 32 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: sectionViewport,
+        transition: { duration, ease: easeOut },
+      }
 
 const EDUCATION = [
   {
@@ -35,11 +49,15 @@ const PROFESSIONAL_EXPERIENCE = [
 ]
 
 const About = () => {
+  const prefersReducedMotion = FM.useReducedMotion()
+  const duration = prefersReducedMotion ? 0 : 0.55
+  const reveal = sectionRevealProps(prefersReducedMotion, duration)
+
   return (
     <>
       <Header />
       <main className={styles.page}>
-        <section className={styles.section} aria-labelledby="about-heading">
+        <FM.motion.section className={styles.section} aria-labelledby="about-heading" {...reveal}>
           <div className={styles.content}>
             <h1 id="about-heading" className={styles.headline}>
               About me
@@ -64,11 +82,12 @@ const About = () => {
               />
             </div>
           </div>
-        </section>
+        </FM.motion.section>
 
-        <section
+        <FM.motion.section
           className={styles.sectionEducation}
           aria-labelledby="education-heading"
+          {...reveal}
         >
           <div className={styles.sectionContent}>
             <h2 id="education-heading" className={styles.sectionHeading}>
@@ -89,11 +108,12 @@ const About = () => {
               ))}
             </ul>
           </div>
-        </section>
+        </FM.motion.section>
 
-        <section
+        <FM.motion.section
           className={styles.sectionExperience}
           aria-labelledby="professional-experience-heading"
+          {...reveal}
         >
           <div className={styles.sectionContent}>
             <h2
@@ -117,7 +137,7 @@ const About = () => {
               ))}
             </ul>
           </div>
-        </section>
+        </FM.motion.section>
       </main>
       <Footer />
     </>
