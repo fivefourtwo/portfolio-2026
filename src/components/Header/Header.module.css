@@ -49,7 +49,7 @@
 .contactLink {
   align-self: center;
   font-family: var(--font-heading);
-  font-size: var(--text-body);
+  font-size: var(--text-label);
   font-weight: 400;
   color: var(--black);
   text-decoration: none;
@@ -81,11 +81,11 @@
 }
 
 .projectTitle {
-  grid-column: 10 / 13;
+  grid-column: 9 / 13;
   justify-self: stretch;
   align-self: center;
   font-family: var(--font-ui);
-  font-size: var(--text-body);
+  font-size: var(--text-label);
   font-weight: 700;
   text-transform: uppercase;
   color: var(--black);

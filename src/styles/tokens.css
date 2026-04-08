@@ -21,11 +21,20 @@
   --font-serif: "IBM Plex Sans", sans-serif;
 
   /* Typography */
-  --text-display: 48px;
+  /* --text-display: 48px;
   --text-h1: 48px;
   --text-h2: 32px;
   --text-body: 20px;
   --text-small: 16px;
+  --line-height-headline: 1.15; */
+
+  /* Typography Variables*/
+  --text-display: 48px;
+  --text-h1: 48px;
+  --text-h2: 32px;
+  --text-body: 22px;
+  --text-label: 16px;
+  --text-small: 14px;
   --line-height-headline: 1.15;
 
   /* Layout */
@@ -33,13 +42,13 @@
   --full-width: 1440px;
   --header-max-width: 1780px;
   --grid-columns: 12;
-  --grid-gap: 24px;
+  --grid-gap: 32px;
   --page-padding: 32px;
   --section-padding-y-lg: 120px;
   --section-padding-y-md: 60px;
 
   /* Component sizing */
-  --header-height: 56px;
+  --header-height: 64px;
   --footer-height: 64px;
   --button-height-large: 56px;
   --header-bg: rgba(244, 244, 244, 0.69);

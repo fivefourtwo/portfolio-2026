@@ -44,12 +44,9 @@ const WorkCatalogic = () => {
         {/* The Shift from Curation to Administration */}
         <FM.motion.section className={styles.sectionShift} aria-labelledby="problem-heading" {...reveal}>
           <div className={styles.container}>
-            <h2 id="problem-heading" className={styles.srOnly}>
+            <h2 id="problem-heading" className={styles.problemHeadline}>
               The Shift from Curation to Administration
             </h2>
-            <p className={styles.problemHeadline}>
-              The Shift from Curation to Administration
-            </p>
             <p className={styles.problemBody}>
               The transition from physical media to digital files transformed
               DJing from curation to administration. While storage is infinite,

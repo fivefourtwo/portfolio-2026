@@ -128,9 +128,9 @@
   padding: 0 var(--page-padding);
 }
 
-/* Two-column text: heading col 1–5, body col 8–12 */
+/* Two-column text: heading col 1–4, body col 6–12 */
 .sectionHeading {
-  grid-column: 1 / 6;
+  grid-column: 1 / 5;
   font-family: var(--font-heading);
   font-size: var(--text-h2);
   font-weight: 400;
@@ -139,7 +139,7 @@
 }
 
 .sectionBody {
-  grid-column: 8 / 13;
+  grid-column: 6 / 13;
   font-family: var(--font-body);
   font-size: var(--text-body);
   font-weight: 400;

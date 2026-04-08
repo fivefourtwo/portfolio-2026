@@ -10,8 +10,6 @@
   --mouse-x: 50%;
   --mouse-y: 35%;
   --mouse-active: 0;
-  --grid-shift-x: 0px;
-  --grid-shift-y: 0px;
   width: 100%;
   max-width: 1440px;
   min-height: 90vh;
@@ -39,6 +37,38 @@
     );
   opacity: calc(0.08 + (var(--mouse-active) * 0.7));
   transition: opacity 220ms ease-out;
+}
+
+/* Photo — revealed by the same cursor spotlight as the grid */
+.photoWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: var(--mouse-active);
+  transition: --mouse-active 450ms ease-out;
+  mask-image: radial-gradient(
+    circle clamp(240px, 20vw, 340px) at var(--mouse-x) var(--mouse-y),
+    black 0%,
+    black 35%,
+    transparent 72%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle clamp(240px, 20vw, 340px) at var(--mouse-x) var(--mouse-y),
+    black 0%,
+    black 35%,
+    transparent 72%
+  );
+}
+
+.photo {
+  position: absolute;
+  right: 46px;
+  top: 30vh;
+  bottom: 0;
+  width: clamp(180px, 22vw, 320px);
+  object-fit: cover;
+  object-position: center top;
 }
 
 .heroRipple {
@@ -181,6 +211,10 @@
 
 /* ---- Mobile ---- */
 @media (max-width: 480px) {
+  .photo {
+    display: none;
+  }
+
   .hero {
     --hero-grid-inset-x: var(--page-padding-mobile);
     min-height: auto;
@@ -215,5 +249,12 @@
 
   .heroRipple {
     display: none;
+  }
+
+  .photoWrap {
+    opacity: 0.06;
+    mask-image: none;
+    -webkit-mask-image: none;
+    transition: none;
   }
 }

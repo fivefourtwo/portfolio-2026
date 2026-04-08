@@ -5,6 +5,7 @@ import Footer from '../../components/Footer/Footer'
 import ProjectCarousel from '../../components/ProjectCarousel/ProjectCarousel'
 import HeroGrid from '../../components/HeroGrid/HeroGrid'
 import styles from './Landing.module.css'
+import aboutMeImg from '../../assets-new/me-packed.jpg'
 
 const easeOut = [0.22, 1, 0.36, 1]
 
@@ -62,13 +63,8 @@ const Landing = () => {
       currentX += (targetX - currentX) * 0.14
       currentY += (targetY - currentY) * 0.14
 
-      const driftX = (currentX - 0.5) * 22
-      const driftY = (currentY - 0.5) * 18
-
       heroEl.style.setProperty('--mouse-x', `${(currentX * 100).toFixed(2)}%`)
       heroEl.style.setProperty('--mouse-y', `${(currentY * 100).toFixed(2)}%`)
-      heroEl.style.setProperty('--grid-shift-x', `${driftX.toFixed(2)}px`)
-      heroEl.style.setProperty('--grid-shift-y', `${driftY.toFixed(2)}px`)
 
       const done =
         Math.abs(targetX - currentX) < 0.0015 &&
@@ -108,9 +104,6 @@ const Landing = () => {
 
     const handlePointerLeave = () => {
       heroEl.style.setProperty('--mouse-active', '0')
-      targetX = 0.5
-      targetY = 0.35
-      scheduleAnimation()
     }
 
     const triggerRipple = (event) => {
@@ -134,8 +127,6 @@ const Landing = () => {
     heroEl.style.setProperty('--mouse-x', '50%')
     heroEl.style.setProperty('--mouse-y', '35%')
     heroEl.style.setProperty('--mouse-active', '0')
-    heroEl.style.setProperty('--grid-shift-x', '0px')
-    heroEl.style.setProperty('--grid-shift-y', '0px')
 
     heroEl.addEventListener('pointerenter', handlePointerEnter)
     heroEl.addEventListener('pointermove', handlePointerMove)
@@ -160,6 +151,9 @@ const Landing = () => {
       <main className={styles.page}>
         <section className={styles.hero} ref={heroRef}>
           <HeroGrid />
+          <div className={styles.photoWrap} aria-hidden="true">
+            <img src={aboutMeImg} alt="" className={styles.photo} />
+          </div>
           <span className={styles.heroRipple} ref={rippleRef} aria-hidden="true" />
           <div className={styles.heroInner}>
             <FM.motion.div

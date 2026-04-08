@@ -1,10 +1,16 @@
-/* Full-viewport-width shell for horizontal lines; vertical lines stay content-inset.
-   Inherits from hero: --hero-grid-inset-x, --grid-shift-x/y, --mouse-active */
+/* Register --mouse-active as a transitionable numeric property so the
+   spotlight fades smoothly on cursor enter / leave. */
+@property --mouse-active {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+
+/* Full-viewport-width grid shell. Inherits --mouse-x/y and --mouse-active from .hero. */
 .root {
-  --grid-line-color: color-mix(in srgb, var(--dark-grey) 12%, transparent);
+  --grid-line-color: color-mix(in srgb, var(--dark-grey) 18%, transparent);
   --grid-tile: 160px;
-  --grid-fade-start: 58%;
-  --grid-fade-end: 100%;
+  --spotlight-r: clamp(240px, 20vw, 340px);
   position: absolute;
   top: 0;
   bottom: 0;
@@ -14,20 +20,25 @@
   transform: translateX(-50%);
   z-index: 0;
   pointer-events: none;
-  opacity: calc(0.9 + (var(--mouse-active) * 0.05));
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 14%,
-    black var(--grid-fade-start),
-    transparent var(--grid-fade-end)
+
+  /* Fade in when cursor enters, fade to near-invisible when it leaves. */
+  opacity: calc(0.04 + var(--mouse-active) * 0.96);
+  transition: --mouse-active 450ms ease-out;
+
+  /* Spotlight: fully visible within the cursor radius, barely visible outside. */
+  mask-image: radial-gradient(
+    circle var(--spotlight-r) at var(--mouse-x) var(--mouse-y),
+    black 0%,
+    black 35%,
+    rgba(0, 0, 0, 0.055) 72%,
+    rgba(0, 0, 0, 0.055) 100%
   );
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 14%,
-    black var(--grid-fade-start),
-    transparent var(--grid-fade-end)
+  -webkit-mask-image: radial-gradient(
+    circle var(--spotlight-r) at var(--mouse-x) var(--mouse-y),
+    black 0%,
+    black 35%,
+    rgba(0, 0, 0, 0.055) 72%,
+    rgba(0, 0, 0, 0.055) 100%
   );
 }
 
@@ -63,7 +74,7 @@
   );
   background-size: var(--grid-tile) var(--grid-tile);
   background-repeat: repeat;
-  background-position: var(--grid-shift-x) var(--grid-shift-y);
+  background-position: 0 0;
 }
 
 .vertical {
@@ -98,22 +109,14 @@
   );
   background-size: var(--grid-tile) var(--grid-tile);
   background-repeat: repeat;
-  background-position: var(--grid-shift-x) var(--grid-shift-y);
-}
-
-@media (max-width: 480px) {
-  .root {
-    --grid-fade-start: 50%;
-  }
+  background-position: 0 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .horizontal,
-  .vertical {
-    background-position: 0 0;
-  }
-
   .root {
-    opacity: 0.85;
+    opacity: 0.07;
+    transition: none;
+    mask-image: none;
+    -webkit-mask-image: none;
   }
 }

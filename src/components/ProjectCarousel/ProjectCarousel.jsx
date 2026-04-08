@@ -273,22 +273,24 @@ const ProjectCarousel = ({ variant }) => {
         </div>
       </div>
 
-      <h2 className={styles.title}>{title}</h2>
+      <div className={styles.titleGroup}>
+        <h2 className={styles.title}>{title}</h2>
+        <Link
+          to={href}
+          className={`${buttonStyles.button} ${buttonStyles.large}`}
+          aria-label={`View ${title} case study`}
+        >
+          <span className={buttonStyles.label}>View Project</span>
+          <ArrowRight size={20} aria-hidden />
+        </Link>
+      </div>
+
       <p
         className={styles.description}
         data-variant={isAccessability ? 'accessability' : undefined}
       >
         {description}
       </p>
-
-      <Link
-        to={href}
-        className={`${buttonStyles.button} ${buttonStyles.large}`}
-        aria-label={`View ${title} case study`}
-      >
-        <span className={buttonStyles.label}>View Project</span>
-        <ArrowRight size={20} aria-hidden />
-      </Link>
     </article>
   );
 };

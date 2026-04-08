@@ -9,6 +9,7 @@ const Button = ({
   className = '',
   disabled = false,
   largeLabel = 'View Project',
+  icon,
   ...rest
 }) => {
   const variantClass = styles[variant];
@@ -21,7 +22,7 @@ const Button = ({
     variant === 'large' ? (
       <>
         <span className={styles.label}>{largeLabel}</span>
-        <ArrowRight size={20} aria-hidden />
+        {icon ? icon : <ArrowRight size={20} aria-hidden />}
       </>
     ) : variant === 'ghost' ? (
       <>
