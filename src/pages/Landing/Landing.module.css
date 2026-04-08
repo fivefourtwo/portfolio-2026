@@ -71,6 +71,18 @@
   object-position: center top;
 }
 
+.photoCaption {
+  position: absolute;
+  /* right: calc(46px + clamp(180px, 22vw, 320px) + 24px); */
+  right: 80px;
+  top: 40vh;
+  transform: translateY(-50%);
+  font-size: var(--text-h2);
+  font-style: bold;
+  color: var(--color-text-secondary, var(--dark-grey));
+  white-space: nowrap;
+}
+
 .heroRipple {
   --ripple-x: 50%;
   --ripple-y: 35%;
