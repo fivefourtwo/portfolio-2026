@@ -5,7 +5,8 @@ import Footer from '../../components/Footer/Footer'
 import ProjectCarousel from '../../components/ProjectCarousel/ProjectCarousel'
 import HeroGrid from '../../components/HeroGrid/HeroGrid'
 import styles from './Landing.module.css'
-import aboutMeImg from '../../assets-new/me-packed.jpg'
+import aboutMeImgWebP from '../../assets-new/me-packed.jpg?format=webp&w=640&quality=80'
+import aboutMeImgJpg from '../../assets-new/me-packed.jpg?w=640&quality=80'
 
 const easeOut = [0.22, 1, 0.36, 1]
 
@@ -152,7 +153,10 @@ const Landing = () => {
         <section className={styles.hero} ref={heroRef}>
           <HeroGrid />
           <div className={styles.photoWrap} aria-hidden="true">
-            <img src={aboutMeImg} alt="" className={styles.photo} />
+            <picture>
+              <source srcSet={aboutMeImgWebP} type="image/webp" />
+              <img src={aboutMeImgJpg} alt="" className={styles.photo} />
+            </picture>
             <span className={styles.photoCaption}>I also don't mind doing the heavy lifting →</span>
           </div>
           <span className={styles.heroRipple} ref={rippleRef} aria-hidden="true" />
