@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { Chat, Close, Send } from '@carbon/icons-react';
+import { ChevronUp, ChevronDown, Send } from '@carbon/icons-react';
+import Button from '../Button/Button';
 import styles from './CaseStudyChat.module.css';
 
 const SUGGESTED_QUESTIONS = {
@@ -59,6 +60,9 @@ export default function CaseStudyChat({ caseStudy }) {
     setInput('');
     setIsLoading(true);
 
+    // Auto-expand when sending
+    if (!isOpen) setIsOpen(true);
+
     const assistantMessage = { role: 'assistant', content: '' };
     setMessages((prev) => [...prev, assistantMessage]);
 
@@ -116,8 +120,7 @@ export default function CaseStudyChat({ caseStudy }) {
         const updated = [...prev];
         updated[updated.length - 1] = {
           role: 'assistant',
-          content:
-            'Sorry, something went wrong. Please try again later.',
+          content: 'Sorry, something went wrong. Please try again later.',
         };
         return updated;
       });
@@ -138,136 +141,122 @@ export default function CaseStudyChat({ caseStudy }) {
     }
   };
 
-  const panelVariants = prefersReducedMotion
-    ? {}
-    : {
-        hidden: { opacity: 0, y: 16, scale: 0.95 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] },
-        },
-        exit: {
-          opacity: 0,
-          y: 16,
-          scale: 0.95,
-          transition: { duration: 0.15 },
-        },
-      };
-
   const projectName = PROJECT_NAMES[caseStudy] || caseStudy;
   const suggestions = SUGGESTED_QUESTIONS[caseStudy] || [];
 
+  const messagesVariants = prefersReducedMotion
+    ? {}
+    : {
+        collapsed: { height: 0, opacity: 0 },
+        expanded: {
+          height: 'auto',
+          opacity: 1,
+          transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+        },
+        exit: {
+          height: 0,
+          opacity: 0,
+          transition: { duration: 0.2 },
+        },
+      };
+
   return (
     <div className={styles.chatWrapper}>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            className={styles.chatPanel}
-            variants={panelVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            role="dialog"
-            aria-label={`Chat about ${projectName}`}
-          >
-            <div className={styles.chatHeader}>
-              <div className={styles.chatHeaderInfo}>
-                <span className={styles.chatHeaderTitle}>
-                  Ask about {projectName}
-                </span>
-                <span className={styles.chatHeaderSubtitle}>
-                  AI-powered project assistant
-                </span>
+      <div className={styles.chatBar}>
+        {/* Expandable messages area */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              className={styles.chatMessages}
+              variants={messagesVariants}
+              initial="collapsed"
+              animate="expanded"
+              exit="exit"
+              role="log"
+              aria-label={`Chat about ${projectName}`}
+            >
+              <div className={styles.chatMessagesInner}>
+                {messages.length === 0 && (
+                  <div className={styles.welcomeArea}>
+                    <p className={styles.welcomeText}>
+                      Ask me anything about {projectName} — process,
+                      methods, decisions, or outcomes.
+                    </p>
+                    <div className={styles.suggestions}>
+                      {suggestions.map((q) => (
+                        <button
+                          key={q}
+                          className={styles.suggestionChip}
+                          onClick={() => sendMessage(q)}
+                        >
+                          {q}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {messages.map((msg, i) => (
+                  <div
+                    key={i}
+                    className={`${styles.message} ${
+                      msg.role === 'user'
+                        ? styles.messageUser
+                        : styles.messageAssistant
+                    }`}
+                  >
+                    <div className={styles.messageBubble}>
+                      {msg.content || (
+                        <span className={styles.typingIndicator}>
+                          <span />
+                          <span />
+                          <span />
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+                <div ref={messagesEndRef} />
               </div>
-              <button
-                className={styles.closeButton}
-                onClick={() => setIsOpen(false)}
-                aria-label="Close chat"
-              >
-                <Close size={20} />
-              </button>
-            </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-            <div className={styles.chatMessages}>
-              {messages.length === 0 && (
-                <div className={styles.welcomeArea}>
-                  <p className={styles.welcomeText}>
-                    Hi! Ask me anything about the {projectName} project
-                    &mdash; process, methods, decisions, or outcomes.
-                  </p>
-                  <div className={styles.suggestions}>
-                    {suggestions.map((q) => (
-                      <button
-                        key={q}
-                        className={styles.suggestionChip}
-                        onClick={() => sendMessage(q)}
-                      >
-                        {q}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
+        {/* Always-visible bottom bar */}
+        <div className={styles.chatBottomBar}>
+          <Button
+            variant="ghost-icon"
+            onClick={() => setIsOpen((o) => !o)}
+            aria-label={isOpen ? 'Collapse chat' : 'Expand chat'}
+            icon={isOpen ? <ChevronDown size={18} /> : <ChevronUp size={18} />}
+          />
 
-              {messages.map((msg, i) => (
-                <div
-                  key={i}
-                  className={`${styles.message} ${
-                    msg.role === 'user'
-                      ? styles.messageUser
-                      : styles.messageAssistant
-                  }`}
-                >
-                  <div className={styles.messageBubble}>
-                    {msg.content || (
-                      <span className={styles.typingIndicator}>
-                        <span />
-                        <span />
-                        <span />
-                      </span>
-                    )}
-                  </div>
-                </div>
-              ))}
-              <div ref={messagesEndRef} />
-            </div>
+          {/* <span className={styles.barLabel}>
+            Ask about {projectName}
+          </span> */}
 
-            <form className={styles.chatInputArea} onSubmit={handleSubmit}>
-              <input
-                ref={inputRef}
-                type="text"
-                className={styles.chatInput}
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder="Ask a question..."
-                disabled={isLoading}
-                aria-label="Type your question"
-              />
-              <button
-                type="submit"
-                className={styles.sendButton}
-                disabled={!input.trim() || isLoading}
-                aria-label="Send message"
-              >
-                <Send size={18} />
-              </button>
-            </form>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <motion.button
-        className={styles.chatBubble}
-        onClick={() => setIsOpen((o) => !o)}
-        aria-label={isOpen ? 'Close chat' : 'Open chat'}
-        whileHover={prefersReducedMotion ? {} : { scale: 1.08 }}
-        whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
-      >
-        {isOpen ? <Close size={24} /> : <Chat size={24} />}
-      </motion.button>
+          <form className={styles.barInputArea} onSubmit={handleSubmit}>
+            <input
+              ref={inputRef}
+              type="text"
+              className={styles.barInput}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder={`Ask a question about ${projectName} ...`}
+              disabled={isLoading}
+              aria-label="Type your question"
+            />
+            <Button
+              variant="icon"
+              onClick={handleSubmit}
+              disabled={!input.trim() || isLoading}
+              aria-label="Send message"
+              icon={<Send size={16} />}
+            />
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

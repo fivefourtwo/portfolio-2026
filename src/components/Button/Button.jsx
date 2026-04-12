@@ -1,6 +1,14 @@
 import { ArrowRight, ArrowUp } from '@carbon/icons-react';
 import styles from './Button.module.css';
 
+const VARIANT_CLASS = {
+  large: 'large',
+  ghost: 'ghost',
+  link: 'link',
+  icon: 'icon',
+  'ghost-icon': 'ghostIcon',
+};
+
 const Button = ({
   variant = 'large',
   children,
@@ -12,8 +20,8 @@ const Button = ({
   icon,
   ...rest
 }) => {
-  const variantClass = styles[variant];
-  const disabledClass = disabled && variant === 'large' ? styles.disabled : '';
+  const variantClass = styles[VARIANT_CLASS[variant] || variant];
+  const disabledClass = disabled && (variant === 'large' || variant === 'icon') ? styles.disabled : '';
   const combinedClassName = [styles.button, variantClass, disabledClass, className]
     .filter(Boolean)
     .join(' ');
@@ -31,6 +39,8 @@ const Button = ({
           <ArrowUp size={20} aria-hidden />
         </span>
       </>
+    ) : variant === 'icon' || variant === 'ghost-icon' ? (
+      icon || children
     ) : (
       <span className={styles.label}>{children}</span>
     );

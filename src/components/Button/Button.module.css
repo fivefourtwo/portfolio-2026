@@ -115,6 +115,69 @@
   color: inherit;
 }
 
+/* Icon variant - matches large button pattern */
+.icon {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--dark-grey);
+  background-color: transparent;
+  color: var(--dark-grey);
+}
+
+.icon:hover:not(:disabled) {
+  background-color: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+}
+
+.icon svg {
+  color: inherit;
+}
+
+.disabled.icon,
+.icon:disabled {
+  border-color: var(--light-grey);
+  color: var(--light-grey);
+  cursor: not-allowed;
+}
+
+.disabled.icon:hover,
+.icon:disabled:hover {
+  background-color: var(--white);
+  color: var(--light-grey);
+  border-color: var(--light-grey);
+}
+
+/* Ghost icon variant - no border, grey hover */
+.ghostIcon {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: var(--dark-grey);
+}
+
+.ghostIcon:hover:not(:disabled) {
+  background-color: var(--bg-white);
+  color: var(--black);
+}
+
+.ghostIcon svg {
+  color: inherit;
+}
+
+.ghostIcon:disabled {
+  color: var(--light-grey);
+  cursor: not-allowed;
+}
+
+.ghostIcon:disabled:hover {
+  background-color: transparent;
+  color: var(--light-grey);
+}
+
 /* ---- Tablet ---- */
 @media (max-width: 992px) {
   .large {
