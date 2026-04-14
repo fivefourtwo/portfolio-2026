@@ -10,11 +10,11 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <p className={styles.copyright}>
-        © Fabrice Rio 2026 <span className={styles.separator}>•</span>{' '}
-        <Link to="/imprint" className={styles.imprintLink}>
-          Imprint
-        </Link>
+        © Fabrice Rio 2026
       </p>
+      <Link to="/imprint" className={`${styles.link} ${styles.imprint}`}>
+        Imprint
+      </Link>
       <a
         href="https://www.linkedin.com/in/fabrice-rio"
         target="_blank"

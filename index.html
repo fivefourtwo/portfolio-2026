@@ -5,6 +5,15 @@
     <link rel="icon" type="image/svg+xml" href="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fabrice Rio</title>
+    <!-- Preconnect to Google Fonts to establish connection early -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Caveat loaded non-blocking via media trick, swaps to all on load -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" /></noscript>
+    <!-- Preload critical Sora font (LCP element uses it) -->
+    <link rel="preload" as="font" type="font/ttf" href="/src/assets-new/fonts/Sora/static/Sora-Regular.ttf" crossorigin />
   </head>
   <body>
     <div id="root"></div>

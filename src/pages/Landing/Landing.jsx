@@ -54,6 +54,8 @@ const Landing = () => {
       return
     }
 
+    const isTouchPrimary = window.matchMedia('(hover: none) and (pointer: coarse)').matches
+
     let frameId = 0
     let targetX = 0.5
     let targetY = 0.35
@@ -84,13 +86,63 @@ const Landing = () => {
       }
     }
 
+    heroEl.style.setProperty('--mouse-x', '50%')
+    heroEl.style.setProperty('--mouse-y', '35%')
+
+    if (isTouchPrimary) {
+      // Touch devices: grid is softly visible at rest, fully lit on active touch.
+      heroEl.style.setProperty('--mouse-active', '0.3')
+
+      const updateFromTouch = (touch) => {
+        const rect = heroEl.getBoundingClientRect()
+        targetX = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width))
+        targetY = Math.max(0, Math.min(1, (touch.clientY - rect.top) / rect.height))
+        scheduleAnimation()
+      }
+
+      const handleTouchStart = (event) => {
+        heroEl.style.setProperty('--mouse-active', '1')
+        updateFromTouch(event.touches[0])
+      }
+
+      const handleTouchMove = (event) => {
+        updateFromTouch(event.touches[0])
+      }
+
+      const handleTouchEnd = (event) => {
+        heroEl.style.setProperty('--mouse-active', '0.3')
+        if (!rippleRef.current) return
+        const touch = event.changedTouches[0]
+        const rect = heroEl.getBoundingClientRect()
+        const x = ((touch.clientX - rect.left) / rect.width) * 100
+        const y = ((touch.clientY - rect.top) / rect.height) * 100
+        const rippleEl = rippleRef.current
+        rippleEl.style.setProperty('--ripple-x', `${x.toFixed(2)}%`)
+        rippleEl.style.setProperty('--ripple-y', `${y.toFixed(2)}%`)
+        rippleEl.classList.remove(styles.rippleActive)
+        void rippleEl.offsetWidth
+        rippleEl.classList.add(styles.rippleActive)
+      }
+
+      heroEl.addEventListener('touchstart', handleTouchStart, { passive: true })
+      heroEl.addEventListener('touchmove', handleTouchMove, { passive: true })
+      heroEl.addEventListener('touchend', handleTouchEnd, { passive: true })
+
+      return () => {
+        heroEl.removeEventListener('touchstart', handleTouchStart)
+        heroEl.removeEventListener('touchmove', handleTouchMove)
+        heroEl.removeEventListener('touchend', handleTouchEnd)
+        if (frameId) window.cancelAnimationFrame(frameId)
+      }
+    }
+
+    // Mouse/trackpad devices: original spotlight behaviour.
+    heroEl.style.setProperty('--mouse-active', '0')
+
     const updateFromPointer = (event) => {
       const rect = heroEl.getBoundingClientRect()
-      const x = (event.clientX - rect.left) / rect.width
-      const y = (event.clientY - rect.top) / rect.height
-
-      targetX = Math.max(0, Math.min(1, x))
-      targetY = Math.max(0, Math.min(1, y))
+      targetX = Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width))
+      targetY = Math.max(0, Math.min(1, (event.clientY - rect.top) / rect.height))
       scheduleAnimation()
     }
 
@@ -108,15 +160,11 @@ const Landing = () => {
     }
 
     const triggerRipple = (event) => {
-      if (prefersReducedMotion || !rippleRef.current) {
-        return
-      }
-
+      if (!rippleRef.current) return
       const rect = heroEl.getBoundingClientRect()
       const x = ((event.clientX - rect.left) / rect.width) * 100
       const y = ((event.clientY - rect.top) / rect.height) * 100
       const rippleEl = rippleRef.current
-
       rippleEl.style.setProperty('--ripple-x', `${x.toFixed(2)}%`)
       rippleEl.style.setProperty('--ripple-y', `${y.toFixed(2)}%`)
       rippleEl.classList.remove(styles.rippleActive)
@@ -124,10 +172,6 @@ const Landing = () => {
       void rippleEl.offsetWidth
       rippleEl.classList.add(styles.rippleActive)
     }
-
-    heroEl.style.setProperty('--mouse-x', '50%')
-    heroEl.style.setProperty('--mouse-y', '35%')
-    heroEl.style.setProperty('--mouse-active', '0')
 
     heroEl.addEventListener('pointerenter', handlePointerEnter)
     heroEl.addEventListener('pointermove', handlePointerMove)
@@ -139,10 +183,7 @@ const Landing = () => {
       heroEl.removeEventListener('pointermove', handlePointerMove)
       heroEl.removeEventListener('pointerleave', handlePointerLeave)
       heroEl.removeEventListener('pointerdown', triggerRipple)
-
-      if (frameId) {
-        window.cancelAnimationFrame(frameId)
-      }
+      if (frameId) window.cancelAnimationFrame(frameId)
     }
   }, [prefersReducedMotion])
 
@@ -165,15 +206,14 @@ const Landing = () => {
               className={styles.heroContent}
               variants={heroContainerVariants}
               initial="hidden"
-              whileInView="visible"
-              viewport={heroViewport}
+              animate="visible"
             >
               <FM.motion.h1 className={styles.headline} variants={heroItemVariants}>
                 Hi there, I&apos;m Fabrice{' '}
               </FM.motion.h1>
               <FM.motion.p className={styles.subline} variants={heroItemVariants}>
                 I&apos;m a Designer from Germany with a passion for{' '}
-                <strong>understanding complex problems</strong> and<br /> {' '}
+                <strong>understanding complex problems</strong> and<br className={styles.desktopBreak} /> {' '}
                 <strong>creating simple solutions </strong> through design and technology
               </FM.motion.p>
             </FM.motion.div>
@@ -181,8 +221,7 @@ const Landing = () => {
               className={styles.introText}
               variants={heroIntroVariants}
               initial="hidden"
-              whileInView="visible"
-              viewport={heroViewport}
+              animate="visible"
             >
               This is what it can look like.
             </FM.motion.p>
