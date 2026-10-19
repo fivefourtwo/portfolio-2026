@@ -9,11 +9,13 @@
 // Writes:
 //   api/data/<project>.md          -> chatbot corpus (dossier + deep dive), committed
 //   _sources/kb/<project>/*.md     -> dossier.md + deep-dive.md for copy drafting (gitignored)
+//   _sources/kb/<project>/raw/*.md -> raw source material, one file per source document (gitignored)
 //
 // Guard: if _sources/kb/banned.txt exists (gitignored, one regex per line, e.g. names of
-// research participants), the sync aborts when any pattern appears in the chatbot corpus.
+// research participants), the sync aborts when any pattern appears in the chatbot corpus,
+// and skips (with a warning) any raw file that contains one.
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync, copyFileSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, copyFileSync, readdirSync, rmSync } from 'fs';
 import { join, dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -66,7 +68,27 @@ for (const p of PROJECTS) {
     const from = join(SRC, 'kb', p, f);
     if (existsSync(from)) copyFileSync(from, join(kbDir, f));
   }
-  console.log(`${p.padEnd(16)} ${corpus.split(/\s+/).length} words -> api/data/${p}.md, _sources/kb/${p}/`);
+
+  // Raw material: replace the folder completely so renamed or removed sources don't linger.
+  const rawFrom = join(SRC, 'kb', p, 'raw');
+  const rawTo = join(kbDir, 'raw');
+  rmSync(rawTo, { recursive: true, force: true });
+  let rawCount = 0;
+  if (existsSync(rawFrom)) {
+    mkdirSync(rawTo, { recursive: true });
+    for (const f of readdirSync(rawFrom).filter((n) => n.endsWith('.md'))) {
+      const text = readFileSync(join(rawFrom, f), 'utf-8');
+      if (!text.trim()) continue; // emptied by the pipeline = removed source
+      const hit = banned.find((pattern) => new RegExp(pattern, 'i').test(text + f));
+      if (hit) {
+        console.warn(`  skipped raw/${f}: banned pattern /${hit}/`);
+        continue;
+      }
+      writeFileSync(join(rawTo, f), text);
+      rawCount++;
+    }
+  }
+  console.log(`${p.padEnd(16)} ${corpus.split(/\s+/).length} words -> api/data/${p}.md, _sources/kb/${p}/ (+${rawCount} raw files)`);
 }
 
 const evalFrom = resolve(SRC, '..', 'curated', 'eval_questions.md');
