@@ -79,7 +79,14 @@ export default async function handler(req, res) {
       model: 'claude-haiku-5-5',
       max_tokens: 1024,
       output_config: { effort: 'low' },
-      system: buildSystemPrompt(doc, caseStudy),
+      // The corpus is large and identical across requests for a case study: cache it.
+      system: [
+        {
+          type: 'text',
+          text: buildSystemPrompt(doc, caseStudy),
+          cache_control: { type: 'ephemeral' },
+        },
+      ],
       messages: messages.map(({ role, content }) => ({ role, content })),
     });
 
