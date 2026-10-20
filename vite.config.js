@@ -48,6 +48,11 @@ export default defineConfig(({ mode }) => {
   for (const [key, value] of Object.entries(env)) process.env[key] ??= value
 
   return {
+    // Only VERCEL_ENV reaches the client: it tells production from previews for the draft
+    // highlight (src/components/Copy/entries.js). Unset (local builds) counts as non-production.
+    define: {
+      __VERCEL_ENV__: JSON.stringify(env.VERCEL_ENV ?? ''),
+    },
     plugins: [
       react(),
       imagetools(),
