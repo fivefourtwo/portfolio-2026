@@ -10,6 +10,7 @@
 //   api/data/<project>.md          -> chatbot corpus (dossier + deep dive), committed
 //   _sources/kb/<project>/*.md     -> dossier.md + deep-dive.md for copy drafting (gitignored)
 //   _sources/kb/<project>/raw/*.md -> raw source material, one file per source document (gitignored)
+//   _sources/kb/<project>/figures/  -> figures for CONTENT.md section 8 + figures.md index (gitignored)
 //
 // Guard: if _sources/kb/banned.txt exists (gitignored, one regex per line, e.g. names of
 // research participants), the sync aborts when any pattern appears in the chatbot corpus,
@@ -88,7 +89,19 @@ for (const p of PROJECTS) {
       rawCount++;
     }
   }
-  console.log(`${p.padEnd(16)} ${corpus.split(/\s+/).length} words -> api/data/${p}.md, _sources/kb/${p}/ (+${rawCount} raw files)`);
+  // Figures for CONTENT.md section 8 (images + figures.md), replaced completely as well.
+  const figFrom = join(SRC, 'kb', p, 'figures');
+  const figTo = join(kbDir, 'figures');
+  rmSync(figTo, { recursive: true, force: true });
+  let figCount = 0;
+  if (existsSync(figFrom)) {
+    mkdirSync(figTo, { recursive: true });
+    for (const f of readdirSync(figFrom)) {
+      copyFileSync(join(figFrom, f), join(figTo, f));
+      if (f !== 'figures.md') figCount++;
+    }
+  }
+  console.log(`${p.padEnd(16)} ${corpus.split(/\s+/).length} words -> api/data/${p}.md, _sources/kb/${p}/ (+${rawCount} raw, ${figCount} figures)`);
 }
 
 const evalFrom = resolve(SRC, '..', 'curated', 'eval_questions.md');
