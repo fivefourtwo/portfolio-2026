@@ -11,6 +11,8 @@
 //   - a Markdown file whose frontmatter has a `status` other than `approved`
 // Any other VERCEL_ENV (preview, development, unset as in local builds) only lists them.
 // Malformed content files and unknown copy IDs fail every build.
+// On Vercel (VERCEL is set) an empty VERCEL_ENV fails the build: the gate can't tell
+// production from a preview there, so it fails closed.
 // --root points the gate at another tree, e.g. the fixtures in scripts/draft-gate.test.mjs.
 //
 // Formats
@@ -51,6 +53,16 @@ const rootArg = args.includes('--root') ? args[args.indexOf('--root') + 1] : nul
 const root = resolve(rootArg ?? resolve(dirname(fileURLToPath(import.meta.url)), '..'));
 const env = process.env.VERCEL_ENV || '';
 const production = env === 'production';
+
+if (process.env.VERCEL && !env) {
+  console.error(
+    'Draft gate: this is a Vercel build (VERCEL is set) but VERCEL_ENV is empty, so the gate\n' +
+      "can't tell production from a preview. Stopping the build to be safe.\n" +
+      'Likely cause: "Automatically expose System Environment Variables" is off in the Vercel\n' +
+      'project settings (Settings > Environment Variables). Turn it on and redeploy.',
+  );
+  process.exit(1);
+}
 
 const { errors, blockers } = await collect(root);
 

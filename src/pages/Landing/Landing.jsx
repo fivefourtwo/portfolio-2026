@@ -4,7 +4,6 @@ import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import ProjectCarousel from '../../components/ProjectCarousel/ProjectCarousel'
 import HeroGrid from '../../components/HeroGrid/HeroGrid'
-import Copy from '../../components/Copy/Copy'
 import styles from './Landing.module.css'
 import aboutMeImgWebP from '../../assets-new/me-packed.jpg?format=webp&w=640&quality=80'
 import aboutMeImgJpg from '../../assets-new/me-packed.jpg?w=640&quality=80'
@@ -224,7 +223,7 @@ const Landing = () => {
               initial="hidden"
               animate="visible"
             >
-              <Copy id="test.draft" />
+              This is what it can look like.
             </FM.motion.p>
           </div>
         </section>
