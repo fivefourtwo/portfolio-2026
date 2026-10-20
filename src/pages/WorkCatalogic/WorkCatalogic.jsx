@@ -101,9 +101,9 @@ const WorkCatalogic = () => {
         <FM.motion.section className={styles.sectionTitle} aria-labelledby="catalogic-title" {...reveal}>
           <div className={styles.container}>
             <div className={styles.titleBlock}>
-              <h2 id="catalogic-title" className={styles.titleMain}>
+              <h1 id="catalogic-title" className={styles.titleMain}>
                 Catalogic
-              </h2>
+              </h1>
               <p className={styles.subtitle}>
                 AI-powered music library management
               </p>

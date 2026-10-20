@@ -126,9 +126,9 @@ const WorkAccessAbility = () => {
         >
           <div className={styles.container}>
             <div className={styles.titleBlock}>
-              <h2 id="accessability-title" className={styles.titleMain}>
+              <h1 id="accessability-title" className={styles.titleMain}>
                 AccessAbility
-              </h2>
+              </h1>
               <p className={styles.subtitle}>
                 Modular controlled Electric Wheelchairs
               </p>
