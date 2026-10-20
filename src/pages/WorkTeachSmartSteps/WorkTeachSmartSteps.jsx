@@ -71,9 +71,9 @@ const WorkTeachSmartSteps = () => {
         <FM.motion.section className={styles.sectionTitle} aria-labelledby="title-heading" {...reveal}>
           <div className={styles.container}>
             <div className={styles.titleBlock}>
-              <h2 id="title-heading" className={styles.titleMain}>
+              <h1 id="title-heading" className={styles.titleMain}>
                 Teach Smart Steps
-              </h2>
+              </h1>
               <p className={styles.subtitle}>Adaptive Media Education</p>
             </div>
             <p className={styles.description}>
