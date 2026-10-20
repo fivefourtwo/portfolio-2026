@@ -8,6 +8,7 @@ import WorkTeachSmartSteps from './pages/WorkTeachSmartSteps/WorkTeachSmartSteps
 import WorkAccessAbility from './pages/WorkAccessAbility/WorkAccessAbility'
 import Contact from './pages/Contact/Contact'
 import Imprint from './pages/Imprint/Imprint'
+import NotFound from './pages/NotFound/NotFound'
 
 const ScrollToTop = () => {
   const { pathname } = useLocation()
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/work/accessability" element={<WorkAccessAbility />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/imprint" element={<Imprint />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   )
