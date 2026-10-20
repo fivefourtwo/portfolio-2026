@@ -1,2953 +1,354 @@
-
----
-*Seite 1*
-
-
-1
-
-
----
-*Seite 2*
-
-
-AI-gestütztes Tool zur Katalogisierung und Vewaltung von Musikbibliotheken für DJs
-
-
-Studierende Jannik Aßfalg Fabrice Rio
-
-
-Betreuer Prof. David Oswald Prof. Michael Schuster
-
-
-Bachelor Interaktionsgestaltung SS 2025/2025
-
-
-2 3
-
-
----
-*Seite 3*
-
-
-Inhaltsverzeichnis
-
-
-Inhaltsverzeichnis
-
-
-01 Einführung
-
-
-05 Prototyping & Validation
-
-
-Projektkontext
-
-
-8
-
-
-130
-
-
-Projektplanung
-
-
-12
-
-
-136
-
-
-Tools zur Planung und Umsetzung
-
-
-14
-
-
-140
-
-
-Entwicklungsprozess  Framework  Fortgeschrittener Prototyp  Testergebnisse und Erkenntnisse
-
-
-142
-
-
-02 Recherche
-
-
-06 Visual Design
-
-
-Interviews
-
-
-18
-
-
-146
-
-
-Personas
-
-
-24
-
-
-148
-
-
-User Journey
-
-
-30
-
-
-150
-
-
-Pain Points
-
-
-42
-
-
-152
-
-
-How Might We‘s
-
-
-48
-
-
-Color Guide  Typografie  Design Filters  Komponenten  Finale Screens
-
-
-158
-
-
-Organisationstechniken
-
-
-50
-
-
-Zielgruppendefinition
-
-
-52
-
-
-Marktanalyse
-
-
-56
-
-
-07 Evaluation & Ausblick
-
-
-160
-
-
-03 Konzeption
-
-
-Reflexion Ausblick
-
-
-164
-
-
-Kano-Modell
-
-
-66
-
-
-Metadaten
-
-
-72
-
-
-Grundlagen der KI-Musikklassifizierung
-
-
-74
-
-
-07 Evaluation & Ausblick
-
-
-Mentale Modelle der Klassifizierung
-
-
-82
-
-
-168
-
-
-Wireframes
-
-
-84
-
-
-170
-
-
-174
-
-
-175
-
-
-04 Finales Konzept
-
-
-176
-
-
-Abbildungsverzeichnis Quellenverzeichnis Musikverzeichnis Danksagung  Anmerkungen  Eidesstattliche Versicherung
-
-
-177
-
-
-Standalone App
-
-
-88
-
-
-Trackanalyse
-
-
-90
-
-
-KI als Werkzeug
-
-
-92
-
-
-Adaptives Tagging
-
-
-93
-
-
-Tagkategorien
-
-
-94
-
-
-Aufbau mentaler Modelle
-
-
-96
-
-
-Exploration der Musikbibliothek
-
-
-98
-
-
-Organisationsebenen
-
-
-106
-
-
-Datenbank
-
-
-122
-
-
-Filtermechanismen
-
-
-124
-
-
-Nutzung nach der Organisation
-
-
-126
-
-
-4 5
-
-
----
-*Seite 4*
-
-
-6 7
-
-
----
-*Seite 5*
-
-
-01 Einführung
-
-
-01 Einführung
-
-
-Projektkontext
-
-
-Projektkontext
-
-
-Die unsichtbare Arbeit des  DJing
-
-
-Es ist 2 Uhr morgens im Club. Die Tanzfläche ist voller Menschen,  der Bass ist zu spüren, die Stimmung erreicht ihren Höhepunkt.  Der DJ meistert einen Übergang nach dem anderen, liest die  Crowd und baut geschickt Spannung auf. Was das Publikum nicht  sieht: die stundenlange Vorbereitung, die diesen Moment erst  möglich macht.
-
-
-Abstract Die digitale Revolution veränderte das DJing fundamental. Wo früher physische Plattensammlungen natürliche Grenzen  setzten, haben DJs heute Zugriff auf praktisch unbegrenzte Musik­ mengen. Diese Fülle bringt neue Möglichkeiten, schafft aber auch  ein Paradoxon: Je mehr Musik verfügbar ist, desto schwieriger  wird es, den Überblick zu behalten und im entscheidenden Mo­ ment den perfekten Track zu finden.
-
-
-Die eigentliche Arbeit passiert zu Hause - das Durchhören neuer  Releases, das Kategorisieren von Tracks, das Erstellen von Play­ lists. Die Digitalisierung verschärfte dieses Problem. Früher pass­ ten auf eine Plattentasche vielleicht 50 Scheiben. Heute tragen  DJs Festplatten mit 30.000+ Tracks zum Gig. Die schiere Menge  überfordert selbst erfahrene Profis.
-
-
-Diese Arbeit dokumentiert die Entwicklung eines AI-gestützten  Tools zur Musikorganisation für DJs. Durch Interviews mit sechs  DJs unterschiedlicher Genres und Erfahrungsstufen identifizier­ ten wir ein zentrales Problem: DJs verbringen 5-10 Stunden pro  Woche mit manueller Musikorganisation. Zeit, die der Kreativität  fehlt. Bestehende DJ-Software fokussiert auf Live-Performance,  vernachlässigt aber die kritische Vorbereitungsphase.
-
-
-Wenn Technologie zum  Hindernis wird
-
-
-Rekordbox, Serato und Traktor bieten Features, von denen DJs  der 90er nur träumen konnten: automatische Beatgrids, Key-De­ tection, nahtlose Loops. Doch all diese Innovation konzentriert  sich auf den Moment der Performance. Die Organisation? Ein Stiefkind der Entwicklung.
-
-
-Unser Ansatz nutzt künstliche Intelligenz nicht als Ersatz für  menschliche Kreativität, sondern als Werkzeug zur Befreiung  kreativer Energie. Das entwickelte System analysiert Musikdateien  automatisch, extrahiert über 400 Audio-Features und visualisiert  Musiksammlungen als navigierbare 2D-Landkarten. DJs behalten  dabei die volle kurative Kontrolle - das System schlägt vor, der  Mensch entscheidet.
-
-
-KI als kreativer Assistent
-
-
-Künstliche Intelligenz in der Musik weckt gemischte Gefühle.  Die Angst vor Automatisierung ist real. Unser System versteht  KI anders: nicht als Ersatz, sondern als Verstärker menschlicher  Fähigkeiten. Die entwickelte Lösung analysiert Tracks, extrahiert  musikalische Eigenschaften, erkennt Ähnlichkeiten. Aber sie trifft  keine Entscheidungen. Sie zeigt Möglichkeiten auf, sortiert vor,  macht Verbindungen sichtbar. Die kreative Kontrolle bleibt beim  Menschen.
-
-
-8 9
-
-
----
-*Seite 6*
-
-
-01 Einführung
-
-
-01 Einführung
-
-
-Projektkontext
-
-
-Projektkontext
-
-
-DJ-Workflow
-
-
-Dokumentationsstruktur
-
-
-Unsere Forschung identifizierte einen fünfstufigen Kernwork­ flow, der alle DJ-Aktivitäten umfasst und einen kontinuierlichen  Kreislauf bildet:
-
-
-Kapitel 2: Recherche  Detaillierte Auswertung der DJ-Interviews, Persona-Entwick­ lung, Marktanalyse bestehender Tools
-
-
-Kapitel 3: Konzeption Technische Architektur, Feature-Priorisierung nach Kano-Modell,  Metadaten-Kategorisierung
-
-
-Phase 1: Discovery/Digging Die Musikentdeckung steht am Anfang jeder DJ-Tätigkeit. DJs  nutzen verschiedene Quellen wie SoundCloud für kostenlose  Promotion-Tracks, Beatport und Bandcamp für Käufe, sowie  soziale Medien wie Instagram für Inspiration. Dieser Prozess ist  stark von persönlichen Netzwerken und kuratorischen Fähigkei­ ten geprägt.
-
-
-Kapitel 4: Finales Konzept Systemarchitektur, AI-Pipeline, Interface-Design, Organisations­ ebenen
-
-
-Kapitel 5: Prototyping & Validierung Zweiphasige Entwicklung vom MVP zum High-Fidelity-Prototyp,  Usability-Tests
-
-
-Phase 2: Import & technische Analyse Neue Tracks müssen technisch analysiert werden. BPM-Er­ kennung, Tonart-Analyse und Wellenform-Generierung erfolgen  meist automatisch durch die DJ-Software. Problematisch wird  es bei der emotionalen und kontextuellen Bewertung der Musik.
-
-
-Kapitel 6: Visual Design Dark Theme, Typografie, Komponenten-System, finale Screens
-
-
-Kapitel 7: Evaluation & Ausblick   Erkenntnisse, Limitationen, mögliche Weiterentwicklung
-
-
-Phase 3: Library-Verwaltung & Organisation Die Organisation der Musiksammlung erweist sich als zeitauf­ wändigste Phase. Tracks müssen kategorisiert, getaggt und in  sinnvolle Ordnungsstrukturen eingeordnet werden. Hier zeigen  sich die größten Schwächen aktueller Software-Lösungen.
-
-
-Phase 4: Set-Planung & Vorbereitung Vor jedem Auftritt erfolgt eine mehr oder weniger detaillierte  Vorbereitung. Diese reicht von kompletten Setlists bis zu groben  thematischen Orientierungen, abhängig vom DJ-Stil und Anlass.
-
-
-Projektziel Diese Arbeit zeigt, wie AI-Technologie konkrete Workflow-Prob­ leme von DJs lösen kann. Der entwickelte Prototyp demonst­ riert die Machbarkeit räumlicher Musikvisualisierung für große  Sammlungen. Die Erkenntnisse sind auf andere Bereiche der  Musikorganisation übertragbar.
-
-
-Phase 5: Live-Performance Die Live-Performance ist der Moment, in dem sich die Qualität  der vorangegangenen Organisation zeigt. Spontane Entschei­ dungen erfordern schnellen Zugriff auf passende Tracks aus der  vorbereiteten Sammlung.
-
-
-10 11
-
-
----
-*Seite 7*
-
-
-01 Einführung Projektplanung
-
-
-Abb.1 Projektplanung
-
-
-12 13
-
-
----
-*Seite 8*
-
-
-01 Einführung Tools zur Planung und Umsetzung
-
-
-Für die erfolgreiche Planung und Umsetzung unseres Bache­ lor-Projekts haben wir eine Reihe von digitalen Werkzeugen  genutzt, die uns in verschiedenen Phasen des Arbeitsprozesses  unterstützt haben.
-
-
-Zur Organisation und Aufgabenverwaltung diente uns Notion als  zentrale Plattform. Hier haben wir regelmäßig unsere Aufgaben  erfasst, geplant und den Fortschritt verfolgt. Das herunterbre­ chen zentraler Aufgaben in kleinere ToDos hat uns geholfen,  stets einen klaren Überblick zu behalten. Darüber hinaus nutz­ ten wir Notion für die kollaborative Erstellung von Textinhalten,  wie beispielsweise der Leitfäden für unsere Interviews und  Usability-Tests.
-
-
-Die Kommunikation im Team und mit externen Partnern wurde  durch verschiedene Kanäle sichergestellt. Slack diente uns als  offizieller Kommunikationskanal, um mit unseren betreuen­ den Professoren in Kontakt zu treten. Für die schnelle interne  Absprache, Terminvereinbarungen und den unkomplizierten  Austausch mit unseren Interviewpartnern und DJs haben wir  WhatsApp verwendet.
-
-
-Die visuelle Gestaltung aller Elemente wurde in Figma umge­ setzt. Für die Synthese unserer Forschungsergebnisse, wie das  Clustern von Erkenntnissen aus Interviews und anderen Re­ search-Methoden, haben wir Miro verwendet. Zur Erstellung des  funktionalen Prototyps wurde Cursor verwendet.
-
-
-Abschließend wurde die gesamte Projektdokumentation mit  Adobe InDesign erstellt, um ein sauberes Druckergebnis zu ge­ währleisten.
-
-
-14 15
-
-
----
-*Seite 9*
-
-
-16 17
-
-
----
-*Seite 10*
-
-
-02 Recherche
-
-
-Interviews
-
-
-Interviews mit Experten aus  unterschiedlichen Bereichen
-
-
-Sechs DJs mit unterschiedlichen Profilen und Erfahrungsstufen  bildeten die Grundlage unserer user-zentrierten qualitativen  Forschung:
-
-
-Abb. 2 Pino Pena Abb. 3 DJ Danik
-
-
-Pino Peña (29, fortgeschritten)  14 Jahre Erfahrung, vielseitiger Stil von Techno und breakiger  Bassmusik bis Jazz, Hip-Hop und Reggae. Spielt in Clubs, bei  privaten Events und im Radio. Organisiert hauptsächlich über  iTunes, exportiert mit Rekordbox für Live-Sets.
-
-
-DJ Danik (Event-DJ, semi-professionell) Hauptberuflich Speditionskaufmann, nebenbei DJ für Hochzei­ ten und Events. Fokus auf Discofox, Malle-Musik, 90er-Hits und  gelegentlich elektronische Musik. Nutzt Virtual DJ und organi­ siert nach Jahrzehnten.
-
-
-Concussion (23, semi-professionell) 4-5 Jahre DJ-Erfahrung, 9-10 Jahre Produzent. Spezialisiert auf  klassischen Techno und Schranz. Nutzt Rekordbox und experi­ mentiert mit verschiedenen Organisationssystemen nach Artists.
-
-
-Abb. 5 Townes
-
-
-Abb. 4 Concussion
-
-
-Townes (24, Vinyl-DJ) 7 Jahre Erfahrung (5 Jahre Vinyl-Only, 2 Jahre Hybrid). Semiprofessionell, legt hauptsächlich in Clubs auf. Fokus auf hy­ pnotic Techno mit Einflüssen aus House, Ambient und Breaks.  Arbeitet ausschließlich mit Vinyl über Discogs.
-
-
-Polygonia (29, professionell) 7 Jahre Erfahrung, lebt von DJ- und Produktionstätigkeit. Spielt  in Clubs und auf Festivals. Vielseitiger Stil mit Techno, House,  Breakbeat, Bassmusik und psychedelischen Elementen. Nutzt  umfangreiches Tagging-System in Rekordbox.
-
-
-Toobris (24, Club-DJ) 7 Jahre Erfahrung, spielt hauptsächlich in Clubs. Fokus auf  Techno mit starkem Groove. Nutzt Rekordbox mit detailliertem  Tag-System für Mood und Genre-Kategorisierung.
-
-
-Abb. 6 Polygonia
-
-
-Abb. 7 Toobris
-
-
-18 19
-
-
----
-*Seite 11*
-
-
-02 Recherche
-
-
-Interviews
-
-
-02 Recherche Interviews
-
-
-„Nach welchen Kriterien entscheidest du, ob ein
-
-
-Aufbau des Leitfadens
-
-
-neuer Track relevant für deine Sets ist?“
-
-
-Um einen umfassenden Einblick in die zentralen Arbeitsbereiche  und Prozesse eines DJs zu gewinnen, wurde der Interviewleitfa­ den methodisch und chronologisch aufgebaut. Die Struktur folg­ te dem logischen Arbeitsablauf eines DJs – von der Entdeckung  neuer Musik bis hin zur Live-Performance. Dieser Aufbau stellte  sicher, dass wir ein ganzheitliches Verständnis für die einzelnen  Phasen entwickelten und die spezifischen Herausforderungen  sowie Bedürfnisse in jedem Schritt systematisch erfassten.
-
-
-„Welche Herausforderungen begegnen dir am
-
-
-häufigsten beim Digging-Prozess?“
-
-
-Einstieg & Allgemeines Wir begannen mit allgemeinen Fragen zum Hintergrund des DJs.  Dies schuf eine gute Gesprächsbasis und lieferte wichtigen Kon­ text für seine späteren Antworten.
-
-
-„Wie organisierst du aktuell deine Musikbibliothek?“
-
-
-Digging-Prozess Anschließend fragten wir, wie neue Musik entdeckt und ausge­ wählt wird. Hier wollten wir die ersten Hürden und Frustrationen  im Workflow identifizieren.
-
-
-„Hast du während des Auftritts Zugriff auf deine  komplette Musikbibliothek, oder arbeitest du mit
-
-
-Vorbereitungsprozess Dieser Abschnitt behandelte die Organisation der Musikbiblio­ thek und die Set-Planung. Das Ziel war, organisatorische Proble­ me und zeitintensive Aufgaben aufzudecken.
-
-
-vorbereiteten Playlists?“
-
-
-Durchführung des Gigs Hier fokussierten wir uns auf die Live-Performance, um die  praktischen Herausforderungen zu verstehen, die während eines  Auftritts auftraten.
-
-
-„Wenn du dir das ideale Tool zur Organisation deiner
-
-
-Musikbibliothek vorstellen könntest – was müsste
-
-
-es unbedingt können?“
-
-
-Wünsche & Bedürfnisse Nachdem alle Prozesse besprochen worden waren, fragten wir  gezielt nach Ideen für zukünftige Lösungen und ideale Werk­ zeuge.
-
-
-20 21
-
-
----
-*Seite 12*
-
-
-02 Recherche
-
-
-Interviews
-
-
-Ablauf der Interviews
-
-
-Jedes Interview dauerte 45-90 Minuten und wurde remote über  Zoom durchgeführt. Die Gespräche wurden aufgezeichnet und  vollständig transkribiert. Ein semi-strukturierter Ansatz erlaubte  spontane Nachfragen bei interessanten Erkenntnissen.
-
-
-Von Interviews zu Personas
-
-
-Abb. 8 Interview Pino Pena
-
-
-Die DJs wurden ermutigt, ihre Bildschirme zu teilen und ihre ak­ tuellen Organisationssysteme zu zeigen. Diese Show-and-TellMethode offenbarte oft mehr als reine Beschreibungen. Aus den sechs durchgeführten Interviews kristallisierten sich  drei charakteristische Nutzertypen heraus, die unterschiedli­ che Herangehensweisen an DJ-Workflows repräsentieren. Diese  Personas fassen die wichtigsten Erkenntnisse zu Arbeitsweisen,  Bedürfnissen und Frustrationen zusammen und dienten als  Grundlage für alle weiteren Design-Entscheidungen.
-
-
-Abb. 9 Interview Polygonia
-
-
-22 23
-
-
----
-*Seite 13*
-
-
-02 Recherche Personas
-
-
-02 Recherche Personas
-
-
-Jasmin
-
-
-Persona-Story
-
-
-Alter: 29
-
-
-Geschlecht: Weiblich
-
-
-Wohnort: München
-
-
-Jasmin ist eine sehr strukturierte DJ und Produzentin, 29  Jahre alt, und lebt von ihren Auftritten und Produktionen. Sie ist  routinierte Planerin und mag es, den Überblick zu behalten. Als  Organisationstalent sucht sie nach einem System, mit dem Sie  ihre Musikbibliothek personalisiert organisieren kann und dabei  Unterstützung bekommt
-
-
-Beruf: DJ und Produzentin
-
-
-Über Jasmin
-
-
-Chaotisch
-
-
-Organisiert
-
-
-Abb. 10 Jasmin
-
-
-Technisch unerfahren
-
-
-Technisch versiert
-
-
-Jasmin ist seit 7 Jahren als DJ aktiv und hat sich über die Jahre  von reinem Auflegen hin zu eigenen Produktionen entwickelt.  Sie ist eine leidenschaftliche Künstlerin, die sich durch ihren  vielseitigen Musikstil auszeichnet. Ihre Sets umfassen Genres  wie Techno, House, Breakbeat, Bassmusik und psychedelische  Elemente mit gelegentlichen jazzy Einflüssen. Sie ist sehr orga­ nisiert und investiert viel Zeit in das Tagging und Sortieren ihrer  Musik, um eine intuitive Auswahl während ihrer Performances zu
-
-
-Gestresst
-
-
-Entspannt
-
-
-Was will Jasmin?
-
-
-Analytisch
-
-
-Kreativ
-
-
-Jasmin möchte ihre Musikbibliothek ordentlich halten und  dabei aber nicht eingeschränkt werden. Am liebsten arbeitet  sie mit eigenen Tags um damit zum Beispiel bei Live Auf­ tritten schnellen Zugriff auf ihre Tracks zu haben. Während  Gigs möchte sie spontan sein und auf die Crowd reagieren  können.
-
-
-24 25
-
-
----
-*Seite 14*
-
-
-02 Recherche Personas
-
-
-02 Recherche Personas
-
-
-Lio
-
-
-Persona-Story
-
-
-Alter: 26
-
-
-Geschlecht: Männlich
-
-
-Wohnort: Berlin
-
-
-Lio ist ein vielseitiger DJ und Produzent, 26 Jahre alt, der in Ber­ lin lebt. Er kombiniert eine Leidenschaft für Techno und breakige  Beats mit einem pragmatischen Ansatz bei der Organisation sei­ ner Sets. Seine Sets sind geprägt von einem starken Groove und  einer flexiblen Track-Auswahl, die er spontan an die Stimmung  des Publikums anpasst.
-
-
-Beruf: DJ und Produzent
-
-
-Über Lio
-
-
-Chaotisch
-
-
-Organisiert
-
-
-Abb. 11 Lio
-
-
-Technisch unerfahren
-
-
-Technisch versiert
-
-
-Gestresst
-
-
-Entspannt
-
-
-Lio ist ein kreativer Künstler, der seine musikalische Vielsei­ tigkeit schätzt. Seine Inspiration zieht er aus Plattformen wie  Instagram, Bandcamp und Spotify, wobei er großen Wert auf  kuratierte Inhalte legt. Sein Stil reicht von Techno mit komplexen  Grooves bis hin zu Jazz-Elementen und House. Lio beschreibt  sich selbst als „Finder“: Seine Musikbibliothek ist über die Jahre gewachsen und um­ fasst eine Vielzahl von Genres. Die Organisation erfolgt über­ wiegend in Rekordbox, wo er Tags wie „Mood“ oder „Energy  Level“ verwendet. Dennoch empfindet er die Struktur seiner  Library als unzureichend, was ihn bei der Live-Performance ge­ legentlich ausbremst.
-
-
-Kreativ
-
-
-Analytisch
-
-
-Was will Lio?
-
-
-Lio möchte eine effizientere Möglichkeit, seine Musikbiblio­ thek zu organisieren, ohne dabei die Kontrolle über seine krea­ tive Auswahl zu verlieren. Er sucht nach Tools, die ihm helfen,  Tracks schneller zu taggen und Playlists intuitiver zu erstellen.  Besonders wichtig ist ihm eine bessere Integration zwischen  Inspirationsquellen (z. B. Instagram) und seiner DJ-Software (z.  B. Rekordbox). Für die Live-Performance wünscht er sich eine  Funktion, die passende Track-Vorschläge basierend auf Stim­ mung und Energielevel liefert.
-
-
-Bei was hat Lio Probleme?
-
-
-Lio hat Schwierigkeiten, den Überblick über seine große Musik­ bibliothek zu behalten. Das manuelle Tagging ist zeitaufwändig  und oft fehleranfällig. Während seiner Gigs erlebt er regelmäßig  Stressmomente, wenn er den passenden Track nicht schnell  findet oder wenn Übergänge nicht optimal harmonieren. Der  Wechsel zwischen Plattformen wie Instagram und Bandcamp  sowie das Importieren neuer Tracks in Rekordbox gestaltet sich
-
-
-26 27
-
-
----
-*Seite 15*
-
-
-02 Recherche Personas
-
-
-02 Recherche Personas
-
-
-Samuel
-
-
-Persona-Story
-
-
-Alter: 43
-
-
-Samuel ist ein nebenbruflicher Event-DJ, 38 Jahre alt und  arbeitet als Speditionkaufmann. Er hat die meisten Tracks die er  braucht schon auf seiner Festplatte. Seine Musikbibliothek ist  nach Jahrzehnten sortiert weshalb sich in den Ordnern nicht viel
-
-
-Geschlecht: Männlich
-
-
-Wohnort: Leipzig
-
-
-Beruf: Speditionskaufmann / Event-DJ
-
-
-Über Samuel
-
-
-Chaotisch
-
-
-Organisiert
-
-
-Abb. 12 Samuel
-
-
-Technisch unerfahren
-
-
-Technisch versiert
-
-
-Samuel ist ein leidenschaftlicher DJ, der sich über die Jahre von  einer akribischen Vorbereitung hin zu einem flexibleren Ansatz  entwickelt hat. Während er früher Stunden in die Erstellung  fester Setlists investierte, verlässt er sich heute stärker auf sein  Bauchgefühl und spontane Anpassungen während des Events.  Seine Musikbibliothek umfasst eine Vielzahl von Genres, dar­ unter Discofox für Hochzeiten, Malle-Musik, 90er-Hits sowie  gelegentlich elektronische Musik. Extreme Elektro-Tracks und  bestimmte Hip-Hop-Stile vermeidet er bewusst. Für die Vorbe­ reitung nutzt er Fragebögen, um Musikwünsche und No-Gos von  Brautpaaren zu erfassen, und erstellt darauf basierend Must-
-
-
-Gestresst
-
-
-Entspannt
-
-
-Was will Samuel?
-
-
-Analytisch
-
-
-Kreativ
-
-
-Samuel möchte seine Musikbibliothek effizienter organisieren und  den manuellen Aufwand bei der Pflege reduzieren. Er sucht nach  Tools, die ihm helfen, doppelte Dateien automatisch zu erken­ nen und zu entfernen. Zudem wünscht er sich Unterstützung bei  der Erstellung von Playlists, die sowohl vorab geplante Wünsche  als auch spontane Anpassungen ermöglichen. Eine verbesserte  Backup-Lösung für seine Festplatte wäre ebenfalls hilfreich, um  technische Ausfälle zu vermeiden.
-
-
-Bei was hat Samuel Proble­ me?
-
-
-Die manuelle Sortierung seiner umfangreichen Musikbiblio­ thek ist zeitaufwendig und wird als lästig empfunden. Doppelte  Dateien erschweren den Workflow zusätzlich. Während seiner  Live-Auftritte steht er vor der Herausforderung, die Balance zwi­ schen den vorab erfassten Wünschen des Brautpaars und der  Stimmung des Publikums zu finden. Technische Probleme wie  ein möglicher Festplattenausfall stellen ein weiteres Risiko dar.
-
-
-28 29
-
-
----
-*Seite 16*
-
-
-02 Recherche User Journey – Jasmin
-
-
-30 31
-
-
----
-*Seite 17*
-
-
-02 Recherche User Journey – Jasmin
-
-
-32 33
-
-
----
-*Seite 18*
-
-
-02 Recherche User Journey – Jasmin
-
-
-34 35
-
-
----
-*Seite 19*
-
-
-02 Recherche User Journey – Samuel
-
-
-36 37
-
-
----
-*Seite 20*
-
-
-02 Recherche User Journey – Samuel
-
-
-38 39
-
-
----
-*Seite 21*
-
-
-02 Recherche User Journey – Samuel
-
-
-40 41
-
-
----
-*Seite 22*
-
-
-02 Recherche Pain Points
-
-
-02 Recherche Pain Points
-
-
-Die vier systematischen  Hauptprobleme
-
-
-Unsere Analyse identifizierte vier zentrale Problemkomplexe,  die sich durch alle Interviews zogen und unabhängig von Erfah­ rungslevel oder Musikrichtung auftraten:
-
-
-Problem 4: Unzureichende Analyse emotionaler und kontex­ tueller Eigenschaften Wichtige musikalische Eigenschaften wie Stimmung, Energiele­ vel oder Groove-Charakteristika werden von aktueller Software  nur oberflächlich erfasst. Diese qualitativen Aspekte sind aber  entscheidend für DJ-Entscheidungen, besonders bei Live-Auf­ tritten. Während die Software technische Parameter wie BPM  und Tonart automatisch analysiert, bleiben emotionale und kon­ textuelle Eigenschaften weitgehend unberücksichtigt.
-
-
-Problem 1: Hoher Zeitaufwand für manuelle Organisation Die manuelle Organisation von Musikbibliotheken verschlingt  enorme Zeitressourcen. DJs berichten von mehreren Stunden  wöchentlichem Aufwand für das Sortieren neuer Tracks und  die Bereinigung ihrer Sammlungen. Diese Zeit fehlt für kreative  Tätigkeiten wie Set-Vorbereitung oder musikalische Weiter­ entwicklung. Der Zeitaufwand steigt linear mit der Größe der  Sammlung. Was bei wenigen hundert Tracks noch händisch  funktioniert, wird bei mehreren tausend Songs zur Sisyphus­ arbeit.
-
-
-Fragmentierung zwischen  verschiedenen Plattformen  und Tools
-
-
-Eine strukturelle Herausforderung liegt in der mangelnden Ver­ bindung zwischen den einzelnen Workflow-Phasen. DJs wech­ seln konstant zwischen verschiedenen Plattformen und Tools,  ohne dass diese miteinander kommunizieren.
-
-
-Discovery-Tools vs. Organisation Instagram-Posts oder Spotify-Playlists inspirieren zu neuen  Tracks, aber der Weg vom Entdecken zum organisierten Import  erfordert mehrere manuelle Schritte. Screenshots, Notizen oder  Browser-Bookmarks dienen als primitive Brücken zwischen den  Systemen.
-
-
-Problem 2: Limitierte Tagging-Prozesse durch Software-Be­ schränkungen Bestehende DJ-Software zwängt Nutzer in vordefinierte Kate­ goriesysteme, die selten zu individuellen Arbeitsweisen passen.  Rekordbox bietet beispielsweise nur begrenzte Tag-Kategorien,  während Serato zwar flexiblere Tagging-Optionen hat, aber die  Benutzeroberfläche dafür unzureichend gestaltet ist. DJs ent­ wickeln oft eigene Organisationssysteme, die jedoch nicht von  der Software unterstützt werden.
-
-
-Organisation vs. Live-Performance Selbst sorgfältig organisierte Musikbibliotheken versagen oft  unter dem Zeitdruck eines Live-Auftritts. Die Ordnungsstruktu­ ren, die bei ruhiger Vorbereitung sinnvoll erscheinen, erweisen  sich in stressigen Situationen als ungeeignet.
-
-
-Fehlender Feedback-Loop Live-Erfahrungen fließen selten zurück in die Organisations­ struktur. Tracks, die in bestimmten Situationen gut funktionieren,  werden nicht systematisch für ähnliche Kontexte markiert.
-
-
-Problem 3: Inkonsistenz bei der Verwaltung ohne systemati­ sche Unterstützung Ohne systematischen Ansatz werden Musikbibliotheken schnell  chaotisch. DJs beginnen oft mit einem Organisationssystem,  das sie aber im Laufe der Zeit nicht konsequent durchhalten  können. Neue Tracks landen in „Sammelbecken-Playlists“, alte  Ordnungsstrukturen werden nicht gepflegt. Das Problem ver­ stärkt sich durch verschiedene Importquellen: Bandcamp-Käufe,  Promo-Downloads, Streaming-Rips und eigene Produktionen  folgen unterschiedlichen Namenskonventionen und MetadatenStandards.
-
-
-42 43
-
-
----
-*Seite 23*
-
-
-02 Recherche Pain Points
-
-
-Medienwechsel unterbricht  Workflow
-
-
-Manueller Tagging-Aufwand  als Zeitfresser
-
-
-Der Wechsel zwischen verschiedenen Plattformen unterbricht  den kreativen Flow und kostet wertvolle Zeit. Ein typischer DJArbeitsplatz umfasst gleichzeitig geöffnet:
-
-
-Das Taggen von Musik erfordert sowohl technisches Verständ­ nis als auch musikalische Expertise. DJs müssen für jeden Track  entscheiden:
-
-
-•	 Welche Genres und Subgenres treffen zu? •	 Welche Stimmung vermittelt der Track? •	 In welchen Set-Kontexten funktioniert er? •	 Welche BPM-Range und Tonart hat er? •	 Wie ist das Energielevel einzuschätzen?
-
-
-•	 DJ-Software (Rekordbox, Serato) •	 Browser mit mehreren Tabs (Bandcamp, SoundCloud,  Label-Websites) •	 Social Media Apps (Instagram, Twitter) •	 Kommunikations-Tools (WhatsApp, E-Mail für PromoKontakte) •	 File-Management (Finder/Explorer für Download-Ord­ ner)
-
-
-Diese Entscheidungen können nur getroffen werden, wenn der  Track vollständig gehört wurde. Ein zeitaufwändiger Prozess,  der sich bei hunderten neuen Tracks pro Monat zu einem erheb­ lichen Arbeitsaufwand summiert. DJs investieren einen Haupt­ teil ihrer musikbezogenen Zeit in organisatorische Aufgaben.  Bei professionellen DJs entspricht das mehreren Stunden pro  Woche, Zeit, die für andere kreative Aktivitäten verloren geht.
-
-
-Jeder Wechsel zwischen diesen Tools erfordert einen mentalen  Kontextwechsel und vergrößert die Wahrscheinlichkeit, wichtige  Tracks oder Informationen zu verlieren. Ein typischer Track-Dis­ covery-Prozess durchläuft mehrere Plattformen: InstagramPost, Shazam/SoundHound, Streaming-Dienst zum Anhören,  Online-Store zum Kauf, Download-Ordner, DJ-Software. Jeder  Schritt bietet Verlustpotential und Frustrationsmöglichkeiten.
-
-
-44 45
-
-
----
-*Seite 24*
-
-
-02 Recherche Pain Points
-
-
-02 Recherche Pain Points
-
-
-UI/UX-Probleme aktueller  Software-Lösungen
-
-
-Bestehende DJ-Software wurde primär für die Live-Perfor­ mance entwickelt, nicht für die organisatorischen Aufgaben  davor. Die Benutzeroberflächen sind oft:
-
-
-Stress bei der Live-Perfor­ mance durch ineffiziente  Tracksuche
-
-
-Der kritischste Moment im DJ-Workflow: Während eines LiveAuftritts den passenden nächsten Track zu finden. DJs berich­ ten regelmäßig von Situationen, in denen sie unter Zeitdruck den  gewünschten Song nicht schnell genug lokalisieren können.
-
-
-Zu dunkel und unübersichtlich Mehrere DJs bemängeln, dass Rekordbox zu wenig Kontrast  bietet und wichtige Informationen schwer erkennbar sind.
-
-
-Zu klein skaliert Coverbilder und Waveforms sind oft so klein, dass schnelle visu­ elle Orientierung schwierig wird.
-
-
-Diese Situationen entstehen durch: •	 Unzureichende Vorbereitung aufgrund zeitaufwändiger  Organisation •	 Starre Playlist-Strukturen, die spontane Anpassungen erschweren •	 Langsame Such- und Filterfunktionen in der Live-Soft­ ware •	 Fehlende intelligente Vorschläge basierend auf dem aktuellen Track
-
-
-Zu langsam Relinking-Prozesse und Datenbankabfragen dauern zu lange für  effizientes Arbeiten.
-
-
-Unzureichend für verschiedene Nutzungsszenarien Was bei detaillierter Set-Vorbereitung funktioniert, ist für  schnelle Live-Entscheidungen ungeeignet.
-
-
-Der Stress solcher Momente kann die gesamte Performance be­ einträchtigen und das Vertrauen des DJs in sein System unter­ graben. Der Übergang zwischen zwei Tracks ist der stressinten­ sivste Moment im DJ-Workflow, wo sich alle organisatorischen  Schwächen komprimiert in wenigen Sekunden zeigen.
-
-
-46 47
-
-
----
-*Seite 25*
-
-
-02 Recherche How Might We‘s
-
-
-02 Recherche How Might We‘s
-
-
-Wie können wir die Musikbibliothek für DJs visuell  aufbereiten, sodass sie neue Zusammenhänge ent­
-
-
-How Might We‘s als  Leitplanken
-
-
-decken und vergessene Tracks wiederfinden?
-
-
-Die How Might We-Statements dienten während des gesamten  Entwicklungsprozesses als konstante Referenz und Orientie­ rung. Wir kamen immer wieder auf sie zurück - bei Feature-Ent­ scheidungen, UI-Entwürfen und technischen Implementierungen.
-
-
-Wie können wir die Bibliotheksorganisation für DJs
-
-
-flexibilisieren, sodass sie ihre Musik nach eigenen,
-
-
-Kontinuierliche Validierung Bei vielen Design-Entscheidungen stellten wir die Frage:  „Welches How Might We adressiert das?“ Features, die keines  der identifizierten Probleme lösten, wurden hinterfragt oder ver­ worfen.
-
-
-kreativen Kriterien organisieren können?
-
-
-Inspiration für konkrete Lösungen Statt abstrakte Anforderungen zu bleiben, inspirierten die How  Might We‘s konkrete Features: „Individuelle Organisationssyste­ me unterstützen“ führte zum MY TAGS System, „AI-Unterstüt­ zung ohne Kontrollverlust“ zum Augmentation-statt-Automa­ tion-Prinzip.
-
-
-Wie können wir die Suche nach passenden Tracks  für DJs beschleunigen, sodass sie mehr Zeit für die
-
-
-kreative Set-Vorbereitung haben?
-
-
-Wie können wir KI-Vorschläge für DJs gestalten,  sodass sie auf neue Ideen kommen, ohne ihre kreati­
-
-
-ve Kontrolle zu verlieren?
-
-
-48 49
-
-
----
-*Seite 26*
-
-
-02 Recherche Organisationstechniken
-
-
-02 Recherche Organisationstechniken
-
-
-Tagging
-
-
-Visuelle Marker
-
-
-DJs nutzen die Tagging-Funktionen von Programmen wie Re­ kordbox und Serato, um ihre Musik nach einer Vielzahl von Kri­ terien zu ordnen. Dazu gehören objektive Merkmale wie Genre  oder Instrumentierung, aber auch subjektive Bewertungen wie  Energielevel Peak Time, Warm-up oder Stimmung melancho­ lisch, treibend. Viele DJs entwickeln hochgradig personalisierte  Systeme, die zum Beispiel den Einsatzort („Festival Mainstage“,  „Bar-Lounge“), die Tonart für harmonisches Mixing oder die  rhythmische Struktur („breakbeat“, „4-to-the-floor“) kodieren.
-
-
-Visuelle Marker wie Sternebewertungen und Farbkodierungen  sind ein Werkzeug zur schnellen qualitativen Einschätzung. DJs  weisen Tracks beispielsweise eine Bewertung von 1 bis 5 Ster­ nen zu, um die persönliche Relevanz oder die Tanzbarkeit eines  Tracks zu bewerten. Farb-Tags werden oft genutzt, um Ener­ gielevel oder Stimmungen zu visualisieren. Ein gängiges System  ist beispielsweise die Zuweisung von Farben für verschiedene  Phasen eines Sets: Blau für ruhige „Warm-up“-Tracks, Grün und  Gelb für den Aufbau und Rot für energiegeladene „Peak-Time“Tracks. Diese visuellen Hinweise ermöglichen es, während eines  Live-Sets auf einen Blick passende Optionen zu identifizieren.
-
-
-Ordnerstrukturen
-
-
-Eine grundlegende und weit verbreitete Methode ist die Orga­ nisation in hierarchischen Ordnerstrukturen direkt im Datei­ system oder innerhalb der DJ-Software. Viele DJs legen Ordner  für Genres an (z.B. „Techno“, „House“, „Ambient“), die weiter in  Sub-Genres unterteilt werden („Melodic Techno“, „Hardgroove“).  Andere strukturieren ihre Sammlung nach Anwendungsfall, mit  Ordnern wie „Warm-up Sets“, „Peak Time Tracks“ oder „After­ hour“. Auch temporäre Ordner wie „Neue Tracks dieser Woche“  oder „Für Gig in Club X“ sind üblich, um den Überblick über neu  erworbene Musik zu behalten und sie für bestimmte Anlässe zu  gruppieren.
-
-
-Kommentare
-
-
-Handschriftliche Ergänzungen sind besonders bei Vinyl-DJs ver­ breitet: Sticker und Notizen auf Plattenhüllen mit Informationen  wie „Works after dark bassline track“ oder „Good for summer  sets“.
-
-
-Digital nutzen DJs Kommentar-Felder für kontextuelle Infor­ mationen: „Played at Club X 2023“, „Good transition from Artist  Y“, „Crowd went wild“. Diese wertvollen Metadaten sind schwer  systematisch auswertbar.
-
-
-50 51
-
-
----
-*Seite 27*
-
-
-02 Recherche Zielgruppendefinition
-
-
-02 Recherche Zielgruppendefinition
-
-
-Die DJ-Kultur umfasst verschiedene musikalische Ausrichtun­ gen und Auftrittskontexte:
-
-
-Genre-spezifische  Anforderungen
-
-
-Die Grundprobleme der Musikorganisation betreffen alle DJ-Ka­ tegorien, unterscheiden sich aber in Intensität und Schwerpunk­ ten.
-
-
-Professionelle vs.  Semi-professionelle vs.  Hobby-DJs
-
-
-Electronic Music DJ arbeiten mit komplexen Genre-Hybriden  und benötigen nuancierte Kategorisierung für Subgenres, Ener­ gie-Level und Mix-Kompatibilität.
-
-
-Professionelle DJs haben größere Musikmengen zu verwalten  und stehen unter höherem Zeitdruck. Ihr Lebensunterhalt hängt  direkt von der Effizienz ihrer Organisationssysteme ab. Sie be­ nötigen hochentwickelte Tools, die große Datenmengen schnell  verarbeiten können.
-
-
-Event-DJs müssen diverse Musikstile für verschiedene Ziel­ gruppen organisieren und benötigen klare Kategorien nach An­ lass, Altersgruppe und kulturellem Kontext.
-
-
-Genre-übergreifende DJs kombinieren verschiedene Stile und  benötigen flexible Organisationssysteme, die musikalische Ver­ bindungen zwischen unterschiedlichen Genres erkennen können.
-
-
-Semi-professionelle DJs navigieren zwischen kreativen Ambi­ tionen und zeitlichen Beschränkungen. Sie wollen professionelle  Ergebnisse erzielen, haben aber begrenzte Zeit für organisatori­ sche Aufgaben. Für sie sind automatisierte Lösungen besonders  wertvoll.
-
-
-Performance-KontextUnterschiede
-
-
-Club-DJs fokussieren sich auf längere Sets mit dramaturgi­ schem Aufbau und benötigen Tools für Energy-Management und  Crowd-Reaktion.
-
-
-Hobby-DJs haben spezifische Anforderungen je nach Einsatz­ gebiet. Event-DJs brauchen verlässliche Kategorisierung nach  Anlass und Publikum, während Hobby-DJs oft mit kleineren,  aber dennoch unübersichtlichen Sammlungen kämpfen.
-
-
-Diese Diversität zeigt, dass eine erfolgreiche Lösung ver­ schiedene Unterschiede berücksichtigen muss. Ein System für  Electronic Music DJs muss andere Prioritäten setzen als eines  für Hochzeits-DJs, trotz gemeinsamer Grundprobleme in der  Musikorganisation.
-
-
-52 53
-
-
----
-*Seite 28*
-
-
-02 Recherche Zielgruppendefinition
-
-
-02 Recherche Zielgruppendefinition
-
-
-Zielgruppen-Charakteristika unserer Hauptnutzer
-
-
-Primäre Zielgruppe
-
-
-•	 2+ Jahre DJ-Erfahrung mit regelmäßigen Auftritten •	 Musiksammlung von 1.000+ Tracks mit kontinuierlichem  Wachstum •	 Interesse an fortgeschrittenen Features und Semi-Auto­ matisierung
-
-
-Primärer Fokus auf erfahrene DJs basierend auf InterviewErkenntnissen Unsere Interviews mit sechs DJs verschiedener Erfahrungs­ stufen zeigten eine klare Bereitschaft bei semi-professionellen  und professionellen DJs, Zeit und Aufwand in bessere Organi­ sationstools zu investieren. Diese DJs verstehen den direkten  Zusammenhang zwischen effizienter Musikorganisation und  Auftrittserfolg - für sie ist Zeit, die in Organisation investiert wird,  eine berufliche Notwendigkeit, keine lästige Pflicht.
-
-
-Diese strategische Priorisierung ermöglicht es uns, ein tief­ greifendes, funktionsreiches Tool zu entwickeln, das primär für  engagierte DJs optimiert ist, aber durch AI-Features auch für  weniger erfahrene Nutzer wertvoll sein kann.
-
-
-Die Professionelle Plattform-Positionierung Wir entwickeln eine professionelle Lösung für DJs, die bereits  über fundierte Musikkenntnis und etablierte Workflows ver­ fügen. Diese Zielgruppe schätzt fortgeschrittene Features und  ist bereit, eine Lernkurve zu durchlaufen, wenn der langfristige  Nutzen klar erkennbar ist. Sie investieren regelmäßig in Hard­ ware, Software und Musik und sehen Tools als business-kriti­ sche Investitionen.
-
-
-Potential für Einsteiger-DJs durch AI-Klassifizierung Während erfahrene DJs unsere Primärzielgruppe darstellen,  schließen wir Anfänger nicht aus. Gerade die automatische AIKlassifizierung könnte für Einsteiger besonders wertvoll sein, da  sie ohne tiefes Musikwissen präzise Kategorisierung und Emp­ fehlungen erhalten. Anfänger-DJs haben oft weniger etablierte  Organisationsmuster und könnten daher offener für neue An­ sätze sein.
-
-
-54 55
-
-
----
-*Seite 29*
-
-
-02 Recherche Marktanalyse
-
-
-Methodisches Vorgehen
-
-
-Die Marktanalyse umfasste eine systematische Unter­ suchung von über 20 Tools aus zwei Hauptkategorien:  Performance-orientierte DJ-Software und reine Musikver­ waltungssoftware. Mittels einer Feature-Matrix wurden die  Kernfunktionalitäten, Automatisierungs- und KI-Features  analysiert, um Marktlücken und Probleme zu identifizieren.
-
-
-Performance-orientierte DJSoftware
-
-
-Diese Kategorie dominiert Rekordbox von Pioneer DJ, das eine  faktische Monopolstellung in der Club-Infrastruktur innehat.  Pioneer DJ-Hardware (CDJ-Serie, DJM-Mixer) ist der de-facto  Standard in Clubs weltweit, wodurch Rekordbox als primäre Vor­ bereitungssoftware etabliert wurde.
-
-
-Abb. 13 Screenshot von Rekordbox
-
-
-Hauptvertreter: Rekordbox, Serato DJ Pro, Traktor Pro (Native  Instruments), VirtualDJ, Beatport DJ, Cross DJ, Mixxx
-
-
-Kerncharakteristika •	 Fokus auf Live-Performance und Set-Vorbereitung •	 Integrierte Analyse-Tools für BPM, Key, Waveforms •	 Hardware-Integration und Controller-Support •	 Export-Funktionen für DJ-Hardware
-
-
-KI/Automatisierungs-Features •	 Automatische Track-Analyse (BPM, Key, Beatgrid) •	 Vocal Detection und Stems Separation (VirtualDJ) •	 Smart Crates und intelligente Playlist-Vorschläge •	 Cloud-Sync für Multi-Device-Workflows
-
-
-Die Performance-Software konzentriert sich primär auf die un­ mittelbare Set-Vorbereitung und Live-Mixing, bietet aber be­ grenzte Discovery- und Deep-Organisation-Features.
-
-
-Abb. 14 Screenshot von VirtualDJ
-
-
-56 57
-
-
----
-*Seite 30*
-
-
-02 Recherche Marktanalyse - Vorgehen
-
-
-Diese Kategorie addressiert die Organisationsbedürfnisse gro­ ßer Musiksammlungen ohne Performance-Fokus.
-
-
-Reine Musikverwaltungs­ software
-
-
-Hauptvertreter: MP3Tag, MediaMonkey, MusicBee, Lexicon,  Helium Music Manager, iTunes/Musik, Foobar2000, Taganana
-
-
-Kerncharakteristika: •	 Umfangreiche Metadaten-Verwaltung und Batch-Processing •	 Online-Datenbank-Integration (Discogs, MusicBrainz) •	 Erweiterte Tagging-Funktionen und Automatisierung •	 Cross-Platform-Kompatibilität und Export-Optionen
-
-
-Abb. 15 Screenshot von Apple Music
-
-
-KI/Automatisierungs-Features •	 Fingerprint-basierte Track-Identifikation •	 Automatisches Tagging über Online-Datenbanken •	 Intelligente Playlist-Erstellung •	 Batch-Verarbeitung und Fehleranalyse
-
-
-Diese Tools excellieren in der detaillierten Organisation und  Anreicherung an Metadaten, aber bieten keine DJ-spezifischen  Performance-Features.
-
-
-Abb. 16 Screenshot von Lexicon
-
-
-58 59
-
-
----
-*Seite 31*
-
-
-02 Recherche Marktanalyse - Erkenntisse
-
-
-02 Recherche Marktanalyse - Erkenntisse
-
-
-Tool-Fragmentierung
-
-
-Probleme in der Übersicht Durch die Marktanalyse bestätigte sich die Vermutung einer  fundamentale Lücke zwischen Performance-orientierten und  Verwaltungs-orientierten Tools. DJs sind gezwungen, mehrere  Software-Kategorien parallel zu nutzen, was zu Medienwech­ seln, Metadaten-Verlust und ineffizienten Arbeitsprozessen  führt.
-
-
-In unsere Marktanalyse fielen immer wieder durchgängige  Schwächen in der Gestaltung der Benutzeroberflächen auf.  Unabhängig vom jeweiligen Programm zeigte sich ein wieder­ kehrendes Muster: Die Oberflächen wirken oft überladen und  unaufgeräumt, weil sie versuchen, zu viele Informationen und  Schalter auf einmal darzustellen. Dies erschwert es Nutzern, den  Überblick zu behalten und wichtige Bedienelemente schnell zu  finden.
-
-
-!
-
-
-Strukturelle Marktbarrieren für Defragmentierung Eine vollständige Integration aller Tools ist strukturell problema­ tisch: Musik wird über verschiedene Anbieter mit unterschiedli­ chen Bezahlsystemen bereitgestellt. Rechtliche, technische und  kommerzielle Barrieren verhindern eine einheitliche Plattform.
-
-
-Dieser unruhige Gesamteindruck wird durch eine fehlende visu­ elle Struktur verstärkt. Dem Auge fehlt eine klare Führung, da  oft nicht auf den ersten Blick ersichtlich ist, welche Bereiche der  Oberfläche am wichtigsten sind. Hinzu kommen häufig schwa­ che Kontraste, die das Lesen und die Orientierung zusätzlich  erschweren, besonders bei längerer Arbeit am Bildschirm.
-
-
-Fokussierung auf  Vorbereitung
-
-
-Basierend auf dieser Analyse konzentriert sich unser  Projekt bewusst auf den Vorbereitungsprozess nach der  Discovery-Phase. Statt die unlösbare Discovery-Fragmen­ tierung anzugehen, optimieren wir die Organisation und SetPlanung bereits erworbener Musik.
-
-
-Fehlende Features
-
-
-Auffällig war zudem die verbreitete Nutzung von Symbolen, die  ohne eine zusätzliche Texterklärung kaum zu verstehen sind.  Statt die Bedienung zu beschleunigen, erfordern sie vom Nutzer,  ihre jeweilige Funktion zu erraten oder auswendig zu lernen.  Zusammengenommen führen diese gestalterischen Mängel zu  einem potenziell anstrengenden und fehleranfälligen Nutzerer­ lebnis, das den kreativen Prozess eher stört als unterstützt.
-
-
-Räumliche Musikexploration Keine existierende Software bietet intuitive, räumliche Visu­ alisierung von Musikähnlichkeiten. Alle Tools verwenden Lis­ ten- oder Ordnerstrukturen, die für Exploration (>5.000 Tracks)  ungeeignet sind.
-
-
-Adaptives Lernen Während KI-Features wie Fingerprinting existieren, fehlen ad­ aptive Systeme, die aus individuellem Nutzerverhalten lernen.  Tagging-Präferenzen und Set-Muster werden nicht für persona­ lisierte Empfehlungen genutzt.
-
-
-60 61
-
-
----
-*Seite 32*
-
-
-02 Recherche Marktanalyse - Erkenntisse
-
-
-02 Recherche Marktanalyse - Erkenntisse
-
-
-Rekordbox Monopolposition  als Marktbarriere
-
-
-Fokussierung auf Vorberei­ tung statt Live-Performance
-
-
-Pioneer DJ‘s Hardware-Dominanz in Clubs schafft einen fak­ tischen Lock-in-Effekt. DJs müssen ihre Bibliotheken Rekord­ box-kompatibel organisieren, selbst wenn sie andere Software  bevorzugen würden. Dies hemmt Innovation in der DJ-SoftwareLandschaft.
-
-
-Die Marktlücke liegt nicht in direkter Konkurrenz zu Rekordbox,  sondern in der Vorbereitung und Organisation vor dem Ex­ port. Ein Tool, das Deep-Organisation und intelligente Set-Pla­ nung integriert, würde den Workflow vereinheitlichen, ohne die  etablierte Club-Infrastruktur zu stören.
-
-
-DJOID als direkter Competitor
-
-
-DJOID stellt den direktesten Competitor zu unserer entwickel­ ten Lösung dar, da es ähnliche Kernkonzepte verfolgt: AI-ge­ stützte Musikanalyse, Graph-basierte Visualisierung und auto­ matische Set-Planung. Die Analyse zeigt jedoch signifikante  Marktlücken auf:
-
-
-Ähnliche Ansätze •	 Graph Playlists für visuelle Set-Planung •	 AI-Tagging für automatische Musikanalyse   •	 Auto-Grouping für Bibliotheksorganisation •	 Fokus auf DJ-Workflow-Integration
-
-
-Identifizierte Schwächen •	 Ungenauigkeit bei AI-Klassifizierung (Nutzerfeedback) •	 Node-basierte UI führt zu Usability-Problemen und steiler  Lernkurve •	 Beta-Status mit Stabilitätsproblemen •	 Fehlende Erklärbarkeit der AI-Empfehlungen •	 Workflow-Fragmentierung: Fokus nur auf Set-Planung •	 Untergräbt kurative DJ-Kontrolle durch Vollautomatisie­ rung
-
-
-62 63
-
-
----
-*Seite 33*
-
-
-64 65
-
-
----
-*Seite 34*
-
-
-03 Konzeption Kano-Modell
-
-
-03 Konzeption Feature Ideation und Priorisierung
-
-
-Must-Have Features
-
-
-Feature-Recherche •	 BPM- & Key-Analyse für Mix-Kompatibilität   •	 Such- & Filteroptionen für große Bibliotheken   •	 Cover-Art-Anzeige und integrierter Music-Player   •	 Verwaltung von Playlisten sowie M3U-Import / Export   •	 Duplikaterkennung und sauberes Relinking verlorener  Dateien
-
-
-Nach der umfangreichen Recherche mit den sechs DJ-Inter­ views und der Analyse bestehender Tools entstanden zahlreiche  Feature-Ideen für das AI-gestützte Musikverwaltungssystem.  Das Kano-Modell bot einen systematischen Rahmen, um aus  dieser Fülle von Möglichkeiten die richtige Priorisierung zu ent­ wickeln.
-
-
-Performance Features
-
-
-Warum das Kano-Modell für DJ-Software relevant ist DJs haben unterschiedliche Erwartungen an neue Tools. Manche  Features sind selbstverständlich erwartet (Must-Haves), andere  schaffen echten Mehrwert (Performance Features), und wenige  erzeugen Begeisterung (Excitement Features). Das Kano-Mo­ dell hilft dabei, diese Kategorien zu unterscheiden und Entwick­ lungsressourcen strategisch zu verteilen.
-
-
-•	 Unterstütztes Tagging (User- & System-Tags) mit Bulk-Editing   •	 Smart-Crates & Drag-and-Drop-Organisation   •	 Library-Synchronisation & Cloud-Verwaltung   •	 Third-Party-Integration (Streaming-Dienste, Analyse-Tools)  •	 Erweiterte Track-Analyse (Energy-, Timbre-, RhythmusMetriken)   •	 Steuerbare Empfehlungsfunktionen & Track-Vorschläge   •	 Automix-/Playlist-Funktionen für Background-Sets
-
-
-Excitement Features
-
-
-Anwendung auf DJ-Tool-Entwicklung Basierend auf den Interview-Erkenntnissen und Nutzererwar­ tungen kategorisierten wir alle potentiellen Features nach ihrer  Wirkung auf die Nutzerzufriedenheit. Diese Kategorisierung  wurde zur Grundlage für die MVP-Definition und die Entwick­ lungsphasen-Planung.
-
-
-•	 Visuelle Track-Landkarte als 2D-Explorer für die gesamte  Sammlung   •	 Integration von Set-Feedback zur kontinuierlichen AI-Op­ timierung   •	 Echtzeit-Streaming-Integration für nahtlose DiscoveryWorkflows   •	 Notizfunktionen & In-Track-Comments als digitales Ge­ dächtnis
-
-
-66 67
-
-
----
-*Seite 35*
-
-
-03 Konzeption Kano-Modell
-
-
-Abb. 17 Screenshot von Lexicon
-
-
-68 69
-
-
----
-*Seite 36*
-
-
-03 Konzeption Kano-Modell
-
-
-Priorisierung
-
-
-Die Priorisierung folgte den Persona-Bedürfnissen und techni­ scher Machbarkeit:
-
-
-Phase 1: Kern-Funktionalität (MVP) Basis-Audio-Analyse, einfache Ähnlichkeitsberechnung, rudi­ mentäre Organisation. Fokus auf technische Validierung der  AI-Pipeline und Machbarkeitsbeweis.
-
-
-Phase 2: Vollständige Feature-Implementierung  MY TAGS System, 2D-Map-Visualisierung, adaptive Lernsys­ teme, erweiterte Filter und Export-Integration. Schwerpunkt  auf Nutzer-Experience, Workflow-Integration und vollständige  Feature-Set-Umsetzung.
-
-
-Diese zweiphasige Entwicklung ermöglichte iterative Entwick­ lung mit kontinuierlicher Nutzer-Validierung.
-
-
-Von Feature-Priorisierung zu Metadaten-Architektur Die Kano-Analyse zeigte, dass alle priorisierten Features - von  Basic Audio-Analyse bis hin zur 2D-Visualisierung - auf einer  fundierten Metadaten-Grundlage basieren. Intelligente GenreKlassifikation, personalisierbare Tags und ähnlichkeits-basierte  Empfehlungen erfordern verschiedene Arten von Musik-Meta­ daten. Bevor die Features implementiert werden konnten, muss­ ten wir verstehen: Welche Metadaten lassen sich automatisch  extrahieren? Welche erfordern menschliche Interpretation? Und  wie können beide Arten intelligent kombiniert werden?
-
-
-70 71
-
-
----
-*Seite 37*
-
-
-03 Konzeption Metadaten
-
-
-03 Konzeption Metadaten
-
-
-Objektive Metadaten
-
-
-Subjektive Metadaten
-
-
-Bereits in der Datei vorhandene Metadaten ID3-Tags enthalten Künstlername, Titel, Album, Jahr und teil­ weise Genre-Angaben. Diese Grunddaten sind oft unvollständig  oder inkonsistent formatiert, besonders bei Promo-Downloads  oder selbst erstellten Rips.
-
-
-Genre und Stil-Klassifikation  Musikstile (House, Techno, Ambient) sind kulturelle Konstrukte  ohne eindeutige technische Definition. Subgenre-Zuordnungen  (Deep House, Progressive Techno) variieren zwischen DJs und  Regionen. Diese Kategorisierung ist stark subjektiv und zeitab­ hängig.
-
-
-Technische Parameter BPM (Beats per Minute) bestimmen Mix-Kompatibilität. Tonart  ermöglicht harmonische Übergänge. Lautstärke-Normalisierung  verhindert Sprünge in der Wiedergabe. Dateiformat und Bitrate  beeinflussen Klangqualität. Track-Dauer und Sample-Rate sind  weitere messbare Eigenschaften.
-
-
-Emotionale Eigenschaften und Stimmung Stimmung (happy, melancholic, aggressive) beeinflusst Publi­ kumsreaktion. Energie-Level bestimmt Position im Set. Groo­ ve-Charakter unterscheidet zwischen treibend und entspannt.  Atmosphäre reicht von intim bis euphorisch. Diese Bewertungen  sind stark vom Kontext und der momentanen Verfassung des  DJs abhängig.
-
-
-Spektrale Eigenschaften Frequenzverteilung charakterisiert den Klang. Bassanteil dif­ ferenziert zwischen verschiedenen Genres. Höhenanteil beein­ flusst Wahrnehmung von Helligkeit oder Dunkelheit. Dynamik­ umfang zeigt Komprimierung an. Spektrale Rolloff-Frequenz und  Zero-Crossing-Rate bieten weitere Klangcharakteristika.
-
-
-Instrumentenerkennung Dominante Instrumente (Drums, Bass, Synthesizer, Vocals)  lassen sich durch AI-Modelle automatisch identifizieren. Unter­ scheidung zwischen elektronischen und akustischen Instru­ menten. Percussion-Pattern und melodische Elemente werden  erkannt und klassifiziert.
-
-
-Abb. 18  Info Clustering
-
-
-72 73
-
-
----
-*Seite 38*
-
-
-03 Konzeption Grundlagen der KI-Musikklassifizierung
-
-
-03 Konzeption Low-Level Features
-
-
-Audio Feature Extraktion
-
-
-Audio-zu-Bild-Transformation Ein Schlüsselkonzept moderner KI-Musikklassifizierung ist die  Umwandlung von Audiosignalen in visuelle Repräsentationen.  Dabei werden Tracks in 2D-“Bilder“ transformiert.
-
-
-Diese Features werden in einem mehrstufigen Prozess von  messbaren Eigenschaften zu semantischen Bedeutungen trans­ formiert
-
-
-Low-Level Features (Grundlegende Klangeigenschaften)
-
-
-Abb. 19 Spektrogramm
-
-
-Spektrogramme Zeit-Frequenz-Darstellungen zeigen, welche Frequenzen zu wel­ chen Zeitpunkten auftreten. Diese 2D-Matrizen ähneln SchwarzWeiß-Bildern, wobei Helligkeit die Intensität verschiedener  Frequenzen anzeigt.
-
-
-Mel-Frequency Cepstral Coefficients (MFCCs) erfassen die  Klangfarbe ähnlich wie das menschliche Ohr - sie unterscheiden  beispielsweise zwischen dem warmen Klang einer Trompete und  dem metallischen einer E-Gitarre. Rhythmische Features wie  Onset-Detektion und Beat-Tracking erfassen zeitliche Struktu­ ren und identifizieren charakteristische Drum-Patterns.
-
-
-Abb. 20 Mel-Spektrogramm
-
-
-74 75
-
-
----
-*Seite 39*
-
-
-03 Konzeption Mid-Level-Features
-
-
-03 Konzeption High-Level-Features
-
-
-Abb. 21 Chromagramm
-
-
-Abb. 22 Wordcloud
-
-
-Mid-Level Features (Musikalische Eigenschaften) Chromas und Tonhöhenklassen-Profile erfassen harmonische  Inhalte - ob ein Track in Moll (melancholisch) oder Dur (fröhlich)  steht, welche Akkordprogressionen verwendet werden. Timbrale  Eigenschaften unterscheiden zwischen organischen (Gitarre,  Klavier) und synthetischen (Synthesizer, Drum-Machine) Klän­ gen.
-
-
-High-Level Features (Semantische Bedeutungen) Durch Deep Learning werden aus den Grundeigenschaften  semantische Features wie Genre-Zugehörigkeit, emotionale  Stimmung und spezifische Instrumente abgeleitet. Diese ent­ sprechen dem, was DJs intuitiv beim Hören wahrnehmen und  sind für den DJ-Workflow besonders relevant:  Genre-Klassifikation ermöglicht schnelle Stilzuordnung, MoodDetection hilft bei der Set-Dramaturgie, und Energy-LevelAnalyse unterstützt beim Aufbau von Spannungsbögen. Diese  semantischen Features überbrücken die Lücke zwischen techni­ schen Messwerten und musikalischer Praxis.
-
-
-76 77
-
-
----
-*Seite 40*
-
-
-03 Konzeption High-Level-Features
-
-
-Diese visuellen Repräsentationen ermöglichen es, bewährte  Computer Vision-Techniken auf Musik anzuwenden. CNNs,  die ursprünglich für Bilderkennung entwickelt wurden, können  Muster in Spektrogrammen genauso identifizieren wie Objekte  in Fotos. Filter lernen musikalische „Texturen“ wie Drumpatterns,  Basslinien oder harmonische Progressionen zu erkennen.
-
-
-Von Features zu Embeddings Alle extrahierten Features werden in hochdimensionale Vekto­ ren (Embeddings) mit 400+ Dimensionen umgewandelt. Jede  Dimension repräsentiert eine spezifische musikalische Eigen­ schaft. Ähnliche Tracks erhalten ähnliche Embedding-Werte -  dadurch kann das System automatisch erkennen, welche Songs  gut zusammenpassen.
-
-
-Die 400+-dimensionalen Embeddings erfassen musikalische  Ähnlichkeiten, die Menschen intuitiv wahrnehmen. Ähnliche  Embeddings bedeuten ähnlich klingende Tracks. Das System be­ rechnet Cosinus-Ähnlichkeit zwischen Feature-Vektoren.
-
-
-Embedding-basierte Ähn­ lichkeitsberechnung
-
-
-Robuste Normalisierung Musiksammlungen haben natürliche Ungleichgewichte. TechnoDJs besitzen mehr Electronic Tracks, Event-DJs mehr Pop-Mu­ sik. Das System kompensiert durch adaptive Genre-Gewichtung  und robuste Statistiken.
-
-
-Style-Features erhalten Gewichtung 1.0 als primärer Differen­ zierungsfaktor. Genre-Features bekommen Gewichtung 0.2 um  Dominanz einzelner Genres zu reduzieren. Mood-Features er­ halten Gewichtung 0.1 als ergänzende Information. Nach Spekt­ ralen Eigenschaften wird nicht geclustert, da die Gewichtung zu  schlechterer Clusterbildung führt.
-
-
-78 79
-
-
----
-*Seite 41*
-
-
-03 Konzeption Grundlagen der KI-Musikklassifizierung
-
-
-Abb. 23 Wahrscheinlichkeitsverteilung für „Techno“
-
-
-Abb. 24 Wahrscheinlichkeitsverteilung für „Electro“
-
-
-Class-Imbalance
-
-
-Die Analyse einer repräsentativen DJ-Library mit 1.346 Tracks  offenbarte signifikante Ungleichgewichte in der Genre-Vertei­ lung, die typisch für spezialisierte DJ-Sammlungen sind.
-
-
-Extreme Schiefe Im Gegensatz dazu zeigt Electro (Rang #2, 1.160 Titel) eine stark  verzerrte Verteilung mit einem massiven Peak bei sehr niedrigen  Wahrscheinlichkeiten (nahe 0.0). Diese extreme Linksschiefe  deutet auf problematische Genre-Überschneidungen hin - vie­ le als „Electro“ klassifizierte Tracks werden vom AI-Modell als  stilistisch inkonsistent bewertet.
-
-
-Techno-Dominanz mit solider Ähnlichkeitsverteilung  Techno als dominierendes Genre (Rang #1, 1.317 Titel) zeigt eine  bemerkenswert gleichmäßige Wahrscheinlichkeitsverteilung mit  einem Peak um 0.85. Diese normalverteilte Kurve deutet auf eine  kohärente, stilistisch konsistente Sammlung hin, bei der die AIModelle zuverlässige Ähnlichkeitsbewertungen liefern können.
-
-
-Class-Balancing als Lösungsansatz Diese Analyse verdeutlichte ein fundamentales Problem bei der  automatischen Musikklassifikation: Während etablierte, kohä­ rente Genres wie Techno zuverlässig organisiert werden können,  leiden weniger konsistente oder überlappende Kategorien unter  der dominanten Genre-Gewichtung. In den analysierten Top 10  Genres zeigt keiner eine so solide, normalverteilte Ähnlichkeits­ struktur wie Techno.
-
-
-80 81
-
-
----
-*Seite 42*
-
-
-03 Konzeption Mentale Modelle der Klassifizierung
-
-
-03 Konzeption Mentale Modelle der Klassifizierung
-
-
-Verschiedene Verständnisse  von Genres & Subgenres
-
-
-Räumliche Visualisierung als  Designlösung
-
-
-DJs denken hierarchisch über Musik. Hauptgenres (House,  Techno, Hip-Hop) gliedern sich in Subgenres mit spezifi­ schen Charakteristika.
-
-
-Das zentrale How Might We „Wie können wir DJs helfen, große  Musiksammlungen visuell zu erkunden?“ führte uns zu einer  räumlichen Visualisierungsstrategie. Listen-Ansichten versagen  bei 10.000+ Tracks, daher entwickelten wir eine 2D-Map als  alternative Explorationsmethode.
-
-
-House-Familie Deep House: Warme Bässe, entspannte Atmosphäre, 120-125  BPM   Tech House: Treibende Percussion, minimalistische Elemente,  125-130 BPM   Progressive House Längere Tracks, emotionale Aufbauten, 128132 BPM
-
-
-Unser Interface-Design nutzt räumliche Konsistenz strategisch:  „Techno ist immer oben links, Deep House immer unten rechts“  schafft vorhersagbare Navigation. Diese Designentscheidung  ermöglicht es DJs, räumliche Orientierung zu entwickeln - ein  Konzept, das von physischen Plattensammlungen bekannt ist.
-
-
-Spatial Memory kann durch konsistente Interface-Positionie­ rung entstehen. DJs können sich Positionen von Track-Clustern  relativ zueinander merken. Eine stabile räumliche Anordnung  ermöglicht schnelle Navigation ohne textuelle Suche.
-
-
-Techno-Familie Minimal Techno: Reduzierte Elemente, subtile Veränderungen,  128-135 BPM   Hard Techno: Aggressive Kicks, Industrial-Einflüsse, 135-150  BPM   Dub Techno: Halliger Sound, Detroit-Einflüsse, 120-130 BPM
-
-
-Cluster-Bildung geschieht organisch durch AI-Features. GenreTerritorien entstehen automatisch durch die Feature-Analyse,  aber vorhersagbar durch konsistente Algorithmen. DJs können  schnell zu relevanten Bereichen navigieren und von dort aus die  AI-angereicherten Metadaten explorieren.
-
-
-Genre-Grenzen verschwimmen Moderne Musik mischt Genres häufig. Melodic Techno kombi­ niert Techno-Rhythmen mit House-Harmonien. Future Bass ver­ bindet elektronische Produktion mit Hip-Hop-Strukturen.
-
-
-Das System muss flexible Genre-Zuordnungen ermöglichen statt  starrer Kategorien. Multi-Label-Klassifikation bildet diese Reali­ tät besser ab als Single-Label-Zuordnung.
-
-
-82 83
-
-
----
-*Seite 43*
-
-
-03 Konzeption Wireframes
-
-
-Design-Iteration
-
-
-Erste Wireframes Simple Listen-Ansicht mit Filter-Optionen an der Seite. TrackDetails in der Hauptansicht. Player-Controls am unteren Rand.  Diese Layouts orientierten sich an bekannten Musik-Tools.
-
-
-Problem der Listen-Darstellung Tests zeigten: Listen funktionieren schlecht bei großen Musik­ mengen. 10.000+ Tracks sind nicht scrollbar durchsuchbar.  Nutzer verlieren schnell die Orientierung.
-
-
-Abb. 25 Wireframes 1
-
-
-2D-Visualisierung entwickelt Die How Might We‘s aus der Recherche führten direkt zur 2D-Vi­ sualisierung als Lösung: „Wie können wir die Musikbibliothek für  DJs visuell aufbereiten, sodass sie neue Zusammenhänge ent­ decken und vergessene Tracks wiederfinden?“
-
-
-Räumliche Anordnung ersetzt eindimensionale Listen Tracks werden als Punkte auf einer Karte dargestellt. Ähnliche  Musik clustert räumlich. Zoom und Pan ermöglichen Navigation.  Diese Lösung nutzt die extrahierten AI-Features intelligent für  intuitive Exploration.
-
-
-Hybride Lösung  Finale Wireframes kombinieren Listen- und Map-Ansicht. TabNavigation ermöglicht Wechsel zwischen Darstellungsformen.  Sidebar zeigt Crates und Tags. Detailansicht öffnet bei TrackSelektion.
-
-
-Abb. 26 Wireframes 2
-
-
-84 85
-
-
----
-*Seite 44*
-
-
-04 Finales Konzept
-
-
-86 87
-
-
----
-*Seite 45*
-
-
-04 Finales Konzept Standalone App
-
-
-Desktop-First Architektur
-
-
-Die strategische Entscheidung für eine Desktop-Anwendung  basiert auf technischen und workflow-spezifischen Vortei­ len:
-
-
-Performance-Überlegenheit Audio-Analyse erfordert intensive CPU-Nutzung. Desktop-Pro­ cessing übertrifft Cloud-Lösungen bei Batch-Verarbeitung gro­ ßer Sammlungen. Keine Latenz durch Upload/Download-Zyklen.
-
-
-Offline-Funktionalität DJs arbeiten oft in Umgebungen mit schlechter Internetverbin­ dung. Vollständige Offline-Funktionalität gewährleistet zuver­ lässigen Zugriff auf organisierte Sammlungen.
-
-
-Datenhoheit Musiksammlungen bleiben lokal gespeichert. Keine Cloud-Ab­ hängigkeiten oder Datenschutz-Probleme. DJs behalten voll­ ständige Kontrolle über ihre wertvollen Bibliotheken.
-
-
-88 89
-
-
----
-*Seite 46*
-
-
-04 Finales Konzept Trackanalyse
-
-
-Abb. 27 Multi-Modell-Analyse
-
-
-Multi-Model Audio-Analyse
-
-
-Das finale System analysiert jeden Track auf vier parallelen  Ebenen mit spezialisierten AI-Modellen und nutzt erweiterte  Modelle im Vergleich zum MVP
-
-
-Discogs-EffNet als erweiterte Backbone  EfficientNet-Architektur, trainiert auf über 400 Genres des  Discogs-Datensatzes. Besondere Stärke bei elektronischer  Musik und historischen Releases der 80er/90er Jahre. Statt nur  Klassifikation extrahieren wir die internen 400-dimensionalen  Embeddings für Ähnlichkeitsberechnungen.
-
-
-Stil-Klassifikation (400+ Kategorien) Automatische Stilzuordnung von Ambient bis Drum & Bass. Mul­ ti-Label-Ansatz ermöglicht Hybrid-Genres wie „Melodic Techno“  oder „Progressive House“. Besonders präzise bei elektronischen  Genres durch Discogs-Training.
-
-
-Mood-Analyse (Emotionale Dimensionen) Erkennung von happy, aggressive, relaxed, sad und weiteren  Stimmungen. Basis für Set-Dramaturgie und Crowd-Manage­ ment. Kontextuelle Faktoren werden berücksichtigt.
-
-
-Instrument-Recognition (MTG-Jamendo-Modell) Identifikation dominanter Instrumente: Drums, Bass, Synths, Vo­ cals. Unterscheidung zwischen elektronischen und akustischen  Elementen. Hilfreich für Mix-Kompatibilität und musikalische  Bridges.
-
-
-Spektrale Analyse (Klangcharakteristika) Bright/Dark-Klassifikation, Bassanteil, Höhenverteilung. Dy­ namikumfang zeigt Komprimierung. Diese Features ergänzen  Genre-Information um klangliche Nuancen.
-
-
-90 91
-
-
----
-*Seite 47*
-
-
-04 Finales Konzept KI als Werkzeug
-
-
-04 Finales Konzept Adaptives Tagging
-
-
-Das Grundprinzip: AI unterstützt DJs, ersetzt sie aber nicht.  Kurative Kontrolle bleibt beim Menschen.
-
-
-Augmentation statt  Automation
-
-
-Abb. 28 Recommendations
-
-
-Vorschlagen, nicht entscheiden AI analysiert und kategorisiert, aber finale Entscheidungen  trifft der DJ. Automatische Tag-Vorschläge können akzeptiert,  modifiziert oder abgelehnt werden. Vollautomatisierung wird  bewusst vermieden.
-
-
-Dazulernende Tags
-
-
-Das MY TAGS System ermöglicht vollständig personalisierte  Organisation
-
-
-Transparente Empfehlungen Statt Black-Box-Algorithmen werden AI-Entscheidungen er­ klärbar gemacht. DJs verstehen, warum bestimmte Tracks als  ähnlich vorgeschlagen werden. Feature-basierte Begründungen  erhöhen Vertrauen.
-
-
-Beliebige Tag-Erstellung DJs definieren eigene Kategorien ohne Software-Limitierungen.  „Afterhour Vibes“, „Summer Festival“, „Emotional Builds“ - indivi­ duelle DJ-Sprache wird unterstützt.
-
-
-Lernende Anpassung Das System lernt aus DJ-Entscheidungen ohne diese zu über­ schreiben. Verworfene Vorschläge verbessern zukünftige Emp­ fehlungen. Individuelle Präferenzen werden berücksichtigt.
-
-
-Transparenz
-
-
-Automatisches Profil-Lernen Wenn DJs Tracks zu selbsterstellten Tags hinzufügen, analysiert  das System deren Audio-Features. Für jedes Tag entsteht ein  charakteristisches Profil der assoziierten musikalischen Eigen­ schaften.
-
-
-Feature-Visualisierung DJs sehen, welche Audio-Eigenschaften zu Ähnlichkeits-Emp­ fehlungen führen. BPM-Kompatibilität, Genre-Überschneidun­ gen, Mood-Ähnlichkeiten werden transparent dargestellt.
-
-
-Intelligente Vorschläge Basierend auf gelernten Tag-Profilen schlägt das System auto­ matisch passende Tracks vor. Ähnlichkeit zu bereits kategori­ sierten Tracks bestimmt Empfehlungen.
-
-
-Konfidenz-Scores  AI-Empfehlungen haben Vertrauenswerte. Hohe Konfidenz =  wahrscheinlich relevant. Niedrige Konfidenz = experimenteller  Vorschlag. DJs können Risiko-Level selbst wählen.
-
-
-92 93
-
-
----
-*Seite 48*
-
-
-04 Finales Konzept Tagkategorien
-
-
-Dazulernende Tags
-
-
-DJs können hier ihrer Kreativität freien Lauf lassen und völlig  eigene Organisationssysteme entwickeln. Jeder DJ spricht seine  eigene „Musiksprache“ - diese individuellen Begriffe und Kate­ gorien spiegeln persönliche Erfahrungen, musikalische Präferen­ zen und Workflow-Gewohnheiten wider. Das System lernt diese  persönlichen Ordnungsstrukturen und schlägt automatisch  passende Tracks für die selbst erstellten Kategorien vor.
-
-
-Beispielhafte Hierarchische Organisation Tags können in Kategorien angelegt werden: •	 Style-Tags: Chunky-Bass, Floaty, Stomper, Rolly-Groove •	 Context-Tags: Opening-Set, Prime-Time, Cool-Down, Tran­ sition-Perfect   •	 Situation-Tags: Crowd-Tester, Floor-Filler, Hands-Up-Track,  Surprise-Drop •	 Mood-Tags: Dreamy-Breakdown, Driving-Hypnosis, FeelGood-Vibes, Dark-Journey
-
-
-Abb. 29 Sidebar
-
-
-94 95
-
-
----
-*Seite 49*
-
-
-04 Finales Konzept Aufbau mentaler Modelle
-
-
-Räumliche Visualisierung als  Lösungsansatz
-
-
-Listen-Ansichten versagen bei großen Libraries und räumliche  Visualisierung kann Überblick schaffen. Die Visualisierung war  unsere Designlösung, um explorative Navigation zu ermöglichen  und die neu angereicherten AI-Metadaten optimal nutzbar zu  machen, anstatt sie in starren Listen zu verstecken.
-
-
-Konsistente Genre-Territorien als Interface-Design Unser System positioniert Techno-Tracks immer im gleichen  Kartenbereich, Deep House erhält ein festes Gebiet. Diese räum­ liche Konsistenz ist eine bewusste Interface-Entscheidung, um  DJs zu ermöglichen, räumliche Orientierung zu entwickeln - ein  Konzept, das von physischen Plattensammlungen bekannt ist.
-
-
-Übergangszonen für AI-Feature-Exploration Zwischen Genre-Clustern entstehen automatisch Hybrid-Be­ reiche durch die AI-Analyse. Melodic Techno positioniert sich  zwischen Techno und Progressive House. Diese Zonen machen  die komplexen AI-Features explorierbar und ermöglichen das  Entdecken unerwarteter musikalischer Verbindungen, die in tra­ ditionellen Listen-Ansichten verborgen blieben.
-
-
-Abb. 30 Map
-
-
-96 97
-
-
----
-*Seite 50*
-
-
-04 Finales Konzept Exploration der Musikbibliothek
-
-
-Abb. 31 Similarity Map
-
-
-98 99
-
-
----
-*Seite 51*
-
-
-04 Finales Konzept Exploration der Musikbibliothek
-
-
-Similarity Map
-
-
-Map (Hauptvisualisierung) Die große 2D-Visualisierung auf der rechten Seite zeigt die Mu­ siksammlung als Punktwolke. Jeder Punkt repräsentiert einen  Track. Die Punkte sind in zwei Farben dargestellt: Orange für  ausgewählte/gefilterte Tracks und Grau für nicht-ausgewählte  Tracks. Die Punkte bilden natürliche Cluster und Verteilungs­ muster über die gesamte Fläche.
-
-
-Filterpanel (Unterer Bereich) Das Filterpanel ist dazu da, Tracks zu highlighten. Es ist in drei  gleichmäßig aufgeteilte Bereiche gegliedert, jeweils mit dunklem  Hintergrund und eigener Suchfunktion für Features.
-
-
-Confidence Slider (Oben rechts) Der Confidence Slider kontrolliert das Highlighting der Punkte.  Wird die Confidence hoch eingestellt, werden Tracks gehighl­ ighted, die mit hoher Konfidenz der Auswahl aus dem Filter-Pa­ nel entspricht.
-
-
-Abb. 31 Similarity Map
-
-
-Lasso und Path Tool (Oben rechts) Das Lasso-Tool ermöglicht die freie Auswahl mehrerer Tracks  durch Aufziehen einer beliebigen Form auf der 2D-Map. DJs  können mit der Maus eine Auswahlkontur um Gruppen von  Tracks ziehen, um diese gemeinsam zu selektieren. Das PathTool bietet eine präzisere lineare Auswahl entlang eines definier­ ten Pfades.
-
-
-Selected Tracks Container (Links) Der Selected Tracks Container dient der temporären Speiche­ rung von Tracks und zeigt die aktuelle Auswahl an. Hier werden  manuell ausgewählte Tracks gesammelt, um sie später zu Cra­ tes hinzuzufügen, zu exportieren oder anderweitig zu verwalten.  Der Container fungiert als Zwischenspeicher für die Arbeit mit  mehreren Tracks gleichzeitig.
-
-
-100 101
-
-
----
-*Seite 52*
-
-
-04 Finales Konzept Exploration der Musikbibliothek
-
-
-Abb. 32 XY Map
-
-
-102 103
-
-
----
-*Seite 53*
-
-
-04 Finales Konzept Exploration der Musikbibliothek
-
-
-XY Map
-
-
-Der XY Mode ergänzt die Similarity Map um eine interpretierbare  Alternative für gezielte Musikexploration. Während die Similarity  Map auf abstrakten PCA-Dimensionen basiert, ermöglicht der  XY Mode die bewusste Auswahl spezifischer Audio-Features für  die X- und Y-Achse.
-
-
-Set-Planung mit fließenden Stilübergängen Der XY Mode eignet sich vor allem gut für die Set-Planung, weil  man konkrete Werte gegeneinanderstellen kann - zum Bei­ spiel zwei verschiedene Musikstile. Dadurch kann man Sets mit  fließenden Stilübergängen erstellen. DJs können gezielt Tracks  identifizieren, die zwischen zwei Genres oder Stimmungen ver­ mitteln, indem sie die Übergangszonen auf der Map nutzen.
-
-
-Abb. 32 XY Map
-
-
-104 105
-
-
----
-*Seite 54*
-
-
-04 Finales Konzept Organisationsebenen
-
-
-Library
-
-
-Gesamtsammlung mit vier Ansichten Alle importierten Tracks in einer zentralen Datenbank, orga­ nisiert in vier Hauptkategorien: Tracks, Albums, Artists und  Labels. Jede Ansicht bietet spezifische Navigation für unter­ schiedliche Organisationsbedürfnisse.
-
-
-Tracks-Ansicht Vollständige Track-Liste mit allen Metadaten, sortierbar nach  BPM, Key, Genre, Import-Datum. Basis für detaillierte Track-Ver­ waltung und -Analyse.
-
-
-Albums-Ansicht Gruppierung nach Releases und EPs, nützlich für kohärente  Album-Präsentation und Set-Planung mit thematischen Zusam­ menhängen.
-
-
-Artists-Ansicht Organisation nach Produzenten und Remixern, ideal für Artistfokussierte Set-Vorbereitung und Entdeckung neuer Tracks  bekannter Künstler.
-
-
-Labels-Ansicht Gruppierung nach Plattenlabels mit MusicBrainz-Integration, er­ möglicht stilorientierte Navigation und Label-Discovery.
-
-
-Import-Pipeline Drag & Drop für einzelne Files oder komplette Ordner. Automa­ tische Duplikatserkennung. Background-Analyse neuer Tracks.  Batch-Import für große Sammlungen. Metadaten werden auto­ matisch allen vier Ansichten zugeordnet.
-
-
-Abb. 33 Albums
-
-
-106 107
-
-
----
-*Seite 55*
-
-
-04 Finales Konzept Exploration der Musikbibliothek
-
-
-Abb. 34 Tracks
-
-
-108 109
-
-
----
-*Seite 56*
-
-
-04 Finales Konzept Exploration der Musikbibliothek
-
-
-Abb. 35 Albums
-
-
-110 111
-
-
----
-*Seite 57*
-
-
-04 Finales Konzept Exploration der Musikbibliothek
-
-
-Abb. 36 Labels
-
-
-112 113
-
-
----
-*Seite 58*
-
-
-04 Finales Konzept Exploration der Musikbibliothek
-
-
-Abb. 37 Artists
-
-
-114 115
-
-
----
-*Seite 59*
-
-
-04 Finales Konzept Organisationsebenen
-
-
-Labels
-
-
-Label-basierte Gruppierung Automatische Gruppierung von Releases nach Plattenlabel (z.B.  Afterlife, Kompakt, Drumcode). Labels repräsentieren oft ähn­ liche Musikstile und Qualitätsstandards, wodurch sie wertvolle  Orientierungspunkte für DJs darstellen.
-
-
-Metadata-Extraktion Label-Informationen werden aus ID3-Tags oder Dateinamen  extrahiert. Zusätzlich nutzt das System die MusicBrainz API für  erweiterte Label-Metadaten und Beziehungen zwischen Labels.  Manuelle Zuordnung und Korrektur bei unvollständigen Metada­ ten möglich. Label-Profile entwickeln sich aus den enthaltenen  Track-Eigenschaften.
-
-
-MusicBrainz-Integration für Label-Clustering Die MusicBrainz API liefert umfangreiche Daten über Label-Hie­ rarchien, Sub-Labels und Verwandtschaften. Das System nutzt  diese Informationen für intelligentes Label-Clustering - Major  Labels werden mit ihren Sub-Labels verknüpft, verwandte Im­ prints werden gruppiert und Label-Familien werden automatisch  erkannt.
-
-
-Abb. 38 Labels 2
-
-
-116 117
-
-
----
-*Seite 60*
-
-
-04 Finales Konzept Organisationsebenen
-
-
-Crates
-
-
-Container-System Klassische Ordner-Metapher aus der Vinyl-Ära. Tracks können in  mehreren Crates gleichzeitig sein.
-
-
-Drag & Drop Organisation Tracks aus Library in Crates ziehen. Zwischen Crates verschie­ ben. Visual Feedback bei gültigen Drop-Zonen. Intuitive Organi­ sation ohne Menü-Navigation. Hinzufügen zu Crates und Tags  auch über das Kontextmenü möglich.
-
-
-Smart Crates
-
-
-Abb. 39 Crates
-
-
-Regelbasierte Automatisierung Crates befüllen sich automatisch basierend auf Kriterien. „Alle  Techno-Tracks über 130 BPM und Energy > 0.7“. Dynamische  Updates bei neuen Imports.
-
-
-Live-Updates Smart Crates aktualisieren sich automatisch. Neue Tracks er­ scheinen sofort bei Kriterien-Match. Keine manuelle Pflege nötig.
-
-
-Abb. 40 Smart-Crates
-
-
-118 119
-
-
----
-*Seite 61*
-
-
-04 Finales Konzept Organisationsebenen
-
-
-Tags
-
-
-Flexible Metadaten-Schicht Tags überlappen Crate-Grenzen. Ein Track kann mehrere Tags  haben. Ermöglicht facettierte Klassifikation statt hierarchischer  Ordner.
-
-
-Cross-Referenzierung Tags verbinden Tracks über Crate-Grenzen hinweg. „Favorites“  kann Tracks aus verschiedenen Genre-Crates enthalten. Multidimensionale Organisation.
-
-
-Abb. 41 Tags
-
-
-120 121
-
-
----
-*Seite 62*
-
-
-04 Finales Konzept Datenbank
-
-
-04 Finales Konzept Datenbank
-
-
-Abb. 42 SQL Schema
-
-
-Hybride Datenstruktur
-
-
-SQLite für Metadaten Lokale Datenbank für Track-Informationen, Tags, Crates. JSONBLOBs für komplexe Feature-Arrays. Schnelle Queries auch bei  50.000+ Tracks.
-
-
-Abb. 43 Vektor-Index
-
-
-Vektordatenbank für Ähnlichkeitsberechnungen  Spezialisierte Vektordatenbank für hochdimensionale AudioFeatures. Jeder Track wird als 400-dimensionaler Vektor ge­ speichert, der die kombinierten Embeddings aus Genre-, Mood-,  Instrument- und spektralen Modellen enthält.
-
-
-Optimierte Similarity Search Approximate Nearest Neighbor (ANN) Algorithmen für schnelle  Ähnlichkeitssuche auch bei großen Sammlungen. Cosine-Simi­ larity für musikalische Verwandtschaft. Indexierung ermöglicht  Sub-Sekunden-Queries bei 50.000+ Tracks.
-
-
-Vektorraum-Struktur Die 400-dimensionalen Vektoren organisieren sich in einem  komplexen Raum, wo musikalische Ähnlichkeit durch räumliche  Nähe repräsentiert wird. Diese Struktur ermöglicht die automa­ tische Erkennung von Musik-Clustern und Stilübergängen ohne  manuelle Kategorisierung.
-
-
-122 123
-
-
----
-*Seite 63*
-
-
-04 Finales Konzept Filtermechanismen
-
-
-04 Finales Konzept Waveforms
-
-
-Abb. 45 Waveforms
-
-
-Abb. 44 Filterpanel
-
-
-Dynamische Filter
-
-
-Interaktive Waveforms
-
-
-Feature-basierte Filter Genre-Checkboxes, Mood-Auswahl. Live-Updates der Ergebnis­ se bei Filter-Änderungen.
-
-
-Adaptive Filter-Optionen   Verfügbare Filter generieren sich dynamisch aus vorhandenen  Track-Features. Nur tatsächlich vorhandene Genres/Moods  werden angeboten.
-
-
-Dynamische Sortierung Features werden Grundlegend nach Frequenz im Datensatz  sortiert, um schnellen Zugriff zu gewährleisten
-
-
-Die interaktiven Waveforms ermöglichen DJs schnell in relevante  Abschnitte des Tracks zu springen, um schnell die charakteris­ tischen Momente eines Songs zu identifizieren. Durch Klick auf  die Wellenform können DJs direkt zu Drops, Breaks, Vocal-Parts  oder anderen markanten Stellen navigieren, ohne den gesamten  Track durchhören zu müssen. Dies beschleunigt den Bewer­ tungsprozess erheblich - besonders bei der Organisation großer  Musiksammlungen oder der spontanen Track-Auswahl während  Live-Sets. Die visuellen Peaks und Strukturen der Waveform ge­ ben dabei zusätzliche Hinweise auf Energie-Level und Songauf­ bau, was DJs bei der schnellen Einschätzung der Track-Eignung  für bestimmte Set-Momente unterstützt.
-
-
-124 125
-
-
----
-*Seite 64*
-
-
-04 Finales Konzept Nutzung nach der Organisation
-
-
-Export
-
-
-M3U Playlist Export Standardisierte M3U-Dateien für breite Kompatibilität mit DJSoftware. Crates werden zu .m3u-Playlists exportiert. Funktio­ niert mit Rekordbox, Serato, Traktor und den meisten anderen  DJ-Programmen. Da Rekordbox closed source und proprietär ist,  setzen wir auf offene Standards. DJs müssen im Voraus durch­ dachte Crates und Playlists erstellen, da erweiterte Metadaten  wie Tags nur begrenzt übertragbar sind.
-
-
-Ordner-basierter Export   Traditionelle Verzeichnisstruktur für USB-Sticks. Crate-Namen  werden zu Ordnern. Datei-Kopien mit konsistenter Benennung.  Kompatibel mit CDJ-Hardware.
-
-
-Die finale Lösung integriert alle Workflow-Phasen von der  AI-Analyse bis zum Hardware-Export. DJs behalten kurative  Kontrolle bei gleichzeitiger Automatisierung repetitiver Auf­ gaben.
-
-
-126 127
-
-
----
-*Seite 65*
-
-
-128 129
-
-
----
-*Seite 66*
-
-
-05 Prototyping & Validation Entwicklungsprozess
-
-
-Entwicklungsprozess
-
-
-Phase 1: MVP-Validierung der AI-Klassifizierung Der erste Prototyp hatte ein klares Validierungsziel: Herausfin­ den, ob automatische semantische Musikklassifizierung präzi­ se genug ist, um DJs echten Mehrwert zu bieten. Dieses MVP  mit einfacher Listendarstellung und Style-Analyse bewies die  Grundannahme: AI-basierte Feature-Extraktion funktioniert zu­ verlässig für DJ-Anwendungen.
-
-
-Abb. 46 MVP
-
-
-Phase 2: Vollständiger Prototyp mit 2D-Visualisierung   Basierend auf den MVP-Erkenntnissen entwickelten wir einen  High-Fidelity-Prototyp mit räumlicher Track-Visualisierung,  erweiterten AI-Features (Instruments + Moods + Spectral) und  interaktiver 2D-Map-Navigation. Diese fortgeschrittene Version  wurde in strukturierten Usability-Tests mit Steve und Carsten  validiert.
-
-
-Abb. 47 Finaler Prototyp
-
-
-130 131
-
-
----
-*Seite 67*
-
-
-05 Prototyping & Validation MVP
-
-
-Abb. 48 MVP 2
-
-
-132 133
-
-
----
-*Seite 68*
-
-
-05 Prototyping & Validation Entwicklungsprozess
-
-
-Von Liste zu räumlicher  Exploration
-
-
-MVP-Erkenntnisse: Technische Machbarkeit bestätigt   Die ersten Tests mit Discogs-EffNet und MTG-Jamendo-Model­ len zeigten vielversprechende Klassifizierungsgenauigkeit. DJs  erkannten die AI-generierten Empfehlungen als sinnvoll und  präzise. Diese Validierung der Kernhypothese ermöglichte die  Weiterentwicklung zum vollständigen Prototyp.
-
-
-Eindimensionale Darstellung unzureichend Das MVP offenbarte ein kritisches Interface-Problem: Die Lis­ tendarstellung war nicht explorativ genug für DJ-Workflows.  DJs benötigen räumliche Orientierung in ihren Musiksammlun­ gen, um Ähnlichkeiten und Cluster zu erkennen. Diese Erkenntnis  führte zur Entwicklung der PCA-basierten 2D-Visualisierung.
-
-
-Skalierungs-Anforderungen für professionelle Libraries  Professionelle DJs verwalten oft Sammlungen von 20.000+  Tracks. Unsere Implementierung berücksichtigt diese Realität  durch optimierte Algorithmen: PCA-Berechnung, Clustering und  Ähnlichkeitssuche bleiben auch bei extremen Datenmengen  responsive.
-
-
-Praxistauglichkeit statt  akademischer Isolation
-
-
-Integration in reale DJ-Workflows Ein zentrales Designprinzip war die Entwicklung eines Produkts,  das außerhalb des „luftleeren Raums“ funktioniert. Der Ansatz  priorisierte von Anfang an Kompatibilität mit bestehenden DJÖkosystemen und echten Musiksammlungen.
-
-
-Proof of Concept für Marktintegration Die umfangreiche Competitive Analysis war praktische Not­ wendigkeit für realistische Produktentwicklung. Nur durch  detailliertes Verständnis bestehender Tools konnten wir Integ­ rationsmöglichkeiten identifizieren und Alleinstellungsmerkmale  entwickeln.
-
-
-134 135
-
-
----
-*Seite 69*
-
-
-05 Prototyping & Validation Framework
-
-
-ReactJS
-
-
-Python
-
-
-Komponentenbasierte Architektur React ermöglichte modulare UI-Entwicklung für komplexe  DJ-Interfaces. Track-Komponenten lassen sich wiederverwen­ den, Filter-Panels sind dynamisch anpassbar, Visualisierungen  reagieren interaktiv auf Benutzereingaben.
-
-
-Audio-Analyse Backend Essentia-Framework für Feature-Extraktion läuft im PythonBackend. Discogs-EffNet und MTG-Jamendo-Modelle verarbei­ ten Audio-Dateien. Separate Prozesse verhindern UI-Blocking  bei intensiven Berechnungen.
-
-
-SQLite Datenbank-Integration Python verwaltet lokale Musikdatenbank. JSON-BLOBs spei­ chern komplexe Feature-Arrays. Optimierte Queries auch bei  10.000+ Track-Sammlungen.
-
-
-State-Management für große Datenmengen   React Context verwaltet Track-Libraries zentral. Optimistic Up­ dates sorgen für responsive Bedienung auch bei 10.000+ Tracks.  Lazy Loading verhindert Performance-Probleme bei großen  Sammlungen.
-
-
-IPC-Kommunikation Inter-Process Communication zwischen React-Frontend und  Python-Backend. Asynchrone Nachrichtenaustausch für respon­ sive UI. Error-Handling für robuste Audio-Verarbeitung.
-
-
-Virtual DOM Performance Nur sichtbare Tracks werden gerendert. Ermöglicht flüssiges  Scrollen durch endlose Listen. Memory-effiziente Darstellung  auch bei extremen Bibliothekengrößen.
-
-
-Electron
-
-
-Cross-Platform Desktop-Anwendung Eine Codebasis funktioniert auf Windows, macOS und Linux.  Native OS-Integration für Drag & Drop-Operationen. Direkter  Dateisystem-Zugriff für Musiksammlungen ohne Browser-Si­ cherheitsbeschränkungen.
-
-
-Native Desktop-Features Menüleisten, Keyboard-Shortcuts, Systembenachrichtigungen.  Integration mit OS-Medien-Controls. Window-Management für  Multi-Monitor-DJ-Setups.
-
-
-Performance-Vorteile   Dedicated Prozesse für UI und Audio-Analyse. Keine Upload/ Download-Latenz wie bei Web-Apps. Vollständige Offline-Funk­ tionalität ohne Internet-Abhängigkeit.
-
-
-136 137
-
-
----
-*Seite 70*
-
-
-05 Prototyping & Validation Stack
-
-
-Abb. 49 Stack
-
-
-138 139
-
-
----
-*Seite 71*
-
-
-05 Prototyping & Validation Fortgeschrittener Prototyp
-
-
-05 Prototyping & Validation Fortgeschrittener Prototyp
-
-
-Testkonzept und erweiterte  Feature-Validierung
-
-
-Testdesign für vollständigen Funktionsumfang   Der zweite Usability-Test validierte den fortgeschrittenen  Prototyp mit vollständiger 2D-Map-Visualisierung, erweiterten  AI-Features (Instruments + Moods + Spectral) und interaktiven  Explorations-Tools. Das strukturierte Think-Aloud-Protokoll um­ fasste sechs definierte Aufgaben:
-
-
-Abb. 50 Usability-Test Steve
-
-
-Teilnehmer-Profile und  Testgruppe
-
-
-Diverse Erfahrungslevel und Arbeitsweisen  Die Testgruppe umfasste DJs mit unterschiedlichen Erfahrungs­ leveln und Organisationsansätzen. Das Spektrum reichte von  semi-professionellen DJs mit 3-4 Jahren Erfahrung bis zu er­ fahrenen Anwendern mit 8+ Jahren praktischer Erfahrung.
-
-
-•	 Spezifische Track-Suche mit Multi-Feature-Filter-Kom­ binationen   •	 Tag-Erstellung und -Management für personalisierte Orga­ nisation   •	 AI-Empfehlungssystem Bewertung mit erweiterten Fea­ tures   •	 2D-Map-Visualisierung für räumliche Musikexploration   •	 XY-Modus für parametrische Set-Planung mit interpretier­ baren Achsen
-
-
-Verschiedene Organisationsphilosophien •	 Genre-orientierte Organisation: Mit zusätzlichen Mood-Ka­ tegorien und Hot-Cue-Sets   •	 Event-basierte Strukturierung: Funktionale Organisation  nach Auftrittskontext   •	 Tool-Präferenzen: Hauptsächlich Rekordbox-Nutzer, teilwei­ se mit Traktor-Erfahrung   •	 Library-Größen: Von mittleren Sammlungen bis zu 5.000+  Track-Libraries
-
-
-Diese Diversität ermöglichte die Validierung verschiedener  Nutzungsszenarien und Workflow-Präferenzen innerhalb  einer kontrollierten Testumgebung.
-
-
-Kontrollierte Umgebung •	 Setting: Desktop-Computer mit Screen-Recording   •	 Software: High-Fidelity Prototyp mit vollständiger 2D-MapFunktionalität   •	 Dauer: 45-60 Minuten pro Session inklusive Nachbespre­ chung   •	 Dokumentation: Think-Aloud-Protokoll + Beobachtungs­ notizen
-
-
-140 141
-
-
----
-*Seite 72*
-
-
-05 Prototyping & Validation Testergebnisse und Erkenntnisse
-
-
-Übergreifende Validierung  der Kernkonzepte
-
-
-Durchweg positive Resonanz auf 2D-Visualisierung   Die Teilnehmer zeigten erkennbare Begeisterung für die räum­ liche Musikexploration. Die Map-Visualisierung löste „Aha-Mo­ mente“ aus und wurde als innovativ und hilfreich bewertet. Kom­ mentare wie „krasses Programm“ und „mega geil“ verdeutlichten  die positive Aufnahme des Visualisierungskonzepts.
-
-
-Die Fähigkeit, große Musikmengen visuell zu erfassen und  Ähnlichkeits-Cluster zu erkennen, traf genau den identifi­ zierten Pain Point des Überblicks in großen Libraries.
-
-
-Bestätigung des Hybrid-Ansatzes: Augmentation statt Auto­ mation Die Testpersonen lehnten Vollautomatisierung entschieden ab  und bestätigten unser Designprinzip der kurativen Kontrolle. Die  Sorge vor vollständiger Automatisierung wurde deutlich formu­ liert - DJs wollen die finale Entscheidungshoheit behalten, um  ihre kurative Rolle zu bewahren.
-
-
-Das AI-Empfehlungssystem wurde als hilfreich empfunden,  solange der DJ die finale Entscheidungskontrolle behält.
-
-
-Validierung der Drag & Drop-Interaktion Das zentrale Interaction Pattern des Drag & Drop wurde erfolg­ reich validiert, besonders bei Nutzern ohne tiefe Legacy-Soft­ ware-Gewohnheiten. Die intuitive Erkennbarkeit des Tag-Sys­ tems und die Erwartung, Tracks direkt zu Tags ziehen zu können,  bestätigte die Designentscheidung für diese Interaktionsform.
-
-
-Erfahrungslevel-spezifische Erkenntnisse Beginner-DJs zeigten weniger Widerstand gegen neue Inter­ face-Paradigmen und adaptierten innovative Features schneller.  Erfahrene DJs brachten wertvollen Kontext mit, hatten aber  stärkere Erwartungen basierend auf bestehender Software.  Diese Diversität validierte die Notwendigkeit flexibler Onboar­ ding-Strategien.
-
-
-142 143
-
-
----
-*Seite 73*
-
-
-144 145
-
-
----
-*Seite 74*
-
-
-06 Visual Design Color Guide
-
-
-Designphilosophie
-
-
-Das Interface basiert auf einem konsequenten Dark Theme,  orientiert an professionellen DJ-Arbeitsumgebungen. Clubs  und Studios arbeiten bei gedämpftem Licht, DJ-Hardware nutzt  dunkle Oberflächen für Augenkomfort.
-
-
-146 147
-
-
----
-*Seite 75*
-
-
-06 Visual Design Typografie
-
-
-„Geist“ als charakteristi­ sche Schriftfamilie
-
-
-Primäre Schriftfamilie  Geist von Vercel als moderne, technische Schriftfamilie für das  gesamte Interface. Die geometrische Sans-Serif bietet hohe  Lesbarkeit bei verschiedenen Schriftgrößen und verleiht dem  Tool einen zeitgemäßen, professionellen Charakter.
-
-
-Typographische Hierarchie  Klare Größenabstufungen optimiert für DJ-Workflows: •	 Hauptüberschriften: 24px, Medium Weight für Bereichstitel •	 Track-Titel: 12px, Bold Weight für primäre Identifikation   •	 Künstlernamen: 12px, Regular Weight für sekundäre Infor­ mation •	 Metadaten: 12px, Regular Weight für BPM, Key, Genre •	 UI-Labels: 10px, Bold Weight für Interface-Elemente
-
-
-Funktionale Typografie für  Live-Umgebungen
-
-
-Performance-optimierte Darstellung  Größere Schriftgrößen für kritische Informationen wie Track-Ti­ tel und BPM-Werte. Reduzierte Informationsdichte verhindert  kognitive Überlastung während stressiger Live-Situationen.
-
-
-Accessibility-Features   Skalierbare Schriftgrößen für verschiedene Bildschirmauflösun­ gen. Keyboard-Navigation mit visuellen Fokus-Indikatoren.
-
-
-148 149
-
-
----
-*Seite 76*
-
-
-06 Visual Design Design Filters
-
-
-150 151
-
-
----
-*Seite 77*
-
-
-06 Visual Design Atoms
-
-
-152 153
-
-
----
-*Seite 78*
-
-
-06 Visual Design Molecules
-
-
-154 155
-
-
----
-*Seite 79*
-
-
-06 Visual Design Organisms
-
-
-156 157
-
-
----
-*Seite 80*
-
-
-158 159
-
-
----
-*Seite 81*
-
-
-07 Evaluation & Ausblick Reflexion
-
-
-07 Evaluation & Ausblick Reflexion
-
-
-Validierte Designprinzipien
-
-
-Unsere empirische Forschung bestätigte vier zentrale Design­ prinzipien, die für DJ-Software-Entwicklung entscheidend sind:
-
-
-Zentrale Forschungser­ kenntnisse
-
-
-DJ-Workflows sind fragmentierter als angenommen  Unsere Interviews offenbarten, dass DJs durchschnittlich 8-12  verschiedene Tools parallel nutzen. Diese Fragmentierung ist  historisch gewachsen und strukturell schwer auflösbar.
-
-
-Augmentation statt Automation DJs wollen kurative Kontrolle behalten und lehnen Vollautomati­ sierung ab. AI soll unterstützen, nicht ersetzen. Diese Erkenntnis  zieht sich durch alle Interviews und wurde in den Usability-Tests  deutlich bestätigt.
-
-
-Organisationszeit übersteigt Performance-Zeit deutlich Der Großteil der musikbezogenen Zeit fließt in organisatorische  Aufgaben. Dieses Verhältnis wurde unterschätzt und zeigt enor­ mes Optimierungspotential.
-
-
-Hybride Visualisierung löst das Usability-Funktionalität-Di­ lemma Die Kombination aus automatischer Exploration (Similarity Mode)  und interpretierbarer Darstellung (XY Mode) erfüllt sowohl ex­ plorative als auch gezielte Nutzungsszenarien.
-
-
-Live-Performance-Stress entsteht durch unzureichende  Vorbereitung Die kritischen Momente beim Live-DJing sind direkte Folge  organisatorischer Schwächen. Bessere Tools zur Vorbereitung  reduzieren Performance-Stress erheblich.
-
-
-Personalisierung ist entscheidend   Das adaptive MY TAGS System, das individuelle DJ-Terminologie  lernt, traf die Nutzeranforderungen präzise. Jeder DJ entwickelt  eigene Organisationssprache, die von Software unterstützt  werden muss.
-
-
-Genre-übergreifende Problempatterns Trotz verschiedener Musikrichtungen zeigen alle DJs ähnliche  Organisationsprobleme. Die Lösungsansätze sind daher breit  anwendbar.
-
-
-Marktlücke konkretisiert
-
-
-Workflow-Integration beats Feature-Maximierung  Statt maximaler Funktionalität benötigen DJs nahtlose Integ­ ration zwischen den Workflow-Phasen Discovery, Organisation  und Performance.
-
-
-Die strategische Fokussierung auf Vorbereitung statt Live-Per­ formance ermöglicht Koexistenz mit etablierten Playern (Re­ kordbox, Serato) ohne direkte Konfrontation. DJs können unser  Tool für Organisation nutzen und trotzdem ihre gewohnte Per­ formance-Software beibehalten.
-
-
-160 161
-
-
----
-*Seite 82*
-
-
-07 Evaluation & Ausblick Reflexion
-
-
-07 Evaluation & Ausblick Reflexion
-
-
-User Centered Design Er­ kenntnisse
-
-
-Design-Iteration basierend  auf Nutzer-Feedback
-
-
-Die Usability-Tests führten zu konkreten Interface-Opti­ mierungen
-
-
-Übergang von Listen- zu räumlicher Visualisierung Eine reine eindimensionale Listendarstellung erwies sich als  unzureichend für explorative Library-Erkundung und verhinderte  die optimale Nutzung der neu angereicherten Metadaten
-
-
-Vielzahl user-zentrierter Forschungsmethoden bewährt  sich Durch den Einsatz verschiedener aufeinander abgestimm­ ter User Research-Methoden - von tiefgehenden qualitativen  Interviews über systematische Competitive Analysis bis hin  zu iterativen Usability-Tests - konnten wir sowohl emotionale  Nutzerinsights als auch objektive Marktdaten erfassen. Diese  triangulative Herangehensweise ermöglichte ein umfassendes  Verständnis der DJ-Bedürfnisse, das reine quantitative Umfra­ gen nicht hätten liefern können.
-
-
-Reduzierte AI-Bevormundung bei Genre-Klassifikation  DJs fühlten sich durch vorgegebene AI-ermittelte Stile bevor­ mundet, was zur Entwicklung des personalisierbaren MY TAGS  Systems führte
-
-
-Personas als Design-Anker   Die drei entwickelten Personas (Jasmin, Lio, Samuel) dienten  durchgängig als Referenz für Design-Entscheidungen. Konkrete  Nutzerbilder verhindern Feature-Inflation und technologie-ge­ triebene Entwicklung.
-
-
-Diese Iterationen zeigen den Wert früher Nutzer-Einbindung  und bestätigen die Effektivität der eingesetzten user-zen­ trierten Forschungsmethoden im Design-Prozess.
-
-
-Technische Validierung
-
-
-Prototyping ermöglicht frühe Validierung Der funktionsfähige bewies die Machbarkeit unserer Konzepte  und identifizierte Usability-Probleme vor aufwändiger Vollent­ wicklung.
-
-
-Audio-Feature-Extraction bewährt sich Die Extraktion von über 400 Audio-Features pro Track liefert  nutzbare Similarity-Berechnungen. Cosine-Similarity zwischen  Feature-Vektoren korreliert gut mit subjektiven DJ-Einschät­ zungen.
-
-
-Überraschende Erkennt­ nisse
-
-
-Kreativität durch Beschränkung Viele DJs schätzen die Beschränkungen ihrer aktuellen Tools, da  diese kreative Lösungen fordern. Vollständige Automation würde  diese geschätzte Herausforderung eliminieren.
-
-
-Similarity-Visualization funktioniert t-SNE-basierte 2D-Projektionen preservieren lokale Ähnlich­ keitsstrukturen ausreichend für intuitive Navigation. Nutzer  erkannten musikalische Cluster ohne Erklärung.
-
-
-Community-Aspekte unterschätzt Musik-Discovery erfolgt stark über soziale Netzwerke und DJCommunities. Rein technische Lösungen greifen zu kurz.
-
-
-Adaptive Tagging zeigt Potential MY TAGS System lernte individuelle Nutzersprache innerhalb  weniger Beispiele. Konfidenz-Scores helfen bei der Bewertung  automatischer Vorschläge.
-
-
-Performance-Kontext beeinflusst Organisation Club-DJs organisieren anders als Event-DJs oder Producer.  Diese kontextuellen Unterschiede sind für Software-Design  relevanter als Genre-Präferenzen.
-
-
-162 163
-
-
----
-*Seite 83*
-
-
-07 Evaluation & Ausblick Ausblick
-
-
-07 Evaluation & Ausblick Ausblick
-
-
-Unser Anspruch Mögliche Weiterentwick­ lung
-
-
-Das entwickelte Konzept und der funktionsfähige Prototyp stel­ len eine mögliche Grundlage für eine Weiterentwicklung dar. Die  Usability-Tests zeigten grundsätzliches Interesse der Nutzer an  der Lösung.
-
-
-Ein zentraler Anspruch unseres Bachelorprojekts war es, eine  praxistaugliche Lösung zu entwickeln, die sich nahtlos in beste­ hende DJ-Workflows integrieren lässt. Statt disruptiver Innova­ tion setzten wir bewusst auf evolutionäre Verbesserung - das  Tool ergänzt etablierte DJ-Software, ersetzt sie aber nicht.
-
-
-Integration in bestehende  Strukturen
-
-
-Kompatibilität mit etablierten Tools Der M3U-Export ermöglicht problemlose Übergabe an Rekord­ box, Serato oder Traktor. DJs können ihre gewohnte Perfor­ mance-Software weiternutzen und profitieren trotzdem von der  AI-gestützten Organisation. Diese pragmatische Herangehens­ weise erhöht die Marktchancen erheblich.
-
-
-Das Tool deckt zentrale Aspekte wie die AI-gestützte Musikana­ lyse und räumliche Visualisierung ab, bietet aber auch Potenzial  für zukünftige Erweiterungen. Weiteres Potenzial sehen wir  durch die Integration unseres Konzepts in ein umfassendes DJEcosystem, wie es bereits bei etablierten Plattformen wie Native  Instruments oder Pioneer DJ mit ihren vernetzten Software- und  Hardware-Landschaften existiert. Über eine solche Plattform  könnten DJs alle Aspekte ihres Workflows - von der Musikent­ deckung bis zur Live-Performance - zentral abwickeln.
-
-
-Schrittweise Adoption Das Tool kann als reines Organisationswerkzeug eingesetzt  werden, ohne dass DJs ihre gesamte Arbeitsweise umstellen  müssen. Die 2D-Visualisierung bietet einen optionalen, aber  nicht zwingenden Workflow-Baustein.
-
-
-Langfristig wäre eine Entwicklung denkbar, bei der die AI-Analy­ se auch Streaming-Dienste in Echtzeit klassifiziert und automa­ tisch kompatible Tracks für geplante Sets vorschlägt. Ergänzend  könnte das System Hardware-Integration für Live-Performance  bieten, um die organisierte Musikbibliothek nahtlos in DJ-Con­ troller und CDJs zu übertragen.
-
-
-Mit dem in dieser Bachelorarbeit entwickelten Konzept wird eine  Grundlage geschaffen, auf der schrittweise weitere Funktio­ nen und Workflows realisiert werden können - mit dem Ziel, die  Organisationszeit zu reduzieren und die kreative Freiheit für DJs  zu erhöhen.
-
-
-164 165
-
-
----
-*Seite 84*
-
-
-166 167
-
-
----
-*Seite 85*
-
-
-08 Anhang Abbildungsverzeichnis
-
-
-08 Anhang Abbildungsverzeichnis
-
-
-Abb. 45 Interaktive Waveform, Eigene Darstellung Abb. 46 MVP-Prototyp (Light-Theme), Eigene Darstellung Abb. 47 Finaler Prototyp (Dark-Theme), Eigene Darstellung Abb. 48 MVP-Prototyp (Detailansicht), Eigene Darstellung Abb. 49 Technischer Stack des Prototyps, Eigene Darstellung Abb. 50 Usability-Test mit Steve, Eigene Darstellung
-
-
-Abb. 1 Projektplanung, Eigene Darstellung Abb. 2 Pino Peña, Eigene Darstellung Abb. 3 DJ Danik, Eigene Darstellung Abb. 4 Concussion, Eigene Darstellung Abb. 5 Townes, Eigene Darstellung Abb. 6 Polygonia, Eigene Darstellung Abb. 7 Toobris, Eigene Darstellung Abb. 8 Interview mit Pino Peña (Screenshot), Eigene Darstellung Abb. 9 Interview mit Polygonia (Screenshot), Eigene Darstellung Abb. 10 Persona Jasmin, Eigene Darstellung Abb. 11 Persona Lio, Eigene Darstellung Abb. 12 Persona Samuel, Eigene Darstellung Abb. 13 Screenshot von Rekordbox, Rekordbox Abb. 14 Screenshot von VirtualDJ, VirtualDJ Abb. 15 Screenshot von Apple Music, Apple Music Abb. 16 Screenshot von Lexicon, Lexicon Abb. 17 Kano-Modell zur Feature-Priorisierung, Eigene Darstellung Abb. 18 Info Clustering auf dem Whiteboard, Eigene Darstellung Abb. 19 Standard-Spektrogramm (Zeit-Frequenz-Darstellung), Eigene Darstellung Abb. 20 Mel-Spektrogramm (Menschliches Hörmodell), Eigene Darstellung Abb. 21 Chromagramm (Harmonische Inhalte), Eigene Darstellung Abb. 22 Wordcloud der Genre-Tags, Eigene Darstellung Abb. 23 Wahrscheinlichkeitsverteilung für den Stil „Techno“, Eigene Darstellung Abb. 24 Wahrscheinlichkeitsverteilung für den Stil „Electro“, Eigene Darstellung Abb. 25 Wireframes (Listen- und 2D-Map-Ansicht), Eigene Darstellung Abb. 26 Wireframes (Detailansicht 2D-Map), Eigene Darstellung Abb. 27 Multi-Modell-Analyse eines Tracks, Eigene Darstellung Abb. 28 Recommendations-Komponente, Eigene Darstellung Abb. 29 Sidebar mit MYTAGS, Eigene Darstellung Abb. 30 Visualisierung der Musikbibliothek als 2D-Map, Eigene Darstellung Abb. 31 Similarity Map Ansicht, Eigene Darstellung Abb. 32 XY Map Ansicht, Eigene Darstellung Abb. 33 Albums-Ansicht, Eigene Darstellung Abb. 34 Tracks-Ansicht, Eigene Darstellung Abb. 35 Albums-Ansicht (Detail), Eigene Darstellung Abb. 36 Labels-Ansicht, Eigene Darstellung Abb. 37 Artists-Ansicht, Eigene Darstellung Abb. 38 Labels-Ansicht (Detail), Eigene Darstellung Abb. 39 Crates-Ansicht, Eigene Darstellung Abb. 40 Smart-Crates-Regelwerk, Eigene Darstellung Abb. 41 Tag-Spalte in der Track-Liste, Eigene Darstellung Abb. 42 SQL-Schema der Datenbank, Eigene Darstellung Abb. 43 3D-Visualisierung des Vektor-Index, Eigene Darstellung Abb. 44 Filterpanel, Eigene Darstellung
-
-
-168 169
-
-
----
-*Seite 86*
-
-
-08 Anhang Quellenverzeichnis
-
-
-08 Anhang Quellenverzeichnis
-
-
-Primärquellen
-
-
-Performance-Tools
-
-
-Interviews
-
-
-Pioneer DJ RekordboxVersion  https://rekordbox.com
-
-
-Pino Peña (29 Jahre, fortgeschrittener DJ)   Interview durchgeführt am 02.04.2025, Dauer: 28 Minuten   [Transkription verfügbar im Projektarchiv]
-
-
-Serato DJ Pro https://serato.com
-
-
-DJ Danik (Event-DJ, semi-professionell)   Interview durchgeführt am 03.04.2025, Dauer: 25 Minuten
-
-
-Native Instruments Traktor Pro https://traktor.com
-
-
-VirtualDJ https://virtualdj.com
-
-
-Concussion  (23 Jahre, semi-professioneller DJ)  Interview durchgeführt am 01.04.2025, Dauer: 24 Minuten   [Transkription verfügbar im Projektarchiv]
-
-
-Beatport DJ https://beatport.com
-
-
-Townes (24 Jahre, Vinyl-DJ)   Interview durchgeführt am 01.04.2025, Dauer: 23 Minuten   [Transkription verfügbar im Projektarchiv]
-
-
-Musikverwaltungs-Tools
-
-
-MP3Tag https://mp3tag.de
-
-
-Polygonia (29 Jahre, professionelle DJ)   Interview durchgeführt am 01.04.2025, Dauer: 32 Minuten   [Transkription verfügbar im Projektarchiv]
-
-
-MediaMonkey  https://mediamonkey.com
-
-
-Toobris (24 Jahre, Club-DJ)   Interview durchgeführt am 26.03.2025, Dauer: 30 Minuten   [Transkription verfügbar im Projektarchiv]
-
-
-Lexicon https://lexicondj.com
-
-
-Usability-Tests
-
-
-Mixed In Key https://mixedinkey.com
-
-
-DJOID https://djoid.com
-
-
-Steve (28 Jahre, Hobby-DJ)   Usability-Test durchgeführt am 19.06.2025, Dauer: 99 Minuten   MVP-Prototyp-Test mit Think-Aloud-Protokoll  [Transkription verfügbar im Projektarchiv]
-
-
-Carsten Usability-Test durchgeführt am 12.05.2024, Dauer: 48 Minuten   MVP-Prototyp-Test mit Think-Aloud-Protokoll [Transkription verfügbar im Projektarchiv]
-
-
-Lisa Friedrich Usability-Test durchgeführt am 27.06.2024, Dauer: 23 Minuten   MVP-Prototyp-Test mit Think-Aloud-Protokoll [Transkription verfügbar im Projektarchiv]
-
-
-170 171
-
-
----
-*Seite 87*
-
-
-08 Anhang Quellenverzeichnis
-
-
-08 Anhang Quellenverzeichnis
-
-
-Datenbanken und APIs
-
-
-Essentia Open-Source-Framework für Audio-Feature-Extraktion   Entwickelt von Music Technology Group (MTG), Universitat Pompeu Fabra   GitHub: https://github.com/MTG/essentia   Dokumentation: https://essentia.upf.edu
-
-
-MusicBrainz API  Open Music Encyclopedia für Metadaten-Anreicherung   API-Dokumentation: https://musicbrainz.org/doc/MusicBrainz_API   Verwendung für Label-Hierarchien und Artist-Informationen
-
-
-Discogs-EffNet Modell EfficientNet-Architektur, trainiert auf Discogs-Datensatz   400+ Genre-Kategorien, spezialisiert auf elektronische Musik   Basis für Genre-Klassifikation im entwickelten System
-
-
-SQLite Lokale Datenbank für Metadaten-Speicherung   https://sqlite.org
-
-
-MTG-Jamendo-Modell Instrument-Recognition-Modell der Music Technology Group   Trainiert auf Jamendo-Datensatz für Instrumentenerkennung   Verwendung für Drums, Bass, Synths, Vocals Detection
-
-
-Discogs API Musik-Datenbank für Vinyl-Releases und Label-Informationen   API-Dokumentation: https://discogs.com/developers   Referenz für Vinyl-DJ-Workflows und Label-Clustering
-
-
-Entwicklungsframeworks
-
-
-Musik-Plattformen (Research-Kontext)
-
-
-Bandcamp Indie-Musik-Plattform für DJ-Discovery-Workflows   Referenz für Metadaten-Qualität und Künstler-Information
-
-
-React JavaScript-Framework für Frontend-Entwicklung   Offizielle Website: https://react.dev   Komponenten-basierte Architektur für komplexe DJ-Interfaces
-
-
-Beatport Electronic Music Store für DJ-Musik   Referenz für Genre-Kategorisierung und DJ-Charts
-
-
-Electron Cross-Platform Desktop-Anwendungsentwicklung   Offizielle Website: https://electronjs.org   Ermöglicht native OS-Integration für Dateisystem-Zugriff
-
-
-SoundCloud Audio-Streaming-Plattform   Referenz für Promo-Tracks und Musik-Discovery
-
-
-Python Backend-Sprache für Audio-Analyse und Datenbankmanagement   Offizielle Website: https://python.org   Integration mit Essentia für Audio-Feature-Extraktion
-
-
-Hardware-Referenzen
-
-
-Pioneer DJ CDJ-Serie Club-Standard-Hardware für USB-Export-Kompatibilität   Referenz für Export-Format-Anforderungen
-
-
-172 173
-
-
----
-*Seite 88*
-
-
-08 Anhang Musikverzeichnis
-
-
-08 Anhang Danksagung
-
-
-Danke
-
-
-Dub Schneider, Skee Mask, ISS010, 2024
-
-
-Soap Bubbles, Move D, Kunststoff, 1995
-
-
-Silent Now, Andrea, Due in Color, 2023
-
-
-Besonderer Dank gilt allen DJ-Interview-Teilnehmern, die ihre  Zeit und Expertise großzügig geteilt haben: Pino Peña, DJ Danik,  Concussion, Townes, Polygonia und Toobris. Ihre ehrlichen Ein­ blicke in DJ-Workflows und -Probleme bildeten das Fundament  dieser Arbeit.
-
-
-Hedonic Setpoint, Malin Genie, Hedonic Setpoint III, 2024
-
-
-Freak, Tils, MP07, 2023
-
-
-Faith in Strangers, Andy Stott, Faith in Strangers, 2014
-
-
-Live Wire, Lucas Rodenbush, Rodenbush EP, 2002
-
-
-Wir danken unseren Betreuern Prof. David Oswald und Prof.  Michael Schuster für ihre methodische Unterstützung und  kritische Reflexion der Forschungsansätze. Die interdisziplinä­ re Perspektive zwischen Design, Technologie und Musikkultur  war entscheidend für den Projekterfolg. Zusätzlich danken wir  Prof. Jens Döring und Prof. Ulf Harr für ihre wertvollen Exper­ teninterviews und Einschätzungen, die zur Vertiefung unserer  Forschung beitrugen.
-
-
-Funky Nassau, The Beginning of the End, Funky Nassau, 1971
-
-
-Atlas, Blawan, Nutrition, 2017
-
-
-Den Usability-Test-Teilnehmern Stefan, Carsten und Lisa danken  wir für ihr konstruktives Feedback und ihre geduldige Unterstüt­ zung während der Prototyping-Phase.
-
-
-Joy, Shakti, Shakti with John McLaughlin, 1976
-
-
-Darkstar System Malfunction, Fields Of Mist, Secrets Of The Nebula, 2025
-
-
-Metamorphosis, Arthur Robert, Metamorphosis, 2021
-
-
-Quadrant Dub, Basic Channel, Quadrant Dub, 1994
-
-
-Besonderer Dank gilt auch Bryan Müller (Skee Mask) für seine  kritische Einschätzung zur Nutzung von KI in der Musikklassi­ fizierung. Seine Perspektive trug maßgeblich zur Weiterent­ wicklung unseres zweiten Prototyps bei und lenkte den Fokus  darauf, DJs beim Aufbau eigener Terminologien zu unterstützen  und einen tieferen Bezug zur Musik zu schaffen, anstatt sich auf  automatisierte Klassifizierung zu beschränken.
-
-
-Amber, Autechre, Amber, 1994
-
-
-MP06, Tils & Maxim Vukovic, MP06, 2025
-
-
-Lifeforms, Future Sound of London, Lifeforms, 1994
-
-
-Waveform Transmission, Jeff Mills, Waveform Transmission Vol. 1, 1992
-
-
-Make This Party Live, Cybonix, Make This Party Live, 2001
-
-
-Ship-Scope, Shinichi Atobe, Ship-Scope, 2001
-
-
-174 175
-
-
----
-*Seite 89*
-
-
-08 Anhang Eidesstattliche Versicherung
-
-
-08 Anhang Anmerkungen
-
-
-Sprachlich optimierte Texte
-
-
-Eidesstattliche  Versicherung
-
-
-Für die Erstellung der Dokumentation nahmen wir Claude von  Anthropic zur Hilfe. Das Tool half uns, Texte zu verfassen, zu  strukturieren und Argumentationen zu verfeinern.
-
-
-Hiermit versichern wir, dass wir die vorliegende Arbeit selbst­ ständig verfasst und keine anderen als die angegebenen Quellen  und Hilfsmittel verwendet habeb. Alle Ausführungen, die wörtlich  oder sinngemäß übernommen wurden, sind als solche gekenn­ zeichnet.
-
-
-Gendererklärung
-
-
-Aus Gründen der besseren Lesbarkeit wird in dieser Bachelorar­ beit auf die gleichzeitige Verwendung der Sprachformen männ­ lich, weiblich und divers (m/w/d) verzichtet.  Sämtliche Formulierungen gelten gleichermaßen für alle Ge­ schlechter.
-
-
-Ort, Datum Jannik Aßfalg
-
-
-Schwäbisch Gmünd, 04.07.25
-
-
-Ort, Datum Fabrice Rio
-
-
-176 177
+# Catalogic – Project dossier
+
+> Curated summary written from the project sources. References in brackets: [doku p.N = Catalogic_Dokumentation.pdf page N (spreads), endp N = final presentation slide N, zwp N = mid-term presentation slide N, notes = Catalogic_extended_information.md (Fabrice's own notes), test-A-syn = written synthesis of usability test A (Erkenntnisse_*_Usability_Test.md), case = HfG case study, research = Research_04-24.pdf]. Items marked **(unverified)** need confirmation.
+
+## At a glance
+
+- **What:** An AI-assisted desktop tool for cataloguing and managing DJ music libraries. It analyses every track (400+ audio features), visualises the whole library as a navigable 2D map, and lets DJs build their own tag vocabulary ("MY TAGS") with AI suggestions they accept or reject – "augmentation instead of automation". [doku p.5; endp 31]
+- **Context:** Bachelor thesis, Interaction Design B.A., HfG Schwäbisch Gmünd, summer semester 2025 (documentation dated 04.07.2025). Supervisors: Prof. David Oswald, Prof. Michael Schuster. [doku p.2, p.89]
+- **Team:** Fabrice Rio and Jannik Aßfalg (two students). [doku p.2]
+- **Duration:** about 4 months (March–July 2025). [notes; doku p.7]
+- **Fabrice's role (his own description):** concept, research, layout, UI design, rapid prototyping, usability testing, documentation, keeping the work user-centred, organising/structuring the system. [notes] Fabrice and Jannik both worked across all areas of the project. Fabrice had lead responsibility for project organisation, communication with the supervisors and examiners, and the visual/UI design (Gestaltung) [stated by Fabrice].
+- **Deliverables:** working desktop prototype (Electron + React + Python analysis engine), final UI design in Figma, 177-page documentation, mid-term and final presentation, HfG case study. [doku p.8, p.69–70]
+
+## Problem
+
+- Digitalisation removed the natural limit of a record bag (~60 records ≈ 240 tracks) – a USB stick now holds ~100,000 tracks; DJs carry 30,000+ tracks to gigs. The more music, the harder to keep an overview and find the right track in the decisive moment. [endp 3–4; doku p.5]
+- Interviewed DJs spend **5–10 hours per week** organising music manually – time missing for creativity. Existing DJ software (Rekordbox, Serato, Traktor) focuses on live performance and neglects preparation. [doku p.5]
+- Guiding question: **"How can we regain control?"** [endp 5]
+- Four core problems found across all interviews: [doku p.22; endp 23–26; zwp 11–14]
+  1. **High time effort** for manual organisation (grows linearly with library size).
+  2. **Limited tagging** – predefined categories in software that rarely fit individual ways of working (e.g. Rekordbox's limited tag categories).
+  3. **Inconsistent management** – systems started but not maintained; "collection-bin playlists"; different import sources with different metadata standards.
+  4. **Insufficient analysis** – BPM and key are detected automatically, but mood, energy and groove are not.
+- Consequence in practice: organisation structures that feel logical at home fail under stress during a live set; transitions are the most stressful moment. [doku p.24; notes]
+- Representative quote (DJ interview): „Der Sortierungsprozess und die Organisation meiner Musikbibliothek sind brutal aufwendig, da ich über Jahre hinweg viele Tracks angesammelt habe.“ [notes] — and DJ DJ 2: „Je mehr Detailtiefe in der Sortierung, desto mehr Spaß hat man, desto spontaner kann man agieren, desto schneller ist man.“ [endp 20]
+
+## Research
+
+- **6 semi-structured DJ interviews** (remote via Zoom, recorded and transcribed; show-and-tell of their libraries), March/April 2025: DJ 1 (29, 14 years, eclectic, iTunes + Rekordbox), an event DJ (event/wedding DJ, Virtual DJ, sorts by decade), DJ 4 (23, techno/schranz, Rekordbox), DJ 5 (24, vinyl/hybrid, Discogs), DJ 2 (29, professional, extensive Rekordbox tagging), DJ 3 (24, club DJ, detailed mood/genre tags). Guide followed the DJ workflow: background → digging → preparation → gig → wishes. [doku p.10–12, p.86]
+- **2 expert interviews** (Prof. Jens Döring, Prof. Ulf Harr) and critical feedback from producer **a well-known electronic-music producer** on AI in music classification, which steered the project away from black-box auto-tagging toward user-owned tags. [doku p.88; notes]
+- **DJ workflow model** with five phases: digging → import & analysis → library management → set planning → live performance (+ follow-up). [doku p.6; endp 8–15; zwp 5–10]
+- **Personas** (final): Jasmin (29, structured DJ/producer, own tags, the most critical persona), Lio (26, Berlin, creative "finder", Rekordbox mood/energy tags, struggles with overview), Samuel (event DJ, sorts by decade, duplicates, backups). Earlier persona drafts: Felix, Claudi, Lena. [doku p.13–15, p.82; persona PNGs; notes]
+- **User journeys** for Jasmin and Samuel across six phases incl. live and follow-up. [doku p.16–21]
+- **Organisation techniques** observed: tagging (objective and subjective, highly personalised), visual markers (stars, colours per set phase), folder structures, comments. [doku p.26]
+- **Market analysis** of 20+ tools in two categories (performance software: Rekordbox, Serato, Traktor, VirtualDJ, Beatport DJ, Mixxx…; library managers: MP3Tag, MediaMonkey, MusicBee, Lexicon, iTunes…) via a feature matrix; DJOID identified as most direct competitor (AI tagging, graph playlists) but with inaccurate classification, node-based UI with steep learning curve, missing explainability and full automation that undermines curation. Gap: no tool offers spatial exploration of similarity or adaptive learning from user behaviour. Rekordbox's de-facto monopoly (Pioneer hardware in clubs) makes coexistence via export the realistic strategy. [doku p.29–32; research p.6; marktanalyse]
+- **Stakeholder map:** DJs and tech-savvy early-adopter DJs most engaged; labels, platforms (SoundCloud, Bandcamp) keep satisfied. [research p.7]
+- **Target group:** semi-professional to professional DJs, mainly electronic music, 2+ years experience, 1,000+ tracks (libraries in the four- to five-digit range). [doku p.28; endp 27–28; notes]
+- Biggest research surprises (Fabrice): how strongly badly organised libraries impact live performance, and how different DJs' mental organisation models are. [notes]
+
+## Design requirements and principles
+
+Four requirements [endp 31–34]: **augmentation instead of automation**; **support DJs' mental models**; **restore the connection to one's own library**; **integrate into the existing workflow**.
+How-might-we questions included visualising the library to discover connections and forgotten tracks, making organisation flexible to personal criteria, speeding up track search, and designing AI suggestions that inspire without loss of control. [doku p.25]
+Scope decision: focus on the **preparation phase** (import & analysis, library management, set planning); digging and live performance out of scope. [endp 19; notes]
+
+## Concept and key decisions
+
+- **Feature prioritisation (Kano):** must-haves BPM/key analysis, search & filter, cover art & player, playlist management + M3U import/export, duplicate detection; performance features supported tagging with bulk edit, smart crates, recommendations; delighters a 2D track map, set feedback, notes. Full automation (Automix, auto set planning) rated low. [doku p.34–35]
+- **Two development phases:** Phase 1 MVP to validate the AI pipeline technically (list view + style analysis); Phase 2 full prototype with MY TAGS, 2D map, adaptive learning, filters and export. [doku p.36, p.66]
+- **AI analysis:** Essentia framework; Discogs-EffNet (400+ style classes, 400-dim embeddings), mood models, MTG-Jamendo instrument recognition, spectral descriptors. Weighted similarity: style 1.0, genre 0.2, mood 0.1; spectral not used for clustering. Cosine similarity in a vector index (FAISS/ANN). [doku p.38–41, p.46, p.62; endp 41–48]
+- **Class imbalance found:** in a 1,346-track library, "Techno" showed a coherent probability distribution, "Electro" a heavily skewed one → adaptive genre weighting. [doku p.41; notes]
+- **MY TAGS (adaptive, user-owned tagging):** DJs create any tags in their own language (e.g. "Driving-Hypnosis", "Afterhour Vibes", grouped as style/context/situation/mood tags); the system learns a profile per tag and suggests further tracks with confidence scores; DJs accept (✓) or reject (✗), and rejections improve future suggestions. Tagging tag-by-tag instead of track-by-track also prevents one tag being used for several meanings. [doku p.47–48; endp 52–54; notes]
+- **Confidence slider (0–100 %):** controls how strictly AI matches are highlighted – high = safe/precise, low = exploratory. [notes; doku p.51]
+- **Similarity Map (the central design bet):** the whole library as a point cloud where proximity = sonic similarity; consistent "genre territories" (techno always in the same area) build spatial memory like a physical record shelf; transition zones (e.g. melodic techno between techno and house) reveal bridges. Lasso selects clusters, path tool selects transitions for set planning. [doku p.42, p.49–51; notes]
+- **XY Mode:** assign explicit features to the axes (e.g. X = techno, Y = energy) for interpretable, targeted set planning with smooth style transitions. [doku p.53; notes]
+- **Library views:** Tracks, Albums, Artists, Labels (MusicBrainz label hierarchies); crates (tracks in several crates), **Smart Crates** with rules (e.g. Genre is Electronic AND Style contains Techno AND Spectral is not dark), tags as a faceted layer across crates; interactive waveforms to jump to drops/breaks. [doku p.54–63; endp 50]
+- **Export:** M3U playlists and folder export for USB/CDJs – open standards instead of proprietary Rekordbox integration; Catalogic complements rather than replaces Rekordbox/Serato/Traktor. [doku p.64; endp 62; notes]
+- **Desktop-first:** performance for batch audio analysis, offline use, data sovereignty (libraries stay local). [doku p.45]
+- **Tech stack:** Electron, React (React Window, React DnD, D3.js, Wavesurfer.js), Express.js, SQLite, Python analysis engine (Essentia, Librosa, Mutagen, FAISS); prototype coded with Cursor. Tools: Notion, Slack, WhatsApp, Figma, Miro, InDesign. [doku p.8, p.69–70]
+
+## Iterations and things that changed
+
+- Mid-term framing was still "spontaneous track search during performance"; the iceberg insight (performance rests on invisible preparation) shifted the focus to preparation. [zwp 4–5]
+- Early **3D map** (PCA 3D scatter) was too overwhelming → 2D map. [notes; zwp 23]
+- **Full automation of tagging** looked promising to the team but met criticism and resistance from DJs (and an established electronic-music producer) → support, not control (MY TAGS). [notes; doku p.82]
+- Wireframes moved from list view to map to a **hybrid list + map** with tabs. [doku p.43]
+- A planned **analysis tab** was cut for time and prioritisation. [notes]
+- Visual identity changed from the purple, playful mid-term look to the dark theme with a single orange accent. [zwp 1; doku p.74]
+- Key trade-off: **depth vs. understandability** – huge amounts of metadata vs. a clean interface; internal debates on categorising metadata and reducing 400+ dimensions for the map. [notes]
+
+## Validation
+
+- **Usability tests:** 2 rounds, 3 participants (Test participant A, Test participant B, Test participant C), think-aloud, 45–60 min (Test participant A's session 99 min), screen recording. Tasks: targeted search with filters, creating/managing tags, evaluating AI recommendations, exploring the 2D map, set planning in XY mode. [notes; doku p.71, p.86]
+- **What worked:** strong enthusiasm for the map ("krasses Programm", "mega geil"); clusters understood after brief exploration; similarity recommendations rated accurate (Test participant A: 97 % similarity recognised); mood categorisation valued ("Ich bin eher so ein Moody-Type of DJ"); Test participant B imagined drawing a graph of how his set builds up. Testers firmly rejected full automation – "the human component must remain". [test-A-syn; doku p.72; endp 63]
+- **Problems found:** missing onboarding/tooltips; unclear what determines point positions on first use; XY axis assignment confusing and error-prone; drag & drop unfamiliar for users with ten years of right-click habits ("old habits die hard"); unpredictable colour coding, missing axis labels, lasso imprecise, OR-mode unclear, bugs (tracks disappearing, waveforms not loading), selection lost on reload. Recommendations mapped to Nielsen heuristics (tooltips, axis labels, legends, status indicators, undo, right-click menus in addition to drag & drop). [test-A-syn; notes]
+- Beginners adopted new paradigms faster; experienced DJs had stronger expectations from existing software → need flexible onboarding. [doku p.72]
+
+## Outcome and reflection
+
+- Outcome Fabrice claims: Catalogic helped DJs re-establish a connection to their own libraries; keeping decisions with the DJ encourages engagement with tracks and rediscovery. Directionally expected to reduce preparation time and forgotten tracks – **no measured metrics** (time was the main constraint). [notes]
+- Validated principles: augmentation over automation; personalisation is decisive; hybrid visualisation (similarity + XY) serves exploratory and targeted use; workflow integration beats feature maximisation. [doku p.81–82]
+- Not done: no formal accessibility checks; edge-case focus was mainly very large libraries. [notes]
+- Next steps: onboarding/tooltips, better XY axis interaction, more tests and real metrics; long-term integration into a DJ ecosystem, streaming classification, hardware integration. [notes; doku p.83]
+- The documentation states that Claude (Anthropic) was used to help write and structure texts. [doku p.89]
+
+## Inconsistencies in the sources
+
+- Projection method: the documentation mentions PCA in most places and t-SNE once. [doku p.53, p.68 vs. p.82]
+- Usability test dates in the appendix show 2024 for Test participant B and Test participant C (likely typo for 2025); appendix calls Test participant A's session an MVP test while p.66 says the advanced prototype was tested with Test participant A and Test participant B. [doku p.66, p.86]
+- Persona age for Samuel given as 43 and 38. [doku p.15]
+
+## Open questions for Fabrice
+
+- Which parts were Fabrice's vs. Jannik's (e.g. who coded the prototype, who led UI)?
+- Is the prototype or code available to show (repo, video)?
+- Any grade, award, exhibition or follow-up interest?
+
+---
+
+# Catalogic – Deep dive
+
+> Complete, question-oriented synthesis of the Catalogic bachelor project. Companion to the short dossier. Organised as: process & timeline → research synthesis (every source) → usability tests (every session) → decision log (why each decision was made) → iteration history → Fabrice's contribution → results & limitations → quote bank.
+> Source keys: [doku p.N] = Catalogic_Dokumentation.pdf page N (each page is a spread, printed page numbers differ); [endp N] / [zwp N] = final / mid-term presentation slide; [notes] = Fabrice's own project notes (Catalogic_extended_information.md); [research p.N] = Research_04-24.pdf; [case] = HfG portfolio case study; [kano-F] = Fabrice's individual Kano board; [t-eventdj] = an event DJ interview transcript; [test-A], [test-B], [test-C] = usability-test transcripts (test participants A, B, C); [test-A-syn] = written synthesis of test A; [meeting] = supervisor meeting transcript ("Besprechung #3"). Quotes are kept in German original with an English translation.
+
+## 1. Project frame, process and timeline
+
+- Bachelor thesis, Interaction Design B.A., HfG Schwäbisch Gmünd, summer semester 2025. Team of two: Fabrice Rio and Jannik Aßfalg. Supervisors: Prof. David Oswald and Prof. Michael Schuster. Documentation signed 04.07.2025. [doku p.2, p.89]
+- Working title during research: "Bachelorthesis – Smart DJ Tool". [research p.1; meeting]
+- Duration about four months (March–July 2025). Plan: research and interviews in March, concept and ideation in April, development and validation of an MVP late April–May, final concept in June, visual design June–July, final prototype and testing in July. [doku p.7; notes]
+- Process model: a double diamond – Discovery (research → define), solution development → concept validation, development (design & build), validation; "rollout" is drawn but greyed out as out of scope. [doku p.7; endp 64]
+- Team tools: Notion (tasks, interview and test guides), Slack (official channel to the supervisors), WhatsApp (team and interviewees), Figma (all visual design), Miro (research synthesis and clustering), Cursor (to build the functional prototype), Adobe InDesign (documentation). [doku p.8]
+- Milestones visible in the sources: DJ interviews 26.03.–03.04.2025 [doku p.86]; research compilation and personas 24.04.2025 [research]; supervisor meeting on market analysis and stakeholders (April/May) [meeting]; mid-term presentation (May 2025) [zwp]; usability tests in June 2025 (Test participant A 19.06., Test participant C 27.06.; Test participant B's session in the same phase – the appendix date "12.05.2024" is a typo) [doku p.86]; documentation 04.07.2025; final presentation afterwards [endp].
+- The documentation notes that Claude (Anthropic) was used to help write, structure and refine the documentation texts. [doku p.89]
+
+## 2. Research synthesis
+
+### 2.1 Desk research: how DJing works
+The team first built a shared understanding of the craft [research p.8–9]:
+- Beginners start with a USB controller that drives software (Virtual DJ, Rekordbox); the controller itself plays nothing.
+- A personal music library is essential. Sources: SoundCloud (free promotion), Beatport, Bandcamp, iTunes/Apple Music (purchase); beginners often use YouTube converters or streaming integrations.
+- Craft basics: BPM, key (harmonic transitions), 4/4 structure, beatmatching (pitch/time-stretch), transitions by overlapping intro/outro, never running two basslines at once, EQ management, previewing in headphones, optional looping.
+- A set has a dramaturgy (intro → peaks → ending) and "tells a story"; spontaneity comes from reading the dance floor; track selection matters more than technique.
+- Etiquette: coordinate BPM and intensity with other DJs; an opening DJ who plays too fast or hard is considered selfish.
+- Five-phase DJ workflow used throughout the project: (1) Digging/discovery, (2) Import & technical analysis, (3) Library management & organisation, (4) Set planning & preparation, (5) Live performance – plus follow-up. Phase 3 turned out to be the most time-consuming and the weakest in current software. [doku p.6; endp 8–15]
+
+### 2.2 DJ interviews (6 DJs)
+Method: semi-structured interviews, 23–32 minutes each (the guide allowed 45–90 min), remote via Zoom, recorded and transcribed; DJs shared their screens and showed their real organisation systems ("show and tell"). The guide followed the DJ workflow: background → digging ("Which criteria decide whether a new track is relevant for your sets?", "What challenges do you face most often while digging?") → preparation ("How do you organise your library?") → the gig ("Do you have your whole library available while playing or prepared playlists?") → wishes ("If you could imagine the ideal tool to organise your library – what must it be able to do?"). [doku p.10–12, p.86]
+
+Interviewees [doku p.10]:
+- **DJ 1** (29, advanced, 14 years): eclectic – techno, breaky bass music, jazz, hip-hop, reggae; plays clubs, private events and radio; organises mainly in iTunes and exports with Rekordbox for live sets. Interview 02.04.2025.
+- **an event DJ** (event DJ, semi-professional): main job freight-forwarding clerk; weddings and events; Discofox, "Malle" party music, 90s hits, occasionally electronic; uses Virtual DJ; sorts by decade. Interview 03.04.2025 (transcript available, see 2.3).
+- **DJ 4** (23, semi-professional): 4–5 years DJing, 9–10 years producing; classic techno and Schranz; Rekordbox; experiments with organising by artist. Interview 01.04.2025.
+- **DJ 5** (24, vinyl DJ): 7 years (5 vinyl-only, 2 hybrid); clubs; hypnotic techno with house, ambient and breaks influences; works exclusively with vinyl via Discogs. Interview 01.04.2025.
+- **DJ 2** (29, professional): 7 years, lives from DJing and producing; clubs and festivals; techno, house, breakbeat, bass music, psychedelic elements; extensive tagging system in Rekordbox. Interview 01.04.2025. Key quote: „Je mehr Detailtiefe in der Sortierung, desto mehr Spaß hat man, desto spontaner kann man agieren, desto schneller ist man.“ (The more detail in the sorting, the more fun you have, the more spontaneously you can act, the faster you are.) [endp 20]
+- **DJ 3** (24, club DJ): 7 years; groovy techno; Rekordbox with a detailed tag system for mood and genre. Interview 26.03.2025.
+- Only an event DJ's interview is available as a transcript in the material; the other five are represented through the documentation, personas, journeys and pain points.
+
+### 2.3 Interview with an event DJ (event DJ) – full findings [t-eventdj]
+The interview was conducted by Fabrice (he says he is not a DJ himself and that his partner has DJed at a professional level for five years, mainly techno).
+- **Preparation has shrunk over time.** At first he prepared a setlist meticulously for every event to avoid the stress of not knowing what to play next. Today he only reviews the clients' wishes: couples fill in a questionnaire with genres (more/less/absolute no-gos) and a list of max. 15 must-play songs; everything else is decided live by "gut feeling" and the crowd's reaction. Reason: "after two hours at a wedding the setlist is completely forgotten because something else works."
+- **Industry trend:** in the professional association he belongs to (the first German DJ association, founded the year before), most DJs go into events without a fixed set; mainly the older generation still builds setlists.
+- **Organisation = "chaotic warehousing".** He compares his library to chaotic storage from his logistics job: folders by decade (80s, 90s, 2000s up to 2010, then single years from 2011), plus a handful of genre folders (danceable, Malle, après-ski, rock). Old decades never change, so sorting itself is not time-consuming for him.
+- **Real pain points:** forgetting that he already owns a track or not finding it, then downloading it again → duplicates, also because titles differ slightly ("something in brackets"); fear of a hard-drive failure – re-sorting everything would be "a horror" (he has a backup); unknown chart requests (e.g. a new chart song requested repeatedly at a fire-brigade event, which he had to find in Tidal on the spot).
+- **AI tools:** he tried an AI duplicate-detection tool presented in his association but dropped it because it cost about €60 per month; he expects AI to make such things cheaper soon. "So far it worked without it – why change it now?"
+- **On BPM:** sorting by BPM matters more for electronic music; at weddings software can bridge 10–15 BPM cleanly.
+- **Craft vs. technology:** a vinyl DJ friend (58) teases controller DJs to "learn the craft properly"; an event DJ admits he would fail at vinyl-only DJing; modern tech (Pioneer FLX10, Denon Prime 4) makes it easier but is "brutally much technology".
+- **Virtual DJ:** "has a bad reputation with some DJs, I think it's a great program, above all structured"; he prepares rough running orders in it during the evening and occasionally saves the setlist of an outstanding party, but has rarely reused one.
+- **Professional ethics:** he despises "DJs" who just play a Spotify playlist with expensive-looking gear and charge €1,000–1,500 – "people who ruin the industry"; a DJ must "feel what's going on, what the guests want".
+- **Offer:** he offered to connect the team with the founder of the DJ association for a broader industry view.
+- **What this changed:** event DJs have different needs (wishes, duplicates, decades, backup, live quick access) and are less interested in deep organisation; this fed the persona Samuel and the decision to focus the target group on semi-professional/professional (mainly electronic) DJs with large, constantly growing libraries. [doku p.15, p.19–21, p.27–28]
+
+### 2.4 Expert and supervisor input
+- **Expert interviews** with Prof. Jens Döring and Prof. Ulf Harr provided additional assessments (content not documented in detail). [doku p.88]
+- **a well-known electronic-music producer**, an established electronic-music producer, gave critical feedback on using AI for music classification. His perspective "significantly contributed to the second prototype": it shifted the focus from automated classification to helping DJs build their own terminology and a deeper relationship with their music. [doku p.88; notes]
+- **Supervisor meeting (market analysis & stakeholders)** [meeting]:
+  - *Product strategy:* the supervisors asked whether it should be a standalone app or a plugin; advice: separate clearly "what we conceive, what we design and what we prototype".
+  - *DJOID scare:* the team presented the market analysis; DJOID (AI tagging, similarity) initially "scared" them. Research showed its AI analysis is immature ("more algorithms than real AI"), forum users report poor results, and it requires a €100 payment and an annual contract upfront ("very fishy"). A friend of the team had joined a DJOID user test in Berlin; a meeting with him was planned. DJOID lacks supported manual tagging – "the adaptive tagging we want as a killer feature".
+  - *Supervisor advice 1:* two quality levels decide such products – the content quality of tagging and similarity analysis, and interaction/interface quality. "We expect you to be good at the latter anyway"; technical analysis quality goes beyond an interaction-design thesis, and "it is not dishonourable to say at some point: others can do this better – and our product is still cool."
+  - *Supervisor advice 2:* the team had made an "invention" and was now discovering others had similar ideas – "see it as a chance": it confirms they are not on the wrong track; reconstruct the competitor's user experience and analyse who actually uses it.
+  - *Supervisor advice 3:* "It is always good not to be too innovative": comparing yourself with existing products is easier than explaining something completely new – "the market rewards at most 20 % innovation of a product."
+  - *Interaction-first:* Jannik reported meeting someone at a party who had built a purely manual, efficiency-focused tagging tool (tracks auto-play, you click the target folder). Conclusion: "first build beautiful interaction patterns, then fill their pain points with the technology we have – not approach it from the AI side."
+  - *Process:* Jannik admitted he had pushed to start wireframes early, and that "it was good that Fabrice slowed me down and said: I need to understand the process better" – which led to the user journey first. Jannik approaches it as a DJ; doing it together helped.
+  - *Stakeholders and ethics:* asked why the GEMA (collecting society) is on the stakeholder map, a supervisor raised AI-optimised mass content (comparing it with optimised pulp novels) and possible secondary use of the analysis data by labels or composers. The team pointed out an available model output estimating how "mass-compatible" a track is – interesting for labels but "very problematic" if used to reject producers' tracks, especially in the hands of streaming providers.
+  - *Recommendations need control:* the team's hypothesis: good recommendations connect very similar tracks (like the associations in a DJ's head), but users must be able to steer how much deviation they want. Supervisors noted context and audience differ (techno clubs: slow, repetitive development; event DJs: rounds/blocks, more audience service).
+  - *Anti-goal:* a supervisor jokingly proposed a dance-floor camera feeding mood back into recommendations – a fully automatic AI DJ. The team: "That's exactly what we want to avoid. We want to support the creative process, not replace it." Discussion about DJs as curators vs. artists ended with "a good DJ can do both, at the same time".
+
+### 2.5 Personas (two generations)
+- **First set (April 2025)** [research p.1–4; persona PNGs]: Felix (28, Berlin, digital resident DJ, efficiency, open to AI, slowed down by tools in the club), Claudi (29, Würzburg, professional DJane & producer, own tags, flexible structure, stressed by Rekordbox limits and cluttered UI live), Lena (vinyl + digital hobby DJane, wants mood/energy tags for records, suffers from analogue/digital media breaks; card has contradictory age and job data). Each with a HMW question.
+- **Final set** [doku p.13–15; research p.1–3]:
+  - **Jasmin** – "the artist": 29, Munich, DJ and producer living from gigs, 7 years, techno/house/breakbeat/bass/psychedelic with jazzy touches, very organised, invests a lot of time in tagging to choose intuitively while performing; wants her own tags without restrictions and spontaneity on the floor; struggles with time-consuming manual tagging limited by Rekordbox, a flood of promo e-mails, slow relinking and UI flaws, and occasional stress finding tracks live. Fabrice: "Jasmin strongly influenced decisions because she was the most critical persona. Since she already has a neat system, we repeatedly tested whether Catalogic could still support people like her." [notes]
+  - **Lio** – 26, Berlin, DJ/producer, self-described "finder", inspiration from Instagram/Bandcamp/Spotify, Rekordbox tags for mood and energy level but finds his structure insufficient; wants faster tagging, intuitive playlists, better link between inspiration sources and DJ software, mood/energy-based suggestions live; struggles with overview, error-prone manual tagging, live stress, platform switching.
+  - **Samuel** – "the event DJ": side-job event DJ, freight-forwarding clerk, library sorted by decades, moved from meticulous setlists to gut feeling, uses client questionnaires and must-play lists, avoids extreme electro and some hip-hop; wants less maintenance effort, automatic duplicate detection, playlists combining planned wishes and spontaneity, better backup; struggles with tedious sorting, duplicates, balancing wishes vs. crowd, hard-drive failure risk. (Directly derived from the an event DJ interview.)
+
+### 2.6 User journeys [doku p.16–21; research p.5]
+Six phases per persona with task, thoughts, tools, pain points, opportunities:
+- **Jasmin:** (1) discover & select – "How do I quickly find the gems among my promos?", "Haven't I heard this before?"; tools e-mail, Bandcamp, SoundCloud, Instagram, Spotify, YouTube; pains: promo flood, no overview, media switching, duplicates; opportunity: cross-platform assistant with previews and clustering, duplicate check. (2) import & analyse – "I need my own tags, otherwise it's chaos"; pains: slow tagging, rigid systems, wrong/missing metadata; opportunity: AI auto-tagging with customisable categories, suggestion list, mood info at import, deeper AI analysis (mood, energy). (3) organise library – "How do I bring structure without restricting myself creatively?"; pains: extremely time-consuming, no flexible categories, no bulk editing; opportunity: intelligent tagging system that suggests but leaves control, bulk editing, tag templates, mood clustering, visual exploration. (4) plan set – "How do I develop tension in the set? Which tracks fit energetically?"; pains: no overview of energy and moods, hard to find tracks in a large library; opportunity: visual set-curve designer (energy, BPM), recommendations based on the current set. (5) play live – "The current track is ending! Where is the one that fits now?"; pains: stress, cluttered UI on laptop/CDJ, small covers, slow search, no mood/tag filters; opportunity: live mode with big covers, colour coding, quick filters, real-time suggestions. (6) follow-up – "What worked? What was too flat or too wild?"; pains: manual, no performance feedback; opportunity: set tracking/diagnosis and a feedback loop for future recommendations.
+- **Samuel:** (1) collect requests – "I don't need anything new – unless the bride wants it"; opportunity: request-import assistant with "already in library?" check. (2) import – "Not three versions of the same song again"; opportunity: duplicate detection + best-file suggestion, auto-tagging by decade, mood, occasion. (3) organise – "I don't want to touch my folders – they work. But sometimes I lack overview"; opportunity: mood tagging without forced folders, playlists by occasion ("wedding – dance floor from 10 pm"). (4) plan – "I have to find the mix of client wishes and mood – but not at the push of a button"; opportunity: link questionnaire to playlist suggestions, "set generator". (5) live – "Where's the song everyone knows? I need something that works immediately!"; opportunity: live view with big covers, quick filters ("Discofox", "loud & fast"), pinning. (6) follow-up – "Hopefully the hard drive doesn't crash"; opportunity: backup reminders, automatic set export, tags like "worked" or "crowd hit".
+- Observation in the journey: Samuel is "less experimental than Jasmin or Lio → focus on stability, clarity, automation". [research p.5]
+
+### 2.7 Pain points (synthesis across all interviews) [doku p.22–24; endp 21–26]
+1. **High time effort for manual organisation** – hours per week; grows linearly with library size ("a Sisyphean task" at thousands of tracks). The documentation quantifies 5–10 hours per week. [doku p.5]
+2. **Limited tagging** – predefined categories rarely fit individual working styles; Rekordbox offers limited tag categories (a tester mentioned a maximum of about 50 tags), Serato is more flexible but has a poor UI; DJs build their own systems the software doesn't support. [doku p.22; test-C]
+3. **Inconsistent management** – systems are started but not maintained; new tracks pile up in "collection-bin playlists"; different import sources follow different naming and metadata standards.
+4. **Insufficient analysis** – BPM and key are automatic, but mood, energy and groove are barely captured, although they decide DJ choices.
+- Further structural findings: fragmentation between platforms (a typical discovery path: Instagram post → Shazam → streaming to listen → store to buy → download folder → DJ software, each step a chance to lose a track); a typical workspace has DJ software, many browser tabs, social media, messengers and file manager open at once; tagging requires deciding genres, mood, set context, BPM range and energy for every track – only possible after listening completely; organisation structures that make sense at home fail under live pressure; no feedback loop from gigs back into the library; current UIs are too dark/low-contrast, too small (covers, waveforms), too slow (relinking, database queries) and not suited to different usage situations. The transition between two tracks is "the most stressful moment of the DJ workflow". [doku p.22–24]
+
+### 2.8 How DJs organise today [doku p.26]
+- **Tagging** in Rekordbox/Serato: objective (genre, instrumentation) and subjective (energy "peak time", "warm-up", moods "melancholic", "driving"); highly personal systems encoding venue ("festival main stage", "bar lounge"), key, rhythm ("breakbeat", "4-to-the-floor").
+- **Visual markers:** star ratings for relevance/danceability; colour tags for set phases (e.g. blue warm-up, green/yellow build-up, red peak time).
+- **Folder structures:** by genre and sub-genre, by use case ("warm-up", "peak time", "afterhour"), temporary ("new this week", "gig at club X").
+- **Comments:** stickers on vinyl sleeves ("works after dark bassline track"); digital comment fields ("played at club X 2023", "good transition from artist Y", "crowd went wild") – valuable but hard to evaluate systematically.
+- Test participants confirmed this diversity: event-based folders named after gigs (Test participant A), genre folders plus mood sub-folders like "hypnotic" and "dark" (Test participant B), Traktor star ratings used to group tracks that fit together (Test participant A, early years). [test-A; test-B]
+
+### 2.9 Target group definition [doku p.27–28; endp 27–28; notes]
+- Differences by genre (electronic: complex hybrids, nuanced sub-genres and energy; event: categories by occasion, age group, culture; cross-genre: flexible links), by professionalism (professionals: large libraries, time pressure, livelihood depends on organisation; semi-professionals: professional ambitions with limited time – automation especially valuable; hobby/event: smaller but still messy collections) and by performance context (club DJs: long sets with dramaturgy and energy management).
+- **Decision:** primary target group = semi-professional and professional DJs, mainly electronic music, 2+ years experience with regular gigs, 1,000+ tracks and growing (four- to five-digit libraries), interested in advanced features and semi-automation. Reason: interviews showed this group is willing to invest time in better tools and has the most complex requirements (subtle stylistic nuances). Beginners are not excluded – AI classification could help them without deep music knowledge.
+
+### 2.10 Market analysis [doku p.29–32; research p.6; marktanalyse; meeting]
+- Method: feature matrix of 20+ tools in two categories.
+  - **Performance DJ software:** Rekordbox, Serato DJ Pro, Traktor Pro, VirtualDJ, Beatport DJ, Cross DJ, Mixxx – focus on live performance, analysis (BPM/key/waveforms), hardware integration, export; AI features: auto analysis, vocal/stem separation, smart crates, cloud sync. Limited discovery and deep organisation.
+  - **Library managers:** MP3Tag, MediaMonkey, MusicBee, Lexicon, Helium, iTunes/Music, Foobar2000 – rich metadata, batch processing, Discogs/MusicBrainz integration, fingerprinting; no DJ performance features.
+- Pros/cons: Rekordbox (own flexible categories, market dominance, cloud sync / subscription, limited number of tag categories), Serato (real-time stems / less automation, manual tagging, limited cloud), Traktor Pro 4 (robust beatgrids, AI stems / manual tagging, less intuitive interface, limited cloud), Virtual DJ 2025 (highly customisable, video/karaoke, freemium / no AI tagging, lower professional acceptance), djay Pro AI (modern interface, Spotify/TIDAL integration / limited own tags, less hardware focus), DJOID (strong AI organisation / poor integration, no streaming integration).
+- **DJOID** as most direct competitor (AI music analysis, graph playlists, auto-grouping, workflow focus) with weaknesses: inaccurate classification (user feedback), node-based UI with steep learning curve, beta stability problems, no explainability of recommendations, focus only on set planning, undermines curation through full automation.
+- **Insights:** a fundamental gap between performance and management tools forces DJs to use several categories in parallel (media breaks, metadata loss); recurring UI weaknesses – overloaded, unstructured, weak contrast, unlabeled icons; **no tool offers spatial visualisation of similarity** (all use lists/folders, unsuitable for exploring >5,000 tracks); **no adaptive learning** from individual tagging behaviour; full integration is structurally impossible (different vendors, payment systems, legal barriers); **Pioneer's hardware dominance creates a Rekordbox lock-in** – the gap is in preparation before export, not in competing with Rekordbox.
+
+### 2.11 Stakeholder map [research p.7; meeting]
+Actively engaged: DJs (club, event, hobby), tech-savvy early-adopter DJs, music producers, VJs/live performers. Keep satisfied: music lovers, labels/distributors, platforms (SoundCloud, Bandcamp). Keep informed: music journalists/curators, booking agencies, event organisers, software developers. Monitor: GEMA. The team admitted in the meeting that the map had not yet produced new insights ("we did it because one does it"), but kept it in view; the supervisor discussion then surfaced the ethical dimension of secondary data use (see 2.4).
+
+### 2.12 Concept research: metadata and AI basics [doku p.36–42]
+- **Objective metadata:** ID3 tags (artist, title, album, year, sometimes genre – often incomplete, especially for promos and rips), technical parameters (BPM, key, loudness, format, bitrate, duration, sample rate), spectral properties (frequency distribution, bass share, brightness, dynamic range, spectral roll-off, zero-crossing rate), instrument recognition.
+- **Subjective metadata:** genre/style (cultural constructs, vary between DJs and regions, time-dependent), emotional properties (mood, energy level, groove, atmosphere – context-dependent).
+- **Feature levels:** low-level (spectrograms, MFCCs for timbre, onset detection, beat tracking) → mid-level (chroma/pitch-class profiles for major/minor and chords, organic vs. synthetic timbre) → high-level semantics via deep learning (genre, mood, instruments, energy). Audio is turned into images (spectrograms), so CNNs from computer vision can detect musical "textures".
+- **Embeddings:** features become 400+-dimensional vectors; similar tracks get similar vectors; cosine similarity.
+- **Weighting:** style features 1.0 (primary differentiator), genre 0.2 (to reduce dominance of single genres), mood 0.1 (supplementary); spectral features are not used for clustering because weighting them produced worse clusters.
+- **Class imbalance finding:** analysing a representative DJ library of 1,346 tracks: "Techno" (rank 1, 1,317 tracks) showed an even, normally distributed probability peaking around 0.85 → reliable; "Electro" (rank 2, 1,160 tracks) was extremely skewed with a peak near 0.0 → inconsistent classification; none of the top-10 genres was as coherent as techno → adaptive genre weighting / class balancing. [doku p.41; notes]
+- **Mental models of classification:** DJs think hierarchically (house family: deep house 120–125 BPM warm and relaxed, tech house 125–130 driving percussion, progressive house 128–132 long emotional build-ups; techno family: minimal 128–135, hard techno 135–150, dub techno 120–130 reverb-heavy, Detroit influences), but genre boundaries blur (melodic techno = techno rhythms + house harmonies; future bass = electronic production + hip-hop structures) → multi-label instead of single-label classification.
+
+### 2.13 Cross-cutting research insights
+- DJs spend more time organising than performing; the ratio was underestimated. [doku p.81]
+- Live stress is a direct consequence of weak preparation. [doku p.81]
+- DJs' mental organisation models differ enormously (by event, by mood, by decade, by artist, by colour). Biggest surprise for Fabrice: how much bad organisation affects live performance, and how different the mental models are. [notes]
+- DJs use 8–12 tools in parallel; fragmentation is historically grown and hard to resolve. [doku p.81]
+- Performance context (club vs. event vs. producer) matters more for software design than genre preference. [doku p.82]
+- Many DJs value the constraints of their tools because they force creative solutions; full automation would remove a cherished challenge. [doku p.82]
+- Discovery happens heavily via social networks and DJ communities – purely technical solutions fall short. [doku p.82]
+
+## 3. Usability tests
+
+### 3.1 Setup
+Think-aloud tests on a desktop with camera and screen recording, 45–60 minutes plus debrief (Test participant A's session 99 minutes), with the coded prototype (light UI, functional rather than visually finished; the Figma design was shown at the end). Tasks: find a deep-house opener; create a personal tag; assign tracks to a tag; evaluate AI recommendations; explore the 2D map; use the confidence slider and lasso; plan a set in XY mode. Participants ranged from semi-professionals with 3–4 years to 8+ years experience, mostly Rekordbox users with Traktor experience, libraries up to 5,000+ tracks. The test library contained about 1,200–1,700 tracks. [doku p.71, p.86; test-A; test-B; test-C] Fabrice's notes speak of two test rounds (MVP and advanced prototype); the three transcripts all use the advanced prototype with map and XY mode.
+
+### 3.2 Session: Test participant A (30, 8–9 years, semi-professional) [test-A; test-A-syn]
+- **Profile:** first mixer at 21, first club mixer at 15; long-time Traktor defender ("very versatile"), now Rekordbox because he plays CDJs with analogue mixers; dislikes Rekordbox export (playlist → stick → hope the stick isn't fried). Barely uses library management: downloads tracks in batches into a folder named after the event, imports it as a playlist. Used Traktor's five-star system early on to mark tracks that fit together, and comments like "this track fits that one" – in his first year. Library 5,000–6,000 tracks; "many I don't even look at anymore… you get 50 new tracks, play the ones from a year ago, and the rest lies somewhere up there." Navigates by remembering which tracks he played at which event. Calls his system "gruschtelig" (messy) but it works for him.
+- **First impression:** "looks like a classic library"; noticed the new "Style" column; guessed crates = genre boxes from record-store crate digging.
+- **Spectral features:** expected an actual frequency-spectrum graphic ("more graphical") because he mentally checks where elements sit in the spectrum when mixing ("if the low end is busy, I listen whether a hi-hat is missing"); got tags instead (bright, atonal, dark, percussive). Later found "atonal" and "dark" unreliable, "smooth" worked well (found near-ambient tracks).
+- **Adding to crates:** got lost – intuitively wanted to right-click ("old habits die hard") like in Rekordbox/Traktor (Add to playlist, Analyze, Show in Finder); drag & drop was not discoverable; feared mis-dropping a track into the wrong crate before a gig; suggested a tooltip. Found it "cool, but unfamiliar".
+- **Tagging + recommendations:** created a tag "Opener Material", then realised exporting requires a crate (tags can't be exported). Found recommendations "very good", a 97 % match "very similar in sound and feeling", guessed the match was mainly based on mood ("spacey, floaty").
+- **Key statement on automation:** preferred the **additive** model (suggestions he accepts one by one) over a **subtractive** one (system fills a tag, he deletes what he dislikes – "at the end three are left because I found all of them crap"). „Das Tolle am Playlisten erstellen, beziehungsweise am DJ sein, ist ja das Kurative… man ist ja quasi selber der Filter… Wenn das jetzt alles automatisch funktioniert… dann kannst du ja halt auch einfach von ChatGPT dir eine Playlist zusammenstellen lassen.“ (The great thing about building playlists – about being a DJ – is curation; you are the filter yourself. If everything were automatic, you could just let ChatGPT build and mix the playlist.) „Es sollte ja auf jeden Fall noch irgendwo eine menschliche Komponente drin sein.“ (There should definitely be a human component.)
+- **Tag accuracy:** styles mostly plausible (dub techno, deep techno, house, deep house fit); "Schranz" and generic "Techno" sometimes misplaced; moods "mega nice" ("Ich bin eher so ein Moody-Type of DJ"), missing moods: funky, percussive, floaty.
+- **Filters:** layout jumps when selecting (items re-sort) – should stay in place; filter counts wrong.
+- **Map:** "a cloud with many points… clusters… almost like a net"; mouse didn't work well, trackpad did; points too small; could not deselect points; color coding of multiple filters (AND/OR) was confusing ("Das Color Coding ist ein bisschen funky"), missing legend → overwhelmed. Understood with confidence slider: "the higher the confidence, the more similar". Discovered a "jazz zone", an acid area (classified as dissonant), a minimal corner, a non-techno corner at the bottom, a trance corner. Final verdict: „Weil es im Prinzip quasi ähnliche Sachen nahe zueinander legt. Und man so ein besseres Gefühl dafür kriegt, wo ähnliche Tracks liegen.“ ("Die Map ist mega geil.") Wished to see shared tags of selected points.
+- **Synthesis recommendations** [test-A-syn]: right-click menu in addition to drag & drop; tooltips; axis labels in XY mode; consistent colour legend; status indicators for sorting/loading; confirmations for critical actions; progressive disclosure (OR mode); clearer visual hierarchy; keep track positions between views (spatial memory); undo/redo; batch operations; global search across categories; onboarding tutorial; later: personalisation, sharing, analytics, Spotify/SoundCloud API, controller/touch optimisation. Key UX insights: habits are strong (10 years of right-click), curatorial control is a core need, additive beats subtractive, precision before speed, visual and list views must be coupled, event-based organisation mirrors physical crate digging.
+
+### 3.3 Session: Test participant B (3–4 years, semi-professional hobby DJ) [test-B]
+- **Profile:** "a big hobby", local gigs; manages tracks in the macOS file manager and Rekordbox – playlists are created as real audio files in folders (sorted by genre "in my own words"), then converted into Rekordbox, where he sets orders and **hot-cue sets** (the first tester with hot-cue sets). Discovers via Apple Music, SoundCloud, Bandcamp; buys and downloads. Inside genres he sorts by **mood** (hypnotic, dark, spacey) because switching a mood folder is easiest when reading the crowd.
+- **Finding a deep-house opener:** searched via Mood ("melodic, deep, dream") because he thinks in moods; found instrument filters interesting ("never thought about sorting my music by instruments"); the Style filter was too hidden (the first tester didn't find it either).
+- **Tagging:** expected right-click/Plus to create a "folder"; needed a hint to create the tag in the sidebar; normally he would listen, build a playlist, try it on the decks and throw out half.
+- **Recommendations:** compared them with SoundCloud "stations" he uses for discovery – "the approach is great… and it's really good to have that with your own music"; suggestions "fit quite well"; liked that tracks by the same artist appeared (purely via audio similarity).
+- **Map:** first guesses: frequently played tracks? then "similar things are close"; "I find something new everywhere… you can discover"; wanted multi-select with Cmd (file-manager habit) instead of Shift-lasso; liked removing single tracks from the selection; hover-to-preview felt natural.
+- **XY mode:** associated it with maths class; understood values 0–1 per axis ("100 % dub techno, 50 % piano"); then had the key idea: „Dann kann ich mir quasi einen Graphen zeichnen, wie ich mir mein Set vorstelle. Wie es sich aufbaut… es soll sich ganz langsam aufbauen und nach einem gewissen Wendepunkt gehen wir dann hoch.“ (I can draw a graph of how I imagine my set – slowly building, then rising after a turning point.) Called it a "roter Faden" (common thread) for recorded sets; "Spannend, ja."
+- **Confidence slider:** "smart that I can search in a wider frame first"; but very sensitive – should be less sensitive in the lower range.
+- **Overall:** "Ich finde es ein krasses Programm" – navigation easy after a first look (compared to Ableton); there is no good organisation software for music; he had "strongly hoped it wouldn't just spit out a playlist" when he heard about the project: "Ich mag es nicht, wenn mir ein Programm sowas vorgibt. Ich will das ja selber machen." (I don't like a program dictating that. I want to do it myself.) Recommendations from his own tracks are "much better than being given a playlist"; multiple tags per track avoid duplicating tracks across folders; once familiar with the map's fixed genre locations, he'd find things quickly.
+
+### 3.4 Session: Test participant C (beginner, started DJing the previous September) [test-C]
+- **Profile:** discovered techno in a Karlsruhe club; learned DJing from a friend over the summer, practising two hours daily; plays student parties at HfG; uses Traktor and Rekordbox (Pioneer is the standard); controllers → CDJs.
+- **Search:** typed "Deep House" into the big search bar expecting it to search tags – "I always type into the biggest search bar I can find" → tags should be searchable there.
+- **Drag & drop:** the **first tester who used drag & drop immediately** – the team "was already desperate because nobody got it"; she expected drag & drop also for adding recommendations.
+- **Playback:** expected clicking anywhere on a row to play (like Spotify), not only the waveform.
+- **Rekordbox tagging:** "the tags there kind of don't really exist… predefined categories (situations, instruments) are fixed and you can add only about 50 tags – far too few."
+- **Map:** described points, the filter bar (genre, style, mood, instrument, spectral) and legend; couldn't say why points sit where they do; didn't understand the confidence slider until explained – then "cute… I hadn't thought about that".
+- **XY mode use case:** bridging genres in a set: if a well-known trance track should fit into a hard-bounce set, find more tracks between both genres "so the set doesn't suddenly cut from bounce to trance but becomes a good mixed thing".
+- **Overall:** "I find it very cool because you can order faster and don't have to listen to every track… the tag function is really important."
+
+### 3.5 Cross-test findings [doku p.72; notes; test-A-syn]
+- Strong enthusiasm for the 2D map ("krasses Programm", "mega geil"); clusters recognised after short exploration; first-time users didn't understand what determines point positions → a first-use hint is needed.
+- Full automation clearly rejected; recommendations accepted as long as the DJ decides.
+- Drag & drop validated especially for users without strong legacy habits; experienced Rekordbox/Traktor users expect right-click menus. Beginners adopt new paradigms faster; experienced DJs bring context but stronger expectations → flexible onboarding.
+- Biggest usability issue: too few instructions/onboarding. Specific friction: XY axis assignment (confusing, accidental assignments).
+- Technical issues in the prototype: load times, waveforms not syncing, tracks disappearing, selection lost on reload, filter counts wrong, mouse vs. trackpad on the map, colour coding inconsistent.
+
+## 4. Decision log
+
+**D1 – Focus on the preparation phase (import & analysis, library management, set planning); digging and live performance out of scope.**
+Problem: the DJ workflow has five phases, each with pain points. Evidence: the mid-term question was still "Why is spontaneous track search during the gig a challenge?" [zwp 4]; the iceberg insight showed live performance is only the visible tip of an invisible preparation effort [zwp 5]; interviews and journeys showed library management is the most time-consuming and weakest-supported phase [doku p.6, p.22]; discovery fragmentation is structurally unsolvable (vendors, payments, law) [doku p.31]; live software is dominated by Rekordbox. Decision: concentrate on preparation of already acquired music. Rationale (Fabrice): keep the scope from becoming too broad [notes]; better preparation also reduces live stress [doku p.81]. Consequence: a live mode, set feedback loop and discovery assistant stayed as opportunities only.
+
+**D2 – Target group: semi-professional to professional DJs with large libraries, mainly electronic music.** See 2.9. Event DJs (Samuel) remain a secondary persona; their specific needs (wishes, decades) were not designed for.
+
+**D3 – "Augmentation instead of automation".**
+Evidence: early prototypes with full automatic tagging looked promising to the team, but DJs reacted with criticism and resistance [notes]; DJs felt patronised by predefined AI styles [doku p.82]; the producer's critique [doku p.88]; testers: "you are the filter yourself", "I want to do it myself" [test-A; test-B]; supervisors and team agreed a self-optimising AI DJ is the anti-goal [meeting]. Decision: AI analyses, suggests and makes connections visible – the DJ decides. Formulated first at mid-term as "the creative process should be supported, not replaced" [zwp 15], positioned between manual and automatic as "supported" [zwp 25], finally requirement #1 [endp 31].
+
+**D4 – MY TAGS: adaptive, user-owned tagging with suggestions.**
+Problem: rigid genres don't match DJs' personal language ("Driving-Hypnosis", "Summer Festival", "Afterhour Vibes"); Rekordbox's tag limits. Solution: DJs create any tags (optionally grouped: style tags like "Chunky-Bass", context tags like "Opening-Set", situation tags like "Floor-Filler", mood tags like "Dark-Journey"); when tracks are added, the system learns a feature profile per tag and recommends similar tracks with a confidence score; accept ✓ / reject ✗; rejections improve future suggestions. Rationale: every DJ has a unique mental order [notes; doku p.47–48]. Hidden benefit discovered: having to decide tags forces engagement with tracks and rebuilds the connection to one's library [notes]. Validated: Test participant A preferred the additive model; tagging tag-by-tag instead of track-by-track prevents one tag being used for several meanings [notes]. Introduced as "adaptive tagging – own categorisation with adaptive suggestions" in the MVP [zwp 28].
+
+**D5 – Confidence slider (0–100 %).**
+Problem: AI suggestions can be wrong; every recommendation carries risk. Solution: a slider sets how strict matches/highlighting are – high = safe and precise, low = exploratory inspiration [notes; doku p.47, p.51]. Origin: the classifiers output probabilities per style (e.g. Breakbeat 0.25, Techno 0.20) [zwp 18–21]. Test evidence: understood once explained, "smart to search in a wider frame first"; needs less sensitivity in the lower range and a clearer explanation [test-B; test-C].
+
+**D6 – The 2D Similarity Map as the central design bet (instead of a 3D view and instead of lists).**
+Evidence: lists stop being searchable at 10,000+ tracks [doku p.42–43]; the MVP showed a one-dimensional list is not explorative enough [doku p.68]; DJs need spatial orientation like a physical record shelf ("techno is always on the left of the shelf") [notes]; no competitor offers spatial similarity [doku p.31]. Iteration: the team first wanted 3D to show vectorisation and clustering directly (PCA 3D plot at mid-term) but found it too overwhelming → 2D that still adds value [notes; zwp 23]. Design: each dot is a track, orange = matching selection, grey = other; filter panel below highlights tracks; lasso for clusters, path tool for transitions; "selected tracks" container as a temporary buffer [doku p.50–51]. Avoiding "random dots": proximity explains similarity; consistent genre territories ("techno always top left, deep house bottom right"); transition zones (melodic techno between techno and progressive house); showing underlying features (mood, instruments) [doku p.42, p.49; notes]. Validation: strongest positive reactions in all tests; first-time users need a hint about what positions mean [notes].
+
+**D7 – XY Mode (interpretable axes).**
+Problem: the similarity map is based on abstract dimensions and hard to explain. Solution: assign explicit features to X and Y (e.g. X = techno, Y = energy / "style: techno" vs. "mood: driving") to plan sets with smooth transitions and find tracks "between" two styles [doku p.53; case; notes]. Validation: Test participant B's "draw a graph of my set", Test participant C's genre-bridging use case; but the axis-assignment interaction was confusing and caused accidental assignments → next iteration needed [notes; test-B].
+
+**D8 – Hybrid list + map (two complementary views).** Final wireframes combine list and map with tab navigation, sidebar for crates/tags, detail view on selection [doku p.43]. Rationale: list for precise management, map for exploration; testers asked for the two to stay in sync and keep positions [test-A-syn; test-C].
+
+**D9 – Library structure: Tracks / Albums / Artists / Labels + Crates + Tags + Smart Crates.**
+Four views for different organisation needs (labels as curation signals with MusicBrainz label hierarchies and sub-labels); crates = classic folder metaphor from vinyl (a track can be in several crates); tags = faceted layer across crates; smart crates fill themselves by rules (e.g. "all techno over 130 BPM with energy > 0.7", "Genre is Electronic AND Style contains Techno AND Spectral is not dark") and update on import [doku p.54–61; endp 50; case]. Test learning: tags couldn't be exported, so users had to create a crate for export [test-A].
+
+**D10 – Export via M3U and folder structure (integration instead of replacement).**
+Problem: Rekordbox/Serato are proprietary and closed; club CDJs need USB sticks. Solution: M3U playlists compatible with Rekordbox, Serato, Traktor and a folder export for CDJs; DJs keep their performance software [doku p.64; notes]. Rationale: market lock-in (D1), "workflow integration beats feature maximisation", coexistence instead of confrontation [doku p.81, p.83]. Limitation: extended metadata like tags transfers only partly.
+
+**D11 – Desktop-first standalone app (not web, not plugin).** Audio analysis is CPU-heavy (batch processing beats cloud upload/download), DJs often work offline, and libraries stay local (data sovereignty) [doku p.45]. The plugin question came up in the supervisor meeting; the team decided to separate concept, design and prototype levels [meeting].
+
+**D12 – Interaction-first, then AI.** After the DJOID analysis and the manual-tagging tool met at a party: design good interaction patterns first, then use technology to fill their pain points [meeting]. Positioning: differentiate from DJOID through supported/adaptive tagging, explainability and control – "max 20 % innovation" makes comparison easier [meeting].
+
+**D13 – AI pipeline and weighting.** Essentia framework; Discogs-EffNet (EfficientNet trained on 400+ Discogs styles, strong on electronic music and 80s/90s releases; its internal 400-dim embeddings used for similarity), mood models (happy, aggressive, relaxed, sad …), MTG-Jamendo instrument recognition (drums, bass, synths, vocals; electronic vs. acoustic), spectral analysis (bright/dark, bass share, dynamics). Multi-label styles allow hybrids. Weighting style 1.0 / genre 0.2 / mood 0.1, no spectral clustering; adaptive genre weighting against class imbalance (D-finding Techno vs. Electro). Concept for scale: a vector index with approximate nearest-neighbour search and cosine similarity (a design concept in the documentation; no performance was measured) [doku p.40–41, p.46, p.62]. Fabrice considers deeper benchmark defence "too techy" for his product-designer audience [notes].
+
+**D14 – Explainability and trust.** Recommendations show "why" (feature tags like "atmospheric", "high energy", audio features), confidence values, accept/reject, learning from rejections [notes; doku p.47]. Rationale: DJOID's missing explainability; testers asked to see shared tags of selected tracks [test-A].
+
+**D15 – Interactive waveforms.** DJs must evaluate tracks quickly without full listens → click into the waveform to jump to drops, breaks, vocals; waveform peaks hint at energy and structure [doku p.63; notes]. Test: Test participant A discovered it by accident; Test participant C expected the whole row to be clickable [test-A; test-C].
+
+**D16 – Visual design: dark theme with one orange accent.** Clubs and studios are dimly lit and DJ hardware is dark (eye comfort) [doku p.74]. Colour guide: orange "Coquelicot" scale, neutral greys, semantic success/error/warning. Typography: Geist (Vercel) – headings 24 px medium, track titles 12 px bold, artists/metadata 12 px regular, UI labels 10 px bold; larger sizes for critical live info, reduced density against cognitive overload, scalable sizes and visible keyboard focus [doku p.75]. Design filters (inspiring / structured / reliable × look & feel, IA, navigation, motion) e.g. "serious, innovative, focused", "logical, flexible, goal-oriented", "predictable, explorative, direct", "responsive, dynamic, supportive" [doku p.76]. Atomic design system (atoms, molecules, organisms); orange chips = the DJ's own tags vs. grey system tags [doku p.77–79]. Mid-term identity was purple and playful (shapes like game-controller symbols) and was replaced [zwp 1].
+
+**D17 – Decided against / cut.** Analysis tab (concepted, cut for time) [notes]; Automix and automatic set planning (Kano: low value; contradicts D3) [doku p.34–35]; discovery assistant, live mode, set feedback loop, backup/duplicate tooling for event DJs (journey opportunities, out of scope); cloud management.
+
+**D18 – Key trade-off: depth vs. understandability.** Huge amounts of metadata and many "amazing" possibilities vs. a clean, understandable interface; internal debates on grouping extended metadata into categories (styles, moods, instruments, spectral) and reducing 400+ dimensions for the map [notes].
+
+## 5. Iteration history
+
+1. **Research framing (March–April):** "Smart DJ Tool"; DJ workflow and interviews; first personas (Felix, Claudi, Lena) → final personas (Jasmin, Lio, Samuel); journeys; Fabrice's individual Kano board – e.g. supported tagging, visual track map, user-defined recommendations and extended analysis as high-impact; must-haves like BPM + key analysis, tag editor, hot cues, cover art, duplicate detection, search/filter, player, playlist management, M3U import; low-impact: Automix, cloud backup, collaborative playlists, social-media integration [kano-F]; merged into the team Kano model [doku p.34–35].
+2. **Supervisor meeting:** DJOID analysis, interaction-first, standalone vs. plugin, ethics of data use [meeting].
+3. **Mid-term presentation (May):** central problem framed around spontaneous track search; iceberg insight → preparation; four problem areas; "support, don't replace"; technical basis "analysis & structure": style/mood/spectral probabilities per track, feature vector, database, 3D PCA plot; "more than tags: know your library"; positioning "supported" between manual and automatic; low-fi wireframes; MVP screenshots (light UI, filter section with BPM slider and tag tree, multi-style chips, adaptive-tagging panel with Match BPM / Spectral Match and accept/reject); next steps: prototyping ↔ usability testing loop [zwp].
+4. **MVP 1 → MVP 2 (coded, light theme):** list view with style analysis to validate whether automatic semantic classification is precise enough – result: DJs found AI recommendations sensible and precise, but the list was not explorative enough → 2D map [doku p.66–68].
+5. **Advanced prototype (June):** 2D similarity map, XY mode, instruments + moods + spectral, lasso/path, confidence slider, crates/tags/recommendations, M3U export – tested with three DJs (section 3).
+6. **Final design (June–July, Figma):** dark theme, four library views, MY TAGS sidebar, smart-crate rule editor, recommendations with confidence, facet filter panel, persistent player, design system [doku p.50–79; endp 35–62].
+7. **Next iteration (planned):** onboarding/tooltips at key points, better XY axis assignment, right-click menus in addition to drag & drop, legends and axis labels, more tests and real metrics (time saved, metadata accuracy) [notes; test-A-syn].
+
+## 6. Fabrice's contribution (evidence in the sources)
+- Self-described responsibilities: concept, research, layout, UI design, rapid prototyping, usability testing, documentation, keeping the work user-centred, organisation/structuring of the system [notes].
+- Conducted the an event DJ interview himself (interviewer states he is not a DJ and his partner is) [t-eventdj].
+- Created his own Kano prioritisation board [kano-F].
+- Pushed for understanding the DJ process before wireframing – Jannik: "it was good that Fabrice slowed me down … that led us to do the user journey first" [meeting].
+- Complementary team setup: Jannik is an experienced DJ (≈5 years, techno, professional level); Fabrice brought the outside, user-centred perspective [t-eventdj; meeting].
+- Split of work: Fabrice and Jannik both worked across all areas of the project. Fabrice had lead responsibility for project organisation, communication with the supervisors and examiners, and the visual/UI design (Gestaltung) [stated by Fabrice]. In the sources the design lead shows in the final dark-theme design, the design system and the visual identity (D16, iteration step 6); the organisation lead in the process plan and team tools (section 1).
+
+## 7. Results, limitations and outlook
+- Outcome (Fabrice's claim): Catalogic helped DJs re-establish a connection to their own libraries; decisions stay with the DJ, which encourages engagement and rediscovery [notes]. Directionally expected to reduce preparation time, distance from one's own library and forgotten tracks; before → after: from tagging an endless list track by track to faster tagging via recommendations, tag by tag [notes].
+- Validated principles: augmentation over automation; personalisation is decisive; hybrid visualisation (similarity + XY) serves exploratory and targeted use; workflow integration beats feature maximisation; feature extraction with 400+ features yields useful similarity (cosine similarity correlates well with DJ judgement); MY TAGS learned users' language from a few examples [doku p.81–82].
+- Limitations: time was the main constraint – no measured metrics (time saved, metadata accuracy), few tests; no formal accessibility checks; edge cases mostly "huge libraries"; spectral features (atonal, dark) unreliable; class imbalance; prototype bugs [notes; test-A].
+- Outlook: integration into a DJ ecosystem (like Native Instruments or Pioneer), real-time classification of streaming services for set planning, hardware integration for performance [doku p.83].
+
+## 8. Quote bank (original → translation)
+- DJ 2: „Je mehr Detailtiefe in der Sortierung, desto mehr Spaß hat man, desto spontaner kann man agieren, desto schneller ist man.“ → "The more detail in the sorting, the more fun you have, the more spontaneously you can act, the faster you are." [endp 20]
+- Interviewed DJ (pain point): „Der Sortierungsprozess und die Organisation meiner Musikbibliothek sind brutal aufwendig, da ich über Jahre hinweg viele Tracks angesammelt habe.“ → "Sorting and organising my library is brutally time-consuming because I've accumulated so many tracks over the years." [notes]
+- an event DJ: „Nach zwei Stunden auf der Hochzeit ist diese Setlist eigentlich … schon komplett in Vergessenheit.“ → "After two hours at a wedding that setlist is completely forgotten." [t-eventdj]
+- an event DJ: „Da muss ja auch ein DJ ein bisschen fühlen, ey, was geht da jetzt, was wollen die Gäste.“ → "A DJ has to feel what's going on, what the guests want." [t-eventdj]
+- Test participant A: „Man ist ja quasi selber der Filter dafür, was dann am Ende in der Playlist landet.“ → "You are the filter for what ends up in the playlist." [test-A]
+- Test participant A: „Dann kannst du ja halt auch einfach von ChatGPT dir eine Playlist zusammenstellen lassen.“ → "Then you could just let ChatGPT put the playlist together." [test-A]
+- Test participant A: „Die Map ist mega geil.“ / „Ich bin eher so ein Moody-Type of DJ.“ / "old habits die hard" [test-A; test-A-syn]
+- Test participant B: „Dann kann ich mir quasi einen Graphen zeichnen, wie ich mir mein Set vorstelle.“ → "Then I can draw a graph of how I imagine my set." [test-B]
+- Test participant B: „Ich mag es nicht, wenn mir ein Programm sowas vorgibt. Ich will das ja selber machen.“ → "I don't like a program dictating that. I want to do it myself." [test-B]
+- Test participant B: „Ich finde es ein krasses Programm.“ → "I think it's an amazing program." [test-B]
+- Test participant C: „Gerade diese Tag-Funktion ist, glaube ich, richtig wichtig an dem Ganzen.“ → "This tag function is really the important part." [test-C]
+- Team in supervisor meeting: „Wir wollen ja den kreativen Prozess unterstützen und nicht ersetzen.“ → "We want to support the creative process, not replace it." [meeting]
+- Supervisor: „Maximal 20 Prozent Innovation.“ → "The market rewards at most 20 % innovation." [meeting]
