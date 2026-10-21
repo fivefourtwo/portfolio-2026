@@ -10,12 +10,17 @@ export default [
   },
   {
     id: 'home.hero.sub',
-    text: 'I design in Figma and build in code, with Claude Code, Codex and Cursor. I also built the chatbot in the case studies: it answers only from the project documentation.',
+    text: 'I design in Figma and build in code, with Claude Code, Codex and Cursor. I also built the chatbot in the case studies: it answers from the project documentation and research material.',
     alternatives: [
       "I design in Figma and build in code, with Claude Code, Codex and Cursor. I currently work in pharma healthcare, where the usual tooling isn't allowed.",
     ],
     status: 'draft',
-    sources: ['CONTENT.md 6', 'CONTENT.md 5 (O1)', 'api/chat.js (system prompt)'],
+    sources: [
+      'CONTENT.md 6',
+      'CONTENT.md 5 (O1)',
+      'owner confirmation 21 Oct 2026 (chatbot)',
+      'api/data/<project>.md (corpus)',
+    ],
     replaces:
       "I'm a Designer from Germany with a passion for understanding complex problems and creating simple solutions through design and technology",
     note: 'On the live page "understanding complex problems" and "creating simple solutions" are bold, with a line break after "and" on desktop. The draft renders as plain text without them.',
