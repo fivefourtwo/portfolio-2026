@@ -54,12 +54,12 @@ export default [
   },
   {
     id: 'chat.suggested.teachsmartsteps.2',
-    text: 'Why was live generation of the task dropped?',
+    text: 'How did the collectible card design change, and why?',
     status: 'draft',
-    sources: ['CONTENT.md 7: chat.suggested', 'api/data/teachsmartsteps.md', 'kb teachsmartsteps deep-dive D12'],
+    sources: ['CONTENT.md 7: chat.suggested', 'api/data/teachsmartsteps.md', 'kb teachsmartsteps deep-dive 6.4, D17'],
     replaces: 'How was the LLM integrated?',
     note:
-      'Chip above the chat input on /work/teach-smart-steps. A click sends it as the question. Bot answer (chat:eval, production, 21 Oct 2026): regeneration rewrites the whole task, and the teacher no longer feels like its author. Matches deep-dive D12.',
+      'Chip above the chat input on /work/teach-smart-steps. A click sends it as the question. Bot answer (chat:eval, production, 21 Oct 2026): first cards too plain for children, so trading-card style with eight colours; then solid text background, plain stat numbers, child-friendly verbs and a total. Matches deep-dive 6.4 and D17.',
   },
   {
     id: 'chat.suggested.teachsmartsteps.3',
