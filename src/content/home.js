@@ -12,7 +12,7 @@ export default [
     id: 'home.hero.sub',
     text: 'I design in Figma and build in code, with Claude Code, Codex and Cursor. I also built the chatbot in the case studies: it answers from the project documentation and research material.',
     alternatives: [
-      'I design products and build prototypes in code. In each design job, colleagues came to me with the same kind of question: whether something was technically possible, and how I would build it.',
+      'In the case studies below, I built the Teach Smart Steps software and led the AccessAbility hardware prototypes. On Catalogic, a team of two, we both wrote code and I led the UI design.',
     ],
     status: 'draft',
     sources: [

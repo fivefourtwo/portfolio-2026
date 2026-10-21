@@ -6,7 +6,7 @@
 export default [
   {
     id: 'about.bio',
-    text: "I design digital products and build prototypes of them in code. Every day I work in Figma, Claude Code, Codex and Cursor. I started in metal technology at a vocational school, moved on to design and media technology at a technical high school, and then studied interaction design at HfG Schwäbisch Gmünd. In each design job, colleagues came to me with the same kind of question: whether something was technically possible, and how I would build it. I'm open to relocation or remote work. I speak German and English, some French, and I'm learning Spanish.",
+    text: "I design digital products and build prototypes of them in code. Every day I work in Figma, Claude Code, Codex and Cursor. I started in metal technology at a vocational school, moved on to design and media technology at a technical high school, and then studied interaction design at HfG Schwäbisch Gmünd. Across the places I've worked, colleagues came to me with the same kind of question: whether something was technically possible, and how I would build it. I'm open to relocation or remote work. I speak German and English, some French, and I'm learning Spanish.",
     status: 'draft',
     sources: ['CONTENT.md 6', 'CONTENT.md 5 (O1)', 'CONTENT.md 5 (O6)'],
     replaces:
