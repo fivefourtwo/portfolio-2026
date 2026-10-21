@@ -7,7 +7,7 @@
 // real copy, and no fixture is committed.
 
 import { spawnSync } from 'child_process';
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'fs';
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'fs';
 import { tmpdir } from 'os';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
@@ -16,6 +16,7 @@ import assert from 'node:assert/strict';
 import { readCorpus } from '../api/chat.js';
 
 const GATE = join(dirname(fileURLToPath(import.meta.url)), 'draft-gate.mjs');
+const REVIEW = join(dirname(fileURLToPath(import.meta.url)), 'copy-review.mjs');
 
 // One entry per line, written as a JS object literal like the real content files.
 const entry = ({ id, ...fields }) => {
@@ -162,6 +163,96 @@ test('every build: fails when a component uses an ID that no content file define
   );
   assert.equal(code, 1, output);
   assert.match(output, /src\/pages\/Other\.jsx:1: uses copy id "fixture\.missing"/);
+});
+
+test('production: fails on an approved entry that still has an alternative, and names it', () => {
+  const { code, output } = runGate(
+    {
+      ...approvedOnly,
+      'src/content/home.js': contentFile(
+        entry({ id: 'fixture.one', status: 'approved', alternatives: ['Second fixture text.'] }),
+      ),
+    },
+    'production',
+  );
+  assert.equal(code, 1, output);
+  assert.match(output, /fixture\.one\s+src\/content\/home\.js:2\s+1 alternative\(s\) left/);
+  assert.doesNotMatch(output, /status "approved"/);
+});
+
+test('production: an empty-string alternative still blocks; a draft lists status and alternative', () => {
+  const { code, output } = runGate(
+    {
+      ...approvedOnly,
+      'src/content/home.js': contentFile(
+        entry({ id: 'fixture.one', status: 'approved' }),
+        entry({ id: 'fixture.two', status: 'approved', alternatives: [''] }),
+        entry({ id: 'fixture.three', status: 'draft', alternatives: ['x'] }),
+      ),
+    },
+    'production',
+  );
+  assert.equal(code, 1, output);
+  assert.match(output, /fixture\.two\s+src\/content\/home\.js:3\s+1 alternative\(s\) left/);
+  assert.match(output, /fixture\.three\s+src\/content\/home\.js:4\s+status "draft", 1 alternative\(s\) left/);
+  assert.doesNotMatch(output, /fixture\.one\s/);
+});
+
+test('production: passes on an approved entry with an empty alternatives array', () => {
+  const { code, output } = runGate(
+    {
+      ...approvedOnly,
+      'src/content/home.js': contentFile(entry({ id: 'fixture.one', status: 'approved', alternatives: [] })),
+    },
+    'production',
+  );
+  assert.equal(code, 0, output);
+});
+
+test('every build: fails when alternatives is not an array of strings', () => {
+  for (const alternatives of ['Second fixture text.', [1], null]) {
+    const { code, output } = runGate(
+      {
+        ...approvedOnly,
+        'src/content/home.js': contentFile(entry({ id: 'fixture.one', status: 'draft', alternatives })),
+      },
+      'preview',
+    );
+    assert.equal(code, 1, output);
+    assert.match(output, /fixture\.one\): alternatives must be an array of strings/);
+  }
+});
+
+test('copy:review: lists the alternative of an entry and of an HTML marker', () => {
+  const root = mkdtempSync(join(tmpdir(), 'copy-review-'));
+  try {
+    const files = {
+      ...approvedOnly,
+      'src/content/home.js': contentFile(
+        entry({ id: 'fixture.one', status: 'draft', alternatives: ['Entry variant two.'] }),
+      ),
+      'index.html': HTML.replace(
+        '    <title>',
+        '    <!-- DRAFT: fixture.meta | sources: fixture | alternatives: Marker variant two. -->\n' +
+          '    <meta name="description" content="Marker variant one." />\n    <title>',
+      ),
+    };
+    for (const [path, text] of Object.entries(files)) {
+      mkdirSync(dirname(join(root, path)), { recursive: true });
+      writeFileSync(join(root, path), text);
+    }
+    const out = join(root, 'REVIEW.md');
+    const result = spawnSync(process.execPath, [REVIEW, '--root', root, '--out', out], {
+      env: { PATH: process.env.PATH },
+      encoding: 'utf-8',
+    });
+    assert.equal(result.status, 0, result.stdout + result.stderr);
+    const review = readFileSync(out, 'utf-8');
+    assert.match(review, /### fixture\.one[\s\S]*?\*\*Alternative \(not rendered\):\*\*\s+> Entry variant two\./);
+    assert.match(review, /### fixture\.meta[\s\S]*?\*\*Draft:\*\*\s+> Marker variant one\.\s+- \*\*Alternative \(not rendered\):\*\*\s+> Marker variant two\./);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });
 
 test('api/chat.js: a draft corpus file is not loaded in production', () => {

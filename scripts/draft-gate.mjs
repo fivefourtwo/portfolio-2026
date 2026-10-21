@@ -6,6 +6,7 @@
 // With VERCEL_ENV=production it fails the build while any draft is left in src/, public/,
 // index.html or api/data/, and prints the ID and file of each one:
 //   - a content entry whose status isn't "approved" (read by importing the content files)
+//   - a content entry with a non-empty `alternatives` array, whatever its status
 //   - a `DRAFT:` marker, in any file
 //   - a `[[NEEDS OWNER: O<n>]]` placeholder, in any file
 //   - a Markdown file whose frontmatter has a `status` other than `approved`
@@ -25,12 +26,19 @@
 //   `id` is the slot ID from CONTENT.md. Components render it with
 //   <Copy id="home.hero.sub" /> (src/components/Copy/Copy.jsx), or get the plain string for
 //   attributes with copy('home.hero.sub') (src/components/Copy/entries.js).
+//   Slots that ask for 2 variants carry the second one in an optional `alternatives` array:
+//       { id: 'home.hero.sub', text: '<variant 1>', alternatives: ['<variant 2>'], status: 'draft', … }
+//   Alternatives only appear in the review file; nothing renders them. While the array has any
+//   item, even an empty string, the entry blocks production like a draft. On approval the owner
+//   keeps the variant he wants in `text` and deletes the field.
 //
 // HTML (index.html, or any HTML in public/): a comment right before the tag it marks.
 //     <!-- DRAFT: site.meta.description -->
 //     <meta name="description" content="…" />
 //   Optional fields for the review file go after the ID, separated by " | ":
 //     <!-- DRAFT: site.meta.description | sources: CONTENT.md 6 | replaces: … | note: … -->
+//   A second variant goes in an `alternatives` field (one text, on the comment's line, no "|"):
+//     <!-- DRAFT: site.og.description | sources: CONTENT.md 6 | alternatives: <variant 2> -->
 //
 // Chatbot corpus (api/data/<project>.md): frontmatter at the very top of the file.
 //     ---

@@ -10,7 +10,7 @@ export const SCAN_PATHS = ['src', 'public', 'index.html', 'api/data'];
 export const CONTENT_DIR = 'src/content';
 export const STATUSES = ['draft', 'approved'];
 
-const ENTRY_FIELDS = ['id', 'text', 'status', 'sources', 'replaces', 'note'];
+const ENTRY_FIELDS = ['id', 'text', 'status', 'sources', 'replaces', 'note', 'alternatives'];
 const BINARY = new Set([
   '.png', '.jpg', '.jpeg', '.gif', '.webp', '.avif', '.ico', '.bmp', '.tif', '.tiff', '.heic',
   '.mp4', '.webm', '.mov', '.m4v', '.mp3', '.wav', '.ogg', '.woff', '.woff2', '.ttf', '.otf',
@@ -26,6 +26,9 @@ const USAGES = [
 ];
 
 const toPosix = (p) => p.split(sep).join('/');
+
+// An entry still carrying a second variant isn't decided yet, whatever its status.
+export const hasAlternatives = (entry) => Array.isArray(entry.alternatives) && entry.alternatives.length > 0;
 
 function* walk(root, rel) {
   const abs = join(root, rel);
@@ -111,6 +114,12 @@ export async function loadEntries(root) {
       }
       for (const key of ['replaces', 'note']) {
         if (key in entry && typeof entry[key] !== 'string') errors.push(`${label}: ${key} must be a string`);
+      }
+      if (
+        'alternatives' in entry &&
+        (!Array.isArray(entry.alternatives) || !entry.alternatives.every((a) => typeof a === 'string'))
+      ) {
+        errors.push(`${label}: alternatives must be an array of strings`);
       }
       const lineIndex = lines.findIndex((l) => l.match(ID_LINE)?.[2] === entry.id);
       entries.push({
@@ -213,8 +222,17 @@ export async function collect(root) {
   const where = (file, line) => (line ? `${file}:${line}` : file);
   const blockers = [
     ...entries
-      .filter((e) => e.status !== 'approved')
-      .map((e) => ({ id: e.id, where: where(e.file, e.line), reason: `status ${JSON.stringify(e.status)}` })),
+      .filter((e) => e.status !== 'approved' || hasAlternatives(e))
+      .map((e) => ({
+        id: e.id,
+        where: where(e.file, e.line),
+        reason: [
+          e.status !== 'approved' && `status ${JSON.stringify(e.status)}`,
+          hasAlternatives(e) && `${e.alternatives.length} alternative(s) left`,
+        ]
+          .filter(Boolean)
+          .join(', '),
+      })),
     ...markers.map((m) => ({ id: m.id ?? '(no id)', where: where(m.file, m.line), reason: 'DRAFT: marker' })),
     ...needsOwner.map((n) => ({ id: n.id ?? '(no id)', where: where(n.file, n.line), reason: n.token })),
     ...frontmatter.map((f) => ({ id: f.id, where: f.file, reason: `frontmatter status: ${f.status}` })),
