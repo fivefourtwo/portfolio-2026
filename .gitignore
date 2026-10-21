@@ -29,3 +29,6 @@ dist-ssr
 
 # Local source files
 _sources/
+
+# Draft review output (npm run copy:review)
+COPY_REVIEW.md

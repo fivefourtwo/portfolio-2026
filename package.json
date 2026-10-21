@@ -5,10 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node scripts/draft-gate.mjs && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "kb:sync": "node scripts/kb-sync.mjs"
+    "kb:sync": "node scripts/kb-sync.mjs",
+    "copy:gate": "node scripts/draft-gate.mjs",
+    "copy:review": "node scripts/copy-review.mjs",
+    "test:drafts": "node --test scripts/draft-gate.test.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.87.0",

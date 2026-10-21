@@ -11,10 +11,22 @@ const CASE_STUDIES = {
   accessability: 'accessability.md',
 };
 
+// A corpus file can be marked as a draft with frontmatter (`status: draft`, format in
+// scripts/draft-gate.mjs). In production a file whose status isn't `approved` is not loaded.
+// Elsewhere it loads without the frontmatter. Files without frontmatter load unchanged.
+// (loadDoc reads the env through globalThis because eslint lints api/ with browser globals.)
+export function readCorpus(raw, vercelEnv) {
+  const frontmatter = raw.match(/^---\r?\n([\s\S]*?)\r?\n---[ \t]*(?:\r?\n|$)/);
+  if (!frontmatter) return raw;
+  const status = frontmatter[1].match(/^status:\s*(['"]?)([\w-]+)\1\s*$/m)?.[2];
+  if (status && status !== 'approved' && vercelEnv === 'production') return null;
+  return raw.slice(frontmatter[0].length);
+}
+
 function loadDoc(caseStudy) {
   const filename = CASE_STUDIES[caseStudy];
   if (!filename) return null;
-  return readFileSync(join(__dirname, 'data', filename), 'utf-8');
+  return readCorpus(readFileSync(join(__dirname, 'data', filename), 'utf-8'), globalThis.process.env.VERCEL_ENV);
 }
 
 function buildSystemPrompt(doc, caseStudy) {
