@@ -1,26 +1,40 @@
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback, lazy, Suspense } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { ChevronUp, ChevronDown, Send } from '@carbon/icons-react';
 import Button from '../Button/Button';
+import Copy from '../Copy/Copy';
+import { copy, showDrafts } from '../Copy/entries';
 import styles from './CaseStudyChat.module.css';
 
+// The Markdown renderer is its own chunk, so pages without the chat don't load it. It starts
+// loading when the panel opens; until it's there an answer shows as plain text.
+const loadChatMarkdown = () => import('./ChatMarkdown');
+const ChatMarkdown = lazy(loadChatMarkdown);
+
+// Suggested questions per case study, drafts in src/content/chat.js. The IDs are written out
+// in literal copy() calls so the draft gate checks them and the review file finds them.
 const SUGGESTED_QUESTIONS = {
   catalogic: [
-    'What problem does Catalogic solve?',
-    'Which design methods were used?',
-    'How does the AI analysis work?',
+    { id: 'chat.suggested.catalogic.1', text: copy('chat.suggested.catalogic.1') },
+    { id: 'chat.suggested.catalogic.2', text: copy('chat.suggested.catalogic.2') },
+    { id: 'chat.suggested.catalogic.3', text: copy('chat.suggested.catalogic.3') },
   ],
   teachsmartsteps: [
-    'What is Teach Smart Steps about?',
-    'How was the LLM integrated?',
-    'What research methods were used?',
+    { id: 'chat.suggested.teachsmartsteps.1', text: copy('chat.suggested.teachsmartsteps.1') },
+    { id: 'chat.suggested.teachsmartsteps.2', text: copy('chat.suggested.teachsmartsteps.2') },
+    { id: 'chat.suggested.teachsmartsteps.3', text: copy('chat.suggested.teachsmartsteps.3') },
   ],
   accessability: [
-    'What is the AccessAbility project?',
-    'How was user research conducted?',
-    'What is the modular control concept?',
+    { id: 'chat.suggested.accessability.1', text: copy('chat.suggested.accessability.1') },
+    { id: 'chat.suggested.accessability.2', text: copy('chat.suggested.accessability.2') },
+    { id: 'chat.suggested.accessability.3', text: copy('chat.suggested.accessability.3') },
   ],
 };
+
+// An empty entry still renders on previews, so its ID badge shows. In production it is left
+// out instead of rendering an empty button or line.
+const hasText = (text) => showDrafts || text.trim() !== '';
+const ATTRIBUTION_TEXT = copy('chat.attribution');
 
 const PROJECT_NAMES = {
   catalogic: 'Catalogic',
@@ -49,6 +63,7 @@ export default function CaseStudyChat({ caseStudy }) {
     if (isOpen && inputRef.current) {
       inputRef.current.focus();
     }
+    if (isOpen) loadChatMarkdown();
   }, [isOpen]);
 
   const sendMessage = async (text) => {
@@ -142,7 +157,7 @@ export default function CaseStudyChat({ caseStudy }) {
   };
 
   const projectName = PROJECT_NAMES[caseStudy] || caseStudy;
-  const suggestions = SUGGESTED_QUESTIONS[caseStudy] || [];
+  const suggestions = (SUGGESTED_QUESTIONS[caseStudy] || []).filter((q) => hasText(q.text));
 
   const messagesVariants = prefersReducedMotion
     ? {}
@@ -172,27 +187,18 @@ export default function CaseStudyChat({ caseStudy }) {
               initial="collapsed"
               animate="expanded"
               exit="exit"
-              role="log"
-              aria-label={`Chat about ${projectName}`}
             >
-              <div className={styles.chatMessagesInner}>
+              <div
+                className={styles.chatMessagesInner}
+                role="log"
+                aria-label={`Chat about ${projectName}`}
+              >
                 {messages.length === 0 && (
                   <div className={styles.welcomeArea}>
                     <p className={styles.welcomeText}>
                       Ask me anything about {projectName} — process,
                       methods, decisions, or outcomes.
                     </p>
-                    <div className={styles.suggestions}>
-                      {suggestions.map((q) => (
-                        <button
-                          key={q}
-                          className={styles.suggestionChip}
-                          onClick={() => sendMessage(q)}
-                        >
-                          {q}
-                        </button>
-                      ))}
-                    </div>
                   </div>
                 )}
 
@@ -206,18 +212,42 @@ export default function CaseStudyChat({ caseStudy }) {
                     }`}
                   >
                     <div className={styles.messageBubble}>
-                      {msg.content || (
+                      {!msg.content ? (
                         <span className={styles.typingIndicator}>
                           <span />
                           <span />
                           <span />
                         </span>
+                      ) : msg.role === 'assistant' ? (
+                        <Suspense fallback={msg.content}>
+                          <ChatMarkdown>{msg.content}</ChatMarkdown>
+                        </Suspense>
+                      ) : (
+                        msg.content
                       )}
                     </div>
                   </div>
                 ))}
                 <div ref={messagesEndRef} />
               </div>
+
+              {/* Suggested questions, directly above the input. They show whenever the panel
+                  is open, also after the first message; a click sends the question. */}
+              {suggestions.length > 0 && (
+                <div className={styles.suggestions}>
+                  {suggestions.map((q) => (
+                    <button
+                      key={q.id}
+                      type="button"
+                      className={`${styles.suggestionChip} ${q.text ? '' : styles.suggestionChipEmpty}`}
+                      onClick={() => sendMessage(q.text)}
+                      disabled={isLoading}
+                    >
+                      <Copy id={q.id} />
+                    </button>
+                  ))}
+                </div>
+              )}
             </motion.div>
           )}
         </AnimatePresence>
@@ -256,6 +286,23 @@ export default function CaseStudyChat({ caseStudy }) {
             />
           </form>
         </div>
+
+        {/* Attribution, under the input while the panel is open. No overflow clipping here
+            (the bar clips), so a draft's ID badge above the line stays visible. */}
+        <AnimatePresence>
+          {isOpen && hasText(ATTRIBUTION_TEXT) && (
+            <motion.div
+              variants={messagesVariants}
+              initial="collapsed"
+              animate="expanded"
+              exit="exit"
+            >
+              <p className={styles.attributionText}>
+                <Copy id="chat.attribution" />
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
