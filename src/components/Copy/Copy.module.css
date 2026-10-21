@@ -10,6 +10,13 @@
   box-decoration-break: clone;
 }
 
+/* An empty draft (text not written yet) would collapse its line to zero height, and badges of
+   neighbouring empty drafts would stack on top of each other. A zero-width character keeps one
+   line of the surrounding text style, so each badge sits where its text will go. */
+.draft:empty::before {
+  content: "\200B";
+}
+
 .draft::after {
   content: attr(data-copy-id);
   position: absolute;
