@@ -16,12 +16,12 @@ export default [
   // Catalogic (/work/catalogic)
   {
     id: 'chat.suggested.catalogic.1',
-    text: "What did DJs say about the MVP's list view?",
+    text: 'Why did Catalogic add a 2D map next to the list?',
     status: 'draft',
-    sources: ['CONTENT.md 7: chat.suggested', 'api/data/catalogic.md', 'kb catalogic deep-dive D6, 5 (step 4) (doku p.68)'],
+    sources: ['CONTENT.md 7: chat.suggested', 'api/data/catalogic.md', 'kb catalogic deep-dive D6, D8, 5 (step 4) (doku p.68)'],
     replaces: 'What problem does Catalogic solve?',
     note:
-      'Chip above the chat input on /work/catalogic. A click sends it as the question. Bot answer (chat:eval --case catalogic on the PR #9 preview, 21 Oct 2026, 3 runs): every run said DJs found the AI recommendations in the list view sensible and precise, but the list was not explorative enough, so the team moved to the 2D similarity map. Checked against deep-dive D6 and 5 (step 4).',
+      'Chip above the chat input on /work/catalogic. A click sends it as the question. Bot answer (chat:eval --case catalogic on the PR #9 preview, 21 Oct 2026, 3 runs): every run said the AI recommendations were sensible but the MVP\'s list wasn\'t explorative enough, so the team moved to a 2D map that gives spatial orientation like a physical record shelf.',
   },
   {
     id: 'chat.suggested.catalogic.2',
