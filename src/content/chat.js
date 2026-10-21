@@ -6,11 +6,11 @@
 export default [
   {
     id: 'chat.attribution',
-    text: "Fabrice built this chat. It answers only from this project's documentation and says so when the documentation doesn't cover a question.",
+    text: "Fabrice built this chat. It answers from a knowledge base made from the project's documentation and research material, and says when a question isn't covered.",
     status: 'draft',
-    sources: ['CONTENT.md 7: chat.attribution', 'api/chat.js'],
+    sources: ['CONTENT.md 7: chat.attribution', 'api/chat.js', 'api/data/<project>.md'],
     note:
-      'Line under the chat input while the panel is open. Same line on all three case-study pages. Third person per decision B. No stack named; if wanted, take it from api/chat.js (Anthropic API, the whole project file in the prompt, no retrieval).',
+      'Line under the chat input while the panel is open. Same line on all three case-study pages. The knowledge base is api/data/<project>.md (project dossier and deep dive), which api/chat.js loads whole into the prompt. Answering only from it is a prompt instruction, not enforced in code. No stack named; if wanted, take it from api/chat.js (Anthropic API, no retrieval).',
   },
 
   // Catalogic (/work/catalogic)
@@ -45,12 +45,12 @@ export default [
   // Teach Smart Steps (/work/teach-smart-steps)
   {
     id: 'chat.suggested.teachsmartsteps.1',
-    text: 'Where did the LLM fail, and what did the team change?',
+    text: 'How did the team try to stop generic LLM tasks?',
     status: 'draft',
-    sources: ['CONTENT.md 7: chat.suggested', 'api/data/teachsmartsteps.md', 'kb teachsmartsteps deep-dive 4.3, D5, D8'],
+    sources: ['CONTENT.md 7: chat.suggested', 'api/data/teachsmartsteps.md', 'kb teachsmartsteps deep-dive 4.2, 4.3, D5, D8'],
     replaces: 'What is Teach Smart Steps about?',
     note:
-      'Chip above the chat input on /work/teach-smart-steps. A click sends it as the question. Bot answer (chat:eval, production, 21 Oct 2026): generic tasks with little link to the lesson; the team answered with cloze-style prompts, a curriculum every task must map to and a fixed output structure. Matches deep-dive 4.3, D5 and D8. Details vary between runs.',
+      'Chip above the chat input on /work/teach-smart-steps. A click sends it as the question. Bot answer (chat:eval, production, 21 Oct 2026): a self-compiled curriculum in the prompts that every task must map to, tasks without curriculum reference forbidden, cloze-style prompts with a fixed output format. Matches deep-dive 4.2, 4.3, D5 and D8.',
   },
   {
     id: 'chat.suggested.teachsmartsteps.2',
@@ -92,11 +92,11 @@ export default [
   },
   {
     id: 'chat.suggested.accessability.3',
-    text: 'Why does the controller use lights instead of a screen?',
+    text: 'What did rehabilitation experts say about the concept?',
     status: 'draft',
-    sources: ['CONTENT.md 7: chat.suggested', 'api/data/accessability.md', 'kb accessability deep-dive D7, 2.7'],
+    sources: ['CONTENT.md 7: chat.suggested', 'api/data/accessability.md', 'kb accessability deep-dive 5.7'],
     replaces: 'What is the modular control concept?',
     note:
-      'Chip above the chat input on /work/accessability. A click sends it as the question. Bot answer (chat:eval, production, 21 Oct 2026): the self-test showed not having to look at a display helps avoid accidents; LED ring, lit power button and turn-signal strip instead. Matches deep-dive D7.',
+      'Chip above the chat input on /work/accessability. A click sends it as the question. Bot answer (chat:eval, production, 21 Oct 2026): feedback very positive; supports people with hand tremor, fixing the hand helps precise control; suggestions such as thumb operation and on/off control. Matches deep-dive 5.7.',
   },
 ]
