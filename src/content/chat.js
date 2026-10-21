@@ -16,12 +16,12 @@ export default [
   // Catalogic (/work/catalogic)
   {
     id: 'chat.suggested.catalogic.1',
-    text: 'Why did DJ testing turn the list view into a map?',
+    text: "What did DJs say about the MVP's list view?",
     status: 'draft',
-    sources: ['CONTENT.md 7: chat.suggested', 'api/data/catalogic.md', 'kb catalogic deep-dive D6, 5 (step 4)'],
+    sources: ['CONTENT.md 7: chat.suggested', 'api/data/catalogic.md', 'kb catalogic deep-dive D6, 5 (step 4) (doku p.68)'],
     replaces: 'What problem does Catalogic solve?',
     note:
-      'Chip above the chat input on /work/catalogic. A click sends it as the question. Bot answer (chat:eval, production, 21 Oct 2026): in the MVP test the list view was not explorative enough, so the team moved to the 2D similarity map. Matches deep-dive D6.',
+      'Chip above the chat input on /work/catalogic. A click sends it as the question. Bot answer (chat:eval --case catalogic on the PR #9 preview, 21 Oct 2026, 3 runs): every run said DJs found the AI recommendations in the list view sensible and precise, but the list was not explorative enough, so the team moved to the 2D similarity map. Checked against deep-dive D6 and 5 (step 4).',
   },
   {
     id: 'chat.suggested.catalogic.2',
