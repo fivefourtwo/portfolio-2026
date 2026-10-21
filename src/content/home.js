@@ -12,7 +12,7 @@ export default [
     id: 'home.hero.sub',
     text: 'I design in Figma and build in code, with Claude Code, Codex and Cursor. I also built the chatbot in the case studies: it answers from the project documentation and research material.',
     alternatives: [
-      "I design in Figma and build in code, with Claude Code, Codex and Cursor. I currently work in pharma healthcare, where the usual tooling isn't allowed.",
+      'I design products and build prototypes in code. In each design job, colleagues came to me with the same kind of question: whether something was technically possible, and how I would build it.',
     ],
     status: 'draft',
     sources: [
