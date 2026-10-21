@@ -112,12 +112,19 @@ function parseContentMd(md) {
 
 function findSlot(id, slots) {
   if (!id) return null;
+  // A slot used once per page, with the page as an extra inner segment of the ID:
+  // "chat.suggested.catalogic.1" -> "chat.suggested.1".
+  const parts = id.split('.');
+  const withoutInnerSegment = parts
+    .slice(1, -1)
+    .map((_, i) => [...parts.slice(0, i + 1), ...parts.slice(i + 2)].join('.'));
   return (
     slots.find((s) => s.ids.includes(id)) ??
     slots.find((s) => s.patterns.some((p) => p.test(id))) ??
     slots
       .flatMap((s) => s.ids.filter((sid) => id.startsWith(`${sid}.`)).map((sid) => ({ s, len: sid.length })))
       .sort((a, b) => b.len - a.len)[0]?.s ??
+    slots.find((s) => s.ids.some((sid) => withoutInnerSegment.includes(sid))) ??
     null
   );
 }
