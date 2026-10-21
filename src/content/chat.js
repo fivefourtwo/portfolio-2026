@@ -54,12 +54,12 @@ export default [
   },
   {
     id: 'chat.suggested.teachsmartsteps.2',
-    text: 'How did the collectible card design change, and why?',
+    text: 'Why can teachers leave any field to the AI?',
     status: 'draft',
-    sources: ['CONTENT.md 7: chat.suggested', 'api/data/teachsmartsteps.md', 'kb teachsmartsteps deep-dive 6.4, D17'],
+    sources: ['CONTENT.md 7: chat.suggested', 'api/data/teachsmartsteps.md', 'kb teachsmartsteps deep-dive 4.5, D9 (doku p.32)'],
     replaces: 'How was the LLM integrated?',
     note:
-      'Chip above the chat input on /work/teach-smart-steps. A click sends it as the question. Bot answer (chat:eval, production, 21 Oct 2026): first cards too plain for children, so trading-card style with eight colours; then solid text background, plain stat numbers, child-friendly verbs and a total. Matches deep-dive 6.4 and D17.',
+      'Chip above the chat input on /work/teach-smart-steps. A click sends it as the question. Bot answer (chat:eval --case teachsmartsteps, production, 21 Oct 2026, 3 runs): every run gave the purpose, taking away the worry that empty fields hurt the result, and said an AI suggestion can be switched on for any parameter. Checked against deep-dive 4.5 and D9 (doku p.32).',
   },
   {
     id: 'chat.suggested.teachsmartsteps.3',
