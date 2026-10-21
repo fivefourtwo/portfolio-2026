@@ -233,7 +233,13 @@ export async function collect(root) {
           .filter(Boolean)
           .join(', '),
       })),
-    ...markers.map((m) => ({ id: m.id ?? '(no id)', where: where(m.file, m.line), reason: 'DRAFT: marker' })),
+    ...markers.map((m) => ({
+      id: m.id ?? '(no id)',
+      where: where(m.file, m.line),
+      // An `alternatives` field holds one variant (see draft-gate.mjs), counted even when empty,
+      // as for content entries and as copy-review.mjs lists it.
+      reason: 'alternatives' in m.fields ? 'DRAFT: marker, 1 alternative(s) left' : 'DRAFT: marker',
+    })),
     ...needsOwner.map((n) => ({ id: n.id ?? '(no id)', where: where(n.file, n.line), reason: n.token })),
     ...frontmatter.map((f) => ({ id: f.id, where: f.file, reason: `frontmatter status: ${f.status}` })),
   ];

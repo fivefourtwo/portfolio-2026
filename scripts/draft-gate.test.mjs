@@ -108,6 +108,23 @@ test('production: fails on a DRAFT: marker in an HTML file', () => {
   assert.match(output, /site\.meta\.description\s+index\.html:4\s+DRAFT: marker/);
 });
 
+test('production: a DRAFT: marker with an alternatives field reports the alternative', () => {
+  const html = HTML.replace(
+    '    <title>',
+    '    <!-- DRAFT: fixture.meta | sources: fixture -->\n' +
+      '    <meta name="description" content="Fixture." />\n' +
+      '    <!-- DRAFT: fixture.og | sources: fixture | alternatives: Second fixture text. -->\n' +
+      '    <meta property="og:description" content="Fixture." />\n' +
+      '    <!-- DRAFT: fixture.empty | alternatives: -->\n' +
+      '    <meta property="og:title" content="Fixture." />\n    <title>',
+  );
+  const { code, output } = runGate({ ...approvedOnly, 'index.html': html }, 'production');
+  assert.equal(code, 1, output);
+  assert.match(output, /fixture\.meta\s+index\.html:4\s+DRAFT: marker\n/);
+  assert.match(output, /fixture\.og\s+index\.html:6\s+DRAFT: marker, 1 alternative\(s\) left/);
+  assert.match(output, /fixture\.empty\s+index\.html:8\s+DRAFT: marker, 1 alternative\(s\) left/);
+});
+
 test('production: fails on a DRAFT: marker in an HTML file in public/', () => {
   const { code, output } = runGate(
     { ...approvedOnly, 'public/page.html': '<!-- DRAFT: fixture.page -->\n<p>x</p>\n' },
