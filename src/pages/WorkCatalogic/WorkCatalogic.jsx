@@ -134,7 +134,7 @@ const WorkCatalogic = () => {
               The system analyzes over 500 characteristics. Standard metadata
               misses the nuance of a recording. By analyzing the audio signal,
               the system interprets the music&apos;s actual character. This creates
-              a sonic profile which is the fundement for all smart features of
+              a sonic profile which is the foundation for all smart features of
               Catalogic.
             </p>
           </div>
@@ -260,7 +260,7 @@ const WorkCatalogic = () => {
               </div>
               <div className={styles.similarityTextBlock}>
                 <h2 id="similarity-map-heading" className={styles.sectionHeadingLight}>
-                  Transfering the physical experience of spatial memory
+                  Transferring the physical experience of spatial memory
                 </h2>
                 <p className={styles.sectionTextLight}>
                   Exploration of the map reveals the spatial organization of
