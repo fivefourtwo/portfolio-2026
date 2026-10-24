@@ -48,13 +48,17 @@
   line-height: 1.5;
 }
 
+/* Suggested questions: a row directly above the input, while the panel is open */
 .suggestions {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+  padding: 0 16px;
 }
 
+/* Wraps instead of overflowing, so a long question fits at 390px */
 .suggestionChip {
+  max-width: 100%;
   padding: 6px 12px;
   border-radius: 4px;
   border: 1px solid var(--light-grey);
@@ -62,14 +66,26 @@
   font-family: var(--font-body);
   font-size: 13px;
   color: var(--black);
+  text-align: left;
   cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease;
-  white-space: nowrap;
+  white-space: normal;
 }
 
-.suggestionChip:hover {
+.suggestionChip:hover:not(:disabled) {
   background: var(--container-white);
   border-color: var(--dark-grey);
+}
+
+.suggestionChip:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+/* A chip whose draft text is still empty. These only render on previews, never in production.
+   The width leaves room for the draft ID badge, so the three badges don't overlap. */
+.suggestionChipEmpty {
+  min-width: 240px;
 }
 
 .suggestionChip:focus-visible {
@@ -110,6 +126,25 @@
   line-height: 1.5;
   white-space: pre-wrap;
   word-break: break-word;
+}
+
+/* Markdown in assistant answers (ChatMarkdown.jsx). Blocks are spaced by one line, as blank
+   lines were in the plain-text bubble. */
+.markdown {
+  white-space: normal;
+}
+
+.markdown > * + * {
+  margin-top: 1.5em;
+}
+
+.markdown ul,
+.markdown ol {
+  padding-left: 1.5em;
+}
+
+.markdown a {
+  text-decoration: underline;
 }
 
 /* Typing indicator */
@@ -198,6 +233,15 @@
 
 .barInput:disabled {
   opacity: 0.6;
+}
+
+/* Attribution, under the input while the panel is open */
+.attributionText {
+  padding: 0 12px 10px;
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--dark-grey);
+  line-height: 1.5;
 }
 
 
