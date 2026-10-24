@@ -1,6 +1,7 @@
 import * as FM from 'framer-motion'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
+import Copy from '../../components/Copy/Copy'
 import styles from './About.module.css'
 import profileImage from '../../assets-new/aboutme.jpg?w=800;1200;1600&format=webp&as=img'
 
@@ -37,6 +38,11 @@ const EDUCATION = [
 
 const PROFESSIONAL_EXPERIENCE = [
   {
+    company: <Copy id="about.experience.havas.company" />,
+    role: <Copy id="about.experience.havas.title" />,
+    period: <Copy id="about.experience.havas.dates" />,
+  },
+  {
     company: 'Teleclinic GmbH | Remote',
     role: 'Working student as a UX/UI Designer',
     period: '04/2025 - 08/2025',
@@ -63,12 +69,7 @@ const About = () => {
               About me
             </h1>
             <p className={styles.bio}>
-            I’m a designer focused on creating clear, intuitive digital products with 
-            real value for users. I’m drawn to complex problems, structured thinking, 
-            and design processes shaped by prototyping, testing, and iteration. 
-            I enjoy working with new technologies and tools as part of that process, 
-            always with the goal of creating thoughtful, accessible experiences where 
-            usability and visual quality go hand in hand.
+              <Copy id="about.bio" />
             </p>
             <div className={styles.imageWrapper}>
               <img

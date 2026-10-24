@@ -12,7 +12,7 @@ import { execFileSync } from 'child_process';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { dirname, join, relative, resolve } from 'path';
 import { fileURLToPath } from 'url';
-import { collect } from './lib/drafts.mjs';
+import { collect, hasAlternatives } from './lib/drafts.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -147,8 +147,9 @@ const ownerTokensIn = (...texts) => [
 
 const drafts = [];
 
-for (const entry of found.entries.filter((e) => e.status !== 'approved')) {
+for (const entry of found.entries.filter((e) => e.status !== 'approved' || hasAlternatives(e))) {
   const usages = found.usages.filter((u) => u.id === entry.id);
+  const alternatives = entry.alternatives ?? [];
   drafts.push({
     group: entry.page,
     id: entry.id,
@@ -158,9 +159,10 @@ for (const entry of found.entries.filter((e) => e.status !== 'approved')) {
     ],
     replaces: entry.replaces ?? null,
     text: entry.text,
+    alternatives,
     sources: entry.sources ?? [],
     note: entry.note ?? null,
-    owner: ownerTokensIn(entry.text, entry.note),
+    owner: ownerTokensIn(entry.text, ...alternatives, entry.note),
   });
 }
 
@@ -176,15 +178,17 @@ const tagAfter = (file, lineNo) => {
 
 for (const marker of found.markers) {
   const text = /\.html?$/.test(marker.file) ? tagAfter(marker.file, marker.line) : null;
+  const alternatives = 'alternatives' in marker.fields ? [marker.fields.alternatives] : [];
   drafts.push({
     group: marker.file === 'index.html' ? 'site' : marker.file,
     id: marker.id ?? '(marker without ID)',
     where: [`marker in \`${marker.file}:${marker.line}\``],
     replaces: marker.fields.replaces ?? null,
     text: text ?? '(see the file, next to the marker)',
+    alternatives,
     sources: marker.fields.sources ? marker.fields.sources.split(/\s*,\s*/) : [],
     note: marker.fields.note ?? null,
-    owner: ownerTokensIn(text, marker.fields.note),
+    owner: ownerTokensIn(text, ...alternatives, marker.fields.note),
   });
 }
 
@@ -260,6 +264,9 @@ for (const group of groups) {
     out.push(`- **Job:** ${job}`);
     out.push(`- **Live text (replaces):** ${quote(d.replaces)}`);
     out.push(`- **Draft:** ${quote(d.text)}`);
+    (d.alternatives ?? []).forEach((alt, i, all) => {
+      out.push(`- **Alternative${all.length > 1 ? ` ${i + 1}` : ''} (not rendered):** ${quote(alt)}`);
+    });
     out.push(`- **Sources:** ${d.sources.length ? d.sources.join('; ') : '_none_'}`);
     if (!inputs.length) {
       out.push('- **Owner inputs:** none');

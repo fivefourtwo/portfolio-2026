@@ -1,8 +1,11 @@
 /* Highlight for copy that the owner hasn't approved yet. It only renders in local dev and on
    preview deployments, never in production (AGENTS.md Step 1, the one exception to rule 2).
-   Background, outline and an absolutely positioned badge only, so the text keeps its layout. */
+
+   The badge with the draft's ID sits in the text flow, right before the text, so it can never
+   cover the draft or the line above it (stacked short drafts, chips, buttons, narrow screens),
+   and it shows without hover, on touch screens too. The cost is a small layout shift on
+   previews. Production never renders .draft, so its layout doesn't change. */
 .draft {
-  position: relative;
   background-color: rgba(255, 214, 0, 0.4);
   outline: 2px dashed #d4006a;
   outline-offset: 1px;
@@ -10,25 +13,44 @@
   box-decoration-break: clone;
 }
 
-.draft::after {
+.draft::before {
+  /* The second declaration hides the ID from screen readers and from accessible names (a
+     button's label, for example). Browsers that don't know the "/ alt" syntax keep the first. */
   content: attr(data-copy-id);
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  z-index: 1000;
-  margin-bottom: 4px;
+  content: attr(data-copy-id) / "";
+  display: inline-block;
+  max-width: 100%;
+  margin-right: 6px;
   padding: 1px 5px;
   border-radius: 3px;
   background-color: #d4006a;
   color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 11px;
   font-style: normal;
   font-weight: 600;
+  font-variant: normal;
   line-height: 1.4;
   letter-spacing: 0;
+  word-spacing: 0;
+  text-align: left;
   text-decoration: none;
+  text-indent: 0;
+  text-shadow: none;
   text-transform: none;
-  white-space: nowrap;
+  vertical-align: middle;
+  /* One line where it fits; an ID wider than its container wraps instead of overflowing. */
+  white-space: normal;
+  overflow-wrap: anywhere;
+  -webkit-user-select: none;
+  user-select: none;
   pointer-events: none;
+}
+
+/* An empty draft (text not written yet) still gets its badge from ::before. The zero-width
+   character after it keeps one line of the surrounding text style, so the highlight shows
+   where the text will go. */
+.draft:empty::after {
+  content: "\200B";
 }

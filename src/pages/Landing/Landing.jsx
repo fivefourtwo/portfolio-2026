@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import ProjectCarousel from '../../components/ProjectCarousel/ProjectCarousel'
 import HeroGrid from '../../components/HeroGrid/HeroGrid'
+import Copy from '../../components/Copy/Copy'
 import styles from './Landing.module.css'
 import aboutMeImgWebP from '../../assets-new/me-packed.jpg?format=webp&w=640&quality=80'
 import aboutMeImgJpg from '../../assets-new/me-packed.jpg?w=640&quality=80'
@@ -209,12 +210,10 @@ const Landing = () => {
               animate="visible"
             >
               <FM.motion.h1 className={styles.headline} variants={heroItemVariants}>
-                Hi there, I&apos;m Fabrice{' '}
+                <Copy id="home.hero.headline" />
               </FM.motion.h1>
               <FM.motion.p className={styles.subline} variants={heroItemVariants}>
-                I&apos;m a Designer from Germany with a passion for{' '}
-                <strong>understanding complex problems</strong> and<br className={styles.desktopBreak} /> {' '}
-                <strong>creating simple solutions </strong> through design and technology
+                <Copy id="home.hero.sub" />
               </FM.motion.p>
             </FM.motion.div>
             <FM.motion.p
@@ -223,7 +222,7 @@ const Landing = () => {
               initial="hidden"
               animate="visible"
             >
-              This is what it can look like.
+              <Copy id="home.hero.bridge" />
             </FM.motion.p>
           </div>
         </section>
