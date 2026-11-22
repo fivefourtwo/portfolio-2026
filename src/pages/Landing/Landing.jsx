@@ -4,9 +4,9 @@ import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import ProjectCarousel from '../../components/ProjectCarousel/ProjectCarousel'
 import HeroGrid from '../../components/HeroGrid/HeroGrid'
+import Copy from '../../components/Copy/Copy'
+import HeroSketch from '../../components/HeroSketch/HeroSketch'
 import styles from './Landing.module.css'
-import aboutMeImgWebP from '../../assets-new/me-packed.jpg?format=webp&w=640&quality=80'
-import aboutMeImgJpg from '../../assets-new/me-packed.jpg?w=640&quality=80'
 
 const easeOut = [0.22, 1, 0.36, 1]
 
@@ -47,6 +47,7 @@ const Landing = () => {
     },
   }
 
+  // Cursor and touch position for the HeroGrid spotlight and the ripple.
   useEffect(() => {
     const heroEl = heroRef.current
 
@@ -193,13 +194,6 @@ const Landing = () => {
       <main className={styles.page}>
         <section className={styles.hero} ref={heroRef}>
           <HeroGrid />
-          <div className={styles.photoWrap} aria-hidden="true">
-            <picture>
-              <source srcSet={aboutMeImgWebP} type="image/webp" />
-              <img src={aboutMeImgJpg} alt="" className={styles.photo} />
-            </picture>
-            <span className={styles.photoCaption}>I also don't mind doing the heavy lifting →</span>
-          </div>
           <span className={styles.heroRipple} ref={rippleRef} aria-hidden="true" />
           <div className={styles.heroInner}>
             <FM.motion.div
@@ -208,14 +202,28 @@ const Landing = () => {
               initial="hidden"
               animate="visible"
             >
+              {/* Owner-approved positioning short form (CONTENT.md 6), approved in chat on
+                  22 Nov 2026. Plain text for the prototype only: it gets wired to the copy
+                  entry home.hero.headline when the hero is integrated. */}
               <FM.motion.h1 className={styles.headline} variants={heroItemVariants}>
-                Hi there, I&apos;m Fabrice{' '}
+                Product designer using design and code to develop digital products
               </FM.motion.h1>
-              <FM.motion.p className={styles.subline} variants={heroItemVariants}>
-                I&apos;m a Designer from Germany with a passion for{' '}
-                <strong>understanding complex problems</strong> and<br className={styles.desktopBreak} /> {' '}
-                <strong>creating simple solutions </strong> through design and technology
-              </FM.motion.p>
+              {/* Prototype (exp/hero-sketch): sketch-to-screen piece. Not wrapped in the
+                  fade: the screen image paints at once (fully masked), so LCP isn't held back by
+                  the animation. The sketch layer fades in on its own when its chunk arrives. */}
+              <div className={styles.sketchSlot}>
+                <div className={styles.sketchFrame}>
+                  <HeroSketch />
+                </div>
+                <FM.motion.p className={styles.sketchHint} variants={heroItemVariants}>
+                  <span className={styles.hintPointer}>
+                    <Copy id="exp.hero.hint.pointer" />
+                  </span>
+                  <span className={styles.hintTouch}>
+                    <Copy id="exp.hero.hint.touch" />
+                  </span>
+                </FM.motion.p>
+              </div>
             </FM.motion.div>
             <FM.motion.p
               className={styles.introText}
