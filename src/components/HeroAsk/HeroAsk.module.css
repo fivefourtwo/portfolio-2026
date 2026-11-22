@@ -189,6 +189,14 @@
   }
 }
 
+/* Narrow phones (360px): at 20px the placeholder no longer fits the field. 16px also keeps
+   iOS from zooming in on focus. */
+@media (max-width: 380px) {
+  .input {
+    font-size: var(--text-label);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .typing span {
     animation: none;
