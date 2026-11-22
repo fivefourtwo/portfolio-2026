@@ -1,0 +1,128 @@
+/* Radius of the reveal circle, registered so it can ease in and out like the grid spotlight. */
+@property --sketch-r {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+
+.root {
+  --sketch-x: 50%;
+  --sketch-y: 50%;
+  --sketch-p: 0;
+  position: absolute;
+  inset: 0;
+  container-type: inline-size;
+  /* Clips the screen's corners and keeps labels inside the piece (no horizontal scroll). */
+  border-radius: var(--radius-media);
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+@keyframes sketchIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---- Sketch layer ---- */
+
+.sketch {
+  position: absolute;
+  inset: 0;
+  /* Keeps the labels (and their draft badges on previews) under the built layer. */
+  isolation: isolate;
+  color: var(--dark-grey);
+  animation: sketchIn 550ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.stroke {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.fill {
+  stroke: none;
+  fill: currentColor;
+}
+
+.pencil {
+  color: var(--dark-grey);
+}
+
+.soft {
+  color: color-mix(in srgb, var(--dark-grey) 62%, transparent);
+}
+
+.dot {
+  color: color-mix(in srgb, var(--dark-grey) 78%, transparent);
+}
+
+.accent {
+  color: var(--note-handwriting);
+}
+
+/* Handwritten labels: Caveat, only here. */
+.note {
+  position: absolute;
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  font-size: clamp(15px, 3.3cqw, 24px);
+  line-height: 1;
+  color: var(--note-handwriting);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* ---- Built layer: the real screen, shown through the mask ---- */
+
+.built {
+  --sketch-r: 0px;
+  position: absolute;
+  inset: 0;
+  transition: --sketch-r 450ms ease-out;
+  -webkit-mask-image:
+    radial-gradient(circle var(--sketch-r) at var(--sketch-x) var(--sketch-y), #000 0%, #000 62%, transparent 100%),
+    linear-gradient(90deg, #000 calc(var(--sketch-p) * 115% - 15%), transparent calc(var(--sketch-p) * 115%));
+  mask-image:
+    radial-gradient(circle var(--sketch-r) at var(--sketch-x) var(--sketch-y), #000 0%, #000 62%, transparent 100%),
+    linear-gradient(90deg, #000 calc(var(--sketch-p) * 115% - 15%), transparent calc(var(--sketch-p) * 115%));
+}
+
+.root[data-active] .built {
+  --sketch-r: clamp(90px, 24cqw, 170px);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Reduced motion: no animation and no listeners. Left half sketch, right half screen. */
+@media (prefers-reduced-motion: reduce) {
+  .sketch {
+    animation: none;
+  }
+
+  .built {
+    transition: none;
+    -webkit-mask-image: linear-gradient(90deg, transparent 50%, #000 50%);
+    mask-image: linear-gradient(90deg, transparent 50%, #000 50%);
+  }
+}
