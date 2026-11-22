@@ -11,6 +11,31 @@ const CASE_STUDIES = {
   accessability: 'accessability.md',
 };
 
+// `caseStudy: "all"` loads every corpus file into one prompt, each under its project name.
+// Used by the Ask-me hero on Home (prototype, branch exp/hero-ask).
+const ALL = 'all';
+const PROJECT_NAMES = {
+  catalogic: 'Catalogic',
+  teachsmartsteps: 'Teach Smart Steps',
+  accessability: 'AccessAbility',
+};
+
+// The one sentence of the prompt that names what it covers.
+const SCOPE = {
+  single: 'the following case study project',
+  all: 'the three case-study projects on this site',
+};
+
+// Request limits. A longer message is rejected; history beyond MAX_HISTORY is dropped, oldest
+// first. Assistant turns come back from the client, so they are capped too (max_tokens below
+// keeps real answers far under that cap).
+export const LIMITS = {
+  userChars: 1000,
+  assistantChars: 6000,
+  history: 12,
+  messages: 50,
+};
+
 // A corpus file can be marked as a draft with frontmatter (`status: draft`, format in
 // scripts/draft-gate.mjs). In production a file whose status isn't `approved` is not loaded.
 // Elsewhere it loads without the frontmatter. Files without frontmatter load unchanged.
@@ -29,8 +54,44 @@ function loadDoc(caseStudy) {
   return readCorpus(readFileSync(join(__dirname, 'data', filename), 'utf-8'), globalThis.process.env.VERCEL_ENV);
 }
 
-function buildSystemPrompt(doc, caseStudy) {
-  return `You are a helpful assistant embedded in a design portfolio website. You answer questions about the following case study project based ONLY on the provided documentation.
+// Returns { scope, docs } for the prompt, or null if nothing can be loaded. In combined mode a
+// project whose corpus isn't loadable (a draft in production) is left out.
+function loadDocs(caseStudy) {
+  if (caseStudy !== ALL) {
+    const doc = loadDoc(caseStudy);
+    return doc && { scope: SCOPE.single, docs: `## Case Study Documentation: ${caseStudy}\n\n${doc}` };
+  }
+  const sections = Object.keys(CASE_STUDIES)
+    .map((key) => [key, loadDoc(key)])
+    .filter(([, doc]) => doc)
+    .map(([key, doc]) => `## Case Study Documentation: ${PROJECT_NAMES[key]}\n\n${doc}`);
+  return sections.length ? { scope: SCOPE.all, docs: sections.join('\n\n') } : null;
+}
+
+// Checks the history from the client and keeps the newest LIMITS.history messages, starting with
+// a user message. Only user and assistant turns with plain-text content pass: anything else
+// (a `system` role, content blocks) is rejected. Returns { messages } or { error }.
+export function prepareMessages(messages) {
+  if (!Array.isArray(messages) || messages.length === 0) return { error: 'Missing messages' };
+  if (messages.length > LIMITS.messages) return { error: 'Too many messages' };
+  for (const message of messages) {
+    const role = message?.role;
+    if (role !== 'user' && role !== 'assistant') return { error: 'Invalid message role' };
+    if (typeof message.content !== 'string' || !message.content.trim()) {
+      return { error: 'Invalid message content' };
+    }
+    const max = role === 'user' ? LIMITS.userChars : LIMITS.assistantChars;
+    if (message.content.length > max) return { error: `Message too long (max ${max} characters)` };
+  }
+  if (messages[messages.length - 1].role !== 'user') return { error: 'Last message must be a user message' };
+
+  let recent = messages.slice(-LIMITS.history);
+  while (recent[0].role !== 'user') recent = recent.slice(1);
+  return { messages: recent.map(({ role, content }) => ({ role, content })) };
+}
+
+function buildSystemPrompt(scope, docs) {
+  return `You are a helpful assistant embedded in a design portfolio website. You answer questions about ${scope} based ONLY on the provided documentation.
 
 ## Voice
 - Refer to Fabrice in the third person ("Fabrice", "he"). Use "the team" for work the team did together.
@@ -66,9 +127,7 @@ BAD example responses (NEVER do this):
 "If I started again, I'd <change>." or "We <did something>." (speaks as Fabrice or the team)
 "The team added <feature>." (when the documentation only lists it as planned)
 
-## Case Study Documentation: ${caseStudy}
-
-${doc}`;
+${docs}`;
 }
 
 export default async function handler(req, res) {
@@ -76,15 +135,20 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { messages, caseStudy } = req.body;
+  const { messages, caseStudy } = req.body ?? {};
 
   if (!messages || !Array.isArray(messages) || !caseStudy) {
     return res.status(400).json({ error: 'Missing messages or caseStudy' });
   }
 
-  const doc = loadDoc(caseStudy);
-  if (!doc) {
+  const loaded = loadDocs(caseStudy);
+  if (!loaded) {
     return res.status(400).json({ error: 'Unknown case study' });
+  }
+
+  const prepared = prepareMessages(messages);
+  if (prepared.error) {
+    return res.status(400).json({ error: prepared.error });
   }
 
   const apiKey = process.env.ANTHROPIC_API_KEY;
@@ -107,11 +171,11 @@ export default async function handler(req, res) {
       system: [
         {
           type: 'text',
-          text: buildSystemPrompt(doc, caseStudy),
+          text: buildSystemPrompt(loaded.scope, loaded.docs),
           cache_control: { type: 'ephemeral' },
         },
       ],
-      messages: messages.map(({ role, content }) => ({ role, content })),
+      messages: prepared.messages,
     });
 
     for await (const event of stream) {
@@ -121,6 +185,16 @@ export default async function handler(req, res) {
       ) {
         res.write(`data: ${JSON.stringify({ text: event.delta.text })}\n\n`);
       }
+    }
+
+    // Outside production, report token usage so prompt size and cache hits can be checked on a
+    // preview. Clients ignore events without `text`.
+    if (globalThis.process.env.VERCEL_ENV !== 'production') {
+      const { usage } = await stream.finalMessage();
+      const { input_tokens, cache_creation_input_tokens, cache_read_input_tokens, output_tokens } = usage;
+      res.write(
+        `data: ${JSON.stringify({ usage: { input_tokens, cache_creation_input_tokens, cache_read_input_tokens, output_tokens } })}\n\n`,
+      );
     }
 
     res.write('data: [DONE]\n\n');

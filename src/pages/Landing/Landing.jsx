@@ -4,9 +4,8 @@ import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import ProjectCarousel from '../../components/ProjectCarousel/ProjectCarousel'
 import HeroGrid from '../../components/HeroGrid/HeroGrid'
+import HeroAsk from '../../components/HeroAsk/HeroAsk'
 import styles from './Landing.module.css'
-import aboutMeImgWebP from '../../assets-new/me-packed.jpg?format=webp&w=640&quality=80'
-import aboutMeImgJpg from '../../assets-new/me-packed.jpg?w=640&quality=80'
 
 const easeOut = [0.22, 1, 0.36, 1]
 
@@ -193,13 +192,6 @@ const Landing = () => {
       <main className={styles.page}>
         <section className={styles.hero} ref={heroRef}>
           <HeroGrid />
-          <div className={styles.photoWrap} aria-hidden="true">
-            <picture>
-              <source srcSet={aboutMeImgWebP} type="image/webp" />
-              <img src={aboutMeImgJpg} alt="" className={styles.photo} />
-            </picture>
-            <span className={styles.photoCaption}>I also don't mind doing the heavy lifting →</span>
-          </div>
           <span className={styles.heroRipple} ref={rippleRef} aria-hidden="true" />
           <div className={styles.heroInner}>
             <FM.motion.div
@@ -208,14 +200,14 @@ const Landing = () => {
               initial="hidden"
               animate="visible"
             >
+              {/* Prototype: owner-approved headline (chat, 22 Nov 2026) as plain text. Gets wired
+                  to the copy entry home.hero.headline when integrated. */}
               <FM.motion.h1 className={styles.headline} variants={heroItemVariants}>
-                Hi there, I&apos;m Fabrice{' '}
+                Product designer using design and code to develop digital products
               </FM.motion.h1>
-              <FM.motion.p className={styles.subline} variants={heroItemVariants}>
-                I&apos;m a Designer from Germany with a passion for{' '}
-                <strong>understanding complex problems</strong> and<br className={styles.desktopBreak} /> {' '}
-                <strong>creating simple solutions </strong> through design and technology
-              </FM.motion.p>
+              <FM.motion.div className={styles.ask} variants={heroItemVariants}>
+                <HeroAsk />
+              </FM.motion.div>
             </FM.motion.div>
             <FM.motion.p
               className={styles.introText}
