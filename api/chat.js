@@ -26,15 +26,19 @@ const SCOPE = {
   all: 'the three case-study projects on this site',
 };
 
-// Request limits. A longer message is rejected; history beyond MAX_HISTORY is dropped, oldest
-// first. Assistant turns come back from the client, so they are capped too (max_tokens below
-// keeps real answers far under that cap).
+// Request limits. A longer message is rejected; history beyond LIMITS.history is dropped, oldest
+// first. Assistant turns come back from the client, so they are capped too (MAX_TOKENS keeps real
+// answers far under that cap).
 export const LIMITS = {
   userChars: 1000,
-  assistantChars: 6000,
+  assistantChars: 8000,
   history: 12,
   messages: 50,
 };
+
+// Output cap per answer. Thinking counts toward it, and questions across all three projects can
+// need more of it: at 1024 one cross-project answer was cut off mid-sentence.
+const MAX_TOKENS = { single: 1024, all: 2048 };
 
 // A corpus file can be marked as a draft with frontmatter (`status: draft`, format in
 // scripts/draft-gate.mjs). In production a file whose status isn't `approved` is not loaded.
@@ -165,7 +169,7 @@ export default async function handler(req, res) {
   try {
     const stream = await client.messages.stream({
       model: 'claude-haiku-5-5',
-      max_tokens: 1024,
+      max_tokens: caseStudy === ALL ? MAX_TOKENS.all : MAX_TOKENS.single,
       output_config: { effort: 'low' },
       // The corpus is large and identical across requests for a case study: cache it.
       system: [
@@ -187,13 +191,15 @@ export default async function handler(req, res) {
       }
     }
 
-    // Outside production, report token usage so prompt size and cache hits can be checked on a
-    // preview. Clients ignore events without `text`.
+    // Outside production, report token usage and the stop reason so prompt size, cache hits and
+    // cut-off answers can be checked on a preview. Clients ignore events without `text`.
     if (globalThis.process.env.VERCEL_ENV !== 'production') {
-      const { usage } = await stream.finalMessage();
+      const { usage, stop_reason } = await stream.finalMessage();
       const { input_tokens, cache_creation_input_tokens, cache_read_input_tokens, output_tokens } = usage;
       res.write(
-        `data: ${JSON.stringify({ usage: { input_tokens, cache_creation_input_tokens, cache_read_input_tokens, output_tokens } })}\n\n`,
+        `data: ${JSON.stringify({
+          usage: { input_tokens, cache_creation_input_tokens, cache_read_input_tokens, output_tokens, stop_reason },
+        })}\n\n`,
       );
     }
 
